@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Scalar Field — The Global Sector, and Why It Is a Gravity Object</title>
+<style>
+  :root{
+    --ink:#1c1c1c; --paper:#fbfaf6; --page:#ece8df;
+    --green:#5a7d3a; --amber:#b88a2a; --steel:#3a5a7d; --teal:#2f6d5e;
+    --slate:#5a6470; --blood:#7a1f1f; --violet:#6a4a8a;
+    --rule:#d2cdbf; --soft:#8a8676; --wash:#f3efe4;
+  }
+  html{background:var(--page)}
+  body{
+    font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    max-width:820px; margin:2.5rem auto; padding:2.6rem 2.4rem 4rem;
+    color:var(--ink); line-height:1.62; background:var(--paper);
+    box-shadow:0 1px 4px rgba(0,0,0,.06); font-size:17px;
+  }
+  h1{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-weight:700;
+     font-size:1.9rem; line-height:1.18; border-bottom:2px solid var(--ink);
+     padding-bottom:.55rem; margin:.3rem 0 .5rem}
+  h2{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:1.24rem;
+     margin-top:2.4rem; border-bottom:1px solid var(--rule); padding-bottom:.25rem}
+  h3{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:1.02rem;
+     margin-top:1.6rem; color:var(--slate)}
+  .banner{background:#eef5fa; border-bottom:2px solid var(--steel);
+     margin:-2.6rem -2.4rem 2rem; padding:.65rem 2.4rem;
+     font-family:"Helvetica Neue",Helvetica,sans-serif; font-size:.85rem;
+     color:var(--steel); line-height:1.5; text-align:center}
+  .banner a{color:var(--steel); font-weight:600}
+  .sub{color:var(--soft); font-style:italic; font-size:1.02rem}
+  .meta{color:var(--soft); font-size:.85rem; margin-bottom:1.6rem}
+  table{border-collapse:collapse; width:100%; margin:1.1rem 0; font-size:.88rem}
+  th,td{border:1px solid var(--rule); padding:.42rem .6rem; text-align:left; vertical-align:top}
+  th{background:#f0eadb; font-family:"Helvetica Neue",Helvetica,sans-serif; font-size:.82rem}
+  tr:nth-child(even) td{background:#faf7ef}
+  blockquote{border-left:4px solid var(--amber); background:#fff8e8;
+    margin:1.2rem 0; padding:.7rem 1.1rem; color:#4a4437; font-size:.97rem}
+  .box{border-left:4px solid var(--green); background:#eef3e8;
+    padding:.85rem 1.1rem; margin:1.3rem 0; font-size:.94rem}
+  .warn{border-left:4px solid var(--blood); background:#f3e7e7;
+    padding:.85rem 1.1rem; margin:1.3rem 0; font-size:.94rem}
+  .openbox{border-left:4px solid var(--amber); background:#fff8e8;
+    padding:.85rem 1.1rem; margin:1.3rem 0; font-size:.94rem}
+  code{font-family:"JetBrains Mono",Menlo,Consolas,monospace; background:var(--wash);
+    border-radius:2px; font-size:.85em; padding:.05em .3em}
+  a{color:var(--steel)}
+  .overflow{overflow-x:auto}
+  .tag{font-family:"Helvetica Neue",Helvetica,sans-serif; font-size:.7rem;
+    text-transform:uppercase; letter-spacing:.08em; padding:.1em .45em;
+    border-radius:2px; border:1px solid; vertical-align:middle; margin-right:.35em; white-space:nowrap}
+  .tag.measured{color:var(--green); border-color:var(--green); background:#eef3e8}
+  .tag.derived{color:var(--steel); border-color:var(--steel); background:#eaf0f6}
+  .tag.conditional{color:var(--violet); border-color:var(--violet); background:#f0eaf6}
+  .tag.open{color:var(--amber); border-color:var(--amber); background:#fff8e8}
+  .figure{margin:1.6rem 0; text-align:center}
+  .figcap{color:var(--soft); font-size:.88rem; line-height:1.55; text-align:left;
+    max-width:680px; margin:.6rem auto 0}
+</style>
+</head>
+<body>
+
+<style id="eg-site-nav-css">
+  .eg-nav{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:.8rem;
+    background:#1c1c1c;color:#ece8df;padding:.55rem 1.2rem;line-height:1.6;
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    box-shadow:0 1px 3px rgba(0,0,0,.25)}
+  body{margin-top:5.2rem !important}
+  .eg-nav a{color:#ece8df;text-decoration:none;margin-right:1rem;white-space:nowrap}
+  .eg-nav a:hover{text-decoration:underline}
+  .eg-nav .eg-home{font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+    margin-right:1.4rem}
+  .eg-nav .eg-cur{border-bottom:2px solid #b88a2a}
+  .eg-nav .eg-wrap{max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;
+    align-items:baseline}
+</style>
+<div class="eg-nav"><div class="eg-wrap"><a class="eg-home" href="index.html">Electrogravitics</a><a href="electrogravitics.html">Field guide</a><a href="the_shape_of_gravity.html">Gravity</a><a href="warp_drive.html">Mechanism</a><a href="hover_disk.html">Materials</a><a href="lynchpin_drone.html">Vehicle</a><a href="antigravity_devices.html">Bench floor</a><a href="superconductivity.html">Superconductivity</a><a href="magnetism.html">Magnetism</a><a class="eg-cur" href="the_scalar_field.html">Scalar field</a></div></div>
+
+
+<div class="banner">
+Companion to <a href="the_shape_of_gravity.html">The Shape of Gravity</a> ·
+<a href="magnetism.html">Magnetism</a> ·
+The Shape of the Universe —
+single home for the global-sector synthesis; the gravity law itself belongs
+to <em>The Shape of Gravity</em> and is cited, not re-derived, here.
+</div>
+
+<h1>The Scalar Field</h1>
+<p class="sub">The global sector, and why it is a gravity object: what "the
+scalar" actually is in this framework — not a wave, not a fifth force, but the
+normalization degree of freedom of the local clock-rate law — and the one
+number that decides whether it is physical.</p>
+<p class="meta">v1.0 &middot; 2026-08-05 &middot; synthesis paper; register tags
+as in the sibling papers:
+<span class="tag measured">measured</span>
+<span class="tag derived">derived</span>
+<span class="tag conditional">conditional</span>
+<span class="tag open">open</span></p>
+
+<div class="box">
+<strong>One-line claim.</strong> "The scalar" is not something that travels
+fast. It is the <em>global normalization of the local clock-rate law</em> — a
+constraint, not a wave — and it does not sit beside gravity, it sits
+<em>inside</em> gravity, as the scale <code>E&#9733;</code> in
+<code>F = 1 + E/E&#9733;</code>. Whether it is physical is not a question about
+exotic new physics; it is a one-parameter question, <code>&tau;_global</code>,
+which this framework can now pose exactly, has measured both endpoints of
+in-model, and cannot yet decide.
+</div>
+
+<h2>1 · Three answers to one bad question</h2>
+<p>
+"Is there a scalar field?" is asked in three incompatible dialects, and most of
+the confusion in this area is people answering a different one than was asked.
+</p>
+<ul>
+<li><strong>The fringe dialect.</strong> A "scalar wave" is a longitudinal,
+non-transverse carrier that standard electromagnetic bookkeeping drops, and
+which propagates instantaneously or superluminally. Tesla-lineage; Bearden
+lineage; adopted wholesale by a large device literature.</li>
+<li><strong>The mainstream dialect.</strong> There <em>is</em> a scalar sector
+in standard electrodynamics — the Coulomb-gauge scalar potential
+<code>&phi;</code>, which updates instantaneously over all space. This is a
+textbook fact, and the textbook verdict is that it is unobservable gauge
+artifact: every <em>field</em> stays retarded.</li>
+<li><strong>This framework's dialect.</strong> Neither of the above. There is a
+specific degree of freedom, in a specific derived law, whose two settings give
+two different worlds — and we have measured the difference between them
+in-model rather than argued about it.</li>
+</ul>
+<p>
+The third is the only one this paper defends. Its value is that it turns an
+unfalsifiable vibe into a number.
+</p>
+
+<h2>2 · Where it lives: inside the gravity law, not beside it</h2>
+<p>
+The framework's weak-field gravity result is a scalar deformation law relating
+the local time-rate factor to local energy density
+(<a href="the_shape_of_gravity.html">The Shape of Gravity</a>, which owns this
+result and its receipts):
+</p>
+<blockquote>F = 1 + E / E&#9733;</blockquote>
+<p>
+<span class="tag derived">derived</span> — with <code>&gamma;&#8321; = 1</code>
+and <code>E&#9733; = 2 m_edge c&sup2;</code> in that paper's closure.
+</p>
+<p>
+Now the observation this whole paper turns on. That law is dimensionally
+incomplete until you say <em>what <code>E&#9733;</code> is</em>. It is a scale.
+A scale has to come from somewhere. And there are exactly two places it can
+come from:
+</p>
+<div class="overflow">
+<table>
+<tr><th>reading</th><th>what <code>E&#9733;</code> is</th><th>character of the law</th></tr>
+<tr><td><strong>fixed <code>E&#9733;</code></strong></td><td>a constant of nature,
+set once</td><td>strictly local; every influence inside a light cone</td></tr>
+<tr><td><strong>Machian <code>E&#9733; = &#9001;E&#9002;(t)</code></strong></td>
+<td>the instantaneous global mean energy</td><td>every clock's rate references
+the whole universe <em>now</em></td></tr>
+</table>
+</div>
+<p>
+This is the entire content of "the scalar." Under the Machian reading, the
+normalization is a single global number that every local law consults, and it
+updates everywhere at once — not because anything travels, but because it is
+not a travelling thing. It is a <em>constraint</em>, in exactly the sense that
+Coulomb-gauge <code>&phi;</code> is a constraint.
+</p>
+<div class="box">
+<strong>The answer to "is the scalar connected to gravity?" is stronger than
+"connected."</strong> In this framework the scalar field is not a separate
+field that couples to gravity. It <em>is</em> a degree of freedom of the
+gravity law — the one that fixes its scale. There is no scalar sector to go
+looking for somewhere else in the theory; if it is anywhere, it is here, and it
+has been here the whole time. <span class="tag derived">derived</span>
+</div>
+<p>
+The uncomfortable part, recorded honestly: <strong>this project's own engine
+had silently chosen Machian, and this project's own gravity paper writes
+fixed.</strong> Neither had noticed. The dichotomy was found by looking, not by
+reasoning — which is the correct order, and is why it produced a number instead
+of an argument.
+</p>
+
+<h2>3 · Both endpoints, measured</h2>
+<p>
+S4 (2026-07-19, pre-registration frozen before the run; receipts
+<code>lpoh/sims/PREREG_S4_2026-07-19.md</code>,
+<code>lpoh/sims/S4_two_channels.py</code>,
+<code>lpoh/sims/RESULTS_S4_2026-07-19.md</code>) perturbed a C&#8336;&#8320;
+doctrine chamber and watched a far shell (distance &ge; 8) for pre-front
+deviation, under each reading with common random numbers.
+</p>
+<div class="overflow">
+<table>
+<tr><th>experiment</th><th>result</th></tr>
+<tr><td>wave channel, Machian <code>E&#9733; = &#9001;E&#9002;</code></td>
+<td>far-shell precursor <strong>4.9&times;10&#8315;&#8309; at t = 2</strong>,
+against a causal wave arrival of 1.5&times;10&#8315;&sup2; at t &asymp; 8–16 —
+an instantaneous channel, ~300&times; below the wave amplitude</td></tr>
+<tr><td>wave channel, fixed <code>E&#9733;</code></td>
+<td>front slope <strong>0.91 ticks/edge</strong>; far-shell deviation
+<strong>exactly 0.00</strong> until front arrival — a strict causal cone</td></tr>
+<tr><td>consensus/repair layer (CRN-fixed)</td>
+<td><strong>no fast channel at all</strong>: perturbations heal in place
+(reach &le; 2 edges in 40 sweeps); apparent speed 0.2 / 2.0 / 0.5 edges/sweep
+for random-sequential / Gauss–Seidel / Jacobi — i.e. <em>schedule gauge</em>,
+not physics</td></tr>
+<tr><td>detonation vs chemical, equal energy, local law</td>
+<td>identical fronts, no pre-front lead — frozen expectation confirmed</td></tr>
+</table>
+</div>
+<p>
+<span class="tag measured">measured</span> (in-model). Three things worth
+extracting, because each kills a plausible alternative:
+</p>
+<ol>
+<li><strong>The repair layer is not the scalar's home.</strong> The obvious
+guess — that a "faster-than-light" sector would hide in the consensus/repair
+dynamics — is wrong in this stack, and measurably so. Repair <em>heals</em>
+rather than transmits, and what speed it appears to have is an artifact of the
+update schedule. This is a real negative and it narrows the search to one
+place.</li>
+<li><strong>The precursor is weak but structured.</strong> It carries the
+perturbation's timing everywhere at once. In-model, under Machian, it is
+usable-for-signalling <em>by construction</em>. That is a statement about the
+model, not about nature — see §8.</li>
+<li><strong>"Nuclear is special" does not come from the wave channel.</strong>
+At equal injected energy, detonation and chemical release produced identical
+fronts. If there is special content there it has to come from record depth
+(baryon-layer rewrites vs electron-shell rearrangement), and the sim has no
+record-depth hierarchy. Stated as a gap, not papered over.</li>
+</ol>
+
+<h2>4 · The dichotomy dissolves: the &tau;-family</h2>
+<p>
+S5 (same discipline, receipts <code>lpoh/sims/RESULTS_S5_2026-07-19.md</code>)
+asked the obvious follow-up: why should <code>E&#9733;</code> be either a frozen
+constant or an instantaneous mean? Make it a dynamical global scalar that
+<em>relaxes</em> toward <code>&#9001;E&#9002;</code> with timescale
+<code>&tau;</code>.
+</p>
+<div class="overflow">
+<table>
+<tr><th><code>&tau;</code></th><th>pre-front precursor (t = 2–4)</th><th></th></tr>
+<tr><td>0 (Machian)</td><td>1.21&times;10&#8315;&#8308;</td><td>S4's instant channel</td></tr>
+<tr><td>1</td><td>1.21&times;10&#8315;&#8308;</td><td></td></tr>
+<tr><td>4</td><td>5.75&times;10&#8315;&#8309;</td><td></td></tr>
+<tr><td>16</td><td>2.17&times;10&#8315;&#8309;</td><td>&asymp; 1/&tau; scaling</td></tr>
+<tr><td>64</td><td>6.25&times;10&#8315;&#8310;</td><td></td></tr>
+<tr><td>256</td><td>1.63&times;10&#8315;&#8310;</td><td></td></tr>
+<tr><td>&infin; (fixed)</td><td><strong>0 (exact)</strong></td><td>front slope 0.91 ticks/edge — the causal cone intact underneath</td></tr>
+</table>
+</div>
+<p>
+The precursor amplitude falls as <code>~1/&tau;</code> and the causal wave
+channel is <strong>untouched at every <code>&tau;</code></strong>.
+<span class="tag measured">measured</span>
+</p>
+<div class="box">
+<strong>This is the paper's second real result, and it reframes the whole
+subject.</strong> Fixed and Machian are not rival theories. They are the two
+endpoints of one continuous family, and the physical question is not "is there
+a scalar?" — there is, structurally, always — but <strong>"what is
+<code>&tau;_global</code>?"</strong> A universe with <code>&tau;</code> of order
+the Hubble time is <em>Machian on cosmological timescales</em> (E&#9733; tracks
+the evolving cosmic mean, which is what a Machian cosmology needs) and
+<em>indistinguishable from fixed-E&#9733;</em> in any laboratory or
+gravitational-wave-timescale experiment. Both readings become true, at
+different timescales. The either/or was an artifact of only ever looking at the
+endpoints.
+</div>
+<p>
+One metric caveat, disclosed rather than buried: the threshold-based front-slope
+column in the S5 run saturates whenever any precursor exceeds
+10&#8315;&#8313; (it reads 0.08 for every finite <code>&tau;</code>). The
+amplitude column is the real observable; the <code>&tau; = &infin;</code> row is
+what confirms the causal cone underneath.
+</p>
+
+<h2>5 · Why "scalar" is the right word, precisely</h2>
+<p>
+Three properties, each of which the name is doing real work to convey:
+</p>
+<ul>
+<li><strong>It is a scalar.</strong> One number, not a vector or a tensor. There
+is no direction to it, and no polarization.</li>
+<li><strong>It is potential-like, not force-like.</strong> It acts through the
+clock rate — through phase — not by pushing on anything. Nothing in the
+framework's force sector changes when you move along the &tau;-family.</li>
+<li><strong>It is a constraint, not a solution.</strong> This is why
+"instantaneous" is not a speed claim and does not violate anything. A
+constraint does not propagate; it holds. Asking how fast Gauss's law travels is
+a category error, and asking how fast <code>E&#9733;</code> travels is the same
+category error.</li>
+</ul>
+<p>
+That last point is the one most often lost. The fringe literature says
+"instantaneous propagation," which sounds like a velocity claim and invites an
+immediate relativity objection. The correct statement is that there is nothing
+propagating to assign a velocity to. The objection that actually bites is a
+different one, and it is §8's.
+</p>
+
+<h2>6 · Three scales, one structure</h2>
+<p>
+The reason to take the global sector seriously is not the gravity rung, which
+is open. It is that <em>the same structure — a local law plus one global
+scalar</em> — has already been shown to do real, measured, parameter-free work
+one scale down.
+</p>
+<div class="overflow">
+<table>
+<tr><th>scale</th><th>local law</th><th>global scalar</th><th>status</th></tr>
+<tr><td>atom</td><td>single-particle orbital equation</td><td>chemical
+potential / mean field</td><td><strong>demonstrated</strong> (S5-E2, 6/6,
+control 0/6)</td></tr>
+<tr><td>chamber</td><td>edge scatter + derived-F</td><td><code>E&#9733; &larr;
+&#9001;E&#9002;</code> at rate 1/&tau;</td><td><strong>measured</strong> (S4,
+S5-E1: precursor ~1/&tau;)</td></tr>
+<tr><td>universe</td><td>patch repair</td><td><code>T(&#120140;) =
+&#120140;</code> · <code>E&#9733;</code></td><td><span class="tag open">open</span>
+(the no-signalling obligation, §8)</td></tr>
+</table>
+</div>
+<h3>The atom rung is the strongest thing in this paper</h3>
+<p>
+Thomas–Fermi run as an OPH-style consensus — a local density law plus exactly
+one global scalar (the chemical potential), settled self-consistently, with
+<strong>zero fitted constants</strong> — reproduces the aufbau ordering pairs
+that define the periodic table's structure: 4s &lt; 3d at K/Ca, 5s &lt; 4d at
+Rb/Sr, 6s &lt; 5d at Cs/Ba. <strong>6/6.</strong> The consensus-stripped
+bare-Coulomb control gets <strong>0/6.</strong>
+<span class="tag measured">measured</span>
+</p>
+<p>
+The control is what makes this a result rather than a curve fit: strip the
+global scalar and the ordering collapses entirely. So <em>screening = many-observer
+consensus</em> stops being a slogan. The global sector is not a speculative
+addition to the framework; at atomic scale it is the thing that makes the
+periodic table come out right, and it was already there.
+</p>
+<p>
+What did <em>not</em> pass, recorded: the exponent gate G2 failed as frozen
+(0/6). The post-hoc diagnosis is itself clarifying — <code>s_eff</code> is
+1.000 exactly at both competing density peaks (both sit in the Latter tail),
+while the screening zone's local exponent runs 1.5&nbsp;&rarr;&nbsp;2.7. So the
+exact-Bessel <code>s = 3/2</code> is an <em>aggregate over the competition
+region</em>, not a pointwise slope. The constant stays underived, now with a
+sharper statement of why. <span class="tag open">open</span>
+</p>
+
+<h2>7 · The same gap twice — a closure route, not a closure</h2>
+<p>
+This section exists because a reader who has just come from
+<a href="magnetism.html">Magnetism</a> will notice something, and it is better
+stated carefully here than left to be noticed carelessly.
+</p>
+<p>
+Magnetism's honest boundary is Corollary 6.6d of the external OPH programme:
+the consistency requirements force the gauge algebra, force the connection, and
+force <code>F = dA</code> — but they do <em>not</em> supply the Maxwell action
+or its kinetic coefficient. In the source's own words, the reconstruction
+<em>"do[es] not themselves supply this action or its nonzero kinetic
+coefficient."</em> What is missing is a single global scale on a quadratic form:
+the <code>1/g&sup2;</code> in
+<code>S = &minus;1/(2g&sup2;) &int; F &and; *F</code>.
+</p>
+<p>
+Set the three open items of this programme side by side:
+</p>
+<div class="overflow">
+<table>
+<tr><th>object</th><th>what is forced</th><th>what is not</th></tr>
+<tr><td>Maxwell action (OB-2 / Cor. 6.6d)</td><td>the quadratic form
+<code>F &and; *F</code></td><td>the coupling <code>1/g&sup2;</code> — one global
+scale</td></tr>
+<tr><td>gravity law (§2)</td><td><code>F = 1 + E/E&#9733;</code></td>
+<td>the scale <code>E&#9733;</code> — one global normalization</td></tr>
+<tr><td>repair generator (<code>canonical_seam_repair.py</code>)</td>
+<td>uniquely <code>&minus;L</code>, forced band ratio
+<code>(5&minus;&radic;5 : 6 : 5+&radic;5)</code></td><td>the time-scale — one
+residual global scale</td></tr>
+</table>
+</div>
+<p>
+Three statements of the same shape: <em>forced form, unfixed global
+normalization.</em> And there is already a real, receipted narrowing along this
+line. Mueller's own instrument
+(<code>oph_fpe/gauge/kinetic_selector_sweep.py</code>) asked whether positivity,
+locality on the twelve-port carrier, and A5 covariance select a unique quadratic
+response law; run directly, <strong>they do not</strong> — twelve candidates
+survive, with a constructive two-law counterexample and receipts
+<code>UNIQUE_GAUGE_KINETIC_SOURCE_RAY_RECEIPT: false</code>. But checking those
+twelve against <code>canonical_seam_repair.py</code>'s forced band ratio leaves
+<strong>exactly two</strong> (<code>edge_repair</code>, H = I + L;
+<code>double_edge_repair</code>, H = I + 2L) — and those two are related by
+precisely the scale freedom the repair generator already allows. Twelve
+candidates collapse to a one-parameter family.
+</p>
+<div class="openbox">
+<strong>The conjecture, stated so it can be killed.</strong> If the residual
+time-scale freedom of the repair generator, the scale <code>E&#9733;</code>, and
+the Maxwell coupling <code>1/g&sup2;</code> are <em>the same</em> global
+normalization degree of freedom, then <strong>fixing <code>&tau;_global</code>
+fixes the electromagnetic coupling</strong>, and the two open problems are one
+open problem with one answer.
+<br><br>
+<strong>What is wrong with this as it stands.</strong> (i) The bridge premise —
+that the response Hessian should match the repair generator — is this project's,
+not an OPH theorem, and is unproven. (ii) The 12&nbsp;&rarr;&nbsp;2 narrowing is
+composed from two already-run certificates and introduces no new computation; it
+is real but it is arithmetic on other people's results. (iii) Even granted
+entirely, it is <em>silent</em> on the radiative-vs-non-radiative question that
+is OB-2's actual content. (iv) Most importantly, the external synthesis's own
+Definition 1.2 — <em>resemblance is insufficient</em> — is the standard this
+project applies to everyone else, and it applies here: "same shape" is not
+"same object," and nothing above supplies the argument that would upgrade it.
+<span class="tag open">open</span>
+</div>
+<p>
+So this section claims exactly one thing: <strong>a route</strong>. The
+Maxwell-action gap is not derived here and must not be cited as derived here —
+OB-2 remains its owner and remains open.
+What this paper adds is the observation that the gap has the same shape as the
+one the &tau;-family gives a <em>measured handle on</em>, and that this makes
+<code>&tau;_global</code> a more valuable number than it looked when it was only
+about gravity.
+</p>
+
+<h2>8 · Anchors, and the thing that actually threatens the idea</h2>
+<h3>What is measured in mainstream physics</h3>
+<ul>
+<li><strong>Coulomb gauge</strong> — the scalar potential updates
+instantaneously over all space. Textbook. The standard verdict is "unobservable
+gauge artifact"; the entire fringe claim is that this sector is physical. The
+translation into this framework is exact: <em>gauge freedom = freedom in the
+record normalization</em>, and "the scalar is physical" = "the normalization is
+Machian and couples." <span class="tag measured">measured</span> (the gauge
+structure) / <span class="tag open">open</span> (its physicality)</li>
+<li><strong>Aharonov–Bohm</strong> — potentials have observable consequences
+where fields vanish. The standing precedent that "potential-like" does not mean
+"fictitious." <span class="tag measured">measured</span></li>
+<li><strong>GW170817</strong> — the speed of gravity equals c to one part in
+10&#185;&#8309;. This bounds the <em>wave</em> channel and nothing else. A weak
+normalization precursor in a different channel is neither excluded nor supported
+by it. <span class="tag measured">measured</span></li>
+<li><strong>Bell tests, loophole-free (2015, three independent labs)</strong> —
+nature has instantaneous <em>correlations</em> that no subluminal account
+produces. This is the one place the global sector is already measured in a
+laboratory. The framework's reading: entangled systems <em>share a record</em>,
+i.e. are adjacent in the record layer regardless of metric distance.
+<span class="tag measured">measured</span></li>
+<li><strong>Mach's principle</strong> — the <code>E&#9733; = &#9001;E&#9002;</code>
+reading is literally Machian inertia. General relativity partially incorporates
+and partially rejects Mach; the question is old, respectable, and unsettled.</li>
+</ul>
+<h3>The threat</h3>
+<p>
+Not relativity — §5 disposes of the naive velocity objection. The threat is the
+<strong>no-communication theorem</strong>. Bell correlations are instantaneous
+and provably cannot carry a controllable signal. Nature, where we have looked,
+has consistently arranged for the global sector to be real and unusable at the
+same time.
+</p>
+<div class="warn">
+<strong>The owed theorem, stated as an obligation.</strong> This framework has
+<strong>no repair-layer no-signalling theorem</strong>. Until one exists — proving
+or refuting that boundary-conditioned repair can be modulated to carry
+controllable signal — <strong>the framework neither licenses nor forbids a
+usable instantaneous channel</strong>, and every claim in either direction is a
+modelling choice wearing a physics costume. In-model usability under Machian
+normalization (§3) is a fact about our engine, not a permission slip. This is
+logged as a programme-level obligation and is the single highest-value thing
+anyone could prove here. <span class="tag open">open</span>
+</div>
+<h3>What else is owed</h3>
+<ul>
+<li><strong>The record-depth hierarchy.</strong> The sim has no baryon-vs-shell
+depth structure, so the "nuclear is loud in the record layer" mapping is not
+reproduced and is not asserted. <span class="tag open">open</span></li>
+<li><strong>The parked falsifiable prediction.</strong> If an instrument
+operating on the normalization sector ever exists, disruption amplitude should
+scale with <strong>transmuted mass</strong> (records rewritten), not with
+<strong>yield</strong> (energy released) — so equal-yield fission and fusion
+devices should be distinguishable. Parked until there is an instrument; it is
+the mapping's falsifiable content and it should not be quietly dropped.
+<span class="tag open">open</span></li>
+<li><strong>The universal discriminator.</strong> Any Machian or
+preferred-frame coupling inherits one clean signature everywhere: modulation at
+the <strong>sidereal period, 23 h 56 m</strong>, where no mundane artifact
+lives. Any bench claiming to touch this sector should be analysed at sidereal
+period first and everything else second.</li>
+</ul>
+
+<h2>9 · What this is not</h2>
+<div class="warn">
+<strong>Firewall.</strong> Five confusions this paper should prevent rather than
+create.
+<ol>
+<li><strong>Not a fifth force.</strong> It exerts nothing. It normalizes.</li>
+<li><strong>Not the "scalar" of scalar magnetometry.</strong> A <em>scalar
+magnetometer</em> measures |B|, the rotation-invariant magnitude of the magnetic
+field, as opposed to its vector components. That is an ordinary,
+well-understood, entirely mundane instrument, and the word collision with this
+paper is pure coincidence. There is <strong>no derived coupling</strong> from
+the global sector to any magnetometer, and nothing here should ever be offered
+as a detection mechanism for one. See
+<a href="magnetism.html">Magnetism</a> for what a magnetometer actually
+measures.</li>
+<li><strong>Not a licensed communication channel.</strong> See §8. The theorem
+that would settle it does not exist.</li>
+<li><strong>Not support for over-unity or anti-gravity.</strong> The scalar-EM
+device literature's core intuition — that there is a scalar, quadratic, global
+sector standard transverse bookkeeping drops — lands structurally near this
+result, and that is worth recording. Its device claims do not follow from it and
+are not supported by it. A squared sine is time-symmetric; phase conjugation is
+not anti-gravity.</li>
+<li><strong>Not a derivation of the Maxwell action.</strong> §7 is a route with
+four stated defects. Cite OB-2, not this paper.</li>
+</ol>
+</div>
+
+<div class="figure">
+<svg viewBox="0 0 700 300" xmlns="http://www.w3.org/2000/svg" style="max-width:640px;width:100%;">
+  <rect x="0" y="0" width="700" height="300" fill="#fbfaf6"/>
+  <defs>
+    <marker id="sf-ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#5a6470"/>
+    </marker>
+  </defs>
+  <!-- axis -->
+  <line x1="90" y1="230" x2="640" y2="230" stroke="#5a6470" stroke-width="1.5" marker-end="url(#sf-ah)"/>
+  <text x="640" y="252" text-anchor="end" font-family="Helvetica Neue, Helvetica, sans-serif" font-size="12" fill="#5a6470">&#964;_global  (relaxation time of the global scalar)</text>
+  <!-- curve: precursor ~ 1/tau -->
+  <path d="M 110 90 C 200 92, 250 140, 320 172 S 460 214, 620 226"
+        stroke="#3a5a7d" stroke-width="2.5" fill="none"/>
+  <circle cx="110" cy="90" r="4.5" fill="#3a5a7d"/>
+  <circle cx="620" cy="226" r="4.5" fill="#3a5a7d"/>
+  <!-- endpoint labels -->
+  <text x="128" y="72" text-anchor="start" font-family="Helvetica Neue, Helvetica, sans-serif" font-size="12" fill="#3a5a7d" font-weight="bold">Machian (&#964; = 0)</text>
+  <text x="128" y="56" text-anchor="start" font-family="Helvetica Neue, Helvetica, sans-serif" font-size="11" fill="#8a8676">precursor 1.2&#215;10&#8315;&#8308;</text>
+  <text x="622" y="208" text-anchor="end" font-family="Helvetica Neue, Helvetica, sans-serif" font-size="12" fill="#3a5a7d" font-weight="bold">fixed E&#9733; (&#964; = &#8734;)</text>
+  <text x="622" y="192" text-anchor="end" font-family="Helvetica Neue, Helvetica, sans-serif" font-size="11" fill="#8a8676">precursor exactly 0</text>
+  <!-- Hubble marker -->
+  <line x1="470" y1="120" x2="470" y2="230" stroke="#b88a2a" stroke-width="1.6" stroke-dasharray="4 4"/>
+  <text x="470" y="112" text-anchor="middle" font-family="Helvetica Neue, Helvetica, sans-serif" font-size="11" fill="#b88a2a" font-weight="bold">&#964; ~ Hubble time</text>
+  <text x="470" y="98" text-anchor="middle" font-family="Helvetica Neue, Helvetica, sans-serif" font-size="10.5" fill="#b88a2a">Machian cosmologically,</text>
+  <text x="470" y="85" text-anchor="middle" font-family="Helvetica Neue, Helvetica, sans-serif" font-size="10.5" fill="#b88a2a">causal in the lab</text>
+  <!-- y axis label -->
+  <text x="66" y="160" text-anchor="middle" font-family="Helvetica Neue, Helvetica, sans-serif" font-size="12" fill="#5a6470" transform="rotate(-90 66 160)">instantaneous precursor amplitude</text>
+  <line x1="90" y1="60" x2="90" y2="230" stroke="#5a6470" stroke-width="1.5"/>
+  <!-- causal channel flat line -->
+  <line x1="110" y1="262" x2="620" y2="262" stroke="#5a7d3a" stroke-width="2" stroke-dasharray="6 3"/>
+  <text x="365" y="282" text-anchor="middle" font-family="Helvetica Neue, Helvetica, sans-serif" font-size="11.5" fill="#5a7d3a">the causal wave channel is untouched at every &#964; &#8212; measured</text>
+</svg>
+<p class="figcap"><strong>Figure 1 — the &tau;-family.</strong> The "is there an
+instantaneous scalar channel?" question is not binary. Fixed and Machian
+<code>E&#9733;</code> are the two endpoints of one continuous family indexed by
+how fast the global scalar relaxes, and the instantaneous precursor's amplitude
+falls off as <code>1/&tau;</code> between them. The causal wave channel — the
+one GW170817 pins to <em>c</em> — is unaffected everywhere along the axis. A
+universe sitting near the amber line is Machian on cosmological timescales and
+indistinguishable from strictly local in any laboratory.</p>
+</div>
+
+<div class="warn">
+<strong>Claim boundary.</strong> This paper introduces no new simulation and no
+new theorem. Every measured number is S4's or S5's, pre-registered before the
+run, and is cited to
+<code>lpoh/sims/RESULTS_S4_2026-07-19.md</code> and
+<code>lpoh/sims/RESULTS_S5_2026-07-19.md</code>. The gravity law
+<code>F = 1 + E/E&#9733;</code> belongs to
+<a href="the_shape_of_gravity.html">The Shape of Gravity</a> — cite that paper,
+not this one, for it. The gauge-forcing theorem, the curvature identity, and the
+holonomy theorem belong to the external OPH papers cited in
+<a href="magnetism.html">Magnetism</a>'s sources box — cite those. §7 is a
+route, not a result: <strong>do not cite this paper as deriving the Maxwell
+action or its coupling.</strong> All S4/S5 numbers are <em>in-model</em>
+measurements — they establish what this framework's engine does under each
+reading, and establish nothing whatsoever about which reading nature implements.
+The Greer-testimony and Steiner mappings that motivated the original S4
+investigation are deliberately absent from this paper's body; they live in
+<code>papers/SCALAR_CHANNEL_OPH_ANALYSIS_2026-07-19.md</code> §§4–5, tagged
+there as working-hypothesis and postdictive-at-best, and nothing in this paper
+depends on them.
+</div>
+
+<div class="box">
+<strong>Sources and receipts.</strong>
+<ul>
+<li>Pre-registrations, frozen before their runs:
+<code>lpoh/sims/PREREG_S4_2026-07-19.md</code>,
+<code>lpoh/sims/PREREG_S5_2026-07-19.md</code>.</li>
+<li>Code and logs: <code>lpoh/sims/S4_two_channels.py</code>,
+<code>lpoh/sims/S5_global_sector.py</code>,
+<code>lpoh/sims/S4_run.log</code>, <code>lpoh/sims/S5_run.log</code>.</li>
+<li>Results: <code>lpoh/sims/RESULTS_S4_2026-07-19.md</code>,
+<code>lpoh/sims/RESULTS_S5_2026-07-19.md</code>. Both runs disclose a harness
+artifact caught and fixed mid-run (S4: twin RNG-stream desync, fixed with
+common random numbers; S5: a max/min sign inversion caught by its own giveaway).</li>
+<li>Working analysis, including the motivating testimony mapping this paper
+firewalls out: <code>papers/SCALAR_CHANNEL_OPH_ANALYSIS_2026-07-19.md</code>.</li>
+<li>The Machian option's classical lineage (Ampère &rarr; Weber &rarr; Assis)
+and the open-hairpin discriminator:
+<code>papers/AMPERE_LONGITUDINAL_SECTOR_NOTE_2026-07-20.md</code>.</li>
+<li>§7's two certificates, both in <code>muellerberndt/oph-physics-sim</code>:
+<code>oph_fpe/gauge/kinetic_selector_sweep.py</code> and
+<code>oph_fpe/dynamics/canonical_seam_repair.py</code>. The 12&nbsp;&rarr;&nbsp;2
+composition is recorded in OB-2's third
+note.</li>
+</ul>
+</div>
+
+<p class="meta" style="margin-top:2.5rem; text-align:center;">
+Alexander Osika · August 2026 · sibling papers:
+<a href="the_shape_of_gravity.html">The Shape of Gravity</a> ·
+<a href="magnetism.html">Magnetism</a> ·
+Light ·
+The Electron ·
+The Shape of the Universe
+</p>
+
+</body>
+</html>

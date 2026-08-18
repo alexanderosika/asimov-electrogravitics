@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Superconductivity — The Measured Table, the Missing Math, and the Coherence Route to Room Temperature</title>
+<style>
+  :root{
+    --ink:#1c1c1c; --paper:#fbfaf6; --page:#ece8df;
+    --green:#5a7d3a; --amber:#b88a2a; --steel:#3a5a7d; --teal:#2f6d5e;
+    --slate:#5a6470; --blood:#7a1f1f; --violet:#6a4a8a;
+    --rule:#d2cdbf; --soft:#8a8676; --wash:#f3efe4;
+  }
+  html{background:var(--page)}
+  body{
+    font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    max-width:820px; margin:2.5rem auto; padding:2.6rem 2.4rem 4rem;
+    color:var(--ink); line-height:1.62; background:var(--paper);
+    box-shadow:0 1px 4px rgba(0,0,0,.06); font-size:17px;
+  }
+  h1{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-weight:700;
+     font-size:2.05rem; line-height:1.18; border-bottom:2px solid var(--ink);
+     padding-bottom:.55rem; margin:.3rem 0 .5rem}
+  h2{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:1.3rem;
+     margin-top:2.5rem; color:var(--ink); border-bottom:1px solid var(--rule);
+     padding-bottom:.25rem}
+  h3{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:1.04rem;
+     margin-top:1.7rem; color:#444}
+  .banner{background:#eef5fa; border-bottom:2px solid var(--steel);
+     margin:-2.6rem -2.4rem 2rem; padding:.65rem 2.4rem;
+     font-family:"Helvetica Neue",Helvetica,sans-serif; font-size:.85rem;
+     color:var(--steel); line-height:1.5; text-align:center}
+  .banner a{color:var(--steel); font-weight:600}
+  .sub{color:var(--soft); font-style:italic; font-size:1.02rem}
+  .meta{color:var(--soft); font-size:.85rem; margin-bottom:1.6rem}
+  .chip{display:inline-block; font:700 .6rem/1.5 "Helvetica Neue",Helvetica,sans-serif;
+    letter-spacing:.07em; padding:.08rem .45rem; border-radius:2px;
+    background:var(--wash); color:var(--slate); border:1px solid var(--rule);
+    vertical-align:.14em; white-space:nowrap}
+  .chip.c-measured{color:#fff;background:var(--teal);border-color:var(--teal)}
+  .chip.c-open{color:#fff;background:var(--steel);border-color:var(--steel)}
+  .chip.c-derived{color:#fff;background:var(--slate);border-color:var(--slate)}
+  .chip.c-prereg{color:#fff;background:var(--violet);border-color:var(--violet)}
+  .chip.c-audit{color:#fff;background:var(--blood);border-color:var(--blood)}
+  .chip.c-disproven{color:#fff;background:#000;border-color:#000}
+  table{border-collapse:collapse; width:100%; margin:1.1rem 0; font-size:.88rem}
+  th,td{border:1px solid var(--rule); padding:.42rem .6rem; text-align:left; vertical-align:top}
+  th{background:#f0eadb; font-family:"Helvetica Neue",Helvetica,sans-serif; font-size:.82rem}
+  td.n{font-variant-numeric:tabular-nums; white-space:nowrap}
+  code{font:.85em ui-monospace,SFMono-Regular,Menlo,monospace; background:var(--wash);
+    padding:.05rem .3rem; border-radius:2px}
+  blockquote{margin:1.2rem 0; padding:.7rem 1.2rem; border-left:3px solid var(--steel);
+    background:#f4f7fa; font-size:.95rem}
+  .rulebox{border:1.5px solid var(--ink); background:var(--wash);
+    padding:.9rem 1.2rem; margin:1.4rem 0; font-size:.95rem}
+</style>
+</head>
+<body>
+
+<style id="eg-site-nav-css">
+  .eg-nav{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:.8rem;
+    background:#1c1c1c;color:#ece8df;padding:.55rem 1.2rem;line-height:1.6;
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    box-shadow:0 1px 3px rgba(0,0,0,.25)}
+  body{margin-top:5.2rem !important}
+  .eg-nav a{color:#ece8df;text-decoration:none;margin-right:1rem;white-space:nowrap}
+  .eg-nav a:hover{text-decoration:underline}
+  .eg-nav .eg-home{font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+    margin-right:1.4rem}
+  .eg-nav .eg-cur{border-bottom:2px solid #b88a2a}
+  .eg-nav .eg-wrap{max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;
+    align-items:baseline}
+</style>
+<div class="eg-nav"><div class="eg-wrap"><a class="eg-home" href="index.html">Electrogravitics</a><a href="electrogravitics.html">Field guide</a><a href="the_shape_of_gravity.html">Gravity</a><a href="warp_drive.html">Mechanism</a><a href="hover_disk.html">Materials</a><a href="lynchpin_drone.html">Vehicle</a><a href="antigravity_devices.html">Bench floor</a><a class="eg-cur" href="superconductivity.html">Superconductivity</a><a href="magnetism.html">Magnetism</a><a href="the_scalar_field.html">Scalar field</a></div></div>
+
+
+<div class="banner">
+  Materials / energy lane. Companions:
+  Pais Patent Audit ·
+  Schön Fulleride Audit ·
+  Phonon Drive ·
+  The VTA ·
+  The Zero-Point Machine ·
+  meta-frame: OPH Programme.
+</div>
+
+<h1>Superconductivity</h1>
+<p class="sub">The measured table, the missing math, and the coherence route
+to room temperature.</p>
+<p class="meta">v0.2 · 2026-08-01 (drafted, scored, and consolidated same
+day) · status-labelled throughout:
+<span class="chip c-measured">MEASURED</span> published third-party measurement ·
+<span class="chip c-derived">DERIVED</span> bookkeeping from measured numbers ·
+<span class="chip c-prereg">PRE-REG</span> frozen prediction / frozen gate ·
+<span class="chip c-audit">AUDIT</span> lore positioned against budget, no reality claim ·
+<span class="chip c-open">OPEN</span> honest unknown ·
+<span class="chip c-disproven">DISPROVEN</span> refuted or retracted.
+Firewall: research-lane document; not deck material.</p>
+
+<h2>0 · What this paper is</h2>
+<p>Four jobs. <b>One</b>: the complete measured record — every major
+superconductor family, its critical temperature, its pressure, and whether
+its mechanism is solved. The record's punchline is not widely understood:
+<em>the highest-T<sub>c</sub> superconductors ever confirmed are the
+best-understood ones</em>, predicted from first principles before they were
+synthesized. The math famine is real but local — it covers the
+correlated-electron families, not superconductivity itself.
+<b>Two</b>: the mechanism story from first principles — starting from what an
+electron actually is, since pairing is a statement about the electron's
+collective vacuum, not about gluing two marbles together.
+<b>Three</b>: the routes to room temperature — what the solved half already
+prescribes (§6.1's 300&nbsp;K convergence and double screen), the driven/
+nonequilibrium route (§5, with the tuned-vs-stirred discriminator of §5.2),
+the intuition candidate (§6.3), and a staged bench program for a
+duty-cycled room-temperature superconducting state (§6.4). <b>Four</b>: the
+adjudications — the Pais patent + AIAA mechanism (audit linked in banner;
+its bench doubles as a replication of the orphaned Gupta 2010 Al/PZT
+anomaly, §5.1) and the Schön fulleride scandal (fabrication, not
+suppression; the "no measured λ, no promotion" rule in §2.1 is its
+residue). Status at v0.2: the §7 pre-registration was <em>scored the same
+day it was frozen</em> — P1 PASS, P3 PASS, P4a PASS (nine materials
+cluster at r̄&nbsp;=&nbsp;0.607 of the consensus ceiling; the 1/φ
+identification remains indeterminate), P2 recorded as a negative. Every
+OPH-specific claim is tagged <span class="chip c-open">OPEN</span>,
+<span class="chip c-prereg">PRE-REG</span>, or scoreboarded
+<span class="chip c-derived">DERIVED</span>, per the same discipline as
+Sophia.</p>
+
+<h2>1 · What is an electron, from first principles</h2>
+
+<h3>1.1 The free electron — the most precisely measured object in science</h3>
+<p><span class="chip c-measured">MEASURED</span> The electron is an excitation
+of a quantum field: mass 510.998&nbsp;950&nbsp;69(16)&nbsp;keV/c², charge −e
+exactly (charge quantization, Millikan 1913 onward), spin ½. Its magnetic
+moment matches the QED prediction to about one part in 10<sup>12</sup>
+(Fan, Myers, Sukra &amp; Gabrielse 2023) — the most precisely verified
+prediction in the history of science. Collider contact-interaction bounds
+put any substructure below ~10<sup>−18</sup>&nbsp;m; the electric-dipole-moment
+bound (|d<sub>e</sub>| &lt; 4.1×10<sup>−30</sup>&nbsp;e·cm, JILA 2023) makes it
+the roundest object ever measured. Spin ½ means the electron lives on the
+<em>double cover</em> of the rotation group: a 2π rotation flips the
+wavefunction's sign — not philosophy, measured directly in neutron
+interferometry (Rauch 1975) and implicit in every atom.</p>
+
+<h3>1.2 The electron in matter — a quasiparticle, and it can shatter</h3>
+<p><span class="chip c-measured">MEASURED</span> Inside a solid, "the electron"
+is not the bare field excitation. It is a <em>quasiparticle</em> — the bare
+electron dressed in the response of every other electron and the lattice
+(Landau Fermi-liquid theory). The dressing is not small: effective masses in
+heavy-fermion metals reach ~1000&nbsp;m<sub>e</sub>. And the dressed object is
+not indivisible: in one-dimensional conductors the electron measurably
+<em>fractionalizes</em> into separate spin and charge excitations
+(spinon/holon separation: Kim et&nbsp;al. ARPES 2006, Jompol et&nbsp;al.
+<i>Science</i> 2009), and in the fractional quantum Hall regime carriers of
+charge e/3 have been directly detected in shot noise (Saminadayar et&nbsp;al.,
+de-Picciotto et&nbsp;al., 1997). The lesson that matters for this paper:
+<b>what conducts in a material is whatever collective excitation the
+many-body ground state supports</b>. Superconductivity is the extreme case —
+the ground state reorganizes so that the charge-carrying excitation is a
+<em>pair condensate</em> with a single shared phase.</p>
+
+<p><span class="chip c-measured">MEASURED</span> That the carriers pair is not
+an interpretation: magnetic flux through a superconducting ring is quantized
+in units of h/2e — the "2" is Cooper pairing weighed directly
+(Deaver–Fairbank and Doll–Näbauer, 1961). That the condensate has one
+macroscopic phase is also not an interpretation: the Josephson effect turns
+that phase into a frequency so exactly that the SI volt is <em>defined</em>
+through it.</p>
+
+<h3>1.3 The OPH dialect</h3>
+<p><span class="chip c-open">OPEN</span> In the programme's vocabulary
+(meta-frame), the electron is a patch/port
+excitation. The precise status of the dialect, checked against the network
+(2026-08-01): <b>(a)</b> the double cover behind spin has a named
+<em>geometric candidate</em> — the Shape
+paper's eversion passage, where the halfway state of the sphere turning
+inside out carries exactly the one-turn-swaps-sides / two-turns-identity
+symmetry — and the 2026-07-06 sim lane reproduced that <em>phase</em> double
+cover. <b>(b)</b> Exclusion/occupancy — the statistics rule, two per orbital,
+fill lowest first — remains <em>assumed, not derived</em>, anywhere in the
+network. The sharpest evidence is the S5 closure itself:
+the Periodic Table paper's
+TF-as-consensus run derives the aufbau <em>ordering</em> (6/6, zero fits)
+while <em>importing</em> occupancy through Thomas–Fermi statistics — the
+n&nbsp;∝&nbsp;p<sub>F</sub>³ closure <em>is</em> "fill phase space two per
+cell," handed in as input. That the closure landed exactly when ordering was
+asked of consensus and occupancy was supplied by hand confirms the
+2026-07-06 three-ingredient split (degeneracy: derived; ordering: derived;
+occupancy: statistics rule, still open — the entanglement-wall side).
+Nothing later in this paper leans on §1.3 except the pre-registered §7; if
+§7's predictions fail, this subsection stays what it is — a dialect, not a
+derivation.</p>
+
+<h2>2 · The measured table</h2>
+<p><span class="chip c-measured">MEASURED</span> Every family that has
+cleared third-party replication. T<sub>c</sub> at ambient pressure unless
+noted.</p>
+
+<table>
+<tr><th>Material / family</th><th>Year</th><th>T<sub>c</sub> (K)</th><th>Pressure</th><th>Class</th><th>Mechanism status</th></tr>
+<tr><td>Hg (Onnes — the discovery)</td><td class="n">1911</td><td class="n">4.2</td><td>ambient</td><td>elemental</td><td>solved (BCS)</td></tr>
+<tr><td>Pb</td><td class="n">1913</td><td class="n">7.2</td><td>ambient</td><td>elemental</td><td>solved (strong-coupling Eliashberg)</td></tr>
+<tr><td>Nb</td><td class="n">1930</td><td class="n">9.3</td><td>ambient</td><td>elemental</td><td>solved</td></tr>
+<tr><td>NbTi (every MRI magnet)</td><td class="n">1962</td><td class="n">9.8</td><td>ambient</td><td>alloy</td><td>solved</td></tr>
+<tr><td>Nb₃Sn / Nb₃Ge (A15)</td><td class="n">1954/73</td><td class="n">18.3 / 23.2</td><td>ambient</td><td>A15</td><td>solved; record-holder until 1986</td></tr>
+<tr><td>MgB₂</td><td class="n">2001</td><td class="n">39</td><td>ambient</td><td>covalent metal</td><td>solved (two-gap, phonon; ab initio reproduced)</td></tr>
+<tr><td>K₃C₆₀ → Cs₃C₆₀</td><td class="n">1991/2008</td><td class="n">19 → 38</td><td>Cs₃C₆₀ under ~kbar</td><td>fulleride</td><td>mostly solved (phonon + correlation)</td></tr>
+<tr><td>(TMTSF)₂PF₆, κ-BEDT salts</td><td class="n">1980+</td><td class="n">~1 / ~12</td><td>some under pressure</td><td>organic</td><td>open (unconventional)</td></tr>
+<tr><td>CeCu₂Si₂, UPt₃, UTe₂</td><td class="n">1979+</td><td class="n">0.5–2</td><td>ambient</td><td>heavy fermion</td><td>open (magnetically mediated; UTe₂ triplet candidate)</td></tr>
+<tr><td>La₂₋ₓBaₓCuO₄ (Bednorz–Müller)</td><td class="n">1986</td><td class="n">35</td><td>ambient</td><td>cuprate</td><td><b>open</b></td></tr>
+<tr><td>YBa₂Cu₃O₇ (first past LN₂)</td><td class="n">1987</td><td class="n">92</td><td>ambient</td><td>cuprate</td><td><b>open</b></td></tr>
+<tr><td>Bi-2223 / Tl-2223</td><td class="n">1988</td><td class="n">110 / 125</td><td>ambient</td><td>cuprate</td><td><b>open</b></td></tr>
+<tr><td>HgBa₂Ca₂Cu₃O₈ (ambient record)</td><td class="n">1993</td><td class="n">133 (~164 @ 30 GPa)</td><td>ambient / high-P</td><td>cuprate</td><td><b>open</b></td></tr>
+<tr><td>Sr₂RuO₄</td><td class="n">1994</td><td class="n">1.5</td><td>ambient</td><td>ruthenate</td><td>open (order parameter still contested)</td></tr>
+<tr><td>LaFeAsO:F (Hosono) → SmFeAsO:F</td><td class="n">2008</td><td class="n">26 → 55</td><td>ambient</td><td>iron pnictide</td><td><b>open</b> (spin-fluctuation s±, likely)</td></tr>
+<tr><td>FeSe bulk → FeSe/SrTiO₃ monolayer</td><td class="n">2008/12</td><td class="n">8 → ~65 (gap)</td><td>ambient</td><td>iron chalcogenide</td><td>open; interface enhancement ×8 measured</td></tr>
+<tr><td>Magic-angle bilayer graphene</td><td class="n">2018</td><td class="n">~1.7</td><td>ambient</td><td>moiré</td><td>open; fully gate-tunable testbed</td></tr>
+<tr><td>Nd₀.₈Sr₀.₂NiO₂ (infinite-layer)</td><td class="n">2019</td><td class="n">9–15</td><td>ambient (thin film)</td><td>nickelate</td><td>open</td></tr>
+<tr><td>La₃Ni₂O₇</td><td class="n">2023</td><td class="n">~80</td><td>~15–20 GPa</td><td>nickelate</td><td>open; ambient-pressure film reports (~40 K) still stabilizing</td></tr>
+<tr><td>H₃S (predicted → then found)</td><td class="n">2015</td><td class="n"><b>203</b></td><td>~155 GPa</td><td>hydride</td><td><b>solved</b> (Eliashberg; predicted Duan et&nbsp;al. 2014)</td></tr>
+<tr><td>LaH₁₀ (predicted → then found)</td><td class="n">2019</td><td class="n"><b>~250–260</b></td><td>~170–190 GPa</td><td>hydride</td><td><b>solved</b> (predicted Liu–Hemley &amp; Peng 2017)</td></tr>
+<tr><td>CaH₆ / YH₉</td><td class="n">2021–22</td><td class="n">215 / 243</td><td>~170–200 GPa</td><td>hydride</td><td>solved (same machinery)</td></tr>
+</table>
+
+<h3>2.1 The cautionary sub-table</h3>
+<p><span class="chip c-disproven">DISPROVEN</span> Logged because this field
+attracts spectacular claims, and the project's hygiene requires the failures
+on the same page as the successes:</p>
+<table>
+<tr><th>Claim</th><th>Year</th><th>Outcome</th></tr>
+<tr><td>Schön (Bell Labs) organic T<sub>c</sub> series</td><td class="n">2001–02</td><td>Fabricated; papers withdrawn.</td></tr>
+<tr><td>Dias CSH "288 K @ 267 GPa"</td><td class="n">2020</td><td>Retracted 2022 (data provenance).</td></tr>
+<tr><td>Dias Lu–N–H "294 K near-ambient"</td><td class="n">2023</td><td>Retracted 2023; investigation found fabrication.</td></tr>
+<tr><td>LK-99 "room-T ambient-P"</td><td class="n">2023</td><td>Replications: Cu₂S structural transition at 104 °C + ferromagnetic shards; not a superconductor.</td></tr>
+</table>
+<p>Pattern worth naming: every failure was a <em>resistance-drop-without-
+Meissner-thermodynamics</em> story. The receipts that cannot be faked
+together are: zero resistance <em>and</em> flux expulsion <em>and</em> the
+specific-heat anomaly at the same T<sub>c</sub>. Any single one alone has a
+mundane imposter.</p>
+<p><span class="chip c-audit">AUDIT</span> The Schön case got a full
+adjudication (operator question: fraud vs suppression vs failed
+replication) in the Schön
+fulleride audit. Verdict in one line: the evidence was <em>internal</em>
+(identical noise curves across different "experiments"), incentives ran
+pro-discovery, and the adjacent real physics (fulleride SC, gate-induced
+SC via ionic liquids, driven K₃C₆₀) thrived rather than being suppressed —
+fabrication, not suppression. Two durable lessons folded back into this
+paper: the stiffness screen is <em>necessary-not-sufficient</em> (Schön's
+117&nbsp;K claim computes to a plausible r ≈ 0.43 — fakes are crafted
+inside the allowed envelope), and the fraud pattern is transport-first
+claims with the stiffness observable missing. Practical promotion rule:
+<b>no measured λ, no promotion.</b></p>
+
+<h2>3 · The two halves of the problem</h2>
+
+<h3>3.1 The solved half — and how completely it is solved</h3>
+<p><span class="chip c-measured">MEASURED</span> For phonon-mediated
+superconductors the theory chain BCS&nbsp;(1957) →
+Eliashberg&nbsp;(1960) → density-functional superconductivity is not
+merely explanatory but <em>predictive with no free parameters</em>. The
+receipts, in ascending order of impressiveness: the isotope effect
+(T<sub>c</sub> ∝ M<sup>−1/2</sup>, measured 1950, the clue that pointed at
+phonons before BCS); the universal gap ratio 2Δ/k<sub>B</sub>T<sub>c</sub> ≈ 3.5
+across the conventional table; MgB₂'s two-gap structure reproduced ab
+initio; and the capstone — <b>H₃S and LaH₁₀ were computed first and
+synthesized second</b>. Theorists solved the electron–phonon problem for
+compressed hydrides, published T<sub>c</sub> ≈ 200&nbsp;K numbers, and the
+diamond-anvil experiments then found superconductivity within tens of kelvin
+of the predictions. The strongest superconductors known are the ones the
+math owns outright.</p>
+
+<h3>3.2 The open half — precisely where the math stops</h3>
+<p><span class="chip c-measured">MEASURED</span> The correlated families
+(cuprates above all) have resisted 40 years of attack for a reason that is
+itself sharp: the minimal model believed to contain them — the 2D Hubbard
+model, two terms, written down in 1963 — cannot be solved. There is no small
+parameter; quantum Monte Carlo is blocked by the fermion sign problem, which
+is NP-hard in general (Troyer–Wiese 2005); and the best modern controlled
+numerics (the Simons collaboration's cross-validated DMRG + AFQMC campaigns)
+find stripe order and d-wave pairing <em>competing within tenths of a percent
+of the ground-state energy</em>. Four decades in, it is not settled whether
+the minimal model even superconducts at cuprate temperatures. No ab initio
+T<sub>c</sub> prediction has ever landed for a cuprate. That — not
+superconductivity in general — is the famine.</p>
+
+<h3>3.3 What the whole table obeys anyway</h3>
+<p><span class="chip c-derived">DERIVED</span> Even without the correlated
+mechanism, the table has laws:</p>
+<ul>
+<li><b>McMillan / Allen–Dynes</b>: T<sub>c</sub> rises with (phonon frequency
+scale) × (coupling strength). This single law explains the entire hydride
+program: hydrogen is the lightest atom, so metallic hydrogen-rich lattices
+have the highest phonon frequencies available to chemistry — megabar
+pressure is just the price of metallizing them.</li>
+<li><b>Uemura relation</b>: in the unconventional families, T<sub>c</sub>
+tracks the <em>superfluid phase stiffness</em> (condensate density / mass),
+not the pairing scale — coherence, not glue, is the bottleneck.</li>
+<li><b>The dome</b>: unconventional T<sub>c</sub> versus doping is a dome,
+with the strange-metal region above its summit — universal across cuprates,
+pnictides, organics, moiré systems.</li>
+<li><b>Proximity to magnetism</b>: essentially every unconventional family
+sits next to an antiferromagnetic (or spin-density) phase; superconductivity
+appears where magnetic order melts. Spin fluctuations as the glue is the
+leading (unproven) suspect across all of them.</li>
+</ul>
+
+<h2>4 · Coherence is the mechanism: superconductivity as laminar charge flow</h2>
+<p><span class="chip c-measured">MEASURED</span> The state itself, as opposed
+to the pairing glue, is understood — and it is a fluid statement. The
+Madelung transform maps the condensate wavefunction exactly onto a fluid:
+phase gradient = velocity field. A superconductor is a charged fluid whose
+viscosity-free ("laminar") flow is protected by two facts: the energy gap
+removes the soft excitations that dissipation needs, and the single
+macroscopic phase makes vorticity <em>quantized</em> — the fluid cannot
+develop smooth eddies, only discrete flux lines. Dissipation in a
+superconductor is, measurably, vortex motion: type-II resistance is flux-flow
+drag; the 2D transition (BKT) is literally vortex unbinding. In project
+vocabulary: <b>the condensate is a phase consensus; supercurrent is what flow
+looks like while consensus holds; resistance is consensus breakdown by vortex
+proliferation</b> — the same failure mode as turbulence onset in the neutral
+fluid, with the gap playing the role viscosity cannot.</p>
+
+<div class="rulebox">
+<b>Meissner causality box.</b> Flux expulsion is a property <em>of</em> the
+superconducting state, not a road into it. Three receipts, two of them
+arrow-of-time-free: (1)&nbsp;<em>double dissociation</em> — zero-field-cooled
+superconductors superconduct with nothing to expel, while externally imposed
+flux-free conditions never make a normal metal superconduct; (2)&nbsp;
+<em>type-II coexistence</em> — between H<sub>c1</sub> and H<sub>c2</sub> flux
+penetrates as vortices and superconductivity persists (every NbTi magnet
+operates there); (3)&nbsp;<em>energetics</em> — expulsion costs B²/2μ₀,
+paid from condensation energy, verified quantitatively via the
+Rutgers/critical-field thermodynamics. Receipt (3) assumes relaxation toward
+equilibrium; (1) and (2) are observed facts with no temporal-ordering
+assumption. Perfect diamagnetism <em>is</em> the defining signature of the
+state (Anderson–Higgs: the photon gains mass inside) — definition-grade
+signature, not drivable cause.</div>
+
+<h2>5 · The driven route — measured, and its impostor</h2>
+<p><span class="chip c-measured">MEASURED</span> Coherently pumping one
+targeted lattice mode can push superconducting-like transport above the
+equilibrium T<sub>c</sub>: Fausti et&nbsp;al. (<i>Science</i> 2011,
+stripe-ordered cuprate, resonant THz phonon drive), Mitrano et&nbsp;al.
+(<i>Nature</i> 2016, K₃C₆₀, superconducting-like optical response far above
+T<sub>c</sub>), Budden et&nbsp;al. (<i>Nat.&nbsp;Phys.</i> 2021, K₃C₆₀
+metastable for &gt;10&nbsp;ns). The mechanism family is nonlinear phononics:
+drive one infrared-active mode hard; anharmonic coupling displaces the
+lattice along a direction that strengthens pairing. Two disciplines to carry
+out of this: it is <b>coherent drive of a specific mode</b> — an incoherent
+phonon bath is just heat, and heat kills the consensus; and the operative
+band is <b>THz</b>, because that is where optical phonons live.</p>
+
+<p><span class="chip c-audit">AUDIT</span> The Pais patent
+(US20190348597A1, abandoned) claims the same family outcome — vibration-
+induced room-temperature superconductivity — via macroscopic piezoelectric
+drive. Full adjudication in the
+audit; summary:
+the stated mechanism fails a kinematic bound. A structure's maximum
+mechanical ring rate is <code>f ≈ v_sound/L</code>; a millimeter wire caps
+near 5&nbsp;MHz, and reaching the THz band that pairing physics responds to
+requires features at the lattice constant itself — at which point the drive
+that works is light, i.e. the measured Cavalleri route. This bound is a
+property of the wave equation and holds identically under time reversal; the
+arrow-of-time objection (operator, 2026-08-01) applies only to the
+free-energy leg of the Meissner box above, and that leg is corroborated
+in-project by the 2026-07-06 physics-fidelity audit's measured emergent
+arrow. The audit killed the patent's <em>stated mechanism</em>, not every
+possible behavior of the artifact — which is what §5.1 is for.</p>
+
+<h3>5.1 Pre-registered bench test of the Pais wire</h3>
+<p><span class="chip c-prereg">PRE-REG</span> Frozen before any build, so the
+outcome is a finding either way. <b>Device</b>: per the patent — insulated
+core wire, piezoelectric coating, pulsed current drive, applied magnetic
+field, room temperature. <b>H1</b>: four-wire resistance under drive drops by
+≥50% relative to the same wire undriven (threshold frozen; a true SC
+transition is orders beyond this, so the gate is generous).
+<b>Controls</b>: (C1) same wire, drive off; (C2) same drive waveform into a
+geometrically matched non-piezo-coated wire; (C3) thermal control —
+resistance logged against wire temperature to catch simple heating-artifact
+signs (resistance <em>rise</em> masking as anomaly, or contact artifacts).
+<b>Falsification</b>: H1 fails → the audit's verdict is upgraded from
+computed prior to receipt-grade negative, and the patent's mechanism is
+closed in this project. H1 passes with controls clean → drop everything and
+replicate. Predicted outcome, stated for the record: null, confidence
+&gt;99%. That number is exactly what pre-registration exists to discipline.</p>
+<p><span class="chip c-audit">AUDIT</span> <em>[2026-08-01, after reading
+Pais's AIAA companion paper (10.2514/6.2019-0869) in full — audit
+Addendum 3.]</em> Two updates. The paper's mechanism chain fails at one
+identifiable step: Pais himself concedes the lattice must reach
+ω&nbsp;≳&nbsp;10¹²&nbsp;Hz ("extremely difficult to obtain by physically
+vibrating the wire" — our bandwidth objection, his words) and bridges the
+gap with ω_c&nbsp;~&nbsp;ω²·t_op, "frequency accumulating with operating
+time" — refuted by every quartz watch (32&nbsp;kHz × a year of t_op would
+emit beyond-THz radiation). And the design's provenance surfaced: his wire
+is built around Gupta, arXiv:1007.2736 (2010) — an unreplicated,
+λ-free report of resistance anomalies at ~313&nbsp;K at an Al/PZT
+interface. <b>This bench is therefore also a replication attempt of Gupta
+2010</b>, which raises its value while leaving the predicted null
+unchanged; control C3 does the work the original report lacked.</p>
+
+<h3>5.2 Drive as dynamical p-tuning — tuned, not stirred</h3>
+<p><span class="chip c-open">OPEN</span> The operator's mapping, adopted
+with one sharpening: coherent drive is a <em>fifth coordinate reading of
+p-tuning</em>. The programme's p-tuning knob has four static readings
+(geometric aspect, modal phase closure, curvature/tension, repair
+exponent); Floquet engineering — the mainstream name for what a coherent
+periodic drive does — <em>renormalizes a material's effective couplings
+while the drive is on</em>, i.e. it moves the same dial dynamically that
+chemistry and geometry move statically. Under this reading, the §5
+beat-note program is dynamic p-tuning applied at a phonon port, and
+Pais's "driving non-equilibrium dynamics is essential" names the right
+<em>family</em>.</p>
+<p><span class="chip c-measured">MEASURED</span> The discriminator that
+splits the family — <b>tuned beats stirred, everywhere it has been
+measured</b>: (a) In K₃C₆₀ the pump must be resonant with a specific
+intramolecular phonon; detune off the mode and the effect dies — it is
+not "non-equilibrium" that is essential, it is <em>which mode</em>.
+(b) Dynamical decoupling (spin echo → CPMG) genuinely suppresses
+decoherence with periodic drive — but only with <em>phase-coherent</em>
+pulse sequences; random kicks decohere faster. (c) Floquet
+prethermalization gives driven systems exponentially slow heating — but
+only for high-frequency, narrow-band drive above a spectral gap.
+(d) Discrete time crystals (trapped ions 2017 →) are literally
+"never-equilibrating driven coherent order" — Pais's sentence, as a
+measured phenomenon — and every realization needs coherent periodic
+drive PLUS a heating bottleneck (localization or a prethermal gap).
+(e) Room-temperature polariton condensates (organic microcavities,
+2013–14) are macroscopic quantum coherence sustained <em>by</em> drive
+far from equilibrium — in a cavity-protected mode. Five instances, one
+grammar: <b>coherent narrow-band drive + a protection mechanism →
+long-lived driven order; broadband "abrupt" agitation → heat.</b>
+Pais's prescription ("soup of fluctuations," Prigogine order-from-chaos)
+selects the stirred member of the family, which is the one that
+measurably fails; Prigogine's dissipative structures are real but
+classical — no theorem connects delayed entropy production to
+<em>quantum phase</em> coherence, and that unbridged gap is where the
+paragraph jumps. The honest completion of his argument is: never let the
+system thermalize, <em>by driving one protected mode coherently</em> —
+which is Cavalleri's program, our §5, and the tuned-detuning doctrine
+(φ-bulk + engineered ports) in its dynamical form.</p>
+
+<h2>6 · The routes to room temperature at ambient pressure</h2>
+<p><span class="chip c-derived">DERIVED</span> What the solved half already
+prescribes: maximize (phonon scale × coupling) without megabar pressure.
+The live directions, ranked by receipt strength: <b>(a)</b> ternary/clathrate
+hydrides engineered for chemical pre-compression (the La–B–H / Y–B–H
+programs: keep LaH₁₀'s hydrogen cage, replace external GPa with internal
+lattice pressure); <b>(b)</b> metastable retention — synthesize under
+pressure, quench to ambient, as diamond itself demonstrates is possible in
+principle; <b>(c)</b> covalent-metal design in the MgB₂ direction
+(light-element σ-bond metals); <b>(d)</b> interface engineering — the
+measured ×8 enhancement of FeSe on SrTiO₃ shows a substrate phonon can
+multiply a T<sub>c</sub>; nothing forbids stacking that trick.
+<span class="chip c-open">OPEN</span> What the unsolved half would unlock:
+the cuprates already run at 133&nbsp;K at ambient pressure <em>without our
+understanding them</em>. A correct theory of the correlated class is the one
+credible path to <em>designed</em> ambient-pressure room-temperature
+superconductivity, which is why the Hubbard problem — or a consensus-dynamics
+reformulation of it — is the highest-value open target in this paper.</p>
+
+<h3>6.1 The 300 K convergence — the two halves merge at room temperature</h3>
+<p><span class="chip c-derived">DERIVED</span> The P1/P4 scoring adds a
+constraint the glue-only literature underweights: at 300&nbsp;K the solved
+half's route and the open half's bound <em>converge</em>. Any
+room-temperature superconductor needs T<sub>θ</sub>&nbsp;≳&nbsp;300&nbsp;K —
+λ&nbsp;≲&nbsp;~120&nbsp;nm at cuprate-like layer spacing — and the
+strong-coupling glue class is already drifting toward that ceiling as
+T<sub>c</sub> climbs (H₃S at r&nbsp;=&nbsp;0.167; the classic BCS metals sit
+at 10⁻⁸–10⁻³). Extrapolating the trend, a 300&nbsp;K material lands at
+r&nbsp;≳&nbsp;0.3–0.5 <em>regardless of mechanism</em> — i.e., inside the
+band where the unconventional class lives today. Corollary, stated as a
+falsifiable expectation: <b>any genuine ambient room-temperature
+superconductor will phenomenologically resemble a cuprate</b> — wide
+fluctuation regime, BKT-flavored transition, vortex-liquid problems, strong
+sensitivity to disorder — even if its pairing is plain Allen–Dynes phonon
+glue. "Room-temperature but conventional-behaving" claims should be treated
+as self-undermining under this screen.</p>
+<p><span class="chip c-derived">DERIVED</span> Candidate shortlist under
+<em>both</em> screens (glue: high ω×λ<sub>ep</sub>; stiffness:
+λ&nbsp;≲&nbsp;120&nbsp;nm — and per §2.1, no measured λ, no promotion):
+<b>(a)</b> ambient-pressure ternary hydrides from the ab initio pipeline —
+the standout being Mg₂IrH₆ (predicted T<sub>c</sub> ~80–160&nbsp;K at
+ambient pressure; <em>unsynthesized/unverified</em>, flagged as such) and
+the LaBeH₈-class low-pressure clathrates; <b>(b)</b> light-element covalent
+metals in the MgB₂ lineage (B–C–H phases, heavily doped diamond as the
+proven-in-principle carbon endpoint); <b>(c)</b> interface multiplication
+(FeSe/SrTiO₃'s measured ×8) stacked on either. The carbon family's own
+record is instructive: pristine graphene and nanotubes do not superconduct
+(vanishing carrier density — zero stiffness), and every receipted route in
+is a <em>detuning</em>: chemical (Ca-intercalated graphite/graphene,
+11.5&nbsp;K), geometric (magic-angle twist, §6.2), curvature+doping (CNT
+reports at 0.5–15&nbsp;K, 1D-fluctuation-fragile and partially contested).</p>
+
+<h3>6.2 Magic-angle graphene — the detuning archetype, and the ceiling made visible</h3>
+<p><span class="chip c-measured">MEASURED</span> Twisted bilayer graphene is
+the cleanest existing embodiment of the protected-bulk-plus-tuned-leak
+pattern: two <em>perfect</em> lattices, aligned exactly, are an ordinary
+semimetal — frozen; rotate one by the specific small detuning of ~1.1°
+(the magic angle) and moiré flat bands appear, hosting superconducting
+domes adjacent to correlated-insulator states, all gate-tunable in one
+device. Note the two-sided lesson: the flat band that enables pairing also
+makes carriers heavy, which <em>crushes phase stiffness</em> — TBG's
+T<sub>c</sub> (~1.7&nbsp;K) is measurably stiffness-throttled, the P1
+bottleneck in miniature. Detuning opens the channel; the ceiling then
+prices it. A designed RT-SC must win both sides at once, which is exactly
+what §6.1's double screen encodes.</p>
+
+<h3>6.3 The intuition candidate — φ-frustrated clathrate hydride</h3>
+<p><span class="chip c-open">OPEN</span> Operator-requested: the best
+single guess, assembled from this paper's receipts, register marked
+honestly as intuition. Why no perfect RT-SC exists yet, stated as
+trade-offs: strong coupling wants flat bands, which crush stiffness (the
+TBG lesson); high phonon scales want light atoms, which demand pressure to
+metallize (the hydride lesson); high DOS near an instability invites a
+competing striation order that steals the ground state (the cuprate
+lesson). A room-temperature superconductor is not a single-knob extremum —
+it must sit at the tuned point of several consensus channels at once. The
+guess, one ingredient per constraint:</p>
+<ul>
+<li><b>Cage: icosahedral boron/carbon framework.</b> Covalent, light,
+stiff — MgB₂-class σ-band metallicity and high phonon scales; boron's
+native chemistry is already icosahedral clusters (β-boron). Supplies
+stiffness (dense light carriers → small λ) and glue backbone.</li>
+<li><b>Filling: hydrogen in the cage voids.</b> Chemical pre-compression —
+the LaH₁₀ mechanism at ambient pressure; hydrogen modes extend the phonon
+spectrum to the highest frequencies chemistry allows.</li>
+<li><b>Global structure: quasicrystalline / Fibonacci-layered
+(φ-aperiodic).</b> The load-bearing new idea, and where the project's KAM
+thread earns a falsifiable job: stripe/CDW/SDW rivals are
+<em>commensuration lock-ins</em> — rational-ratio resonances between
+carrier density and lattice period. A φ-aperiodic host frustrates
+commensurate locking the same way a golden winding frustrates mode-locking
+— while uniform phase consensus (superconductivity), which requires no
+commensuration, is untouched. Receipt-adjacent anchors: quasicrystal
+superconductivity exists (Al-Zn-Mg, 2018 — compatibility proven, T_c tiny
+because glue is weak there); stripe order demands commensuration
+(§3.2's Hubbard result). Aperiodicity kills the rival, not the
+condensate.</li>
+<li><b>Carrier tuning: dope to the operating band.</b> P4's receipt —
+optimized superconductors sit at r ≈ 0.6 of their stiffness ceiling; the
+electron count is the detuning knob that puts the material there.</li>
+<li><b>Last-mile option: beat-note phonon drive (§5)</b> on a near-miss
+composition — coherent THz difference-frequency pumping as the bridge from
+a 200&nbsp;K material to a 300&nbsp;K demonstration, per the measured
+K₃C₆₀ metastability lineage.</li>
+</ul>
+<p>Falsification path (the honest exit): any synthesized candidate must
+clear the §6.1 double screen — measured λ ≤ ~120&nbsp;nm <em>and</em>
+phonon spectrum reaching multi-THz with strong coupling — and per §2.1,
+no measured λ, no promotion. Every ingredient above has a receipt; the
+combination has none. That is what "intuition, tagged OPEN" means.</p>
+
+<h3>6.4 The bench program — a duty-cycled room-temperature superconductor</h3>
+<p><span class="chip c-derived">DERIVED</span> The buildable object is not
+the equilibrium material (§6.3, a synthesis program) but the <b>driven
+metastable state</b>, staged on three published receipts: YBCO pumped at
+its ~17–20&nbsp;THz apical-oxygen phonon shows transient superconducting-like
+c-axis response <em>up to room temperature</em> (Hu/Kaiser/Cavalleri 2014);
+K₃C₆₀ shows the same family with a <em>metastable</em> state living
+&gt;10&nbsp;ns after a ~1&nbsp;ps pump (Budden 2021); and resonant tuning
+cuts the required fluence ~100× (Rowe 2023). The program:</p>
+<ul>
+<li><b>Stage 0 — equilibrium baseline (~$500).</b> Commercial YBCO coated
+tape + LN₂: four-probe transition at 92&nbsp;K, two-coil mutual-inductance
+screening, magnet levitation. Calibrates every probe used later on a real
+superconductor. No exotic parts.</li>
+<li><b>Stage 1 — driven state above equilibrium T<sub>c</sub>, cryo-assisted.</b>
+Same YBCO tape at 100–200&nbsp;K, pumped in the mid-IR at the apical-oxygen
+resonance; ns-resolved mutual-inductance + microwave reflection looking
+for drive-synchronous screening. <b>The core control is tuned-vs-stirred
+(§5.2): on-resonance vs off-resonance pump at equal absorbed power.</b>
+A thermal or trivial artifact follows absorbed power; the claimed
+mechanism follows the phonon resonance. This one control discriminates
+everything.</li>
+<li><b>Stage 2 — the 300&nbsp;K shot.</b> Identical protocol at room
+temperature (replicating the 2014 YBCO geometry with independent probes).
+Gate: drive-synchronous diamagnetic screening at 300&nbsp;K, on-resonance
+only, scaling with fluence, absent in the detuned control.</li>
+<li><b>Stage 3 — duty-cycle sustain.</b> Exploit metastability: if the
+driven state lives τ after each pump and the source repeats every
+t&nbsp;&lt;&nbsp;τ, the state is quasi-continuous. Budden's 10&nbsp;ns at
+100&nbsp;MHz rep rate is already unity duty cycle in principle; the stage-3
+frontier is lifetime engineering at 300&nbsp;K.</li>
+</ul>
+<p><span class="chip c-open">OPEN</span> The honest cost wall and the
+project's angle on it: published drives are fs-OPA-class fields
+(~MV/cm peak — $100k+ instruments); CW sources (QCLs, DFG beat-notes from
+detuned carriers per §5) sit orders of magnitude below in peak field even
+with the resonant ×100 discount. The gap is a <em>field-enhancement</em>
+problem, which is a resonator problem — the project's home turf: a
+high-Q THz microcavity at the phonon frequency (φ-detuned body, port-
+engineered, film at the antinode) recovering 10²–10³ in field is the
+chamber doctrine applied to this bench, and the difference between
+"replication with borrowed laser" and "standing tabletop instrument."
+Promotion discipline unchanged: transient optical signatures alone are
+contested territory in the literature — our gate is drive-synchronous
+<em>flux exclusion</em> plus transport, and for any equilibrium claim the
+full §2.1 trio. No measured λ, no promotion.</p>
+
+<h2>7 · OPH pre-registration — frozen before scoring</h2>
+<p><em>[Scoreboard update, 2026-08-01 — scored same day, gates frozen first
+in <code>lpoh/sims/PREREG_SC_P1P3_2026-08-01.md</code>.]</em>
+<span class="chip c-derived">DERIVED</span> <b>P1 PASS · P3 PASS · P2 FAIL
+as frozen.</b> The consensus sim (2D XY phase reconciliation) produced its
+universal constant c&nbsp;=&nbsp;0.929 (gate: [0.80,&nbsp;1.00]; infinite-L
+literature 0.893), and the resulting zero-fit stiffness ceiling
+k<sub>B</sub>T<sub>θ</sub>&nbsp;=&nbsp;c·(ħ²/4)·L<sub>eff</sub>/(μ₀e²λ²)
+splits the frozen material table exactly as predicted: the unconventional
+four (LSCO, YBCO, Bi-2212, BaK-122) sit at <b>0.40–0.81 of the consensus
+ceiling</b> (stiffness-bound, Uemura-form slope 1.11&nbsp;±&nbsp;gate), the
+conventional five (Al→MgB₂) at 10⁻⁸–6×10⁻³ (glue-bound), separation 63×
+with no overlap. P2's sim gate missed (fluctuation peak 0.24 vs endpoint
+marker 0.36; candidate criterion artifact, recorded as a negative — any
+retest is a new pre-reg). Unplanned finding: H₃S sits at <b>0.167</b> of
+its ceiling — the strong-coupling hydrides are measurably drifting toward
+the stiffness limit, which yields a falsifiable screen for any future
+room-temperature claim: ambient RT-SC needs T<sub>θ</sub>&nbsp;≳&nbsp;300&nbsp;K,
+i.e. λ&nbsp;≲&nbsp;120&nbsp;nm at cuprate-like layer spacing. Receipts:
+<code>lpoh/sims/RESULTS_SC_P1P3_2026-08-01.md</code> +
+<code>SC_p1p3_consensus.py</code> + <code>SC_p1p3_results.json</code>.</p>
+<p><em>[Scoreboard update 2, same day — P4, the "detuning constant" test,
+frozen in <code>lpoh/sims/PREREG_SC_P4_2026-08-01.md</code> before
+scoring.]</em> <span class="chip c-derived">DERIVED</span> <b>P4a PASS ·
+P4b indeterminate · P4c PASS.</b> Expanding to nine unconventional
+materials across three families: the ceiling ratios <b>cluster</b>
+(std(ln&nbsp;r) = 0.358, gate ≤ 0.45) around geometric mean
+<b>r̄ = 0.607</b>, 95% CI [0.485, 0.770] — a universal operating fraction
+of the consensus ceiling is now a receipted pattern. The pre-flagged
+NUMEROLOGY-RISK identification r̄ = 1/φ = 0.618 survives the CI but so do
+the rivals 0.50 and 0.75: <b>clustered, value-indeterminate</b> as frozen —
+discriminating needs tighter λ data under a new prereg. Bonus receipts:
+underdoped YBCO computes to r = 1.20 ± 0.3 — the framework locates,
+with no fit, exactly the corner of the phase diagram the literature
+independently calls phase-fluctuation-limited; and the dome is bracketed
+(underdoped ≈ 1.2 → optimal ≈ 0.6 → overdoped ≈ 0.8), so the ~0.6
+clustering is a property of <em>optimized</em> compounds — empirical
+materials optimization drives superconductors toward a common detuning
+from their own consensus ceiling. Receipts:
+<code>lpoh/sims/RESULTS_SC_P4_2026-08-01.md</code> +
+<code>SC_p4_ratio_cluster.py</code> + <code>SC_p4_results.json</code>.</p>
+<p><span class="chip c-prereg">PRE-REG</span> The consensus framework enters
+here or not at all; zero results exist at freeze time. Precedent: the S5
+TF-consensus result closed the aufbau ordering with zero fitted parameters —
+the same shape is demanded here. Frozen targets:</p>
+<ul>
+<li><b>P1 (stiffness law)</b>: derive, from consensus dynamics with no fitted
+parameters, that unconventional T<sub>c</sub> is set by phase stiffness
+rather than pairing scale — i.e., reproduce the <em>form</em> of the Uemura
+relation. Score: does the derived exponent/proportionality match the
+measured Uemura plot across ≥3 families?</li>
+<li><b>P2 (competition ordering)</b>: from the same dynamics, predict the
+ordering "superconductivity appears where magnetic consensus melts" —
+concretely, that every unconventional dome sits adjacent to a
+magnetically ordered phase in the phase diagram, and predict on which side
+the dome's maximum sits relative to the magnetic endpoint. Score against the
+measured phase diagrams of cuprates, pnictides, heavy fermions, κ-organics.</li>
+<li><b>P3 (negative control)</b>: the framework must NOT predict a stiffness
+bottleneck for the conventional/hydride class (where T<sub>c</sub> tracks the
+Allen–Dynes glue scale instead). A framework that "explains" both halves the
+same way explains neither.</li>
+</ul>
+<p><b>Falsification</b>: P1 or P2 fails to produce a zero-fit match → the
+consensus dialect of §1.3 stays a dialect and this section is recorded as a
+negative, per the negatives-audit discipline. No partial credit; no
+post-hoc parameter rescue. Two-Madelung note for future sessions: the S5
+receipt concerns the Madelung <em>rule</em> (aufbau ordering); the fluid
+mapping of §4 is the Madelung <em>transform</em>. Same Erwin Madelung, two
+different objects; the S5 receipt does not transfer.</p>
+
+<h2>8 · Sources (primary anchors)</h2>
+<ul style="font-size:.9rem">
+<li>Onnes 1911; Meissner &amp; Ochsenfeld 1933; London 1935; Ginzburg–Landau
+1950; BCS, <i>Phys. Rev.</i> 108, 1175 (1957); Abrikosov 1957; Eliashberg 1960;
+Josephson 1962.</li>
+<li>Deaver &amp; Fairbank; Doll &amp; Näbauer, <i>PRL</i> 7 (1961) — flux
+quantum h/2e.</li>
+<li>Bednorz &amp; Müller, <i>Z. Phys. B</i> 64, 189 (1986); Wu et&nbsp;al.,
+<i>PRL</i> 58, 908 (1987) — YBCO.</li>
+<li>Uemura et&nbsp;al., <i>PRL</i> 62, 2317 (1989). McMillan, <i>Phys. Rev.</i>
+167, 331 (1968); Allen &amp; Dynes, <i>PRB</i> 12, 905 (1975).</li>
+<li>Troyer &amp; Wiese, <i>PRL</i> 94, 170201 (2005) — sign problem NP-hardness.</li>
+<li>Duan et&nbsp;al., <i>Sci. Rep.</i> 4, 6968 (2014); Drozdov, Eremets
+et&nbsp;al., <i>Nature</i> 525, 73 (2015) — H₃S. Liu et&nbsp;al., <i>PNAS</i>
+114, 6990 (2017); Peng et&nbsp;al. 2017; Drozdov et&nbsp;al., <i>Nature</i>
+569, 528 (2019); Somayazulu et&nbsp;al., <i>PRL</i> 122, 027001 (2019) — LaH₁₀.</li>
+<li>Fausti et&nbsp;al., <i>Science</i> 331, 189 (2011); Mitrano et&nbsp;al.,
+<i>Nature</i> 530, 461 (2016); Budden et&nbsp;al., <i>Nat. Phys.</i> 17, 611
+(2021); Hu et&nbsp;al., <i>Nat. Mater.</i> 13, 705 (2014) — YBCO transient
+signatures to 300&nbsp;K; Rowe et&nbsp;al., <i>Nat. Phys.</i> (2023) —
+resonant ×100 fluence reduction — driven superconductivity.</li>
+<li>Cao et&nbsp;al., <i>Nature</i> 556, 43 (2018) — magic-angle TBG.
+Kamiya et&nbsp;al., <i>Nat. Commun.</i> 9, 154 (2018) — quasicrystal
+superconductivity. Dolui et&nbsp;al., <i>PRL</i> 132 (2024) — Mg₂IrH₆
+ambient-pressure ab initio prediction (unsynthesized).</li>
+<li>Ueno et&nbsp;al., <i>Nat. Mater.</i> 7, 855 (2008) — gate-induced SC in
+SrTiO₃; Ye et&nbsp;al., <i>Science</i> 338, 1193 (2012) — MoS₂ — the honest
+descendants of the electrostatic-doping premise (Schön audit).</li>
+<li>Gupta, arXiv:1007.2736 (2010) — unreplicated Al/PZT 313&nbsp;K anomaly;
+provenance of the Pais wire design (audit Addendum 3); adjudicated by the
+§5.1 bench.</li>
+<li>Fan et&nbsp;al., <i>PRL</i> 130, 071801 (2023) — electron g-2.
+Saminadayar et&nbsp;al.; de-Picciotto et&nbsp;al. (1997) — e/3. Jompol
+et&nbsp;al., <i>Science</i> 325, 597 (2009) — spin–charge separation.</li>
+<li>In-repo: Pais
+audit (incl. Addendum 3, AIAA paper);
+Schön fulleride audit;
+phonon
+drive bandwidth analysis; scoring receipts
+<code>lpoh/sims/PREREG_SC_P1P3_2026-08-01.md</code> →
+<code>RESULTS_SC_P1P3_2026-08-01.md</code> and
+<code>PREREG_SC_P4_2026-08-01.md</code> →
+<code>RESULTS_SC_P4_2026-08-01.md</code>; S5 TF-consensus receipt (memory:
+project_scalar_channel_s4_2026-07-19).</li>
+</ul>
+
+<p class="meta">Firewall: this is a research-lane document. Nothing here is
+deck material; the deck stays measured-receipts-only, and this paper's
+measured content (the table, §3, §5's Cavalleri receipts) is public-domain
+literature, not project receipts.</p>
+
+</body>
+</html>

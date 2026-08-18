@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Magnetism — The Loop That Doesn't Close</title>
+<style>
+  :root{
+    --ink:#1c1c1c; --paper:#fbfaf6; --page:#ece8df;
+    --green:#5a7d3a; --amber:#b88a2a; --steel:#3a5a7d; --teal:#2f6d5e;
+    --slate:#5a6470; --blood:#7a1f1f; --violet:#6a4a8a;
+    --rule:#d2cdbf; --soft:#8a8676; --wash:#f3efe4;
+  }
+  html{background:var(--page)}
+  body{
+    font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    max-width:820px; margin:2.5rem auto; padding:2.6rem 2.4rem 4rem;
+    color:var(--ink); line-height:1.62; background:var(--paper);
+    box-shadow:0 1px 4px rgba(0,0,0,.06); font-size:17px;
+  }
+  h1{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-weight:700;
+     font-size:1.9rem; line-height:1.18; border-bottom:2px solid var(--ink);
+     padding-bottom:.55rem; margin:.3rem 0 .5rem}
+  h2{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:1.24rem;
+     margin-top:2.4rem; border-bottom:1px solid var(--rule); padding-bottom:.25rem}
+  .banner{background:#eef5fa; border-bottom:2px solid var(--steel);
+     margin:-2.6rem -2.4rem 2rem; padding:.65rem 2.4rem;
+     font-family:"Helvetica Neue",Helvetica,sans-serif; font-size:.85rem;
+     color:var(--steel); line-height:1.5; text-align:center}
+  .banner a{color:var(--steel); font-weight:600}
+  .sub{color:var(--soft); font-style:italic; font-size:1.02rem}
+  .meta{color:var(--soft); font-size:.85rem; margin-bottom:1.6rem}
+  table{border-collapse:collapse; width:100%; margin:1.1rem 0; font-size:.88rem}
+  th,td{border:1px solid var(--rule); padding:.42rem .6rem; text-align:left; vertical-align:top}
+  th{background:#f0eadb; font-family:"Helvetica Neue",Helvetica,sans-serif; font-size:.82rem}
+  tr:nth-child(even) td{background:#faf7ef}
+  blockquote{border-left:4px solid var(--amber); background:#fff8e8;
+    margin:1.2rem 0; padding:.7rem 1.1rem; color:#4a4437; font-size:.97rem}
+  .box{border-left:4px solid var(--green); background:#eef3e8;
+    padding:.85rem 1.1rem; margin:1.3rem 0; font-size:.94rem}
+  .warn{border-left:4px solid var(--blood); background:#f3e7e7;
+    padding:.85rem 1.1rem; margin:1.3rem 0; font-size:.94rem}
+  code{font-family:"JetBrains Mono",Menlo,Consolas,monospace; background:var(--wash);
+    border-radius:2px; font-size:.85em; padding:.05em .3em}
+  a{color:var(--steel)}
+  .overflow{overflow-x:auto}
+  .tag{font-family:"Helvetica Neue",Helvetica,sans-serif; font-size:.7rem;
+    text-transform:uppercase; letter-spacing:.08em; padding:.1em .45em;
+    border-radius:2px; border:1px solid; vertical-align:middle; margin-right:.35em; white-space:nowrap}
+  .tag.measured{color:var(--green); border-color:var(--green); background:#eef3e8}
+  .tag.derived{color:var(--steel); border-color:var(--steel); background:#eaf0f6}
+  .tag.conditional{color:var(--violet); border-color:var(--violet); background:#f0eaf6}
+  .tag.open{color:var(--amber); border-color:var(--amber); background:#fff8e8}
+  .figure{margin:1.6rem 0; text-align:center}
+  .figcap{color:var(--soft); font-size:.88rem; line-height:1.55; text-align:left;
+    max-width:680px; margin:.6rem auto 0}
+</style>
+</head>
+<body>
+
+<style id="eg-site-nav-css">
+  .eg-nav{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:.8rem;
+    background:#1c1c1c;color:#ece8df;padding:.55rem 1.2rem;line-height:1.6;
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    box-shadow:0 1px 3px rgba(0,0,0,.25)}
+  body{margin-top:5.2rem !important}
+  .eg-nav a{color:#ece8df;text-decoration:none;margin-right:1rem;white-space:nowrap}
+  .eg-nav a:hover{text-decoration:underline}
+  .eg-nav .eg-home{font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+    margin-right:1.4rem}
+  .eg-nav .eg-cur{border-bottom:2px solid #b88a2a}
+  .eg-nav .eg-wrap{max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;
+    align-items:baseline}
+</style>
+<div class="eg-nav"><div class="eg-wrap"><a class="eg-home" href="index.html">Electrogravitics</a><a href="electrogravitics.html">Field guide</a><a href="the_shape_of_gravity.html">Gravity</a><a href="warp_drive.html">Mechanism</a><a href="hover_disk.html">Materials</a><a href="lynchpin_drone.html">Vehicle</a><a href="antigravity_devices.html">Bench floor</a><a href="superconductivity.html">Superconductivity</a><a class="eg-cur" href="magnetism.html">Magnetism</a><a href="the_scalar_field.html">Scalar field</a></div></div>
+
+
+<div class="banner">
+Companion to The Shape of the Universe ·
+Light · The Electron ·
+sourced from the external Observer Patch Holography programme (Mueller,
+Osika, et&nbsp;al., Pragma Research), not the local <code>oph_programme.html</code>
+dialect — see the sources box at the end.
+</div>
+
+<h1>Magnetism</h1>
+<p class="sub">The loop that doesn't close: why one consistency requirement
+forces every gauge force at once, and what a magnetic field actually is once
+you take that seriously.</p>
+<p class="meta">v1.1 &middot; 2026-08-10 (v1.0 2026-08-03; r2017 sync pass +
+octahedral-ablation note, see changelog) &middot; intuition-first synthesis paper;
+register tags as in the sibling papers:
+<span class="tag measured">measured</span>
+<span class="tag derived">derived</span>
+<span class="tag conditional">conditional</span>
+<span class="tag open">open</span></p>
+
+<div class="box">
+<strong>One-line claim.</strong> Magnetism is not a second force that happens
+to rhyme with electricity — it is what one and the same consistency
+requirement between observers looks like when you walk it around a closed
+loop and it doesn't come back to where it started. The requirement forces a
+single algebra containing every gauge force at once; electromagnetism is one
+thread of that algebra; and the magnetic field, specifically, is the
+holonomy — the leftover twist — of that thread's connection around a cycle
+of overlapping observers. Everything past that is bookkeeping.
+</div>
+
+<h2>1 · Two claims that keep getting run together</h2>
+<p>
+There is an old intuition, stated most famously by Walter Russell in 1926,
+that electricity and magnetism are not two forces but one force read in two
+directions — "the south wind and the north wind are not two winds." This
+project already audited that specific claim
+(The Universal One, Redrawn §5.2) and the
+verdict stands: as literal force-ontology it is wrong — electromagnetic
+radiation adds to gravity's pull rather than opposing it, and the true
+expansive pole is dark energy, not magnetism. As a structural rhyme — two
+opposed tendencies meeting at a balance point — it survives, vindicated in
+shape, in stellar hydrostatic equilibrium. This paper does not reopen that
+verdict.
+</p>
+<p>
+What it does is something Russell had no access to: an actual derivation,
+inside Observer Patch Holography (OPH), of a real "one force" moment — not a
+poetic unity of electricity and magnetism specifically, but a forced unity
+of <em>every</em> gauge force's underlying symmetry, electromagnetism's
+included, from one requirement about how observers agree with each other.
+Magnetism's place inside that requirement turns out to be sharp, specific,
+and different from anything Russell's diagram anticipated: not a force at
+all in the first instance, but a <strong>consistency defect</strong> — the
+amount by which walking a record around a loop fails to bring it home.
+</p>
+
+<h2>2 · One requirement, one algebra</h2>
+<p>
+OPH models an observer as a finite <em>patch</em>: a local state, a
+boundary with twelve ports arranged with the symmetry of an icosahedron, a
+readback record, and a set of repair moves for reconciling disagreements
+with neighboring patches. Two requirements are placed on this carrier, and
+nothing else:
+</p>
+<ul>
+<li><strong>A1 — complete, faithful, reversible response.</strong> Each
+patch has a response space that reacts to everything at its boundary, and
+the reaction is invertible: nothing is thrown away.</li>
+<li><strong>A2 — endogenous agreement.</strong> Whenever two overlapping
+patches reconcile their shared records, the reconciliation has to be
+implemented <em>from inside</em> the same response space each patch already
+has — not by appeal to an outside referee, an ambient clock, or an assumed
+symmetry group.</li>
+</ul>
+<p>
+Given the icosahedral incidence of the twelve ports (the rotation group is
+<code>A₅</code>, order sixty) and the requirement that only one direction
+in the response space stay fixed under it, these two requirements leave
+exactly one algebra standing:
+</p>
+<blockquote>
+𝔤 ≅ u(1) ⊕ su(2) ⊕ su(3)
+</blockquote>
+<p>
+— the Standard Model's entire gauge algebra. No gauge group is fed in as a
+premise anywhere in A1 or A2; the classification is a finite, machine-checked
+theorem (Lean-verified) about what algebra a twelve-port response space with
+this symmetry and this transport rule can support at all. The centreless
+compact alternative of the same dimension, <code>su(2)⁴</code>, is
+excluded outright — it cannot support the one-dimensional fixed direction
+the icosahedral action demands. <span class="tag derived">derived</span>
+(Mueller, Osika, Poneder, Xue, Nguyen, Visser &amp; Matscheko, <em>From
+Observer Consensus to Standard Physics</em>, release r2017, Theorem&nbsp;8.2
+"A1–A2 gauge Lie-type forcing" — the theorem also fixes the carrier
+decomposition: up to the outer automorphism of A₅, the su(2) ideal carries
+the 3 and the su(3) ideal carries 3′⊕5; companion detail in <em>Deriving
+Standard Model Gauge Structure from Observer Overlap Consistency</em>,
+release r2017)
+</p>
+
+<p><b>Ablation (added v1.1, 2026-08-10).</b> The icosahedral incidence in the
+hypothesis is load-bearing, not decorative, and this is now receipted by
+ablation. The plane admits exactly two self-similar lattice grammars; closing
+the other one (the square grammar) yields a screen with eight cube-corner
+ports and rotation group S₄, and running the same A1+A2 machinery on it
+<b>fails closure entirely</b>: endogenous implementation fixes the centre of
+the response algebra pointwise and transitivity makes the fixed space
+one-dimensional, so the centre is at most one-dimensional — which leaves
+either a seven-dimensional compact semisimple algebra (none exists) or su(3)
+alone (excluded by faithful port-equivariance). No admissible response
+algebra exists on the cube screen. Twelve icosahedral ports are not one
+option among many; they are the unique self-similar closure on which the
+forcing closes at all. <span class="tag derived">derived</span>
+(receipts: <code>lpoh/sims/PREREG_GRAMMAR_DISCRIMINATOR_2026-08-10.md</code>,
+GD-H and C4-discharge sections, with
+<code>runtime_receipts/gd_h_forcing_attempt.json</code> and
+<code>gd_h_c4_discharge.json</code>; narrative home
+ashayana_deane.html §8.1b)
+</p>
+<div class="box">
+This is the real "one force" moment, and it is stronger than Russell's,
+not weaker. He wanted electricity and magnetism to be one thing. What OPH
+actually forces is that the strong force, the weak force, and
+electromagnetism's symmetry types are not three separate discoveries at all
+— they are one forced consequence of one requirement: that twelve-port
+observers can reconcile their records using only their own bookkeeping, with
+no outside referee.
+</div>
+
+<h2>3 · Picking out electricity and magnetism's own thread</h2>
+<p>
+The forced algebra has three pieces. Which one is electromagnetism's,
+specifically — as opposed to, say, the raw hypercharge direction it sits
+next to? That needs one more ingredient beyond A1 and A2: a
+symmetry-breaking attachment (a single scalar direction, playing the role
+the Higgs field plays in the Standard Model). Once that attachment is
+declared, the surviving unbroken generator is forced to be
+</p>
+<blockquote>Q = T₃ + Y,</blockquote>
+<p>
+and the corresponding factor <code>U(1)_Q</code> is the electromagnetic
+one — distinct from the weak-charged carriers <code>W±</code> and the
+neutral weak carrier <code>Z</code>, which the same attachment produces
+alongside it. <span class="tag conditional">conditional</span> (on the
+declared one-Higgs branch — this step is not available from A1 and A2
+alone)
+</p>
+
+<h2>4 · The field is just curvature — automatic, not extra physics</h2>
+<p>
+Once <code>U(1)_Q</code> is realized as an actual connection
+<code>A_Q</code> on the observer network — a rule for comparing phases
+between overlapping patches along that one direction — its field strength
+is simply
+</p>
+<blockquote>F_Q = dA_Q.</blockquote>
+<p>
+This is not a new law of nature. It is what the word "curvature" means once
+you have a connection: the field is the connection's own rate of change,
+nothing added. <span class="tag derived">derived</span> (falls out of
+having a connection at all; Corollary 6.6d, first clause)
+</p>
+
+<h2>5 · Where magnetism actually lives: the loop that doesn't close</h2>
+<p>
+Here is the part that matters most, and it is proved independently of the
+electromagnetic identification above — it is a general fact about
+<em>any</em> overlap-transport structure on the twelve-port network. Take a
+closed loop of overlapping patches — patch 1 overlaps patch 2, which
+overlaps patch 3, … which overlaps patch 1 again. Transport a record around
+that loop, patch by patch. Nothing in A1 or A2 guarantees you get back the
+record you started with. The leftover discrepancy — the amount by which the
+loop fails to close — is a genuine, gauge-invariant quantity: a class in
+the network's Čech cohomology, and specifically, for two paths sharing the
+same endpoints, <strong>the holonomy of the loop they form together</strong>.
+<span class="tag derived">derived</span> (the central-defect and
+residual-holonomy theorem, Theorem 6.12 in the same paper)
+</p>
+<p>
+That is, letter for letter, what a magnetic field <em>is</em>, once you
+have a connection to hang it on. The Aharonov–Bohm phase a charged particle
+picks up going around a solenoid, the flux through a loop that Stokes'
+theorem converts into a line integral of the vector potential — these are
+not new facts about nature layered on top of the algebra; they are the same
+holonomy statement, in the language physics already uses for it. In OPH's
+own vocabulary: <strong>a magnetic field is the shape of a consistency
+defect — the failure of two ways of transporting a record around a loop to
+agree with each other.</strong> Not a push on a particle in the first
+instance. A bookkeeping fact about closure.
+</p>
+<div class="box">
+This is not an analogy imported from outside. The same source's own
+treatment of the network's dynamics — a lattice gauge Hamiltonian on the
+"screen worldvolume," in its own words — names the smallest closed loop
+(one plaquette) the <em>"magnetic"</em> term, sitting beside the electric
+terms on links and the Gauss-law constraints at vertices. OPH already calls
+this object magnetism, in its own internal language, independently of
+anything this paper adds. <span class="tag derived">derived</span>
+</p>
+</div>
+
+<h2>6 · Three layers, not two: ledger, transport, wave</h2>
+<p>
+An earlier pass at this question (this project's own attempt to derive a
+force law directly from OPH's bare edge-local records — the raw ledger of
+separation <code>r</code> and its own time-derivatives at one instant,
+carried at every port) found that layer could only ever write
+<strong>Weber-class</strong> laws: central, relational, depending only on
+<code>r, ṙ, r̈</code> at each edge, with no way to compare a vector's
+direction between two separated points. That is provably too poor a
+structure to carry a genuine magnetic field —
+the derivation
+is explicit that the full Grassmann/Lorentz structure needs "transported
+vector comparisons" the bare ledger does not have.
+<span class="tag derived">derived</span>
+</p>
+<p>
+The resolution is not that OPH lacks the needed structure — it is that
+magnetism does not live in that layer at all. It lives one layer up, in the
+<strong>overlap-transport groupoid</strong> that A2 already requires: the
+rule by which two patches reconcile records is exactly a connection, and a
+connection is exactly rich enough to carry holonomy. Three layers, cleanly
+separated:
+</p>
+<div class="overflow">
+<table>
+<tr><th>layer</th><th>what it can write</th><th>magnetism?</th></tr>
+<tr><td>bare edge ledger (<code>r, ṙ, r̈</code>)</td><td>Weber-class
+central forces only</td><td>no — provably too poor</td></tr>
+<tr><td>overlap-transport / connection (A2)</td><td>holonomy around closed
+loops</td><td><strong>yes — this is its home</strong></td></tr>
+<tr><td>full propagating dynamics (Maxwell action)</td><td>retarded fields,
+radiation, force laws</td><td>the familiar wave-form of it, one premise
+further</td></tr>
+</table>
+</div>
+<p>
+This also reframes, rather than answers, the earlier bench question this
+project logged as an open obligation
+(OB-2, the record-layer-vs-wave-channel
+discriminator on an open hairpin circuit, 6.91&nbsp;gf if ledger-direct
+against 5.35&nbsp;gf if wave-mediated). That framing posed the choice as
+binary — ledger or wave. The transport-holonomy layer is a genuine third
+option sitting between them, and it is the one this derivation actually
+uses. Whether the hairpin discriminator still cleanly separates
+"ledger-direct" from "wave-mediated" once a transport layer is on the table
+is not resolved here and is worth a second look.
+<span class="tag open">open</span>
+</p>
+<div class="box">
+<strong>Addendum, 2026-08-03 — the second look, taken.</strong> Cross-checked
+against this project's own separate, already-run attempt to add a dynamics
+layer to the bare ledger (<code>OPH_PHYSICAL_ATTACHMENT_2026-08-01.md</code>
+§4, gate E1). Three findings, in brief — full derivation in
+OB-2's amendment: (i) two unrelated
+methods (E1's record-lag dynamics; this paper's algebraic gauge-forcing)
+independently confirm the bare ledger cannot carry magnetism alone — real,
+if modest, corroboration; (ii) a tempting tiebreaker — "the record branch
+is non-causal, the connection branch respects the light cone, so OPH's own
+Lorentz-kinematics branch should exclude it" — does not survive contact
+with this project's own no-signaling theorem (OB-1 T1): E1's record-lag
+mechanism already respects the same light-cone bound, so causality cannot
+be cited against it; (iii) both tracks reduce to one unified open question
+in two vocabularies — does the forced connection necessarily carry
+<em>independent radiative dynamics</em> (a real field, à la the Maxwell-
+action premise of §7) or can it be non-radiative (a two-body potential with
+no independent field entity, which is what classical Weber theory and the
+local attenuation branch both are)? Neither track supplies the missing
+premise. <strong>OB-2 stays open</strong> — sharper, not resolved.
+<span class="tag open">open</span></div>
+<div class="box">
+<strong>Correction, same day.</strong> The addendum above was written
+from the papers' prose alone. Checked against the actual instrument
+(<code>muellerberndt/oph-physics-sim</code>) and it already runs this
+exact test: <code>oph_fpe/gauge/kinetic_selector_sweep.py</code> asks,
+verbatim, whether positivity, locality, and A5 covariance select a
+unique kinetic response law. Run directly: they do not — twelve
+candidate laws swept, a constructive two-law counterexample, receipts
+<code>UNIQUE_GAUGE_KINETIC_SOURCE_RAY_RECEIPT: false</code> and
+<code>PHYSICAL_GAUGE_KINETIC_ACTION_RECEIPT: false</code>. So no new
+theorem needs inventing — the relevant one has already been run, by
+Mueller's own instrument, and returned open for a named reason
+(no derived physical gauge kinetic action). The sweep's own claim
+boundary names the next concrete step: a richer source dynamics might
+select a law. The same repo has a candidate for that —
+<code>oph_fpe/dynamics/canonical_seam_repair.py</code>, the real repair
+engine — not yet pointed at this question. Full detail in
+OB-2's second amendment.
+<span class="tag open">open</span></div>
+<div class="box">
+<strong>Ran it.</strong> <code>canonical_seam_repair.py</code>'s own
+certificate confirms the repair generator is uniquely <code>-L</code>
+up to a time-scale, with a forced ratio <code>(5−√5 : 6 : 5+√5)</code>
+across the three nonconstant bands. Of the twelve candidate Hessians
+<code>kinetic_selector_sweep.py</code> already validated, exactly two
+(<code>edge_repair</code>, <code>double_edge_repair</code>) reproduce
+that same ratio beyond their onsite term — the other ten do not. A
+real narrowing (12 &rarr; a one-parameter scale family), composed
+entirely from two already-run certificates. <strong>But the bridge
+premise — that the response Hessian should match the repair
+generator — is mine, not an OPH theorem, and even granted it says
+nothing about radiative-vs-non-radiative,</strong> which stays
+Corollary 6.6d's untouched gap. Flagged, not pursued further for now
+(operator instruction). <span class="tag open">open</span></div>
+
+<h2>7 · The honest boundary: what's forced, and what's assumed</h2>
+<p>
+Sections 2, 4, and 5 are the derived kinematic core: one algebra, forced;
+a connection's curvature, automatic; holonomy, the general shape of a
+magnetic observable. None of that is yet Maxwell's equations. To get there,
+one further premise has to be declared — the Maxwell action itself,
+</p>
+<blockquote>
+S = −1/(2g²) ∫ F_Q ∧ *F_Q &nbsp;+&nbsp; ∫ A_Q ∧ *J_Q,
+</blockquote>
+<p>
+after which the Euler–Lagrange equations give <code>dF_Q = 0</code> (the
+no-monopole identity, automatic anyway once <code>F_Q = dA_Q</code>) and
+<code>d*F_Q = g_Q² *J_Q</code> (Gauss's law and the Ampère–Maxwell law,
+sourced by the current). After the usual normalization, these are Maxwell's
+equations. The source paper's own words are the right ones to keep here:
+<em>"The compact-group reconstruction and connection label do not themselves
+supply this action or its nonzero kinetic coefficient."</em>
+<span class="tag conditional">conditional</span> (Corollary 6.6d)
+</p>
+<p>
+So the honest summary has two halves, and they should not be blurred into
+one. OPH forces the <em>existence</em> of the right kind of symmetry for
+electromagnetism, forces the connection once you point at that symmetry's
+abelian piece, and forces holonomy as the general shape of what a magnetic
+field is. It does not, on its own, force the specific dynamical law that
+makes real electromagnetism propagate the way it does, or fix the numerical
+size of the coupling (that number belongs to a separate closure — the
+paper's screen-grain proposal reads back the fine-structure constant to
+within a few parts in 10⁻⁶ of the 2022 CODATA value, but is tagged there as
+a diagnostic against a declared source map, not a derivation of
+<code>α</code> from A1–A2). <span class="tag conditional">conditional</span>
+</p>
+
+<div class="figure">
+<svg viewBox="0 0 700 320" xmlns="http://www.w3.org/2000/svg" style="max-width:620px;width:100%;">
+  <rect x="0" y="0" width="700" height="320" fill="#fbfaf6"/>
+  <defs>
+    <marker id="mag-ah" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#3a5a7d"/>
+    </marker>
+    <marker id="mag-ah-r" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#7a1f1f"/>
+    </marker>
+  </defs>
+  <!-- five patches on a circle, radius 118, center (350,160): P1 top, clockwise -->
+  <!-- P1 (350,42) P2 (462.2,123.5) P3 (419.4,255.5) P4 (280.6,255.5) P5 (237.8,123.5) -->
+  <g stroke="#3a5a7d" stroke-width="2.25" fill="none">
+    <path d="M 350 42 A 118 118 0 0 1 462.2 123.5" marker-end="url(#mag-ah)"/>
+    <path d="M 462.2 123.5 A 118 118 0 0 1 419.4 255.5" marker-end="url(#mag-ah)"/>
+    <path d="M 419.4 255.5 A 118 118 0 0 1 280.6 255.5" marker-end="url(#mag-ah)"/>
+    <path d="M 280.6 255.5 A 118 118 0 0 1 237.8 123.5" marker-end="url(#mag-ah)"/>
+  </g>
+  <!-- the closing edge P5 -> P1, drawn broken / mismatched -->
+  <path d="M 237.8 123.5 A 118 118 0 0 1 350 42" stroke="#7a1f1f" stroke-width="2.5" fill="none" stroke-dasharray="1 7" marker-end="url(#mag-ah-r)"/>
+  <g font-family="Helvetica Neue, Helvetica, sans-serif" font-size="12" fill="#1c1c1c">
+    <circle cx="350" cy="42" r="16" fill="#eaf0f6" stroke="#3a5a7d" stroke-width="1.5"/>
+    <text x="350" y="46" text-anchor="middle">P1</text>
+    <circle cx="462.2" cy="123.5" r="16" fill="#eaf0f6" stroke="#3a5a7d" stroke-width="1.5"/>
+    <text x="462.2" y="127.5" text-anchor="middle">P2</text>
+    <circle cx="419.4" cy="255.5" r="16" fill="#eaf0f6" stroke="#3a5a7d" stroke-width="1.5"/>
+    <text x="419.4" y="259.5" text-anchor="middle">P3</text>
+    <circle cx="280.6" cy="255.5" r="16" fill="#eaf0f6" stroke="#3a5a7d" stroke-width="1.5"/>
+    <text x="280.6" y="259.5" text-anchor="middle">P4</text>
+    <circle cx="237.8" cy="123.5" r="16" fill="#eaf0f6" stroke="#3a5a7d" stroke-width="1.5"/>
+    <text x="237.8" y="127.5" text-anchor="middle">P5</text>
+  </g>
+  <text x="350" y="200" text-anchor="middle" font-family="Helvetica Neue, Helvetica, sans-serif" font-size="11" fill="#3a5a7d">record transported patch to patch …</text>
+  <text x="350" y="16" text-anchor="middle" font-family="Helvetica Neue, Helvetica, sans-serif" font-size="12" fill="#7a1f1f" font-weight="bold">… the dashed return leg does not land back on P1</text>
+  <text x="350" y="300" text-anchor="middle" font-family="Helvetica Neue, Helvetica, sans-serif" font-size="12" fill="#1c1c1c">the leftover twist, Hol(loop), IS the magnetic flux through the loop</text>
+</svg>
+<p class="figcap"><strong>Figure 1 — the loop that doesn't close.</strong> A
+record is transported around five overlapping patches. Nothing in A1 or A2
+forces the trip to end where it began; the discrepancy between "go the long
+way" and "go the short way" is the loop's holonomy — a gauge-invariant
+number, and (once the electromagnetic branch is realized) exactly the
+magnetic flux through that loop.</p>
+</div>
+
+<h2>8 · Back to Russell, once, correctly</h2>
+<p>
+It is worth being precise about what this derivation does and does not
+hand back to the intuition that started this inquiry. Russell wanted
+electricity and magnetism to be the same push in opposite directions — the
+audited verdict on that specific claim stands unchanged
+(The Universal One, Redrawn §5.2): wrong
+as force-ontology, vindicated only as a structural shape. What OPH actually
+supplies is a different, sharper unity: not electricity and magnetism as
+mirror pushes, but <em>one consistency requirement between observers,
+forcing one algebra that contains every gauge charge at once</em> — and
+magnetism, inside that algebra, is what shows up when the requirement is
+read around a cycle instead of along a line. That is a better sentence than
+his, and it costs nothing to say plainly that it took a century, twelve
+ports, and two axioms to get there.
+</p>
+
+<div class="warn">
+<strong>Claim boundary.</strong> This paper introduces no new OPH theorem —
+every derived step is sourced to the external Observer Patch Holography
+papers cited below, and every conditional step is marked exactly where its
+source marks it. What is new here is the synthesis and the intuitive
+reading: magnetism-as-holonomy (§5), the three-layer ledger/transport/wave
+taxonomy (§6), and the reframing of the Weber-vs-wave bench question. Do
+not cite this paper as a source for the gauge-forcing theorem, the
+curvature identity, or the holonomy theorem — cite the originals. Do not
+read §6's reframing as a resolution of OB-2; it is a sharpened question, not
+a closed one. Do not treat the fine-structure reference in §7 as an OPH
+derivation of <code>α</code> — the source paper itself tags it a
+diagnostic. This paper's own local <code>oph_programme.html</code> /
+<code>shape_of_the_universe.html</code> dialect predates and has not yet
+absorbed the axioms used here; a separate sync pass is owed and is not this
+paper's job.
+</div>
+
+<div class="box">
+<strong>Sources.</strong> This paper is built directly on the external
+Observer Patch Holography programme (Pragma Research Inc., B.&nbsp;Mueller
+corresponding author; A.&nbsp;Osika among the co-authors), not the local
+project's earlier <code>oph_programme.html</code> dialect:
+<ul>
+<li>Mueller, Osika, Poneder, Xue, Cassie, Nguyen, Visser, Anirudha,
+Matscheko, Hill &amp; Glynn (2026). <em>From Observer Consensus to Standard
+Physics: Normal Forms, the Standard Model Lie Type, and a Route to the
+Einstein Field Equation.</em> Release r2017 (2026-08-06; this paper first
+cited the r2013 release — sync pass 2026-08-10, all cited claims verified
+against r2017). The source of Theorem&nbsp;8.2 (p.&nbsp;22, "A1–A2 gauge
+Lie-type forcing").</li>
+<li>Mueller, Osika, Poneder, Xue, Nguyen, Visser &amp; Matscheko (2026).
+<em>Deriving Standard Model Gauge Structure from Observer Overlap
+Consistency.</em> Release r2017. The source of Corollaries&nbsp;6.6c–d
+(pp.&nbsp;65–66) and Theorem&nbsp;6.12 (pp.&nbsp;70–71) as cited above —
+numbering unchanged from the release first cited.</li>
+<li>Mueller, Osika, Poneder, Xue, Nguyen, Visser &amp; Matscheko (2026).
+<em>Recovering Observer Spacetime and Einstein Dynamics from Overlap
+Consistency.</em></li>
+</ul>
+All public at <code>github.com/FloatingPragma/observer-patch-holography</code>
+(which also hosts the <b>public Lean development</b> — the finite Lie-type
+classification arithmetic behind Theorem&nbsp;8.2 is formalized sorry-free in
+<code>Lean/Screen/A5OPH.lean</code>, including the 11&nbsp;=&nbsp;3+8 and
+12&nbsp;=&nbsp;3+3+3+3 uniqueness lemmas) and rendered at
+<code>muellerberndt.github.io/oph/papers/</code>.
+</div>
+
+<p class="meta" style="margin-top:2rem;">
+<b>Changelog.</b> v1.0 · 2026-08-03 · initial version, citing the r2013
+releases. v1.1 · 2026-08-10 · <b>r2017 sync pass</b>: every cited claim
+re-verified against the r2017 releases — Theorem&nbsp;8.2 re-anchored to its
+actual home (<em>From Observer Consensus to Standard Physics</em>, p.&nbsp;22;
+its statement now also fixes the carrier decomposition quoted in §2);
+Corollaries&nbsp;6.6c–d and Theorem&nbsp;6.12 confirmed unchanged in the
+gauge paper; sources box updated with page anchors, the rendered-site URL,
+and the public Lean development (<code>Lean/Screen/A5OPH.lean</code>,
+sorry-free). Added the §2 octahedral-ablation note: the same A1+A2 machinery
+on the square-grammar (cube) closure fails entirely — icosahedral incidence
+is the unique self-similar closure on which the forcing closes (receipts in
+<code>lpoh/sims/</code> and <code>runtime_receipts/</code>).
+</p>
+
+<p class="meta" style="margin-top:2.5rem; text-align:center;">
+Alexander Osika · August 2026 · sibling papers:
+Light ·
+The Electron ·
+The Shape of the Universe ·
+<a href="the_shape_of_gravity.html">The Shape of Gravity</a> ·
+The Universal One, Redrawn
+</p>
+
+</body>
+</html>

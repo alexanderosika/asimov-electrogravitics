@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>The Lynchpin Drone — six hover disks in a dodecahedron, a propellantless 6DOF χν craft</title>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style>
+  :root {
+    --ink: #1c1c1c; --paper: #fbfaf6; --green: #5a7d3a; --amber: #b88a2a;
+    --rust: #b04a2a; --rule: #d2cdbf; --soft: #8a8676; --blue: #1a5276;
+  }
+  html { background: #ece8df; }
+  body {
+    font-family: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+    max-width: 800px; margin: 2.5rem auto; padding: 2.5rem 2rem 4rem;
+    color: var(--ink); line-height: 1.62; background: var(--paper);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  }
+  h1 { font-family: "Helvetica Neue", Helvetica, sans-serif; font-weight: 700; font-size: 1.85rem; line-height: 1.25; border-bottom: 2px solid var(--ink); padding-bottom: 0.6rem; }
+  h2 { font-family: "Helvetica Neue", Helvetica, sans-serif; font-size: 1.25rem; margin-top: 2.6rem; }
+  h2 .num { color: var(--soft); font-weight: normal; margin-right: 0.4em; }
+  h3 { font-family: "Helvetica Neue", Helvetica, sans-serif; font-size: 1.05rem; margin-top: 1.7rem; color: #444; }
+  h4 { font-family: "Helvetica Neue", Helvetica, sans-serif; font-size: 0.98rem; margin-top: 1.3rem; color: #555; }
+  .byline { color: var(--soft); font-style: italic; margin-bottom: 2.2rem; font-size: 0.95rem; }
+  .tldr { background: #eef3e8; border-left: 4px solid var(--green); padding: 0.9rem 1.1rem; margin: 1.2rem 0; font-style: italic; }
+  .companion { background: #f0eee8; border-left: 4px solid var(--soft); padding: 0.6rem 1rem; margin: 1.2rem 0; font-size: 0.92rem; }
+  .doctrine { background: #1c1c1c; color: #f5f1e6; padding: 1rem 1.2rem; margin: 1.6rem 0; font-style: italic; line-height: 1.5; border-radius: 2px; }
+  .doctrine::before { content: "Doctrine sentence  ·  "; font-style: normal; color: var(--amber); font-family: "Helvetica Neue", Helvetica, sans-serif; font-size: 0.85rem; letter-spacing: 0.05em; }
+  .receipt { background: #eef3e8; border-left: 4px solid var(--green); padding: 0.8rem 1.1rem; margin: 1.2rem 0; font-size: 0.94rem; }
+  .receipt::before { content: "Derived / established  ·  "; font-style: normal; color: var(--green); font-family: "Helvetica Neue", Helvetica, sans-serif; font-size: 0.82rem; letter-spacing: 0.05em; font-weight: 600; }
+  .lemma { background: #fff8e8; border-left: 4px solid var(--amber); padding: 0.8rem 1.1rem; margin: 1.2rem 0; font-size: 0.94rem; }
+  .lemma::before { content: "Open — to be confirmed on the bench  ·  "; font-style: normal; color: var(--rust); font-family: "Helvetica Neue", Helvetica, sans-serif; font-size: 0.82rem; letter-spacing: 0.05em; font-weight: 600; }
+  .ic { background: #f0eee8; border-left: 3px solid var(--soft); padding: 0.6rem 1rem; margin: 1rem 0 1.6rem 0; font-size: 0.92rem; }
+  .ic::before { content: "Implementation consequence  ·  "; font-style: normal; color: var(--ink); font-family: "Helvetica Neue", Helvetica, sans-serif; font-size: 0.82rem; letter-spacing: 0.05em; font-weight: 600; }
+  .eq { text-align: center; margin: 1.1rem 0; font-family: "Cambria Math", "STIX Two Math", Georgia, serif; font-size: 1.06rem; }
+  code { font-family: "JetBrains Mono", Consolas, monospace; background: #f3eee0; padding: 0.05rem 0.3rem; border-radius: 2px; font-size: 0.9em; }
+  table { border-collapse: collapse; margin: 1.1rem auto; font-size: 0.9rem; }
+  th, td { border: 1px solid var(--rule); padding: 0.38rem 0.7rem; text-align: left; vertical-align: top; }
+  th { background: #f0eadb; font-family: "Helvetica Neue", Helvetica, sans-serif; }
+  td.n { text-align: right; font-family: "JetBrains Mono", Consolas, monospace; }
+  td.good { color: var(--green); font-weight: 600; } td.bad { color: var(--rust); }
+  hr.softrule { border: none; border-top: 1px solid var(--rule); margin: 2rem 0; }
+  ul, ol { padding-left: 1.5rem; } li { margin: 0.3rem 0; }
+  blockquote { border-left: 3px solid var(--rule); margin: 1.2rem 0; padding-left: 1.1rem; color: #444; font-style: italic; }
+  .disclaimer { font-size: 0.84rem; color: var(--soft); border: 1px dashed var(--soft); padding: 0.7rem 1.1rem; margin: 2rem 0; border-radius: 2px; }
+  .smcap { font-variant-caps: small-caps; letter-spacing: 0.04em; }
+  .fig { margin: 1.4rem 0; text-align: center; color: #555; }
+  .fig pre { text-align: left; background: #f4f1e8; padding: 0.7rem 1rem; border-radius: 2px; border: 1px solid var(--rule); font-size: 0.78rem; line-height: 1.25; overflow-x: auto; display: inline-block; margin: 0 auto; }
+  .fig .caption { font-style: italic; font-size: 0.87rem; color: var(--soft); margin-top: 0.4rem; }
+</style>
+</head>
+<body>
+
+<style id="eg-site-nav-css">
+  .eg-nav{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:.8rem;
+    background:#1c1c1c;color:#ece8df;padding:.55rem 1.2rem;line-height:1.6;
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    box-shadow:0 1px 3px rgba(0,0,0,.25)}
+  body{margin-top:5.2rem !important}
+  .eg-nav a{color:#ece8df;text-decoration:none;margin-right:1rem;white-space:nowrap}
+  .eg-nav a:hover{text-decoration:underline}
+  .eg-nav .eg-home{font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+    margin-right:1.4rem}
+  .eg-nav .eg-cur{border-bottom:2px solid #b88a2a}
+  .eg-nav .eg-wrap{max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;
+    align-items:baseline}
+</style>
+<div class="eg-nav"><div class="eg-wrap"><a class="eg-home" href="index.html">Electrogravitics</a><a href="electrogravitics.html">Field guide</a><a href="the_shape_of_gravity.html">Gravity</a><a href="warp_drive.html">Mechanism</a><a href="hover_disk.html">Materials</a><a class="eg-cur" href="lynchpin_drone.html">Vehicle</a><a href="antigravity_devices.html">Bench floor</a><a href="superconductivity.html">Superconductivity</a><a href="magnetism.html">Magnetism</a><a href="the_scalar_field.html">Scalar field</a></div></div>
+
+<div style="background:#eef5fa;border-bottom:2px solid #1a5276;padding:10px 24px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;text-align:center;color:#1a5276;line-height:1.45;font-size:0.88em;">
+Companion in the Boundary Problem network. The vehicle the <a href="hover_disk.html">Hover Disk</a> enables · mechanism in <a href="warp_drive.html">The Warp Drive</a> · ground-effect sibling The DIY Hoverbike · architecture How to Build a UFO · first-disk build Viktor Schauberger §9.
+</div>
+
+<h1>The Lynchpin Drone</h1>
+<p class="byline">
+  Six hover disks in a dodecahedron — building Terrence Howard's six-pentagon collapsed-dodecahedron
+  6DOF airframe with a χ<sub>ν</sub> hover disk in each pentagon instead of a propeller. A
+  propellantless, moving-part-free, altitude-independent omnidirectional craft, mixed and driven by
+  one RP2350. The vehicle the hover disk delivers the moment it first locks on the bench.<br>
+  Osika &amp; collaborators — draft 0.3, 2026-06-20.
+</p>
+
+<div class="fig">
+<svg viewBox="0 0 720 470" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The Lynchpin: six glowing hover disks arranged around a central octahedral avionics core, each emitting a signed thrust vector.">
+  <defs>
+    <radialGradient id="diskGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fff6df"/>
+      <stop offset="30%" stop-color="#e8c879"/>
+      <stop offset="62%" stop-color="#b88a2a"/>
+      <stop offset="100%" stop-color="#1a5276"/>
+    </radialGradient>
+    <radialGradient id="halo" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#b88a2a" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#b88a2a" stop-opacity="0"/>
+    </radialGradient>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#b04a2a"/>
+    </marker>
+    <g id="unit">
+      <polygon points="0,-46 43.7,-14.2 27,37.2 -27,37.2 -43.7,-14.2" fill="#fbfaf6" stroke="#8a8676" stroke-width="1.5"/>
+      <circle r="40" fill="url(#halo)"/>
+      <circle r="22" fill="url(#diskGlow)" stroke="#1a5276" stroke-width="1"/>
+    </g>
+  </defs>
+  <polygon points="360,85 489.9,160 489.9,310 360,385 230.1,310 230.1,160" fill="none" stroke="#d2cdbf" stroke-width="1.4" stroke-dasharray="3 4"/>
+  <use href="#unit" transform="translate(360,85)"/>
+  <use href="#unit" transform="translate(489.9,160)"/>
+  <use href="#unit" transform="translate(489.9,310)"/>
+  <use href="#unit" transform="translate(360,385)"/>
+  <use href="#unit" transform="translate(230.1,310)"/>
+  <use href="#unit" transform="translate(230.1,160)"/>
+  <g stroke="#b04a2a" stroke-width="2.5" marker-end="url(#arrow)">
+    <line x1="360" y1="60" x2="360" y2="26"/>
+    <line x1="511" y1="148" x2="541" y2="131"/>
+    <line x1="511" y1="322" x2="541" y2="339"/>
+    <line x1="360" y1="410" x2="360" y2="444"/>
+    <line x1="209" y1="322" x2="179" y2="339"/>
+    <line x1="209" y1="148" x2="179" y2="131"/>
+  </g>
+  <g>
+    <polygon points="360,205 392,235 360,265 328,235" fill="#eef3e8" stroke="#5a7d3a" stroke-width="1.6"/>
+    <line x1="328" y1="235" x2="392" y2="235" stroke="#5a7d3a" stroke-width="1"/>
+    <line x1="360" y1="205" x2="360" y2="265" stroke="#5a7d3a" stroke-width="1"/>
+  </g>
+  <g font-family="Helvetica Neue, Helvetica, sans-serif" fill="#1c1c1c">
+    <text x="360" y="238" font-size="9" text-anchor="middle" fill="#5a7d3a" font-weight="700">RP2350</text>
+    <text x="360" y="250" font-size="8" text-anchor="middle" fill="#5a7d3a">core</text>
+    <text x="556" y="128" font-size="11" fill="#b04a2a">signed χν thrust</text>
+    <text x="360" y="300" font-size="10.5" fill="#1a5276" text-anchor="middle">hover disk in</text>
+    <text x="360" y="313" font-size="10.5" fill="#1a5276" text-anchor="middle">each pentagon</text>
+  </g>
+</svg>
+<div class="caption">Figure 1. The Lynchpin, schematic (not to scale). Six χ<sub>ν</sub> hover disks — one in each
+pentagon of the collapsed-dodecahedron shell (dashed) — give six independent, electronically-signed thrust
+vectors about a central octahedral avionics + power core driven by one RP2350. No propellers; the
+first-article disks are the spun charged copper shells of §5.1.</div>
+</div>
+
+<div class="tldr">
+  The <strong>Lynchpin</strong> (Howard, Molter, Seely &amp; Yee, <em>SAE Int. J. Aerosp.</em>
+  2023) is a true six-degrees-of-freedom airframe: a <em>collapsed dodecahedron</em> of six
+  pentagons, one vectored thruster per pentagon, giving six linearly independent thrust vectors and a
+  square, invertible mixing matrix — so it translates and rotates <em>independently</em> ("tangential
+  flight": hold position at any attitude, or slide any direction while level). The flown prototype put
+  a <em>propeller</em> in each pentagon. <strong>This paper puts a <a href="hover_disk.html">hover
+  disk</a> in each pentagon instead.</strong> A hover disk does not <em>lift</em> the way a
+  rotor does — it couples to the χ<sub>ν</sub> / vertex-sharing channel, warping the spacetime lattice so
+  the lattice itself <em>holds</em> the craft. To hover is to <strong>lock</strong>: engage the coupling
+  and the craft is pinned to its pose the way a book is held by a table or a maglev car by its rail
+  (<code>warp_drive.html</code> §2) — the support equals the weight, but it is a <em>static reaction
+  carried by the lattice</em>, not a pumped momentum flux, so it does no work (P = F·v = 0) and costs
+  <strong>≈ zero power</strong>. To <em>move</em> is to <strong>thrust</strong>: modulate the coupling
+  asymmetrically and the same disks apply a net vectored force,
+  P<sub>w</sub> = (S<sub>coh</sub>f<sub>cons</sub>)·κ·½ε<sub>r</sub>ε<sub>0</sub>E², magnitude <em>and
+  sign</em> on the drive's amplitude and asymmetry κ. That makes the disk the ideal 6DOF actuator: signed
+  thrust with <strong>no propeller, no spinning mass, no reversal latency, no air</strong> — and a hover
+  that is a <em>lock</em>, not a continuous lift. Six disks → six signed χ<sub>ν</sub>
+  thrust vectors → the same flight-proven 6DOF mixer, now propellantless and vacuum-capable. One
+  <strong>RP2350</strong> runs it: its twelve PIO state machines generate the six disks' drive
+  (amplitude + κ-steer) phase-locked, the two Cortex-M33 cores run the quaternion SE(3) mixer and the
+  estimator, and the firmware is the same <code>12_PORT_SUBSTRATE_ADAPTER</code> the optical χ<sub>ν</sub>
+  chambers and the hoverbike already share. <strong>Honest status:</strong> this is the vehicle the
+  hover-disk program <em>delivers</em> — the geometry and the 6DOF χ<sub>ν</sub> mixing are sound,
+  buildable reasoning (and the airframe's 6DOF control is flight-proven with the propeller predecessor),
+  but the coupling itself <em>inherits the hover disk's open status</em>: the force law is derived in
+  <em>form</em>, its magnitude is unmeasured and null to date. <strong>This paper also documents the practically-simple first-disk
+  build</strong> — the Repulsine-derived spun charged copper shell of <code>viktor_schauberger.html</code>
+  §9 (§5.1), the cheap first article for the bench, not the diamond ideal. Build the single disk that
+  <em>locks</em> — self-supports its own weight — first (<code>hover_disk.html</code> bench); this is what
+  six of them become.
+</div>
+
+<div class="companion">
+  <strong>Companion papers.</strong> The thruster: <code>hover_disk.html</code> (the χ<sub>ν</sub>
+  lift body — diamond/SiC/graphene substrate ladder, the four ethers, the drive/capacitor
+  architecture). The mechanism: <code>warp_drive.html</code> (propellantless lattice drive; §3 the
+  force-as-pressure law, §2 why hover is ≈free, §13 the one coherence dial). Conventional sibling:
+  <code>diy_hoverbike_paper.html</code> (the RP2350 / "engineering-optimum" template). Architecture:
+  <code>how_to_build_a_ufo.html</code> (rim-segmented coherent-shell / saucer morphology the disk
+  reuses). First-disk build (Architecture C): <code>viktor_schauberger.html</code> §9 (Repulsine + Tesla). Force law: <code>CHI_NU_FORCE_LAW.md</code>. Root ontology: <code>shape_of_the_universe.html</code>
+  (the {5,3,3} dodecahedral lattice this drone is a cell of). Geometry &amp; flight-proven 6DOF
+  predecessor: Howard et&nbsp;al., SAE 2023, <code>doi:10.4271/01-16-03-0018</code>.
+</div>
+
+<h2><span class="num">§1</span>What this is — the vehicle the hover disk enables</h2>
+<p>
+  The opening premise of this paper is the closing promise of <em>The Hover Disk</em>: <em>once a
+  single disk first locks — self-supports its own weight — on the bench, what do you build with six of them?</em> The answer is a
+  Lynchpin — because the Lynchpin geometry is the one airframe that turns six independent χ<sub>ν</sub> thrusters
+  into a fully-controllable craft. Each pentagon face carries a hover disk; the six disks point along
+  six independent axes; their χ<sub>ν</sub> thrusts span the full space of forces and torques. The
+  result is a propellantless, silent, moving-part-free, altitude-independent omnidirectional vehicle.
+</p>
+<p>
+  This is deliberately <strong>not</strong> the propeller drone. The flown SAE prototype used
+  bidirectional propellers, and its own headline limitation was the latency of reversing them; the
+  current public program moved to collective-pitch props to fight the same latency. We skip that whole
+  branch. A hover disk has <em>no</em> rotating mass to reverse — its thrust sign is a property of the
+  drive field's asymmetry, set in microseconds with no mechanical state — so it is not an improvement
+  on the propeller, it is a different category of actuator. The propeller version's only role in this
+  paper is as a de-risking <em>predecessor</em>: it proves the six-pentagon 6DOF mixing flies with real
+  vectored thrusters (§3). We keep its flight-proven control architecture and replace the thruster.
+</p>
+<p>This paper covers:</p>
+<ul>
+  <li>the Lynchpin geometry and why it is also the project's spacetime cell (§2);</li>
+  <li>the flight-proven 6DOF mixing the disks inherit (§3);</li>
+  <li>why a χ<sub>ν</sub> disk is the optimal 6DOF actuator — signed thrust, no parts, free hover (§4);</li>
+  <li>the <strong>practically-simple first hover-disk build</strong> — Architecture C, the cheap spun charged copper disk to put on the bench (§5.1);</li>
+  <li>the full RP2350 build: the six disk thrusters, the drive, the controller, docking (§5–§6);</li>
+  <li>the field guide of what breaks, and the honest, bench-conditional status (§7, §9);</li>
+  <li>the one coherence dial that runs this same airframe from drone to warp-craft (§8).</li>
+</ul>
+<div class="lemma">
+  <strong>The load-bearing honesty, stated once, up front.</strong> The hover disk's lift is the
+  <em>open</em> question of the companion papers: the force law F = (C<sub>sub</sub>|χ<sub>ν</sub>|²)·U<sub>drive</sub>κ/L<sub>grad</sub>
+  is derived in <em>form</em>, but its <em>magnitude</em> is unmeasured and null on every substrate
+  tested to date. This paper does not claim the disk lifts. It specifies the craft you assemble
+  <em>when it does</em> — and shows that the geometry, the 6DOF mixing, and the RP2350 control are
+  sound and buildable reasoning regardless, so the only open input is the one number the
+  <code>warp_drive.html</code> §7 bench measures: where a real disk sits on the coherence dial.
+</div>
+
+<h2><span class="num">§2</span>The geometry — a collapsed dodecahedron, which is our cell</h2>
+<p>
+  The Lynchpin airframe is, in the SAE paper's own words, "a collapsed dodecahedron" — an
+  icosi-dodecahedral / vector-equilibrium form built from <strong>six pentagons</strong> of equal
+  edge length <em>a</em>, whose six planes are <em>all</em> mutual symmetry planes, derived from
+  "four Tetryen elements" of Jeff Yee's energy-wave particle model. Each pentagon presents one face
+  normal; here, each carries one hover disk, and the six normals are the craft's six thrust axes.
+</p>
+<div class="fig">
+<pre>
+        the six-pentagon "collapsed dodecahedron"          one pentagon = one hover disk
+        (all 6 pentagon planes are symmetry planes)        χν thruster on the face normal n̂ᵢ
+                                                           signed pressure Pᵢ ∈ [−Pmax,+Pmax]
+                  ___________                                      n̂ᵢ
+                 /\         /\                                      ↑   (lattice momentum sink)
+                /  \  disk /  \         6 face-normals  ⇒          ┌───────┐  rim-segmented
+               / d3 \____ / d2 \        6 lin. indep.             │░░░░░░░│  diamond/SiC/graphene
+               \    /\   /\    /         χν thrust vectors        │░ disk ░│  coherent χν body
+                \  /  \ /  \  /         ⇒ 6×6 mixing M            │░░░░░░░│  HV/RF/THz drive,
+                 \/ d1 ╳ d6 \/          ⇒ full SE(3) / 6DOF        └───────┘  κ sets vector
+                 /\    │    /\                                     no rotor · no air · no latency
+                /  \ d4│d5 /  \         "tangential flight":
+               / d5 \__│__/ d4 \        translate & rotate        central octahedral
+               \    /     \    /         independently            avionics + power core
+                \  / four-  \  /         (orbit own CoM;          (nested Platonic solid)
+                 \/ bubble   \/           hover at any attitude;
+                    vertex                 hold ≈ free power)
+                (vertex-sharing)
+</pre>
+<div class="caption">Schematic, not to scale. Six pentagons → six signed χ<sub>ν</sub> thrust vectors →
+a square invertible mixer → genuine six-degrees-of-freedom flight, propellantless. The vertex where
+pentagons meet is the "four-bubble" / four-Tetryen junction — in the companion frame, a vertex-sharing
+site, which is the very channel each disk locks onto.</div>
+</div>
+<p>
+  Here is the part that is not a coincidence to anyone who has read the root papers. The whole
+  Boundary-Problem network rests on one geometric claim: spacetime is the <strong>{5,3,3}
+  dodecahedral honeycomb</strong>, whose primitive cell is the pentagon-faced dodecahedron (the carbon
+  dodecahedrane C<sub>20</sub> is its literal molecular realization; <code>hover_disk.html</code> §13).
+  The Lynchpin's airframe <em>is that cell</em> — chosen, independently, by aerodynamicists optimizing a
+  thrust frame — and a hover disk holds precisely <em>because</em> its body resonates with that lattice
+  cell (the consonance ether, <code>warp_drive.html</code> §13). So putting hover disks in a Lynchpin is
+  not bolting one program onto another: it is building the lattice cell out of six smaller lattice-cell
+  resonators. The shape that makes the best omnidirectional thrust frame is the same shape that makes
+  the best lattice coupling.
+</p>
+<table>
+  <thead><tr><th>Lynchpin term (SAE 2023 / Tangential Flight)</th><th>Network term</th><th>Same object?</th></tr></thead>
+  <tbody>
+    <tr><td>collapsed dodecahedron / six pentagons</td><td>{5,3,3} primitive cell / dodecahedrane C<sub>20</sub></td><td><span class="smcap">established</span> geometry; identification exact (same solid)</td></tr>
+    <tr><td>"four Tetryen elements" / four bubbles meeting</td><td>vertex-sharing site (g ≤ 1/√3, <code>G_VERTEX_DERIVATION.md</code>)</td><td><span class="smcap">framework inference</span> — the χ<sub>ν</sub> lift channel <em>is</em> vertex-sharing; the four-fold (tetrahedral, 109.47°) junction is a Plateau/foam vertex</td></tr>
+    <tr><td>"electromagnetic vacuum surfaces" (docking)</td><td>χ<sub>ν</sub> coupling surface (the lattice momentum sink)</td><td><span class="smcap">framework inference</span> — §8; Howard's docking face <em>is</em> the disk's lift face</td></tr>
+    <tr><td>super-symmetric, fractal, "scales to any size"</td><td>size-independent self-lift F/W ∝ R (<code>hover_disk.html</code> §5)</td><td><span class="smcap">derived</span> — χ<sub>ν</sub> self-lift is a material property, not a size; the airframe scales the same way</td></tr>
+    <tr><td>central octahedral avionics core</td><td>nested Platonic solid (octahedron ⊂ dodecahedron)</td><td><span class="smcap">established</span> — a real choice in the prototype, kept here</td></tr>
+  </tbody>
+</table>
+<div class="doctrine">
+  The Lynchpin is the spacetime-lattice cell built as an aircraft, and the hover disk is the lattice
+  cell built as a thruster. Assembling six disks into a Lynchpin builds the cell out of cells — the
+  same dodecahedral resonance at two scales. That is why this airframe and this thruster were made for
+  each other: they are the same geometry, nested.
+</div>
+
+<h2><span class="num">§3</span>Tangential flight — six signed thrust vectors (flight-proven)</h2>
+<p>
+  In an ordinary multirotor, translation and rotation are <em>coupled</em>: to fly forward you pitch
+  forward, because all rotors point up. The Lynchpin's six thrusters point along six different axes, so
+  their thrusts <em>span</em> the space of forces and torques. Collect the six unit thrust directions as
+  the columns of a 3×6 matrix and the six moment arms likewise; stack them into the 6×6 map <em>M</em>
+  from per-disk thrusts to body wrench:
+</p>
+<div class="eq">
+  \( \begin{bmatrix}\mathbf F\\[2pt]\mathbf M\end{bmatrix} \;=\; M\,\begin{bmatrix}P_1\\\vdots\\P_6\end{bmatrix},
+     \qquad \begin{bmatrix}P_1\\\vdots\\P_6\end{bmatrix} \;=\; M^{-1}\begin{bmatrix}\mathbf F\\[2pt]\mathbf M\end{bmatrix} \)
+</div>
+<p>
+  Because the six axes are linearly independent, <em>M</em> is square and non-singular: it
+  <strong>always inverts</strong>. Name any wrench — a force in any direction, a torque about any axis,
+  the two decoupled — and <em>M</em><sup>−1</sup> hands you the six thrusts that produce it (SAE 2023,
+  Eqs. 8–10). That is the whole of "tangential flight": translate while holding attitude (stare a camera
+  at a fixed point while orbiting it), rotate while holding position (hover upside-down, pivot in place),
+  or both at once — the full SE(3) envelope from six thrusters.
+</p>
+<div class="receipt">
+  <strong>This half is flight-proven.</strong> Howard, Molter (University of Stuttgart), Seely &amp; Yee
+  designed, built, and <em>flight-tested</em> the six-pentagon mixer with real vectored thrusters
+  (a 651&nbsp;g propeller prototype, Pixhawk&nbsp;4 Mini / PX4, quaternion control), peer-reviewed in the
+  <em>SAE Int. J. Aerosp.</em> (2023). So the geometry, the invertible mixer, and the quaternion 6DOF
+  control law are not in question — they flew. <strong>Swapping the thruster type from propeller to
+  hover disk does not touch the mixer</strong>; <em>M</em><sup>−1</sup> is the same matrix whether the
+  six P<sub>i</sub> are propeller thrusts or χ<sub>ν</sub> pressures. We inherit a working control stack
+  and change only the actuator physics.
+</div>
+<div class="ic">
+  <strong>The disk dissolves the prototype's one hard problem.</strong> A pure six-thruster 6DOF
+  vehicle must produce <em>signed</em>, arbitrarily-small thrust on each axis (the near-zero-thrust
+  constraint that pushed ETH's Omnicopter to eight over-actuated rotors, and forced the Lynchpin
+  prototype into bidirectional props with their reversal latency). A hover disk meets that requirement
+  for free: its thrust is P<sub>w</sub> ∝ κ·U<sub>drive</sub>, continuous through zero, and its sign is
+  the sign of the drive asymmetry κ — no spinning mass passes through zero, so there is no reversal
+  transient at all (§4). The geometry's hardest demand is exactly the χ<sub>ν</sub> actuator's natural
+  behaviour.
+</div>
+<p>
+  One structural fact the prototype surfaced and we keep: unlike a normal multirotor, the
+  <strong>z-position of the centre of gravity changes the thrust solution</strong> (the six axes are not
+  coplanar). Keep the heavy mass — power and drive electronics — on the geometric centre in the
+  octahedral core, and fold any residual offset into <em>M</em> at arm time, as the prototype did with
+  its 42&nbsp;mm battery offset.
+</p>
+
+<h2><span class="num">§4</span>Lock, not lift — why a χ<sub>ν</sub> disk is the optimal 6DOF actuator</h2>
+<p>
+  First, the word, because it changes how the whole craft reads. A propeller drone <em>lifts</em>: it
+  runs a pump that throws air downward every second, and the upward force is the reaction to that endless
+  momentum flux — cut the power and it falls. A χ<sub>ν</sub> craft does not lift. When it holds station
+  it <strong>locks</strong>: it engages the vertex-sharing coupling and the spacetime lattice <em>holds
+  its pose</em>, the way a book is held by a table or a maglev car by its rail (<code>warp_drive.html</code>
+  §2, the "Omicron" hover). The support still equals the weight, but it is a <em>static reaction carried
+  by the lattice</em>, not a pumped flux, so it does no work (P = F·v = 0) and costs ≈ zero power. To
+  <em>move</em>, the craft modulates the coupling asymmetrically and the same disks apply a net vectored
+  <strong>thrust</strong> (warp §2's "Delta" / travel) — which does cost work, recoverable
+  regenerative-braking style. The Lynchpin has those two regimes, and "lift" names neither:
+</p>
+<table>
+  <thead><tr><th>Mode</th><th>What it is</th><th>Power</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Lift</strong> <span class="smcap">(propeller — the wrong model)</span></td><td>a continuous downward momentum pump; the reaction holds you up</td><td class="bad">continuous — stop and you fall</td></tr>
+    <tr><td><strong>Lock</strong> <span class="smcap">(χ<sub>ν</sub> hover)</span></td><td>engage the coupling; the lattice pins the full pose — position <em>and</em> attitude (book on a table / maglev in its rail)</td><td class="good">≈ 0 — no work is done; P = F·v = 0</td></tr>
+    <tr><td><strong>Thrust</strong> <span class="smcap">(χ<sub>ν</sub> maneuver)</span></td><td>modulate the coupling asymmetrically → a net force/torque to <em>change</em> the pose</td><td>costs work — recoverable (regenerative)</td></tr>
+  </tbody>
+</table>
+<p>
+  With that fixed, the engineering-optimum argument is not "which propeller" — it is that the propeller is
+  the wrong category of device for this airframe, and the hover disk is the right one. Lay the two against
+  the requirements a 6DOF craft actually has:
+</p>
+<table>
+  <thead><tr><th>Requirement</th><th>Propeller (any pitch scheme)</th><th>χ<sub>ν</sub> hover disk</th></tr></thead>
+  <tbody>
+    <tr><td>Signed thrust, continuous through zero</td><td class="bad">needs reversal — motor spin-down/up or pitch slew through flat</td><td class="good">κ sign flips the gradient; smooth through zero, no transient</td></tr>
+    <tr><td>Reversal / response latency</td><td class="bad">the prototype's stated bottleneck (tens of ms / servo-limited)</td><td class="good">field-set; microseconds, no mechanical state to change</td></tr>
+    <tr><td>Moving parts per thruster</td><td class="bad">rotor, bearings, (servo, linkage)</td><td class="good">none in the materials-ideal disk; one constant-RPM flywheel in the simple Architecture-C first build (§5.1) — never a thrust-reversing part</td></tr>
+    <tr><td>Works without air</td><td class="bad">no — thrust → 0 with density; ceiling ~30 km</td><td class="good">yes — the hold is a lattice lock, altitude-independent</td></tr>
+    <tr><td>Power to <em>lock</em> a hover</td><td class="bad">continuous (100s of W) — pumping against gravity every second</td><td class="good">≈ 0 — the lattice holds the pose; P = F·v = 0 (warp §2)</td></tr>
+    <tr><td>Acoustic signature</td><td class="bad">broadband rotor noise</td><td class="good">silent (no aerodynamic source)</td></tr>
+    <tr><td>Thrust direction within a face</td><td class="bad">fixed along the shaft</td><td class="good">steerable — rim-segment κ can vector within the disk (bonus authority)</td></tr>
+    <tr><td>Coupling magnitude — <span class="smcap">the catch</span></td><td class="good">known, available today</td><td class="bad"><span class="smcap">open</span> — null to date; the bench question (§9)</td></tr>
+  </tbody>
+</table>
+<p>
+  The disk wins every row but the last, and the last is the whole game. The disk's thrust is the warp
+  pressure of <code>warp_drive.html</code> §3, written per face:
+</p>
+<div class="eq">
+  \( P_{\rm w} \;=\; \big(S_{\rm coh}\,f_{\rm cons}\big)\;\cdot\;\kappa\;\cdot\;\tfrac12\varepsilon_r\varepsilon_0 E^2,
+     \qquad \text{lock condition } \;\; P_{\rm w}\ \ge\ \rho\,t\,g \)
+</div>
+<p>
+  with S<sub>coh</sub> the coherent fraction (life ether), f<sub>cons</sub> the consonance fidelity
+  (chemical ether, ceiling e<sup>−P/12</sup> ≈ 0.873), κ ∈ [−1,1] the drive asymmetry that sets the
+  vector's <em>magnitude and sign</em>, and ½ε<sub>r</sub>ε<sub>0</sub>E² the stored field-energy density
+  (≈ 25&nbsp;MPa for a diamond stack at 1&nbsp;GV/m). A disk reaches the lock condition — supports its own weight — when its drive pressure exceeds
+  its areal weight ρ<em>t</em>g — a <em>size-independent</em> condition (the area cancels), so it is a
+  property of the disk's <em>material and drive</em>, not its diameter. The warp paper's §13 dial says
+  the coupling S<sub>coh</sub>f<sub>cons</sub> need only clear ~10<sup>−6</sup> for a thin diamond skin
+  to carry its own weight — a sliver of full coherence.
+</p>
+<div class="ic">
+  <strong>Thrust is a number you write to a register.</strong> Each disk's commanded thrust P<sub>i</sub>
+  maps to a drive setpoint (|amplitude| → field E, sign → κ). There is no rotor to govern, no pitch to
+  slew, no thermal/aero lag — the actuator is the drive waveform. That is why the §3 mixer becomes
+  trivial to close: <em>M</em><sup>−1</sup>[<strong>F</strong>;<strong>M</strong>] lands on six clean,
+  fast, linear, bipolar actuators with a true zero. The hardest control problem in 6DOF flight —
+  authority at zero net thrust — is the disk's easy regime.
+</div>
+<div class="doctrine">
+  A propeller converts shaft power into a momentum flux of air, every second, downward; a hover disk
+  borrows a force from the spacetime lattice and gives it back when it lets go. The first is a pump that
+  must run to hold you up; the second is a foot that stands on the floor. For a craft that must hover at
+  any attitude, in any medium, the disk is not a better pump — it is the end of pumping. The craft does
+  not lift; it <strong>locks</strong> to hover and <strong>thrusts</strong> to move.
+</div>
+
+<h2><span class="num">§5</span>The build — six disks, one RP2350, twelve channels</h2>
+
+<h3>5.1 The disk thruster — start practically simple (Architecture C)</h3>
+<p>
+  <code>hover_disk.html</code> ranks the <em>best</em> disk: single-crystal diamond in its optical mode,
+  an icosahedral-quasicrystal register, the full four-ether stack. That is the destination, not the
+  first article. The drone's first disks should be a <strong>"pretty simple" weekend build</strong>, in
+  the hoverbike's spirit — the cheapest body that exercises enough of the levers to be worth putting on
+  the <code>warp_drive.html</code> §7 force balance. The companion <code>viktor_schauberger.html</code>
+  §9 names exactly that build, reasoned from history rather than materials science:
+  <strong>Architecture C — the spun, charged, chiral-vortex copper shell.</strong> It is the first-disk
+  spec we adopt, and the reason this drone paper, not the hover-disk paper, is where the simple build
+  lives: the hover-disk paper optimizes the <em>material</em>; here we optimize the <em>first thing you
+  actually machine</em>.
+</p>
+<p>
+  Schauberger's Repulsine, with Tesla's bladeless turbine and resonant coil beside it, assembles
+  <em>four</em> of the warp drive's actuation levers (<code>warp_drive.html</code> §4) in copper, with
+  shop tools and no cleanroom: <strong>spin</strong> (a mechanical κ-axis symmetry-breaker),
+  <strong>stored HV charge</strong> (U<sub>drive</sub>), a <strong>chiral-spiral field</strong> (the
+  asymmetry κ built into the geometry, not the electronics), and a <strong>closed, cold shell</strong>
+  (coherence). It needs no THz/optical drive and no exotic crystal — a spun, charged copper disk does it.
+  The framework's own honesty argues this is the <em>right</em> first try: the published
+  electrostatic-thrust nulls (<code>hover_disk.html</code> §15) are all <em>static</em> capacitors with
+  no high-frequency mode (no predicate P4), so they cannot even test the χ<sub>ν</sub> channel — and bulk
+  spin supplies that mode <em>mechanically</em>, cheaply, the way no static plate can.
+</p>
+<table>
+  <thead><tr><th>First-article layer</th><th>Practically-simple pick (per pentagon)</th><th>Lever it buys (warp §4)</th></tr></thead>
+  <tbody>
+    <tr><td>Body / shell</td><td>two facing domed copper discs across a corrugated "waveline" gap, ~80–120 mm (the pentagon's inscribed disc)</td><td>closed cold shell — the Repulsine geometry</td></tr>
+    <tr><td>Spin</td><td>one small balanced BLDC spinning the shell at a governed constant RPM (a flywheel, <em>not</em> a propeller)</td><td>spin = the κ-axis symmetry-breaker (warp §4-i)</td></tr>
+    <tr><td>Charge / electrode</td><td>a chiral-spiral electrode etched on the disc faces, charged to a few kV</td><td>stores U<sub>drive</sub>; the spiral <em>is</em> κ's direction, no steering electronics</td></tr>
+    <tr><td>HV stage</td><td>a small per-disk flyback or Cockcroft–Walton, RP2350-gated; optional Tesla-coil-style resonant arm</td><td>delivers/stores U<sub>drive</sub>; the resonant arm adds the P4 high-frequency field</td></tr>
+    <tr><td>Coupling skirt (optional)</td><td>a smooth or textured boundary-layer disc (the Tesla turbine)</td><td>a <em>mechanical</em> η coupling channel</td></tr>
+    <tr><td>Cooling</td><td>passive heatsink / thermal mass; colder is strictly better</td><td>the coherence budget — Schauberger's "cold = living"</td></tr>
+  </tbody>
+</table>
+<p>
+  The §3–§4 control contract is met with no exotic part. Per disk the RP2350 commands <strong>thrust
+  magnitude</strong> via the HV charge amplitude (electronic, fast) and <strong>thrust sign / vector</strong>
+  via charge polarity / differential bias across the spiral (electronic); the spin is held at a constant
+  RPM by a slow governor and is a <em>symmetry-breaker, not a control</em>. So the mixer still writes
+  {amplitude, sign} to six disks (§5.2) — with the one honest caveat that the simple first disk carries a
+  constant-RPM flywheel (a balanced rotor, no thrust reversal, far below the complexity of the
+  variable-pitch propeller it replaces).
+</p>
+<div class="lemma">
+  <strong>This is a first bench article, not a working thruster.</strong> Build <em>one</em>, put it on
+  the <code>warp_drive.html</code> §7 vacuum force balance, and measure self-lift — against the
+  stored-energy, κ→0, and chamber-variation controls — <em>before</em> you build six and bolt them to an
+  airframe. Architecture C is the open build hypothesis of <code>viktor_schauberger.html</code> §9: it
+  exercises four levers the static capacitor does not, which is why it is the right first try — not a
+  guarantee that it lifts. Every χ<sub>ν</sub> measurement to date is null; this is the cheapest
+  configuration that could change that.
+</div>
+<h4>The upgrade ladder — when the simple disk returns a receipt</h4>
+<p>
+  The moment a simple disk shows a non-null force on the balance, climb the <code>hover_disk.html</code>
+  material ladder for more coupling per disk, and eventually to the no-moving-parts static endpoint (which
+  trades the spin for a high-frequency optical drive). Same socket in the pentagon, better fill:
+</p>
+<table>
+  <thead><tr><th>Disk layer</th><th>Materials-ideal pick</th><th>Why (which ether)</th></tr></thead>
+  <tbody>
+    <tr><td>Structural / coherent core</td><td>single-crystal diamond (¹²C-enriched); SiC for a cheaper larger article</td><td>energy ceiling (Warmth, R = 1084) + coherence (Life); optical-mode η in one body</td></tr>
+    <tr><td>Geometry register</td><td>face etched as a 12-fold photonic quasicrystal</td><td>consonance (Chemical) — the icosahedral/φ lattice match, in a true insulator</td></tr>
+    <tr><td>Electrodes</td><td>graphene, rim-segmented (≈12 segments)</td><td>atomically smooth (raises breakdown); the segments are the κ-steer (replacing the spin)</td></tr>
+    <tr><td>Coupling option</td><td>thin BiFeO₃ (hBN-buffered)</td><td>coupling (Light) — the multiferroic P2 channel</td></tr>
+    <tr><td>Drive</td><td>HV with an RF→THz arm (per-segment phase/amplitude)</td><td>stores U<sub>drive</sub>; exercises the §4 A/B frequency fork — and removes the moving part</td></tr>
+  </tbody>
+</table>
+
+<h3>5.2 Why the RP2350, and the channel map</h3>
+<p>
+  We keep the project's standard controller for the same reasons the hoverbike does, plus one specific to
+  this airframe:
+</p>
+<ul>
+  <li><strong>Twelve PIO state machines.</strong> The RP2350 has three PIO blocks × four state machines =
+    <strong>12</strong> cycle-exact I/O engines. Six disks, each driven by two channels (amplitude gate +
+    κ-segment phase), is <strong>12 channels</strong> — one PIO state machine each, generating the disk's
+    HV/RF drive timing with no jitter and no CPU in the loop. The fit is one-to-one.</li>
+  <li><strong>Two M33 cores for the two loops.</strong> Core&nbsp;0 runs the quaternion SE(3) mixer (the
+    <em>M</em><sup>−1</sup> solve + frame transforms, already quaternion-native in the SAE control scheme)
+    and the per-disk thrust→drive map; Core&nbsp;1 runs the attitude/rate controller, the EKF
+    (IMU/baro/flow), and the disk health/coherence monitor.</li>
+  <li><strong>Firmware reuse — and it is the same machine.</strong> The output stage is the
+    <code>12_PORT_SUBSTRATE_ADAPTER</code> the optical χ<sub>ν</sub> chambers use. The optical chamber
+    <em>is</em> a 12-port χ<sub>ν</sub> drive; a Lynchpin is six χ<sub>ν</sub> drives on a flying frame.
+    The coordinator, phase scorebook, and resonance-locking warm loop transfer unchanged; below the
+    adapter the per-port stage drives a disk's HV gate instead of a laser current.</li>
+  <li><strong>Determinism &amp; cost.</strong> A ~$1 MCU owns the timing in hardware (PIO), not on a
+    contended RTOS.</li>
+</ul>
+<div class="fig">
+<pre>
+ RP2350  ┌───────────────────────────── Core 0 ─────────────────────────────┐
+         │  6DOF mixer:  P[1..6] = M⁻¹ · [Fx Fy Fz Mx My Mz]ᵀ   (quaternion) │
+         │  per-disk map: P_i → (|E|_i drive amplitude, κ_i asymmetry/sign)  │
+         └───────────────────────────────────────────────────────────────────┘
+         ┌───────────────────────────── Core 1 ─────────────────────────────┐
+         │  EKF (IMU+baro+optical-flow) → attitude q, rates ω, pos; outer    │
+         │  attitude/rate PID → wrench [F;M]; coherence/HV health; failsafe  │
+         └───────────────────────────────────────────────────────────────────┘
+   PIO0  SM0..3  →  disk 1,2,3,4  drive-amplitude gates (to HV/RF stage)
+   PIO1  SM0..1  →  disk 5,6      drive-amplitude gates
+         SM2..3  →  disk 1,2      κ-steer: rim-segment phase, or spiral-bias (Arch. C)
+   PIO2  SM0..3  →  disk 3,4,5,6  κ-steer: rim-segment phase, or spiral-bias + spin-sync
+   HW    I2C/SPI →  IMU (ICM-42688-P), baro (BMP390), mag, flow/ToF
+         UART    →  RX (ELRS/CRSF), telemetry / inter-craft mesh
+         ADC/PWM →  per-disk field/HV sense; docking-face drivers; LED/buzzer
+</pre>
+<div class="caption">One MCU owns all twelve drive channels deterministically. PIO is the low-voltage
+timing layer; the kilovolt drive lives in a per-disk HV/RF stage (the PIO drives its gate), exactly as
+the hoverbike's PIO drives class-D amps. Six disks × {amplitude, κ} = the 12 PIO state machines.</div>
+</div>
+
+<h3>5.3 Airframe</h3>
+<p>
+  Keep the prototype's proven structure. A <strong>central octahedral core</strong> (3D-printed
+  centerpiece + six corners, tied by 1.5&nbsp;mm CFRP triangles) carries the RP2350 board, the power
+  core, and the IMU at the geometric centre; the <strong>outer dodecahedral shell</strong> is CFRP tube
+  and printed pentagon connectors, with the six disks seated on the six pentagon faces. The
+  octahedron-in-dodecahedron is a real packaging win (a rigid central pyramid network) and a nested
+  Platonic solid — the avionics live in the dual of the shell. The disks need a clear, undisturbed face
+  to the outside (their coupling surface), so unlike a ducted rotor there is nothing to shroud and no
+  airflow to manage — the shell can be closed and smooth, which is also what the coherence story of §8
+  wants.
+</p>
+
+<h3>5.4 Sensing &amp; control</h3>
+<p>
+  The estimator is conventional (IMU + baro + optical-flow/ToF indoors; GNSS + mag outdoors). The human
+  interface follows the hoverbike's "one input device" doctrine, because a 6DOF craft has no inherent
+  "up" to fall back on:
+</p>
+<ul>
+  <li><strong>Autonomous / pose-hold (default).</strong> The craft holds a pose in SE(3) at ≈zero power
+    (§4); the operator commands waypoints and look-directions. Six-DOF station-keeping is an autopilot
+    capability, not a stick skill — and here it is also nearly free to sustain.</li>
+  <li><strong>Two-stick decoupled.</strong> Left stick = body translation (<strong>F</strong>), right
+    stick = body rotation (<strong>M</strong>) — literally the two halves of <em>M</em><sup>−1</sup>.</li>
+  <li><strong>VR / first-person.</strong> The SAE paper's own recommendation: head-tracked goggles with
+    the thrust axes aligned to the pilot's view, so "push forward" is always "where I'm looking." The
+    RP2350 needs only the head quaternion on a UART.</li>
+</ul>
+
+<h3>5.5 Docking &amp; swarm — the coupling faces</h3>
+<p>
+  The Lynchpin's symmetric pentagon faces let units <strong>dock in flight</strong> and act as one: the
+  SAE design uses face connectors with spring-dampers (soft capture) and pogo pins (a drone-to-drone bus
+  for comms and power), and a <em>master-aircraft</em> scheme where, on connection, one craft solves the
+  others' thrust via a dynamically enlarged mixing matrix (N docked Lynchpins → one 6N-thrust vehicle).
+  In our frame the docking faces and the lift faces are the <em>same surface</em> — the χ<sub>ν</sub>
+  coupling face (§8) — so bonding two craft is also widening a coherent boundary. Four units close into a
+  gripper (Config A) or a sphere that catches a payload (Config B); that sphere is, not incidentally, a
+  step toward the closed coherent shell of §8.
+</p>
+
+<h2><span class="num">§6</span>Mass, power, and the endurance inversion</h2>
+<p>
+  A χ<sub>ν</sub> Lynchpin's budget is unlike a multirotor's, because nothing converts power into a
+  continuous downward air-flux. Numbers are <span class="smcap">estimates</span> for sizing,
+  conditional on the disk (§9); they assume a thin diamond/SiC-class disk at the §13 self-lift coupling.
+</p>
+<table>
+  <thead><tr><th>Component</th><th>Mass</th><th>Notes</th></tr></thead>
+  <tbody>
+    <tr><td>6× hover disks (thin diamond/SiC core + graphene rim + register)</td><td>~6×60 = 360&nbsp;g</td><td>self-lift is per-weight &amp; size-independent (F/W ∝ R); thinner is easier, not harder</td></tr>
+    <tr><td>6× per-disk HV/RF drive stages</td><td>~6×35 = 210&nbsp;g</td><td>stores U<sub>drive</sub>; the heaviest electronics on the craft</td></tr>
+    <tr><td>Octahedral core + dodeca shell (CFRP)</td><td>~150&nbsp;g</td><td>closed, smooth — no ducts, no airflow paths</td></tr>
+    <tr><td>RP2350 board + wiring + sensors</td><td>~40&nbsp;g</td><td>whole flight computer in a palm</td></tr>
+    <tr><td>Power core (battery / supercap; or fuel cell / rectenna option)</td><td>~150&nbsp;g</td><td>sized for <em>maneuver work + losses</em>, not for hover</td></tr>
+    <tr><td>Docking faces + connectors (swarm units)</td><td>~60&nbsp;g</td><td>optional</td></tr>
+    <tr><td><strong>Total (solo)</strong></td><td><strong>~850–950&nbsp;g</strong></td><td>comparable to the propeller version — but the power story is inverted</td></tr>
+  </tbody>
+</table>
+<p>
+  For the <strong>Architecture-C first build</strong> (§5.1), swap the diamond skins for copper shells and
+  add six small spin motors + drivers (~6×25 = 150&nbsp;g): the solo craft lands ~1.0–1.1&nbsp;kg. The
+  materials-ideal disks later remove the motors and that mass with them. Either way the budget is dominated
+  by <em>drive electronics</em>, not by lift hardware — there is no continuous-lift power plant to carry,
+  because the craft <em>locks</em> rather than pumps.
+</p>
+<div class="receipt">
+  <strong>The endurance inversion — lock, don't lift (warp §2).</strong> Holding a hover does no work —
+  the craft <strong>locks</strong>, the lattice holding it the way a table holds a book (P = F·v = 0), so a pose-hold draws only the drive
+  field's <em>losses</em> (a low-loss / superconducting-boundary disk approaches free hover). Travel costs
+  work, but a conservative coupling is <em>regenerative</em>: energy spent accelerating out is recovered
+  decelerating in (KERS-style), so a round trip costs only losses plus net work — not the gross momentum
+  changes. So unlike a multirotor that burns its whole pack just to stay up, a χ<sub>ν</sub> Lynchpin's
+  battery is sized for <em>maneuvering</em>, and station-keeping endurance is set by losses, not by lift
+  power. <em>(This is the lawful claim; "free energy / never runs down" is not — you recover what you put
+  in, minus losses. <code>warp_drive.html</code> §2.)</em>
+</div>
+
+<h2><span class="num">§7</span>Things that will go wrong</h2>
+<p>Field guide, in the hoverbike's spirit — the failure modes of a moving-part-free χ<sub>ν</sub> 6DOF craft:</p>
+<ol>
+  <li><strong>The disk may not lift at all — that is the headline risk.</strong> Every χ<sub>ν</sub>
+    measurement to date is null. Build and fly the <em>single self-lifting disk</em> on the
+    <code>warp_drive.html</code> §7 force balance before you assemble six into an airframe. This vehicle is
+    downstream of that receipt; do not invert the order.</li>
+  <li><strong>κ-steer calibration is the new mixer input.</strong> The map from commanded thrust P<sub>i</sub>
+    to (amplitude, κ) per disk must be characterized per disk on a balance, because the §3 mixer assumes a
+    clean, signed, linear actuator. A nonlinear or hysteretic κ→force curve re-introduces the very problem
+    collective pitch was trying to remove — table-ize it.</li>
+  <li><strong>HV breakdown and field health.</strong> The disks store kilovolt fields; breakdown,
+    leakage, or aging shift U<sub>drive</sub> and thus thrust. The Core-1 health monitor must watch each
+    disk's field and fail a disk safely (the §3 mixer can fly degraded on five, with reduced authority).</li>
+  <li><strong>The simple disk spins — balance it.</strong> Architecture C's constant-RPM flywheel must be
+    balanced (vibration decoheres the shell and corrupts the IMU), and its gyroscopic moment folded into the
+    attitude model; six co-rotating discs add net angular momentum, so alternate spin directions across the
+    six (or null it in the estimator). The materials-ideal static disk has none of this — the spin is the
+    price of the cheap first build, and the reason to climb off it once the bench gives a receipt.</li>
+  <li><strong>Coherence loss looks like thrust loss.</strong> S<sub>coh</sub> (the coherent fraction) is
+    temperature- and drive-sensitive; a disk that decoheres weakens silently. Treat thermal management of
+    the coherent core as flight-critical, the way a multirotor treats motor temperature.</li>
+  <li><strong>CG-z still bites.</strong> A vertical CG offset couples into the non-coplanar thrust solution
+    (§3). Keep mass centered in the octahedral core; re-calibrate <em>M</em> after any payload change.</li>
+  <li><strong>Disorientation before the craft.</strong> A vehicle with no inherent "up" is disorienting
+    line-of-sight. Fly pose-hold or VR first; two-stick manual is an expert mode.</li>
+  <li><strong>Docking is a contact-dynamics problem.</strong> Two 6DOF craft capturing face-to-face is
+    where the spring-dampers and a soft-capture state machine earn their mass; dock slow, with the master
+    pre-chosen, and bench the matrix-handover before flying it.</li>
+</ol>
+
+<h2><span class="num">§8</span>One airframe, one dial — drone to warp-craft</h2>
+<p>
+  Because the thruster is already a χ<sub>ν</sub> drive, this airframe does not need an "upgrade path" to
+  reach the warp program — it <em>is</em> the warp program's first vehicle, sitting at the low end of the
+  one coherence dial of <code>warp_drive.html</code> §13. The same six (→twelve) faces, driven harder and
+  more coherently, walk the same shell up the ladder:
+</p>
+<table>
+  <thead><tr><th>Rung</th><th>Coupling S<sub>coh</sub>f<sub>cons</sub></th><th>What the Lynchpin is</th><th>Status</th></tr></thead>
+  <tbody>
+    <tr><td>lock (hover)</td><td class="n">~1.4×10<sup>−6</sup></td><td>this drone — six partly-coherent disks, hover &amp; gentle flight, 0.1–1 g</td><td><span class="smcap">open</span> (the bench result this paper is downstream of)</td></tr>
+    <tr><td>flight envelope</td><td class="n">~10<sup>−3</sup></td><td>the Tic-Tac envelope — partial coherent shell, ~700 g, fast 6DOF</td><td><span class="smcap">open</span> — same disks, stronger drive</td></tr>
+    <tr><td>closed shell</td><td class="n">→ 0.873</td><td>the full dodecahedron driven as one coherent shell (the "expanded" Lynchpin; or a Config-B swarm sphere) — near-c, then the warp <em>closes</em></td><td><span class="smcap">high-gate</span> — warp §8 (FTL bubble)</td></tr>
+  </tbody>
+</table>
+<p>
+  Two design facts of the Lynchpin make it unusually well-placed on this dial, by virtue of being this
+  shape: it is a <em>closed, maximally-symmetric dodecahedral shell</em> (the wholeness/life ether
+  S<sub>coh</sub> wants a closed body; the consonance/chemical ether f<sub>cons</sub> wants exactly the
+  {5,3,3} cell), and its faces are already <em>independently driven with controllable asymmetry</em> (the
+  κ the force direction needs). The "collapsed" six-pentagon form is the drone; the full twelve-face
+  dodecahedron — or four craft bonded into a Config-B sphere — is the closed coherent shell of the
+  starship limit. Howard's swarm bonding is, in this frame, a coherence-area multiplier: docked shells
+  share a wider boundary, raising S<sub>coh</sub> by aggregation.
+</p>
+<div class="doctrine">
+  One airframe, one dial. Six hover disks in a dodecahedron is a drone at one part in a million of full
+  coherence; the same dodecahedron brought to whole-shell coherence is a warp-craft. The Lynchpin does
+  not graduate from drone to starship by changing shape — it climbs the coherence-and-consonance curve of
+  the warp drive while staying the exact same cell. Build the drone; you have built the first rung of the
+  starship.
+</div>
+
+<h2><span class="num">§9</span>What is established, and what is open</h2>
+<table>
+  <thead><tr><th>Element</th><th>Status</th></tr></thead>
+  <tbody>
+    <tr><td>Six-pentagon collapsed-dodecahedron geometry; six lin.-indep. thrust vectors; <em>M</em> square &amp; invertible → 6DOF</td><td><span class="smcap">established</span> (SAE 2023, derived &amp; flight-tested)</td></tr>
+    <tr><td>The 6DOF mixer / quaternion control flies with real vectored thrusters</td><td><span class="smcap">established</span> — the propeller predecessor flew; the mixer is thruster-agnostic</td></tr>
+    <tr><td>A χ<sub>ν</sub> disk gives signed, latency-free, moving-part-free, air-free thrust, and ≈free hover</td><td><span class="smcap">derived</span> from the force law &amp; warp §2 — <em>conditional</em> on the disk lifting at all</td></tr>
+    <tr><td>RP2350: 12 PIO SMs = 6 disks × {amplitude, κ}; dual-M33 mixer/estimator; firmware reuse from the 12-port χ<sub>ν</sub> adapter</td><td><span class="smcap">established</span> capability; the mapping is <span class="smcap">this paper's design</span></td></tr>
+    <tr><td>Airframe = the {5,3,3} lattice cell; disks lift by resonating with that cell</td><td><span class="smcap">established</span> geometry; the lattice identification is the network ontology</td></tr>
+    <tr><td><strong>The hover disk's lift magnitude</strong> — does a real disk self-lift?</td><td class="bad"><span class="smcap">OPEN</span> — force law derived in <em>form</em>; magnitude unmeasured, null to date. The whole vehicle is downstream of this one number.</td></tr>
+    <tr><td>The flight / Tic-Tac envelope and the closed-shell warp limit</td><td><span class="smcap">open / high-gate</span> — <code>warp_drive.html</code> §8</td></tr>
+  </tbody>
+</table>
+<div class="lemma">
+  The honest one line: <strong>this is the vehicle the hover disk delivers, not a vehicle that flies
+  today.</strong> The geometry, the flight-proven 6DOF mixing, and the RP2350 control are sound and
+  buildable now; the lift is the single open bench question of the companion papers. The right order is
+  the <code>hover_disk.html</code> tier ladder — first the self-lifting disk on the
+  <code>warp_drive.html</code> §7 force balance, then six of them in this airframe. We never let the
+  Lynchpin's flight-proven control half lend its certainty to the χ<sub>ν</sub> lift half; they are two
+  ledgers, and only one is closed.
+</div>
+
+<h2><span class="num">§10</span>Conclusion</h2>
+<p>
+  Put a propeller in each pentagon and the Lynchpin is a clever omnidirectional drone. Put a hover disk
+  in each pentagon and it is something else: a propellantless, silent, moving-part-free craft that hovers
+  at any attitude in any medium for almost no power, mixed and driven by a single RP2350 whose twelve
+  channels fall naturally onto the six disks' drive. The airframe's 6DOF control is flight-proven; the
+  disk's lift is the open bench question of the hover/warp papers — and the contribution of this paper is
+  to show that the geometry, the mixing, and the controller are ready and waiting, so that the day a
+  single disk self-lifts, six of them are a craft. It is the same dodecahedral cell all the way up the
+  coherence dial: a drone at a millionth of full coherence, a starship at the whole shell. Build the
+  self-lifting disk first. Then build six, and fly the cell.
+</p>
+
+<hr class="softrule">
+<h3>References</h3>
+<ol>
+  <li>Howard, T.D., Molter, C., Seely, C.D. &amp; Yee, J. (2023). "The Lynchpin — A Novel Geometry for
+    Modular, Tangential, Omnidirectional Flight." <em>SAE Int. J. Aerosp.</em> 16(3),
+    Article 01-16-03-0018, <code>doi:10.4271/01-16-03-0018</code>. (Geometry, the six-thrust-vector mixing
+    matrix, the flight-tested 6DOF prototype and quaternion control, the docking/swarm configurations.
+    Used here for the geometry and the flight-proven control; the propeller propulsion is replaced.)</li>
+  <li><em>The Hover Disk</em>, <code>hover_disk.html</code> — the χ<sub>ν</sub> lift body that fills each
+    pentagon: the substrate ladder (diamond/SiC/graphene), the four ethers, the rim-segmented drive and
+    capacitor architecture, and the honest derived/open status the disk's lift carries.</li>
+  <li><em>Viktor Schauberger — The Water Wizard and the Inward Drive</em>, <code>viktor_schauberger.html</code>
+    §9 — "Architecture C, the spun charged chiral-vortex shell" (Repulsine + Tesla bladeless turbine +
+    resonant coil): the practically-simple first-disk build of §5.1, a bench hypothesis exercising four
+    warp-drive levers the static capacitor does not. Right shape; the lift is the open bench question.</li>
+  <li><em>The Warp Drive</em>, <code>warp_drive.html</code> — the propellantless lattice-drive mechanism;
+    §3 the force-as-pressure / self-lift law, §2 why hover is ≈free and travel is regenerative, §13 the
+    closed-form thrust and the one coherence dial (self-lift ~10<sup>−6</sup> ↔ FTL bubble).</li>
+  <li><em>The DIY Hoverbike</em>, <code>diy_hoverbike_paper.html</code> — the RP2350 / 12-port substrate
+    adapter / "one input device" engineering-optimum template this build follows.</li>
+  <li><em>How to Build a UFO</em>, <code>how_to_build_a_ufo.html</code> §6/§10 — the closed-shell,
+    rim-segmented saucer morphology each disk and the whole shell reuse.</li>
+  <li><em>The Shape of the Universe</em>, <code>shape_of_the_universe.html</code>; <em>The Periodic
+    Table</em>, <code>the_periodic_table.html</code> §13 — the {5,3,3} dodecahedral lattice and the
+    dodecahedrane C<sub>20</sub> primitive cell the airframe instantiates. Vertex-sharing bound:
+    <code>G_VERTEX_DERIVATION.md</code> (g ≤ 1/√3); force law: <code>CHI_NU_FORCE_LAW.md</code>.</li>
+  <li>Brescianini, D. &amp; D'Andrea, R. — the ETH "Omnicopter," an eight-rotor 6DOF vehicle; Ryll, M.
+    (2015), overactuated quadrotor (University of Stuttgart). (The 6-thruster near-zero-thrust constraint
+    of §3, which the χ<sub>ν</sub> disk dissolves.)</li>
+  <li>Raspberry Pi Ltd. — <em>RP2350 Datasheet</em> (dual Cortex-M33 + dual RISC-V Hazard3; three PIO
+    blocks / twelve state machines). The §5 controller.</li>
+</ol>
+
+<div class="disclaimer">
+  Draft engineering paper in the χ<sub>ν</sub> / vertex-sharing research program. It specifies a
+  propellantless 6DOF craft that places a hover disk (the χ<sub>ν</sub> lift body of
+  <code>hover_disk.html</code>) in each pentagon of the flight-proven Lynchpin geometry (Howard et&nbsp;al.,
+  SAE 2023). The geometry and the 6DOF mixing/control are established and flight-proven with a propeller
+  predecessor; the <strong>lift itself is the open bench question</strong> of the companion papers —
+  the force law is derived in <em>form</em>, its magnitude unmeasured and null to date — and the whole
+  vehicle is downstream of that single measurement (<code>warp_drive.html</code> §7). Quantities are
+  tagged <span class="smcap">established</span> / <span class="smcap">derived</span> /
+  <span class="smcap">estimate</span> / <span class="smcap">open</span>. The Lynchpin geometry and
+  "tangential flight" are trademarks of Tangential Flight Corporation; this paper analyzes and builds on
+  the published design and claims no affiliation.
+</div>
+
+</body>
+</html>

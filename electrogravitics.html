@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Electrogravitics — An Engineering Field Guide</title>
+<style>
+  :root{
+    --ink:#1c1c1c; --paper:#fbfaf6; --page:#ece8df;
+    --green:#5a7d3a; --amber:#b88a2a; --steel:#3a5a7d; --teal:#2f6d5e;
+    --slate:#5a6470; --blood:#7a1f1f; --violet:#6a4a8a;
+    --rule:#d2cdbf; --soft:#8a8676; --wash:#f3efe4;
+  }
+  html{background:var(--page)}
+  body{
+    font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    max-width:820px; margin:2.5rem auto; padding:2.6rem 2.4rem 4rem;
+    color:var(--ink); line-height:1.62; background:var(--paper);
+    box-shadow:0 1px 4px rgba(0,0,0,.06); font-size:17px;
+  }
+  h1{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-weight:700;
+     font-size:1.9rem; line-height:1.18; border-bottom:2px solid var(--ink);
+     padding-bottom:.55rem; margin:.3rem 0 .5rem}
+  h2{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:1.24rem;
+     margin-top:2.4rem; border-bottom:1px solid var(--rule); padding-bottom:.25rem}
+  h3{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:1.02rem;
+     margin-top:1.6rem; color:#444}
+  .part{font-family:"Helvetica Neue",Helvetica,sans-serif; font-size:.82rem;
+     letter-spacing:.1em; text-transform:uppercase; color:var(--soft);
+     margin-top:2.8rem; border-top:2px solid var(--ink); padding-top:.7rem}
+  .banner{background:#eef5fa; border-bottom:2px solid var(--steel);
+     margin:-2.6rem -2.4rem 2rem; padding:.65rem 2.4rem;
+     font-family:"Helvetica Neue",Helvetica,sans-serif; font-size:.85rem;
+     color:var(--steel); line-height:1.5; text-align:center}
+  .banner a{color:var(--steel); font-weight:600}
+  .sub{color:var(--soft); font-style:italic; font-size:1.02rem}
+  .meta{color:var(--soft); font-size:.85rem; margin-bottom:1.6rem}
+  table{border-collapse:collapse; width:100%; margin:1.1rem 0; font-size:.88rem}
+  th,td{border:1px solid var(--rule); padding:.42rem .6rem; text-align:left; vertical-align:top}
+  th{background:#f0eadb; font-family:"Helvetica Neue",Helvetica,sans-serif; font-size:.82rem}
+  tr:nth-child(even) td{background:#faf7ef}
+  blockquote{border-left:4px solid var(--amber); background:#fff8e8;
+    margin:1.2rem 0; padding:.7rem 1.1rem; color:#4a4437; font-size:.97rem}
+  .box{border-left:4px solid var(--green); background:#eef3e8;
+    padding:.85rem 1.1rem; margin:1.3rem 0; font-size:.94rem}
+  .warn{border-left:4px solid var(--blood); background:#f3e7e7;
+    padding:.85rem 1.1rem; margin:1.3rem 0; font-size:.94rem}
+  code,pre{font-family:"JetBrains Mono",Menlo,Consolas,monospace; background:var(--wash);
+    border-radius:2px}
+  code{font-size:.85em; padding:.05em .3em}
+  pre{font-size:.78rem; padding:.8rem 1rem; overflow-x:auto; border:1px solid var(--rule); line-height:1.5}
+  a{color:var(--steel)}
+  .overflow{overflow-x:auto}
+  ol li,ul li{margin:.3rem 0}
+  .tag{font-family:"Helvetica Neue",Helvetica,sans-serif; font-size:.68rem;
+    font-weight:700; letter-spacing:.06em; padding:.1em .45em; border-radius:2px;
+    vertical-align:middle; white-space:nowrap}
+  .t-meas{background:#e7efdd; color:var(--green); border:1px solid var(--green)}
+  .t-der{background:#e3ebf3; color:var(--steel); border:1px solid var(--steel)}
+  .t-est{background:#f6eed9; color:var(--amber); border:1px solid var(--amber)}
+  .t-open{background:#efe8f5; color:var(--violet); border:1px solid var(--violet)}
+  .t-null{background:#f3e7e7; color:var(--blood); border:1px solid var(--blood)}
+  .t-prereg{background:#e2efeb; color:var(--teal); border:1px solid var(--teal)}
+</style>
+</head>
+<body>
+
+<style id="eg-site-nav-css">
+  .eg-nav{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:.8rem;
+    background:#1c1c1c;color:#ece8df;padding:.55rem 1.2rem;line-height:1.6;
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    box-shadow:0 1px 3px rgba(0,0,0,.25)}
+  body{margin-top:5.2rem !important}
+  .eg-nav a{color:#ece8df;text-decoration:none;margin-right:1rem;white-space:nowrap}
+  .eg-nav a:hover{text-decoration:underline}
+  .eg-nav .eg-home{font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+    margin-right:1.4rem}
+  .eg-nav .eg-cur{border-bottom:2px solid #b88a2a}
+  .eg-nav .eg-wrap{max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;
+    align-items:baseline}
+</style>
+<div class="eg-nav"><div class="eg-wrap"><a class="eg-home" href="index.html">Electrogravitics</a><a class="eg-cur" href="electrogravitics.html">Field guide</a><a href="the_shape_of_gravity.html">Gravity</a><a href="warp_drive.html">Mechanism</a><a href="hover_disk.html">Materials</a><a href="lynchpin_drone.html">Vehicle</a><a href="antigravity_devices.html">Bench floor</a><a href="superconductivity.html">Superconductivity</a><a href="magnetism.html">Magnetism</a><a href="the_scalar_field.html">Scalar field</a></div></div>
+
+
+<div class="banner">
+  Companion papers:
+  <a href="the_shape_of_gravity.html">The Shape of Gravity</a> (the law) ·
+  <a href="warp_drive.html">The Warp Drive</a> (the mechanism) ·
+  <a href="hover_disk.html">The Hover Disk</a> (the materials) ·
+  <a href="lynchpin_drone.html">The Lynchpin Drone</a> (the vehicle) ·
+  <a href="antigravity_devices.html">Antigravity Devices</a> (the bench floor) ·
+  <a href="superconductivity.html">Superconductivity</a> (the coherence science)
+</div>
+
+<h1>Electrogravitics</h1>
+<p class="sub">An engineering field guide — from Townsend Brown's capacitors to a
+coherent-substrate drone: what is measured, what is derived, what is open, and
+how a drone company would actually get started.</p>
+<p class="meta">draft 0.2 · 2026-08-14 · Osika Innovation AB · Alexander Osika, Claude</p>
+
+<div class="box">
+<strong>Claim boundary.</strong> This paper makes no new physics claim. Its job is
+to be the single honest on-ramp to a scattered literature: it states, with the
+original numbers, (1)&nbsp;what the electrogravitics lineage actually measured —
+which in air is ion wind, fully explained by conventional physics; (2)&nbsp;what
+the published vacuum record bounds — every published, independently instrumented
+vacuum test is a null with quantitative bounds, while the one claimed vacuum
+positive (the 1955–57 French program) remains open, its numbers never having
+reached circulation; (3)&nbsp;what the
+companion papers derive — a specific force law with exactly one open number; and
+(4)&nbsp;the cheapest experimental program that would move that number, in the
+order that keeps a builder from fooling themselves. The coherent-coupling channel
+this program tests is an <em>unproven hypothesis, currently null on every
+substrate measured</em>. Nothing here licenses a product claim.
+</div>
+
+<p>Every claim below carries one of six tags:
+<span class="tag t-meas">MEASURED</span> (instrument, published, or receipted in
+this project) ·
+<span class="tag t-der">DERIVED</span> (follows from the framework's law, receipt
+named) ·
+<span class="tag t-est">ESTIMATE</span> (a prior, honestly labelled) ·
+<span class="tag t-prereg">PRE-REG</span> (frozen prediction, not yet run) ·
+<span class="tag t-open">OPEN</span> (the bench decides) ·
+<span class="tag t-null">NULL / REFUTED</span> (tested and failed).</p>
+
+<div class="part">Part I — The intuition</div>
+
+<h2 id="s1">1. The word, and what was actually measured</h2>
+
+<p><em>Electrogravitics</em> (that is the standard spelling) is Thomas Townsend
+Brown's word, from the 1920s, for the claim that a strongly asymmetric,
+high-voltage capacitor feels a net force toward its small electrode — and that
+this force is gravitational in character, not electrical. The lineage is real
+and documented: Brown's patents (GB&nbsp;300,311 of 1928 through
+US&nbsp;3,022,430 of 1962), the Project Winterhaven proposal to the military
+(1952), and the <em>Electrogravitics Systems</em> survey (Aviation Studies
+International, February 1956) that briefly made "electrogravitics" an aerospace
+buzzword. <span class="tag t-meas">MEASURED</span></p>
+
+<p>Here is what six decades of instrumentation established about the force Brown
+measured:</p>
+
+<ul>
+<li><strong>In air, the force is ion wind</strong> — electrohydrodynamic (EHD)
+thrust. Charge is sprayed off the sharp electrode, drifts to the blunt one, and
+drags neutral air with it. The thrust obeys <code>T ≈ I·d/μ</code> (current ×
+gap / ion mobility, μ ≈ 2×10⁻⁴ m²V⁻¹s⁻¹) — it scales with <em>current and
+gap</em>, not voltage, which is the fingerprint. Measured lifter thrusts
+reproduce this to within geometry factors of 0.1–0.8 (Bahder &amp; Fazi,
+ARL-TR-3005, 2003 — often miscited as supporting electrogravitics; it is an
+ion-wind paper). <span class="tag t-meas">MEASURED</span></li>
+<li><strong>Ion wind is genuinely useful</strong> — MIT flew a solid-state
+airplane on it (Xu et al., <em>Nature</em> 563, 2018: 2.5&nbsp;kg, 5&nbsp;m
+span, 40&nbsp;kV, ~6.25&nbsp;N/kW). It is also intrinsically atmospheric:
+<em>zero thrust in vacuum</em>, and human-scale EHD lift needs ~330&nbsp;m² of
+electrode per person. A real technology, the wrong tree.
+<span class="tag t-meas">MEASURED</span></li>
+<li><strong>In vacuum, every published, independently instrumented test is a
+null.</strong> Talley (AF-funded, 1988–1991, 10⁻⁶&nbsp;torr): no thrust
+except during breakdown current. Tajmar (2004): the residual force was
+isolated corona wind. Bartlett &amp; Tajmar (<em>Acta Astronautica</em> 181,
+2021): ±0.3&nbsp;mg resolution to 10&nbsp;kV, no force in any configuration.
+The one claimed exception — the 1955–57 SNCASO "Project Montgolfier" vacuum
+residual — is a corporate-documented positive whose numbers have not
+survived into circulation; see its §3 ledger row.
+<span class="tag t-null">NULL</span> (published record)</li>
+</ul>
+
+<div class="warn">
+<strong>The verdict, stated first because everything else depends on stating it
+first:</strong> Biefeld–Brown electrogravitics, as an antigravity claim, is
+<em>refuted</em>. The force Brown measured in air is ion wind. This paper's own
+framework does not fight that verdict — it <em>requires</em> it (§4): an
+incoherent capacitor is predicted to couple to spacetime at the bare
+Einstein-constant floor, ~10⁻⁴³, unmeasurably below every balance ever built.
+Any program that starts by disputing the nulls is not doing engineering. This
+verdict is scoped to what was measured: the atmospheric force — and the
+Montgolfier project's own 1959 report agrees, calling it "a pure demonstration
+of 'electric wind.'" The French <em>vacuum</em> residual is a separate, open
+question (§3 ledger): a documented claimed positive whose numbers have not
+survived into circulation, testimony on its behalf included. Testimony raises
+retrieval priority; only the numbers — or the §6 bench — can move the tag.
+</div>
+
+<p>So why is the word worth keeping? Because Brown got one thing right that the
+debunking, correctly aimed at his interpretation, never touched: <strong>the
+geometry</strong>. An asymmetric capacitor is a device for storing field energy
+with a built-in spatial gradient — a shape that stores energy on one side of
+itself. In the framework of the companion papers, that is precisely the shape a
+gravitational coupling would need (§2). Brown had the right blueprint and the
+wrong active ingredient: high voltage on an <em>incoherent</em> dielectric,
+where the framework says the missing ingredient is <em>coherence</em>. That
+diagnosis is falsifiable and cheap to test, which is what Part III is for.
+<span class="tag t-open">OPEN</span></p>
+
+<h2 id="s2">2. Sixty seconds of gravity, and what "engineering it" would mean</h2>
+
+<p>Start with the part that is not a hypothesis: <strong>electromagnetic fields
+curve spacetime.</strong> That is Einstein–Maxwell — coupling 8πG/c⁴, no free
+parameters — and it has been solved <em>exactly</em> for laboratory hardware:
+Füzfa (<em>Phys. Rev. D</em> 93, 024014, 2016) computes the full nonlinear
+spacetime curvature of real current-carrying coils (effect ∝ I², i.e. ∝ B²),
+with a proposed interferometric detection. A field-conditioned machine
+<em>does</em> modify local geometry, unconditionally.
+<span class="tag t-meas">THEOREM</span> The honest arithmetic that goes with
+the theorem: Füzfa's CERN-magnet-class stack shifts an optical phase by
+1.6×10⁻²⁵ rad per round trip (10⁻¹¹ rad only after 200 days of coherent
+integration), and at 100&nbsp;T the Melvin curvature radius is 3.7 light-years.
+The mechanism is settled; the entire engineering question is magnitude — the
+~40-order climb from the bare coupling to a useful one.</p>
+
+<p>The mechanism story is owned by
+<a href="the_shape_of_gravity.html">The Shape of Gravity</a>; here is the
+engineer's summary, with the receipts named. In this framework spacetime is a
+network of elastic edges, and a mass is
+stable energy settled into it. One derived law with no free parameter —
+<code>F = 1 + E/E★</code>: the effective length of an edge grows linearly with
+the energy it carries — turns out to close all of weak-field gravity. Settled
+energy lengthens nearby edges (space curves) and slows clocks on them (time
+dilates), the same δ doing both, which forces Einstein's full factor-two light
+deflection with no tensor added: the ray-trace converges to 2.000
+(<code>crypto_oracle/shape_F_gravity_closure_probe.py</code>), and the 1/r
+Newtonian halo fits at R²&nbsp;=&nbsp;0.9998.
+<span class="tag t-der">DERIVED</span> What is <em>not</em> derived is the
+absolute strength — Newton's G — and the paper says so on purpose.
+<span class="tag t-open">OPEN</span></p>
+
+<div class="box">
+<strong>The claim has three layers, and only one of them is a bet.</strong>
+(1)&nbsp;Mechanism — theorem-level, unconditional: fields gravitate.
+(2)&nbsp;Bare-coupling magnitude — settled, and bracketed from above by the
+null program (§3). (3)&nbsp;Coherent enhancement — the open bet the §6 bench
+decides. The correct register is therefore <strong>"this works; the climb is
+the program"</strong> — exactly as fusion's question is confinement, not
+whether fusion works. The closest respectable published cousin of layer 3 is
+Ummarino &amp; Gallerati's superconductor gravito-Maxwell work (EPJ C 2017 →
+Front. Phys. 2022: transient Δg/g ~ 10⁻⁷–10⁻⁵ near T_c — screening, not
+generation, untested), which shows a peer-reviewed literature reaching for the
+same lever at far more modest magnitude.
+</div>
+
+<p>If gravity is "settled energy sets effective geometry," then engineering
+gravity means one thing: <strong>store a lot of coherent energy in a body,
+asymmetrically, so that the body sits in a geometry gradient of its own
+making — and couple to the lattice well enough that the gradient does mechanical
+work.</strong> Three consequences follow immediately, and they organize
+everything a builder needs to know:</p>
+
+<ol>
+<li><strong>Hover is statics; travel is dynamics.</strong> A static force that
+balances weight does no work (P&nbsp;=&nbsp;F·v&nbsp;=&nbsp;0). If the coupling
+exists at all, holding position costs only losses — like a table holding a book,
+or a maglev rail holding a train. Accelerating costs real energy, and a
+conservative coupling makes deceleration regenerative. The lawful summary is
+"hover ≈ free, momentum costs work" — <em>not</em> "free energy."
+<span class="tag t-der">DERIVED</span></li>
+<li><strong>Propellantless is not reactionless.</strong> Every force needs a
+reaction partner. A propeller throws air; a rocket throws mass; this coupling,
+if real, hands momentum to the lattice — the same bookkeeping as maglev, where
+the rail takes the reaction. "Where does the reaction momentum go?" is the first
+question to ask of any device claim, ours included. A body that rigidly carries
+its own static field configuration is a closed loop and gets exactly zero net
+thrust — confirmed to 10⁻¹⁷&nbsp;N in simulation under both classical force
+laws (<code>crypto_oracle/universe_sim/ampere_tension_sim.py</code>). You
+cannot fall into a pocket you carry.
+<span class="tag t-der">DERIVED</span></li>
+<li><strong>Symmetry gives zero.</strong> A symmetric energy store makes a
+symmetric dent and no net force. All thrust lives in the asymmetry — in the
+drive's spatial gradient (the Brown geometry), or its chirality (swirl/spin), or
+its time-asymmetry (transient "jerk" drive). This is why the sign-reversal test
+(§6) is the cleanest discriminator: flip the asymmetry, and a real coupling
+flips sign; every artifact doesn't.
+<span class="tag t-der">DERIVED</span></li>
+</ol>
+
+<div class="box">
+<strong>"Lock, not lift" — the phrase a drone company should internalize.</strong>
+A propeller <em>lifts</em>: it pumps momentum downward continuously, and when it
+stops you fall. A working coherent-coupling disk would <em>lock</em>: engage the
+coupling and the lattice pins the pose, at near-zero power, the way a rail pins
+a maglev. Thrust is then a controlled <em>modulation</em> of the lock —
+continuous through zero, sign set electronically in microseconds, no reversal
+transient, regeneratively recoverable. Every one of those properties is exactly
+what 6-DOF multirotor control wants and cannot have with propellers (§5).
+</div>
+
+<h3>How to picture it — five images that hold, and three that don't</h3>
+
+<p>A century of this literature has produced a handful of genuinely good mental
+pictures and a handful of seductive wrong ones. Both are worth having, because
+the wrong ones are the ones your team will meet first.</p>
+
+<p><strong>The images that hold.</strong> <em>Gravity does not pull; it adjusts
+the characteristics of space</em> — the best one-line statement of general
+relativity in the whole corpus, and it comes from the proponents' own 1956
+<em>Electrogravitics Systems</em> report. <em>There is no perfectly rigid
+rod</em>: near a mass, rulers shrink and clocks slow, so a circle's
+circumference comes out less than 2πr — that is what "curved space"
+operationally means (Dicke's and Puthoff's medium picture, and it is
+mainstream). <em>Light bends near a mass the way it bends entering glass</em>
+— spacetime as an optical medium of varying index, a picture as old as
+Eddington. <em>A moving mass makes a gravity analogue of a magnetic field</em>
+— the spinning Earth drags spacetime like a spoon through honey, measured by
+Gravity Probe B at ~39 milliarcseconds per year, which honestly sets the scale
+of what mass currents do. And the one that governs the ledger: <em>the ion
+lifter is an invisible propeller made of air</em> — the wire is the blade you
+cannot see, each ion is a runner in a bucket brigade handing momentum to
+neutral air, which is exactly why the thrust scales with current, ignores
+which way the voltage is wired (a fan doesn't care which way the motor is
+wired), and dies dead in vacuum: no one to hand off to.</p>
+
+<p><strong>The images that mislead — teach them, then break them.</strong>
+<em>"Matter is just an electrical condition, therefore electricity is connected
+to gravity"</em> (Brown, 1929, the ancestor of every argument since): the
+premise is true — mass-energy includes field energy, which is precisely why a
+charged capacitor weighs imperceptibly more — but "connected at 10⁻⁴³" is not
+"controllable," and the sentence smuggles one into the other. <em>The
+surfboard on a self-made hill</em> (Mason Rose, 1952; the single most
+memorable image in the field): a real surfer rides a slope sourced by the
+Earth and maintained by the ocean; a craft that makes its own hill and carries
+it along is pushing its car from the inside — the reaction has to land
+somewhere, and if that somewhere is the air you have built an ion thruster.
+Our own conservation books say the same thing in equations: a symmetric,
+carried pattern gives exactly zero (§4). <em>"Ion wind is three orders of
+magnitude too small"</em> — a half-quotation of the Army Research Lab paper
+whose <em>other</em> half computes ion drift at the right magnitude, after
+which NASA (2004) and Ianconescu (2011) turned it into a full model that
+predicts the thrust, its ground-wire dependence, and its polarity
+independence. And the one image to keep from the proponents because it is
+almost right for the wrong reason: the 1956 report's <em>electrostatic wing</em>
+— "the same lift as pressure and suction over a wing, except that no airflow
+is necessary." Right shape; the one wrong clause is the entire lesson.</p>
+
+<h2 id="s3">3. The measured ledger</h2>
+
+<p>One table, so nobody has to reconstruct the evidentiary state from folklore.
+"Bound" is the constraint the measurement places on the framework's one open
+coupling number (§4).</p>
+
+<div class="overflow">
+<table>
+<tr><th>Item</th><th>Record</th><th>Status</th></tr>
+<tr><td>Ion wind (EHD) thrust in air</td><td>T ≈ I·d/μ; lifters, MIT 2018
+airplane; ~0.15 mN/mA at 3 cm gap</td>
+<td><span class="tag t-meas">MEASURED</span> — real, atmospheric-only,
+conventional</td></tr>
+<tr><td>Biefeld–Brown force as antigravity</td><td>Explained by EHD in air;
+vacuum nulls below</td><td><span class="tag t-null">REFUTED</span></td></tr>
+<tr><td>Talley 1988–91 (USAF), 10⁻⁶ torr</td><td>No thrust except during
+breakdown current</td><td><span class="tag t-null">NULL</span></td></tr>
+<tr><td>Tajmar 2004, 38 kV, corona-excluded</td><td>&lt;10 µN → coupling
+&lt;&nbsp;~2×10⁻³</td><td><span class="tag t-null">NULL</span></td></tr>
+<tr><td>Bartlett &amp; Tajmar 2021, ≤10 kV</td><td>nano-N resolution, no force →
+coupling &lt;&nbsp;~2×10⁻¹⁰ — <strong>the tightest published bound</strong></td>
+<td><span class="tag t-null">NULL</span></td></tr>
+<tr><td>1955–57 Paris tests ("Project Montgolfier", SNCASO, facilitated by
+J.&nbsp;Cornillon; final report April 15, 1959)</td>
+<td>Documented corporate program, archive released by Cornillon before his
+death (2008; Starburst/LaViolette overview 2012; primary site now offline).
+Its own report attributes the <em>air</em> motion to "a pure demonstration
+of 'electric wind'" — agreeing with this ledger. The vacuum tests
+(1.4&nbsp;m chamber, 5×10⁻⁵ mm Hg) reported a small <em>polarity-locked</em>
+residual ("discs always moved toward the positive pole") called "a
+definable force" — but no thrust value, voltage–force curve, or current
+log circulates, and a polarity-locked residual amid sparking has a named
+conventional candidate (charge-emission / vacuum-arc momentum: Martins
+&amp; Pinheiro 2011; cf. Talley's thrust-only-during-breakdown). Decisive
+test the record lacks: simultaneous current + force</td>
+<td><span class="tag t-open">OPEN THREAD</span> — claimed positive,
+documents released but numbers not yet retrieved</td></tr>
+<tr><td>Buhler / Exodus Propulsion (asymmetric dielectric capacitor stacks)</td>
+<td>Patent's one measured number (237 µN) was in air — inseparable from ion
+wind; the mN-scale vacuum figures are talk-claimed (~2000 runs), unreviewed,
+unreplicated — and declining: the claimed force fell ~40× between Apr 2024
+(1 g on a 30–40 g device) and Mar 2026 ("5–10 mN," rebranded "electrostatic
+pressure force") with no published explanation — the monotonic
+decline-under-scrutiny signature — still with no paper and no independent
+instrumented test, while the claim sits 10⁵–10⁶× above the Dresden noise
+floor in the same HV regime. Back-solving our force law on the claimed
+numbers implies a coupling ≈ 2×10⁻⁴ — consistent within an order of
+magnitude, <em>not validated</em>, and ~125× below the hover threshold</td>
+<td><span class="tag t-open">OPEN THREAD</span> — watch, don't bank;
+declining</td></tr>
+<tr><td>Tajmar, Kößling &amp; Neunzig 2024 (<em>Sci. Rep.</em> 14:19427):
+broad gravity–EM coupling sweep</td>
+<td>Capacitor geometries, solenoids, tunneling currents, varistors, ε/µ
+gradients, crossed &amp; helical B, shielded toroids — all bounded at
+<strong>~nN force / nN·m torque</strong> in high vacuum; supercurrent→gravity
+bounded at 5×10⁻⁹ N/A (<em>Front. Phys.</em> 2022). The tightest map yet of
+which shortcuts do not exist</td>
+<td><span class="tag t-null">NULL</span> (comprehensive)</td></tr>
+<tr><td>Podkletnov rotating-superconductor weight loss</td><td>NASA Marshall and
+Göde replications null to 0.001%</td>
+<td><span class="tag t-null">UNREPLICATED</span></td></tr>
+<tr><td>Li–Torr gravitomagnetic amplification (theory)</td><td>Refuted on its
+own terms (Harris 1999); AC Gravity LLC published nothing</td>
+<td><span class="tag t-null">REFUTED</span></td></tr>
+<tr><td>Graham et al. 2008 (Canterbury), rotating s-wave SC ring laser</td>
+<td>The cleanest existing upper bound on lattice coupling in ordinary
+superconductors</td><td><span class="tag t-meas">MEASURED bound</span></td></tr>
+<tr><td>Pais "HEEMFG" (Navy, 2016–19, ~$500k)</td><td>"Could not be proven" —
+but the rig could spin <em>or</em> vibrate, never both, and never reached the
+specified charge: an uninterpretable null, not a refutation. Mine the patents
+for geometry only (§7)</td><td><span class="tag t-null">NULL
+(weak)</span></td></tr>
+<tr><td>Wallace patents US 3,626,605/606 (GE era, 1971): rotating
+half-integer-nuclear-spin masses</td><td>13-arcmin torsion claim; unreplicated —
+and, unlike Brown, <strong>no published null either</strong></td>
+<td><span class="tag t-open">OPEN THREAD</span> (§8)</td></tr>
+<tr><td>This project's own bench</td><td>No substrate measured to date has shown
+the coupling; every χν-channel measurement so far is null</td>
+<td><span class="tag t-null">NULL to date</span></td></tr>
+</table>
+</div>
+
+<p>Read the last row again before reading Part II. The framework's force law is
+a <em>prediction under test</em>, made by people who publish their own nulls.
+That is its credential.</p>
+
+<div class="part">Part II — The engineering frame</div>
+
+<h2 id="s4">4. The force law, for engineers</h2>
+
+<p>The mechanism paper (<a href="warp_drive.html">The Warp Drive</a>) and its
+math audit (<code>WARP_DRIVE_MATH_AUDIT.md</code>) give the working force law.
+As pressure on a driven substrate of area A:</p>
+
+<pre>P_w  =  C·κ·½ ε_r ε₀ E²        [Pa]         (field / capacitor drive)
+F    =  C·κ·U_drive / L_grad    [N]          (general stored-energy form)
+
+C  ≡  C_sub·|χν|²  — the lattice coupling            ← THE open number
+κ  ∈ [−1,1]        — drive asymmetry (0 = symmetric = zero force; sign(κ) = sign(thrust))
+U_drive            — coherently stored energy (not dissipated power)
+L_grad             — gradient length ≈ device radius</pre>
+
+<div class="box">
+<strong>What C actually is — the shout and the room.</strong> Think of the
+drive's stored energy as a <em>shout</em>, and the lattice — spacetime's
+substrate — as a <em>room that can echo</em>. How much force comes back
+depends on two independent things, and that is why C is a product of two
+factors. <strong>|χν|² is the tuning</strong>: how well the substrate's own
+coherent mode overlaps the lattice's mode — matched frequency, matched
+geometry, phase locked across the whole body. It is dimensionless, sits
+between zero and a hard geometric ceiling (the derived vertex-sharing bound,
+g ≤ 1/√3 ≈ 0.577), and enters squared because coupling is an amplitude and
+force follows energy — the same reason a wave's power goes as amplitude
+squared. A bronze cymbal, driven at audio, tunes at |χν|² ~ 10⁻¹⁴; an
+optically driven diamond disk is estimated near 10⁻¹. <strong>C_sub is the
+room's echo efficiency</strong>: given that the modes overlap at all, what
+fraction of that overlapping energy the <em>substrate</em> converts into
+force — how much of the body participates coherently, how much energy it can
+hold before it cracks or breaks down, how consonant its structure is with the
+lattice. It is the honest name for everything about the <em>material</em> that
+is not the mode overlap. They are kept separate because they fail
+independently and are fixed independently: perfect tuning on a body that
+cannot hold energy is nothing, and a superb energy store driven at the wrong
+frequency is nothing — force needs both, so the materials program is two
+ladders that multiply. One number is what a balance reads out; splitting it
+into two is the framework's claim about what that number is made of, not a
+second measurement. And the scale to hold in mind: an incoherent lump —
+Brown's capacitor — sits at the bare-vacuum floor of C, the Einstein constant
+8πG/c⁴ ≈ 2×10⁻⁴³, while hover needs C ≈ 10⁻⁶. That forty-order climb is the
+whole job, and both factors are levers.
+</div>
+
+<p>Hover is the pressure condition <code>P_w ≥ ρ·t·g</code> (areal weight) —
+and because area cancels, <strong>self-lift is size-independent</strong>: a
+property of material and drive, not diameter. Scale anchors, all
+<span class="tag t-der">DERIVED</span> from the law plus known material
+constants:</p>
+
+<ul>
+<li>A 1&nbsp;mm diamond-class skin weighs ~<strong>34&nbsp;Pa</strong>. Full
+electrostatic pressure at 1&nbsp;GV/m in diamond is ~25&nbsp;MPa — so hover
+needs the coupling·asymmetry product to deliver only ~10⁻⁶ of the stored
+pressure. On the coherence dial of the audit: <strong>hover at
+S_coh·f_cons ≈ 1.4×10⁻⁶ — about one part per million of full
+coherence.</strong></li>
+<li>The consonance ceiling is f_cons ≤ e^(−P/12) ≈ 0.873; the bare-vacuum
+floor — what an <em>incoherent</em> body couples at — is the Einstein constant
+8πG/c⁴ ≈ 2×10⁻⁴³. The whole game is how far real coherence climbs a body up
+those ~40 orders of magnitude. <span class="tag t-open">OPEN</span></li>
+<li>The tightest published null (Bartlett &amp; Tajmar 2021) bounds
+<em>statically driven</em> capacitors at C&nbsp;&lt;&nbsp;2×10⁻¹⁰ — which is
+33 orders above the floor and 4 orders below Buhler's implied value. The
+framework's own explanation for why the nulls don't close the question: every
+null device to date was a static, incoherent capacitor, which by the
+framework's own predicates cannot access the coherent channel. That is
+self-consistent, and it is also the framework rescuing itself with its own
+predicate — the papers say so plainly, and the §6 program is designed to close
+exactly that loophole rather than lean on it.
+<span class="tag t-open">OPEN</span></li>
+</ul>
+
+<h3>4.1 The levers</h3>
+
+<div class="overflow">
+<table>
+<tr><th>Lever</th><th>What it is</th><th>Status</th></tr>
+<tr><td><strong>Stored energy</strong> U_drive</td><td>Coherently stored, not
+dissipated. Material ceiling is specific resilience R = σ²/(Eρ) for mechanical
+storage, ½ε_rε₀E²_bd for field storage. Diamond is the single-material champion
+on both counts; graphene's ceiling is ~7000× higher again but its coupling
+velocity is genuinely uncertain</td>
+<td><span class="tag t-der">DERIVED</span></td></tr>
+<tr><td><strong>Asymmetry</strong> κ</td><td>The Brown geometry: small/large
+electrode, domed top over larger bottom shell, insulation ring — an asymmetric
+capacitor is κ rendered in hardware. The asymmetry "wants to be a swirl":
+chiral electrodes, spin, and time-asymmetric (jerk) drive are the same lever in
+space, rotation, and time</td>
+<td><span class="tag t-der">DERIVED</span> (form) / <span class="tag t-open">OPEN</span> (magnitude)</td></tr>
+<tr><td><strong>Coherence</strong> S_coh</td><td>The claimed missing ingredient.
+Fraction of the body participating in one phase-locked mode: Q, isotopic purity
+(¹²C, ²⁸Si), condensate boundaries, cold. See
+<a href="superconductivity.html">Superconductivity</a> for the measured science
+of macroscopic phase coherence</td>
+<td><span class="tag t-open">OPEN</span></td></tr>
+<tr><td><strong>Consonance</strong> f_cons</td><td>Geometric match between the
+substrate's mode pattern and the lattice (icosahedral symmetry, φ-ratios,
+degree-3 carbon cages, quasicrystals). Ceiling 0.873</td>
+<td><span class="tag t-open">OPEN</span></td></tr>
+<tr><td><strong>Frequency</strong></td><td><strong>Deliberately listed last,
+because it is the fork, not a lever.</strong> Hypothesis A: coupling rises with
+drive frequency (η ≈ v_phase/c — THz/optical drive wins by 8–12 orders).
+Hypothesis B: coupling is stored-field-limited and DC suffices (Buhler's DC
+claims point here). A frequency sweep on one device decides it (§6). Do not
+design a program that assumes either answer</td>
+<td><span class="tag t-open">OPEN — the A/B fork</span></td></tr>
+</table>
+</div>
+
+<div class="warn">
+<strong>What a null bounds, and what it doesn't.</strong> A vacuum null on your
+device bounds C&nbsp;&lt;&nbsp;δF·L_grad/(κ·U_drive) for <em>your</em> drive
+condition. It refutes the mechanism only if the chamber-variation and
+frequency-sweep controls also come back flat.
+And know exactly what the published null program covers: it — including
+the comprehensive 2024 Dresden sweep — is excellent metrology, and it is
+binding <em>for what it tested</em>: static fields, DC currents, incoherent
+substrates. No published test article has carried even one of the four §4.1
+coherence predicates (lattice-matched symmetry, coupling channel, condensate
+boundary, near-mode drive), and a static — or uniformly rotating,
+mirror-symmetric — drive has κ&nbsp;=&nbsp;0 by the conservation books: it
+structurally cannot rectify. This is worth stating as a two-framework
+agreement: for every article the null program tested, general relativity
+predicts effectively zero (weak-field arithmetic) <em>and this framework
+predicts exactly zero</em> (symmetric drive, κ&nbsp;=&nbsp;0, closed loop) —
+the same weak-field regime our companion law re-derives. The two theories
+part company only where the coherence predicates are met and the drive is
+rectified; nowhere tested so far is in that regime. So the test matrix has
+exactly one untested cell, and the coherent-substrate architecture of the
+companion papers sits in it. That is not a rescue; it is a target. The §6
+bench is the first experiment that would fill the cell, and a null
+<em>there</em> — with the coherence predicates instrumented and verified
+present — would be the first null that actually reaches this framework. Conversely — and this is the
+discipline that keeps you honest in the other direction — a <em>positive</em>
+force on your balance is an artifact until it survives: vacuum, thermal null,
+dummy-load null, sign reversal under drive flip, chamber variation, and
+sidereal folding. The published field is a graveyard of people who skipped one
+of those.
+</div>
+
+<h2 id="s5">5. Why a drone company is the right builder</h2>
+
+<p>It is tempting to think this technology, if real, belongs to aerospace
+primes. The opposite is true, and the reasons are concrete:</p>
+
+<ol>
+<li><strong>The control problem is already solved, and it's yours.</strong> A
+craft with six independently throttleable force patches is a 6-DOF wrench-map
+inversion — exactly the mixer a multirotor autopilot runs today. The
+<a href="lynchpin_drone.html">Lynchpin Drone</a> paper works this out on the
+published Lynchpin airframe (Howard et al., SAE Int. J. Aerosp. 16(3), 2023 — a
+651&nbsp;g prototype that <em>flew</em>, on PX4, with six bidirectional
+props): six disks on the six pentagons of a collapsed dodecahedron, a 6×6
+always-invertible mixer, one RP2350 whose 12 PIO state machines map one-to-one
+onto 6 disks × {amplitude, κ-steer}. Swapping the thruster type does not touch
+the mixer. The flight-control ledger is closed; only the lift ledger is open —
+and a drone company is precisely the builder for whom the closed half is free.
+<span class="tag t-meas">MEASURED</span> (the airframe/control half)</li>
+<li><strong>The disk fixes your hardest actuator problem.</strong> 6-DOF
+vehicles need signed, arbitrarily small thrust per axis — the constraint that
+pushed ETH's Omnicopter to eight over-actuated rotors and the Lynchpin
+prototype to bidirectional props with reversal latency. A coupling disk's
+thrust is continuous through zero with electronically-set sign: no mechanical
+state, no reversal transient. <span class="tag t-der">DERIVED</span> (from the
+law's κ-linearity — conditional on the coupling existing at all)</li>
+<li><strong>Endurance inverts.</strong> A propeller drone sizes its battery for
+hover; a lock-mode craft sizes it for <em>maneuvering</em>, because
+station-keeping costs only losses. The first real product isn't a faster drone
+— it's a drone that holds station indefinitely on a trickle.
+<span class="tag t-der">DERIVED</span> (conditional, same caveat)</li>
+<li><strong>The bench is drone-shop-sized.</strong> Nothing in Part III needs a
+wind tunnel or a cleanroom: a vacuum bell jar, a torsion or pendulum balance, a
+HV supply, an RP2350, and discipline. The single most dangerous item is the
+40&nbsp;kV supply, which drone shops handling LiPo banks already respect.</li>
+</ol>
+
+<blockquote>The strategic shape: everything above the coupling is
+flight-proven engineering you already do; everything below it is one number.
+Build the program that measures the number, and structure it so that every
+stage yields a sellable conventional capability (ion-wind actuation, HV
+competence, precision force metrology, THz materials) even if the number stays
+zero.</blockquote>
+
+<div class="part">Part III — The program</div>
+
+<h2 id="s6">6. Getting started: the bench program</h2>
+
+<p><strong>Rule 0: bench one disk before you build six.</strong> The Lynchpin
+paper states it as a failure mode: the headline risk is that the disk does not
+lift at all, so never invert the order. Everything below is one disk on one
+balance.</p>
+
+<h3>Stage 0 — Calibrate on physics that works (weeks, ~$1k)</h3>
+<ul>
+<li><strong>Build the ion lifter first.</strong> Fly it, measure T vs I·d/μ,
+watch it die in the bell jar. Now your team owns the artifact that
+contaminates this entire field, and your instruments are proven on a real
+force. <span class="tag t-meas">MEASURED</span></li>
+<li><strong>Diamagnetic control:</strong> pyrolytic graphite levitating over
+NdFeB — zero-power levitation on textbook physics
+(B·dB/dz = µ₀ρg/|χ|). This pins the conventional baseline any later
+in-field force claim must be distinguished from.
+<span class="tag t-meas">MEASURED</span></li>
+<li><strong>Balance floor:</strong> a 2&nbsp;m pendulum or torsion balance with
+interferometric readout reaches ~nN–500&nbsp;pN. Characterize thermal drift,
+EMI, and electrostatic pickup <em>before</em> any candidate device goes on
+it.</li>
+</ul>
+
+<h3>Stage 1 — The discriminator set (the actual experiment)</h3>
+<p>One asymmetric capacitor device, in vacuum, on the calibrated balance, run
+through five controls. This set — not any single reading — is the
+experiment:</p>
+<ol>
+<li><strong>Vacuum arm, always.</strong> No in-air number means anything in
+this field. (The audited-and-rejected proposals share one tell: no vacuum
+control anywhere in the plan.)</li>
+<li><strong>Sign reversal under drive flip.</strong> Flip the asymmetry
+(polarity / phase / chirality): a lattice coupling reverses sign; heating,
+outgassing, and electrostatic pickup do not. The cleanest single
+discriminator the framework offers.</li>
+<li><strong>κ → 0 null.</strong> Symmetric drive at equal power must give
+zero. If it doesn't, you're measuring an artifact.</li>
+<li><strong>Frequency sweep, DC → RF (→ THz where you can).</strong> This is
+the A/B fork of §4.1 decided on your own hardware: force rises with
+frequency ⇒ hypothesis A; flat ⇒ hypothesis B (or nothing).</li>
+<li><strong>Chamber variation + sidereal folding.</strong> A lattice coupling
+is chamber-independent; trapped charge tracks the walls. And fold every long
+log at both 24&nbsp;h&nbsp;00&nbsp;m and 23&nbsp;h&nbsp;56&nbsp;m: any real
+preferred-frame coupling modulates at the sidereal day, where no mundane
+artifact lives. Costs zero hardware on a timestamping MCU.</li>
+</ol>
+<p>Any force that survives all five is worth a phone call. A null across the
+sweep is also a result: it is the tightest bound ever placed on the coherent
+channel, publishable as such.
+<span class="tag t-open">OPEN — this is the bench that decides</span></p>
+
+<h3>Stage 2 — The first article worth building (months)</h3>
+<p>The corpus's convergent first build ("Architecture C") is deliberately
+shop-buildable: two facing domed copper discs, 80–120&nbsp;mm, across a
+corrugated gap; a <strong>chiral-spiral electrode</strong> charged to a few kV
+(the spiral <em>is</em> the κ direction — no steering electronics); the shell
+<strong>spun</strong> by one balanced BLDC at governed RPM (a flywheel, not a
+propeller — spin supplies the high-frequency mode mechanically, which no
+published null device had); per-disk flyback or Cockcroft–Walton HV; passive
+cooling, because colder is strictly better for coherence. Rationale: every
+published null was a <em>static</em> capacitor; this device is the cheapest
+object that actually exercises the claimed channel (stored field + asymmetry +
+rotation + time-structure) with independent control of each.
+<span class="tag t-open">OPEN — a build hypothesis, not a result</span></p>
+
+<h3>Stage 3 — The coherence ladder (the materials program)</h3>
+<p>Owned by <a href="hover_disk.html">The Hover Disk</a>; the drone-relevant
+summary: substrate ladder steel → bismuth → BiFeO₃ → quasicrystal; the
+single-material optimum is a ¹²C-enriched single-crystal diamond disk driven
+optically (structural champion <em>and</em> η ≈ 0.41 optical substrate); the
+layered endgame adds an icosahedral-quasicrystal symmetry layer, a THz-coupling
+multiferroic film, and a superconducting boundary (YBCO at 77&nbsp;K) as the
+phase-coherence layer. Two free pre-screens: broadband absorptance (good
+couplers should be anomalously black — necessary, not sufficient) and the
+diamagnetic control from Stage 0.</p>
+
+<div class="warn">
+<strong>Superconductor discipline.</strong> The condensate boundary enters as a
+<em>coherence layer</em>, not as an antigravity ingredient.
+<a href="superconductivity.html">The measured record</a> is unambiguous: flux
+expulsion is a property of the superconducting state, not a road into it, and
+every rotating-SC weight-loss claim is unreplicated (Podkletnov) or refuted
+(Li–Torr). The honest statement is Canterbury 2008's: ordinary s-wave
+superconductors bound the coupling from above. If a condensate boundary matters
+here, it is because phase coherence is the claimed missing ingredient — and
+that is exactly what Stage 1 measures.
+</div>
+
+<h3>The desk work that grounds it</h3>
+<p>The Biefeld–Brown retrodiction sim — predictions frozen in a
+pre-registration before the run
+(<code>papers/BIEFELD_BROWN_SIM_PREREG_2026-07-19.md</code>), then executed
+(<code>crypto_oracle/universe_sim/biefeld_brown_sim.py</code>, receipt
+<code>runtime_receipts/biefeld_brown_run.json</code>, results
+<code>papers/RESULTS_BIEFELD_BROWN_2026-08-13.md</code>) — <strong>passed all
+four frozen predictions and all three gates.</strong> An incoherent Brown-class
+capacitor at the bare-vacuum floor produces at most 3×10⁻⁴² N in vacuum —
+35–39 orders below the Talley/Tajmar/Bartlett balances, retrodicting every
+published null; the in-air force is reproduced by the ion-wind side-calc to
+within 12% with zero metric contribution; the coherent arm crosses the hover
+threshold at C&nbsp;≈&nbsp;1.6×10⁻⁶ (the audit's hand-derived dial value was
+1.4×10⁻⁶, frozen before the run); and the conservation controls (symmetric
+drive, carried pattern, static alignment) are zero to machine precision — the
+bootstrap is structurally impossible in the model, not merely penalized.
+<span class="tag t-meas">MEASURED (in-model)</span> Per the pre-reg's own
+register rules: this validates that the framework's story is <em>coherent and
+consistent with the published nulls</em> — it is not bench evidence that the
+coherent force exists. The bench (§6, stages 0–2) still decides reality.</p>
+
+<h2 id="s7">7. Dead ends, priced — do not spend money here</h2>
+
+<ul>
+<li><strong>Unruh / zero-point-field propulsion.</strong> The one engineering
+proposal in the gravity paper's audit whose premise is true (the Unruh bath is
+textbook physics) was priced with every assumption in its favour:
+T&nbsp;=&nbsp;4.06×10⁻²¹&nbsp;K per m/s² — so no vibrating structure of any
+kind is a route (a 40&nbsp;kHz × 10&nbsp;µm ultrasonic drive makes
+2.6×10⁻¹⁵&nbsp;K of bath); break-even sits at 160.7× the Schwinger field, i.e.
+<em>the vacuum tears before the bath pays for itself</em>; and the
+technology-proof killer is the identity τ&nbsp;=&nbsp;2πc/a — the bath's
+coherence time is set by the same acceleration that makes it, so there is no
+configuration in which you aren't paying for the reservoir you're harvesting.
+<span class="tag t-null">PRICED &amp; CLOSED</span>
+(<code>runtime_receipts/unruh_zpf_anisotropy_pricing.json</code>)</li>
+<li><strong>Free-air acoustic hover.</strong> The 1-atm ceiling and the
+momentum bookkeeping exclude human-scale free-air acoustic levitation — a
+pressure cushion's reaction goes into the ground, so it is ground-effect only.
+(This project retracted its own hoverbike lift story on exactly this audit;
+the corrected diagnosis is in <code>hover/GROUND_EFFECT_DIAGNOSIS.md</code>.)
+<span class="tag t-null">EXCLUDED</span></li>
+<li><strong>The over-unity package deal — stated precisely.</strong> What
+conservation rules out flat is <em>closed-system</em>
+over-unity: cyclic net work from a single equilibrium bath, no reservoir named.
+Devices offering lift <em>plus</em> that are the single most reliable fraud
+marker in this literature — refuse the package.
+<span class="tag t-null">FORBIDDEN</span> What this does <em>not</em> cover:
+open-system vacuum/near-field energy harvesting, which is a separate lane in
+this project with a measured, peer-reviewed anchor (Moddel-class MIM
+optical-cavity devices, ~70&nbsp;W/m², output ∝ 1/d) and a lawful frame —
+rectifying the ambient thermal near-field against the effectively-0&nbsp;K
+zero-point sector is a Carnot pair, and its non-negotiable signature is that a
+genuine device <strong>runs cold under load</strong> while an artifact warms.
+See <code>zero_point_energy.html</code> §7 and
+<code>optical_cavity_zpe.html</code>. The discipline: never argue conservation
+by reflex; <em>demand the reservoir inventory and the thermal sign</em>. A
+device claiming lift + energy that names its reservoir and shows the cold
+signature has earned a bench date, not a dismissal — one that names neither
+gets the fraud-marker treatment. <span class="tag t-open">OPEN (energy lane's
+question, not this paper's)</span></li>
+<li><strong>Pais patents as mechanism.</strong> The Navy patents are real and
+granted; the claimed physics fails by ~10 orders on its own numbers, the
+HEEMFG program's null stands (weakly), and the RT-superconductivity patent
+fails a kinematic bound a quartz watch refutes. Mine the <em>geometry</em>
+(double-shell charged/insulated cavity, counter-spin, acousto-optic dual
+drive) and discard the claims.
+<span class="tag t-null">REFUTED as physics</span> /
+<span class="tag t-open">OPEN as geometry</span></li>
+<li><strong>"The strong force is amplified gravity"</strong> (Nuclear
+Gravitation Field Theory and kin): fails universality — the dineutron, which
+its own logic predicts binds tighter than the deuteron, is not bound at all.
+<span class="tag t-null">REFUTED</span></li>
+</ul>
+
+<h2 id="s8">8. The under-exploited threads</h2>
+
+<p>Three places where the next real datum is cheapest:</p>
+
+<ol>
+<li><strong>The Wallace rerun.</strong> Henry Wm. Wallace (GE, patents
+US&nbsp;3,626,605/606, 1971) built rotating-mass devices whose materials were
+chosen by one axis nobody else has used: <em>half-integer nuclear spin</em>
+(Cu-63/65, Zn-67, Pb-207; spin-zero Fe and ¹²C as "insulators"). Unreplicated —
+and with no published null either. His Barnett-effect nuclear polarization at
+28&nbsp;kRPM was ~10⁻¹⁰; modern hyperpolarization (DNP/SEOP) reaches 0.1–1 —
+<strong>a rerun today is nine to ten orders of magnitude stronger on the source
+side</strong>, at university-lab cost. Bismuth-209 (spin 9/2, the highest of any
+quasi-stable nucleus) is the extremum of Wallace's own design axis and
+independently the corpus's rung-2 substrate. This is the best unplayed card in
+the electrogravitics deck. <span class="tag t-open">OPEN</span></li>
+<li><strong>The hairpin bench.</strong> The two classical force laws for
+current elements (Grassmann/Lorentz vs Ampère) agree exactly on every closed
+circuit and differ by a finite, cutoff-free <strong>29%</strong> on an open
+hairpin bridge closing through rails (5.35 vs 6.91 gram-force at 270&nbsp;A —
+<code>crypto_oracle/universe_sim/ampere_tension_sim.py</code>). A supercap
+bank, a load cell, and a weekend settle a 200-year-old question about
+longitudinal forces — and the open-circuit/closed-circuit distinction is the
+same one that governs whether a craft can push on the lattice at all ("the
+craft is the bridge, the substrate is the rails").
+<span class="tag t-der">DERIVED, bench-ready</span></li>
+<li><strong>The sign-flip protocol as a community standard.</strong> Most of
+this field's hundred-year noise floor exists because positives were reported
+without the §6 discriminator set. A drone company that publishes its balance
+design, its five controls, and its nulls — whatever the outcome — becomes the
+credible instrument this field has never had. That reputation is worth more
+than a marginal positive.</li>
+<li><strong>The document hunt.</strong> Three archival
+retrievals would move the §3 ledger more than any argument: the SNCASO
+"Project Montgolfier" report PDFs (released via Cornillon 2008 /
+Starburst 2012, primary site now offline — the target is the 1959 final
+report's force/current numbers, which no secondary source carries); the 1952 NRL "Appraisal
+of the T.T. Brown Electrogravity Device" (reported missing from the
+laboratory); and the 1968 Northrop electro-aerodynamics paper (drag
+reduction, not thrust — but a real claimed AIAA item reported vanished).
+Each is a bounded task with a binary outcome. Relatedly: Brown's surviving
+<em>electrometer logs</em> (family/biographer archive) reportedly show
+anomalies patterned on the sidereal calendar — the §6 sidereal-folding
+discriminator adjudicates that claim mechanically if the logs surface,
+and either outcome is informative.</li>
+</ol>
+
+<h2 id="s9">9. The Electrogravitics Claim</h2>
+
+<div class="box">
+<ol>
+<li>The force Townsend Brown measured in air is ion wind — conventional,
+useful, atmospheric, and not gravitational.
+<span class="tag t-meas">MEASURED</span></li>
+<li>Every published, independently instrumented vacuum test of the Brown
+effect is a null, and the tightest bounds the static-capacitor coupling at
+~2×10⁻¹⁰. The one claimed vacuum positive — Project Montgolfier, 1955–57 —
+is documented but unquantified in the surviving record, and stays open until
+its numbers are retrieved or the §6 bench speaks.
+<span class="tag t-meas">MEASURED</span> (published record) /
+<span class="tag t-open">OPEN</span> (the French residual)</li>
+<li>The mechanism exists unconditionally: electromagnetic fields curve
+spacetime (Einstein–Maxwell, 8πG/c⁴; exact lab-hardware solutions, Füzfa
+2016). The companion framework derives a specific force law —
+F&nbsp;=&nbsp;C·κ·U_drive/L_grad — in which Brown's geometry is the right
+shape and coherence is the proposed missing ingredient; weak-field gravity
+itself is closed by the underlying law with receipts.
+<span class="tag t-meas">THEOREM</span> (existence) /
+<span class="tag t-der">DERIVED</span> (form)</li>
+<li>That law's coupling constant C is the single open number. It has never
+been measured above zero. Hover requires ~10⁻⁶ of full coherence; the bare
+incoherent floor is ~10⁻⁴³.
+<span class="tag t-open">OPEN</span></li>
+<li>Hover, if the coupling exists, is a near-zero-power static lock;
+propellantless is not reactionless; symmetric drives give zero; over-unity is
+forbidden. <span class="tag t-der">DERIVED</span></li>
+<li>The decisive experiment is drone-shop-sized: one asymmetric device, one
+vacuum balance, five controls (§6). A positive that survives them changes
+everything; a clean null is the best bound ever published.
+<span class="tag t-open">OPEN</span></li>
+<li>No engineering claim in this lineage has survived audit to date — and
+this paper's own program is the audit it must survive.
+<span class="tag t-meas">MEASURED</span></li>
+</ol>
+</div>
+
+<h2>References &amp; receipts</h2>
+<ul>
+<li>T.T. Brown patents: GB 300,311 (1928); US 2,949,550 (1960); US 3,018,394
+(1962); US 3,022,430 (1962). Project Winterhaven (1952). <em>Electrogravitics
+Systems</em>, Aviation Studies Intl. (1956).</li>
+<li>Bahder &amp; Fazi, ARL-TR-3005 (2003). Xu et al., <em>Nature</em> 563, 532
+(2018). Talley, PL-TR-91-3009 (1991). Tajmar, AIAA J. Propul. Power (2004).
+Bartlett &amp; Tajmar, <em>Acta Astronautica</em> 181, 482 (2021).</li>
+<li>Hathaway, Cleveland &amp; Bao, <em>Physica C</em> 385, 488 (2003)
+(Podkletnov null). Harris, <em>Found. Phys. Lett.</em> 12, 201 (1999)
+(Li–Torr refutation). Graham et al., <em>Physica C</em> 468, 383 (2008).</li>
+<li>Wallace, US 3,626,605 and US 3,626,606 (1971). Buhler, US 11,511,891.
+Pais, US 10,144,532; US 10,322,827.</li>
+<li>Howard, Molter, Seely &amp; Yee, SAE Int. J. Aerosp. 16(3),
+doi:10.4271/01-16-03-0018 (2023) (Lynchpin airframe).</li>
+<li>Füzfa, <em>Phys. Rev. D</em> 93, 024014 (2016) (exact EM-sourced
+curvature). Tajmar, Kößling &amp; Neunzig, <em>Sci. Rep.</em> 14, 19427
+(2024) (broad coupling sweep). Tajmar et al., <em>Front. Phys.</em> 10,
+892215 (2022) (supercurrent bound). Ummarino &amp; Gallerati,
+<em>EPJ C</em> 77, 549 (2017); Gallerati, <em>Front. Phys.</em> 10,
+941858 (2022) (superconductor gravito-Maxwell). Survey:
+<code>papers/GRAVITY_ENGINEERING_DEEPDIVE_2026-08-13.md</code>.</li>
+<li>Framework receipts: <code>crypto_oracle/shape_F_gravity_closure_probe.py</code>
+(factor-2 ray trace); <code>runtime_receipts/unruh_zpf_anisotropy_pricing.json</code>
+(ZPF pricing); <code>crypto_oracle/universe_sim/ampere_tension_sim.py</code> +
+<code>papers/AMPERE_LONGITUDINAL_SECTOR_NOTE_2026-07-20.md</code> (hairpin);
+<code>papers/G_VERTEX_DERIVATION.md</code> (g ≤ 1/√3);
+<code>papers/WARP_DRIVE_MATH_AUDIT.md</code> (force law + conservation audit);
+<code>papers/BIEFELD_BROWN_SIM_PREREG_2026-07-19.md</code> (frozen pre-reg) →
+<code>crypto_oracle/universe_sim/biefeld_brown_sim.py</code> +
+<code>runtime_receipts/biefeld_brown_run.json</code> +
+<code>papers/RESULTS_BIEFELD_BROWN_2026-08-13.md</code> (run, all gates passed — §6);
+<code>hover/buhler_cross_check.py</code>, <code>hover/capacitor_cross_check.py</code>.</li>
+<li>Documentary audit behind the §3 Montgolfier row and the §8 document hunt:
+<code>papers/MICHELS_BROWN_DOCUMENTARY_AUDIT_2026-08-13.md</code> (§1/§1a).</li>
+</ul>
+
+<h2>Changelog</h2>
+<ul>
+<li><strong>2026-08-13</strong> — draft 0.1, written and revised in one day:
+initial field guide; mechanism register raised to theorem level
+(Einstein–Maxwell / Füzfa 2016 exact solutions; three-layer claim structure);
+Biefeld–Brown retrodiction sim run against its July pre-registration and
+scored (all four frozen predictions, all three gates); Montgolfier documentary
+audit folded into the §3 ledger and the §8 document hunt; Buhler
+claim-decline recorded; coverage analysis of the published null program (the
+one untested cell) added to §4; over-unity boundary stated precisely.</li>
+<li><strong>2026-08-14</strong> — draft 0.2: editorial pass — the day's
+addenda folded into the body prose; §2 restructured to lead with the
+Einstein–Maxwell theorem; audit-file provenance moved to References and this
+changelog. No claim, number, or tag changed.</li>
+</ul>
+
+<p class="meta">Earlier drafts of companion papers called the lattice coupling
+χ_ν; the current canonical object is the vertex-sharing strength g ≤ 1/√3 with
+substrate aggregate C_sub·|χν|² kept as the engineering coefficient. This paper
+uses "the coupling, C" throughout and lets the companions own the formalism.</p>
+
+</body>
+</html>

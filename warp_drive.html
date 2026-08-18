@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>The Warp Drive — a propellantless drive that warps the spacetime lattice</title>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style>
+  :root {
+    --ink: #1c1c1c; --paper: #fbfaf6; --green: #5a7d3a; --amber: #b88a2a;
+    --rust: #b04a2a; --rule: #d2cdbf; --soft: #8a8676; --blue: #1a5276;
+  }
+  html { background: #ece8df; }
+  body {
+    font-family: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+    max-width: 800px; margin: 2.5rem auto; padding: 2.5rem 2rem 4rem;
+    color: var(--ink); line-height: 1.62; background: var(--paper);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  }
+  h1 { font-family: "Helvetica Neue", Helvetica, sans-serif; font-weight: 700; font-size: 1.85rem; line-height: 1.25; border-bottom: 2px solid var(--ink); padding-bottom: 0.6rem; }
+  h2 { font-family: "Helvetica Neue", Helvetica, sans-serif; font-size: 1.25rem; margin-top: 2.6rem; }
+  h2 .num { color: var(--soft); font-weight: normal; margin-right: 0.4em; }
+  h3 { font-family: "Helvetica Neue", Helvetica, sans-serif; font-size: 1.05rem; margin-top: 1.7rem; color: #444; }
+  .byline { color: var(--soft); font-style: italic; margin-bottom: 2.2rem; font-size: 0.95rem; }
+  .tldr { background: #eef3e8; border-left: 4px solid var(--green); padding: 0.9rem 1.1rem; margin: 1.2rem 0; font-style: italic; }
+  .companion { background: #f0eee8; border-left: 4px solid var(--soft); padding: 0.6rem 1rem; margin: 1.2rem 0; font-size: 0.92rem; }
+  .doctrine { background: #1c1c1c; color: #f5f1e6; padding: 1rem 1.2rem; margin: 1.6rem 0; font-style: italic; line-height: 1.5; border-radius: 2px; }
+  .doctrine::before { content: "Doctrine sentence  ·  "; font-style: normal; color: var(--amber); font-family: "Helvetica Neue", Helvetica, sans-serif; font-size: 0.85rem; letter-spacing: 0.05em; }
+  .receipt { background: #eef3e8; border-left: 4px solid var(--green); padding: 0.8rem 1.1rem; margin: 1.2rem 0; font-size: 0.94rem; }
+  .receipt::before { content: "Derived / established  ·  "; font-style: normal; color: var(--green); font-family: "Helvetica Neue", Helvetica, sans-serif; font-size: 0.82rem; letter-spacing: 0.05em; font-weight: 600; }
+  .lemma { background: #fff8e8; border-left: 4px solid var(--amber); padding: 0.8rem 1.1rem; margin: 1.2rem 0; font-size: 0.94rem; }
+  .lemma::before { content: "Open — to be confirmed on the bench  ·  "; font-style: normal; color: var(--rust); font-family: "Helvetica Neue", Helvetica, sans-serif; font-size: 0.82rem; letter-spacing: 0.05em; font-weight: 600; }
+  .ic { background: #f0eee8; border-left: 3px solid var(--soft); padding: 0.6rem 1rem; margin: 1rem 0 1.6rem 0; font-size: 0.92rem; }
+  .ic::before { content: "Implementation consequence  ·  "; font-style: normal; color: var(--ink); font-family: "Helvetica Neue", Helvetica, sans-serif; font-size: 0.82rem; letter-spacing: 0.05em; font-weight: 600; }
+  .eq { text-align: center; margin: 1.1rem 0; font-family: "Cambria Math", "STIX Two Math", Georgia, serif; font-size: 1.06rem; }
+  code { font-family: "JetBrains Mono", Consolas, monospace; background: #f3eee0; padding: 0.05rem 0.3rem; border-radius: 2px; font-size: 0.9em; }
+  table { border-collapse: collapse; margin: 1.1rem auto; font-size: 0.9rem; }
+  th, td { border: 1px solid var(--rule); padding: 0.38rem 0.7rem; text-align: left; vertical-align: top; }
+  th { background: #f0eadb; font-family: "Helvetica Neue", Helvetica, sans-serif; }
+  td.n { text-align: right; font-family: "JetBrains Mono", Consolas, monospace; }
+  td.good { color: var(--green); font-weight: 600; } td.bad { color: var(--rust); }
+  hr.softrule { border: none; border-top: 1px solid var(--rule); margin: 2rem 0; }
+  ul, ol { padding-left: 1.5rem; } li { margin: 0.3rem 0; }
+  .smcap { font-variant-caps: small-caps; letter-spacing: 0.04em; }
+  .disclaimer { font-size: 0.84rem; color: var(--soft); border: 1px dashed var(--soft); padding: 0.7rem 1.1rem; margin: 2rem 0; border-radius: 2px; }
+</style>
+</head>
+<body>
+
+<style id="eg-site-nav-css">
+  .eg-nav{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:.8rem;
+    background:#1c1c1c;color:#ece8df;padding:.55rem 1.2rem;line-height:1.6;
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    box-shadow:0 1px 3px rgba(0,0,0,.25)}
+  body{margin-top:5.2rem !important}
+  .eg-nav a{color:#ece8df;text-decoration:none;margin-right:1rem;white-space:nowrap}
+  .eg-nav a:hover{text-decoration:underline}
+  .eg-nav .eg-home{font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+    margin-right:1.4rem}
+  .eg-nav .eg-cur{border-bottom:2px solid #b88a2a}
+  .eg-nav .eg-wrap{max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;
+    align-items:baseline}
+</style>
+<div class="eg-nav"><div class="eg-wrap"><a class="eg-home" href="index.html">Electrogravitics</a><a href="electrogravitics.html">Field guide</a><a href="the_shape_of_gravity.html">Gravity</a><a class="eg-cur" href="warp_drive.html">Mechanism</a><a href="hover_disk.html">Materials</a><a href="lynchpin_drone.html">Vehicle</a><a href="antigravity_devices.html">Bench floor</a><a href="superconductivity.html">Superconductivity</a><a href="magnetism.html">Magnetism</a><a href="the_scalar_field.html">Scalar field</a></div></div>
+
+<div style="background:#eef5fa;border-bottom:2px solid #1a5276;padding:10px 24px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;text-align:center;color:#1a5276;line-height:1.45;font-size:0.88em;">
+Companion in the Boundary Problem network. Mechanism paper for How to Build a UFO; substrate survey in <a href="hover_disk.html">The Hover Disk</a>; vehicle in <a href="lynchpin_drone.html">The Lynchpin Drone</a>.
+</div>
+
+<h1>The Warp Drive</h1>
+<p class="byline">
+  A propellantless drive that moves by warping the spacetime lattice — engineering a
+  gradient in the lattice's effective lengths and falling along it. The mechanism (the
+  elastic-metric law), the force, the current-best material, the <strong>closed-form
+  predicted thrust</strong>, and the one dial that scales it from a hoverbike disk to an
+  FTL warp bubble.<br>
+  Osika &amp; collaborators — draft 0.3, 2026-06-19.
+</p>
+
+<div class="tldr">
+  The <strong>Warp Drive</strong> moves with no ejected propellant by <em>warping the
+  spacetime lattice</em>. Its mechanism is the elastic-metric law of
+  <em>The Shape of the Universe</em> (§11.1): the energy stored on a lattice edge sets
+  that edge's effective length, <em>ℓ</em><sub>eff</sub> = <em>ℓ</em><sub>0</sub>·<em>F</em>(<em>E</em><sub>e</sub>/<em>E</em><sub>★</sub>).
+  A driven coherent body that stores energy <em>asymmetrically</em> therefore creates a
+  <strong>gradient</strong> in the effective lengths around it — a warp — and the body
+  accelerates along the slope it made, exactly as matter falls along the length-gradients
+  that are gravity. It is <em>propellantless</em> (no reaction mass) but <em>not
+  reactionless</em> (the warp lives in the lattice, which carries the reaction), so it
+  breaks no conservation law. In device form the force is a <strong>pressure</strong>
+  (N/m²) on the body's faces, F = (C<sub>sub</sub>|χ<sub>ν</sub>|²)·U<sub>drive</sub>·κ/L<sub>grad</sub>,
+  and a craft hovers when that pressure exceeds its areal weight ρ·<em>t</em>·<em>g</em>.
+  The dominant levers are exactly the ones the elastic law names: <strong>how much
+  coherent energy you store</strong> and <strong>how asymmetric (gradient) it is</strong> —
+  and that asymmetry is most naturally a <strong>handed swirl</strong>, one object behind
+  Schauberger's implosion, a spinning axis, and the 12-port ring-cascade, matched to the
+  lattice's own chiral φ-spiral (§4). Drive frequency is a secondary coupling factor whose
+  importance the bench decides.
+  Weak and asymmetric, the warp is a <em>force</em> (hover, thrust); driven to saturation
+  in a whole closed shell at a strong charge, the same warp <em>closes</em> into a bubble
+  or wormhole throat — <strong>effective, metric-engineered, GR-legal FTL</strong> (not
+  the forbidden flat-space kind), which is the goal (§8). These are <em>one machine on one
+  dial</em>: §13 derives the <strong>closed-form predicted thrust</strong> — the product of
+  Steiner's four ethers (energy · coupling · consonance · wholeness), with no free fudge
+  factor — and shows a hoverbike disk needs only ~one part in a million of full coherence to
+  self-lift, while a starship needs the whole shell. The
+  empirical case is real but not yet independently confirmed: Townsend Brown's contested
+  vacuum results (1956 onward) and Charles Buhler's ~2,000 vacuum experiments (2026)
+  report exactly the predicted signature — a force that is not ion wind and persists with
+  the stored field — while controlled peer-reviewed tests have so far returned nulls. This
+  paper states the mechanism, specifies the current-best build, and defines the single
+  experiment that promotes the drive from "sound mechanism with a suggestive record" to
+  "confirmed."
+</div>
+
+<div class="companion">
+  <strong>Companion papers.</strong> Ontology: <code>shape_of_the_universe.html</code>
+  (the spacetime lattice). Coupling bound: <code>G_VERTEX_DERIVATION.md</code>
+  (g ≤ 1/√3). Force law: <code>CHI_NU_FORCE_LAW.md</code>. Full material survey and
+  substrate ladder: <code>hover_disk.html</code>. Vehicle architecture:
+  <code>how_to_build_a_ufo.html</code>. Reproducible numbers:
+  <code>hover/disk_material_ladder.py</code>, <code>hover/capacitor_cross_check.py</code>.
+</div>
+
+<h2><span class="num">§1</span>What the drive is — the mechanism in one law</h2>
+<p>
+  <strong>In one breath, for the non-specialist.</strong> Energy and mass are the same
+  thing (E = mc²), and mass warps spacetime &mdash; that warping is what we feel as gravity.
+  So if a craft stores a large amount of energy in a rigid coherent body,
+  <em>lopsidedly</em>, it warps the spacetime around itself <em>lopsidedly</em> &mdash; a
+  self-made gravity dent, steeper on one side &mdash; and a lopsided dent is a force.
+  Nothing is thrown, so there is no exhaust &mdash; this is <em>implosion</em>, not
+  explosion: the craft falls <em>inward</em> into the dent it makes, the exact opposite of a
+  rocket flinging mass <em>outward</em> (the everyday-water intuition Viktor Schauberger spent
+  his life chasing; the bridge is in §2). And because the whole craft warps together
+  there is no felt g-force. There is a subtlety a careful reader will already feel &mdash;
+  you cannot move your own centre of mass by falling into a pocket you carry with you
+  &mdash; and §2 answers it head-on: the reaction momentum is real and rides the spacetime
+  lattice itself. The one thing this asks of physics is exactly what §2 defends: that
+  spacetime is a real medium a body can push against by warping it. The rest of this
+  section makes that precise.
+</p>
+<p>
+  A warp drive is a coherent body — a driven dielectric, resonator, or condensate —
+  engineered to store energy <em>asymmetrically</em>. Its mechanism is the elastic-metric
+  law of <em>The Shape of the Universe</em> (§11.1): the energy stored on a lattice edge
+  sets that edge's effective length — the phase delay it presents to waves —
+</p>
+<div class="eq">
+  \( \ell_{\rm eff}(e) \;=\; \ell_0\, \mathcal{R}\!\left(E_e/E_\star\right), \qquad
+     \mathcal{R}(x) \;=\; 1 + \gamma_1\,x + \mathcal{O}(x^2) \)
+</div>
+<p>
+  The scalar form of that response is now <em>derived</em>, not assumed: to leading order
+  γ<sub>1</sub> = <strong>+1</strong> with <strong>E<sub>★</sub> = 2 m<sub>edge</sub>c²</strong>
+  (the &ldquo;bowed-string&rdquo; result of the Shape paper §11.1 /
+  <code>ELASTIC_METRIC_BACKREACTION_LAW.md</code>). The positive sign is the physical
+  content: <em>stored energy lengthens the effective edge</em>, so paths near stored energy
+  get longer — attractive, gravity-like curvature, the right sign for a &ldquo;well.&rdquo;
+  A body that deposits a <strong>gradient</strong> of energy therefore warps the effective
+  lengths with a gradient, and that length-gradient is a force, exactly as ordinary matter
+  responds to the length-gradients we call gravity. Two cautions travel with this and are
+  made precise below: the response is so far <em>scalar</em> (one number per edge — a
+  steerable bubble needs the strong-field nonlinear regime, §8/§12), and the force on the body's <em>own</em> centre
+  of mass requires the lattice to carry the reaction momentum (§2), not a free fall into a
+  self-carried pocket.
+</p>
+<div class="doctrine">
+  The warp drive warps the spacetime lattice. The energy you store changes the lattice's
+  effective lengths; an <em>asymmetric</em> store makes a length-gradient; a length-gradient
+  is a force. Charge the body's coherent state asymmetrically and the gradient is that
+  force, with the reaction momentum carried by the lattice (§2) — gravity, run in reverse
+  and self-generated.
+</div>
+<div class="lemma">
+  What is <em>derived</em>: the <em>form</em> (the Shape paper's elastic-metric law) and now
+  the leading scalar response — γ<sub>1</sub> = +1, E<sub>★</sub> = 2 m<sub>edge</sub>c²,
+  lengthening sign. What remains <em>open</em>: the full response 𝓡 beyond first order, its
+  <em>tensor</em> (directional) structure, and the absolute <em>magnitude</em> on a real
+  substrate — the keystone Layer-2 calculation. A first numerical sign that the channel is
+  real: on a boundary-reverse test, fixed geometry settles 0/4 targets while a scalar
+  energy→length backreaction lifts it to 2/4. So the warp channel is named, its base
+  response derived and partly demonstrated, but not closed — the engineering below treats it
+  as a sound working mechanism, and §7 is what confirms the force at usable magnitude.
+  <em>(Every symbol with units: <code>WARP_DRIVE_MATH_AUDIT.md</code> §0.)</em>
+</div>
+
+<h2><span class="num">§2</span>Why it is propellantless but not reactionless</h2>
+<p>
+  This distinction is the whole game, and it is where the drive parts ways with both
+  rocketry and with the reactionless-drive claims that violate physics. A
+  <strong>reactionless</strong> drive — a force with no reaction at all — is forbidden,
+  because momentum conservation (Noether's theorem, the translational symmetry of
+  space) is not negotiable. A <strong>propellantless</strong> drive is allowed: it
+  carries no reaction <em>mass</em>, but the reaction <em>momentum</em> is real and is
+  carried off by a field or medium — photons for a solar sail, the rails for a maglev,
+  and, here, the <strong>spacetime lattice</strong>.
+</p>
+<div class="receipt">
+  The momentum a field can carry is established physics. The electromagnetic field
+  stores momentum (Maxwell stress / Poynting); converting <em>field momentum</em> into
+  <em>mechanical momentum</em> was demonstrated in the 1970s for the angular case
+  (the Feynman-disk paradox). The linear analogue is normally cancelled by relativistic
+  <em>hidden momentum</em> (Shockley–James); a geometry that evades that cancellation
+  leaves a net mechanical impulse with the field carrying the reaction. The Lattice
+  Coupling Drive is the same bookkeeping with the spacetime lattice as the deepest
+  momentum reservoir: the body pushes on the lattice, the lattice pushes back, and the
+  ledger balances. <em>(This is why §2 of the hover-disk paper shows acoustic hover
+  needs a ground while the warp drive does not — the lattice replaces the ground as the sink.)</em>
+</div>
+<p>
+  The single honest test of any propellantless claim is: <em>where does the reaction
+  momentum go?</em> Answering it precisely splits the mechanism into two regimes that must
+  not be conflated (full bookkeeping:
+  <code>VERTEX_SHARING_FORCE_LAW_BRIDGE_2026-06-12.md</code> §5,
+  <code>WARP_DRIVE_MATH_AUDIT.md</code> §2):
+</p>
+<table>
+  <thead><tr><th>Regime</th><th>What it does</th><th>Momentum bookkeeping</th></tr></thead>
+  <tbody>
+    <tr><td><strong>(a) Gradient force on a <em>separate</em> object</strong></td>
+        <td>levitate / trap / push another mass (the LPOH printer; a tractor field)</td>
+        <td><em>F</em> = −∇<em>E</em><sub>int</sub> is the complete force; can be large;
+        <strong>not P/c-bounded</strong> (it is not a recoil). This is the sense in which
+        <code>CHI_NU_FORCE_LAW.md</code> is right that the channel is &ldquo;not
+        P/c-limited.&rdquo;</td></tr>
+    <tr><td><strong>(b) Net self-propulsion</strong> (moving the craft's own CoM)</td>
+        <td>the warp drive proper</td>
+        <td>A <em>static, conservative</em> self-made gradient gives <strong>zero</strong>
+        net CoM thrust — you cannot fall into a pocket you carry (translation invariance,
+        ∮F·dX = 0). Net thrust needs momentum handed to the lattice,
+        <em>⟨F⟩ ≲ P<sub>coupled</sub>/v<sub>L</sub></em>, <strong>or</strong> a
+        non-conservative, time-asymmetric drive cycle (§4's &ldquo;jerk&rdquo;).</td></tr>
+  </tbody>
+</table>
+<div class="lemma">
+  <strong>The honest crux of the self-propulsion claim is the lattice-mode speed
+  v<sub>L</sub>.</strong> The recoil rides a lattice mode and the thrust-per-watt scales as
+  1/v<sub>L</sub>: if v<sub>L</sub> ≈ c the drive is a photon-rocket (~nN/W, useless for
+  lift); only a slow, dense momentum-carrying lattice mode (v<sub>L</sub> ≪ c) gives liftable
+  thrust. <strong>The framework does not yet fix v<sub>L</sub> — it is the single dynamical
+  assumption a saucer-scale claim rests on,</strong> and §7's thrust-per-watt measurement is
+  what reads it off. Regime (a) is already lawful and bench-real; regime (b) is lawful
+  <em>conditional on v<sub>L</sub></em>, and that condition is stated here, not buried in a
+  small denominator.
+</div>
+<p>
+  Either way the warp drive is on the lawful side of the reactionless line: it answers
+  &ldquo;where does the momentum go?&rdquo; with &ldquo;the lattice,&rdquo; and §7 checks
+  that answer directly. This bookkeeping is not idiosyncratic: the Polarizable-Vacuum
+  propulsion analysis states the identical constraint (Puthoff &amp; Little 2002 §2.1 and
+  Appendix A — static fields cannot self-propel because of hidden momentum; a propellantless
+  drive must couple to the external universe / metric), the same model §11 cross-checks the
+  rest of this paper against.
+</p>
+
+<h3>The two flight modes — standing on the lattice (hover) vs swimming through it (travel)</h3>
+<p>
+  <strong>In plain terms.</strong> Holding something up costs no energy once it is held: a
+  table holds a book at zero power; a maglev train floats at almost none. Energy is the price
+  of <em>changing</em> motion, not of <em>keeping</em> it. The drive has exactly those two
+  modes, and they are physically different cases of the bookkeeping above:
+</p>
+<table>
+  <thead><tr><th>Mode</th><th>What it is</th><th>Energy cost</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Hover</strong> (Lazar's &ldquo;Omicron&rdquo;)</td>
+        <td>The lattice <em>supports</em> the craft against gravity — a static upward force via
+        the χ<sub>ν</sub> coupling, with the reaction carried by the lattice (the craft
+        &ldquo;stands on&rdquo; spacetime the way a book stands on a table). Tune the charge so
+        the support equals the weight <em>mg</em> and the craft locks in place. This is
+        <em>not</em> the free-space self-propulsion of regime (b) — nothing accelerates, so the
+        bootstrap does not bite; it is the lawful cousin of diamagnetic levitation (the
+        levitating frog; <code>hover_disk.html</code> §11).</td>
+        <td><strong>≈ zero.</strong> Nothing moves, so no work is done (P = F·v = 0); the only
+        power is the field's losses, and a low-loss (e.g. superconducting) store approaches free
+        hover. The single open question is the coupling magnitude — can χ<sub>ν</sub> produce a
+        support force of <em>mg</em>? (the same bench number as everywhere else).</td></tr>
+    <tr><td><strong>Travel</strong> (Lazar's &ldquo;Delta&rdquo;)</td>
+        <td>Changing the craft's own momentum — accelerating through free space. This <em>is</em>
+        regime (b) self-propulsion: the reaction momentum must ride the lattice (the
+        v<sub>L</sub> channel) or a non-conservative drive cycle.</td>
+        <td><strong>Costs energy.</strong> Accelerating is work; and at the limit — a whole
+        coherent shell at saturation — the warp closes into a bubble (§8, §12). This is the hard,
+        energy-intensive, v<sub>L</sub>-gated regime.</td></tr>
+  </tbody>
+</table>
+<div class="ic">
+  <strong>Travel is regenerative — recoverable, but not free.</strong> If the coupling is
+  conservative (a true −∇E<sub>int</sub> force), the drive is <em>reversible</em>: energy spent
+  accelerating out is recovered decelerating in, exactly as regenerative braking (KERS) returns
+  a car's kinetic energy to its battery. A round trip then costs only the <em>losses</em>
+  (radiation, dissipation) plus any net work — not the gross momentum changes — a real, large
+  efficiency for a low-loss coupling. It is <em>not</em> perpetual motion: you recover what you
+  put in <em>minus</em> losses, and the first law forbids net energy out. &ldquo;Highly
+  regenerative, fuel ≈ losses&rdquo; is the honest claim; &ldquo;free energy / never runs
+  down&rdquo; is not — and no exotic fuel (an &ldquo;element-115 reactor&rdquo;) is needed or
+  implied: any energy store works.
+</div>
+<p>
+  This is also the honest reading of the static-charge results (Brown, Buhler): a persistent
+  <em>force on a balance</em> is the hover/support mode — the lattice holding the device, doing
+  no work — <em>not</em> a measured free-flight acceleration. That is why &ldquo;a charged object
+  accelerates forever in vacuum&rdquo; would be the reactionless red flag, while the support
+  reading is the conservation-honest one. The §4 frequency question then resolves into the two
+  modes: the <em>static</em> coupling holds a hover (the DC end); the <em>driven</em> coupling does
+  the work of travel — two regimes of one force, not two rival guesses.
+</p>
+<div class="ic">
+  <strong>The everyday-water bridge — Viktor Schauberger, &ldquo;right shape, wrong
+  physics.&rdquo;</strong> A forester with no mathematics, watching a trout hang motionless in
+  a cold current and then dart upstream, reached this same architecture from the opposite end:
+  <em>implosion, not explosion</em> — create by drawing a medium <em>inward</em> in a cold,
+  coherent, handed spiral, not by flinging it outward. Three of his intuitions map onto this
+  paper line for line (<code>viktor_schauberger.html</code> §8):
+  <ul>
+    <li><strong>Implosion = the inward-fall.</strong> Throw nothing; make a dent and fall in.
+      &ldquo;Travel&rdquo; is implosion drawn on spacetime — the Sport Model's Delta mode
+      <em>converges</em> its beams and falls into the focal point (<code>how_to_build_a_ufo.html</code> §11).</li>
+    <li><strong>&ldquo;Cold = living, heat = dead&rdquo; = the coherence budget.</strong> His
+      insistence on keeping the water near +4&nbsp;°C is, in our terms, the <em>decoherence</em>
+      budget: phase-locked low-entropy modes couple to the lattice, thermal ones average away.
+      &ldquo;Keep it cold or you lose it&rdquo; is the life-ether coherent fraction
+      S<sub>coh</sub> (§13) in plain language.</li>
+    <li><strong>His fatal error = the line this paper holds.</strong> Schauberger crossed into
+      <em>over-unity</em> — free energy, a self-running vortex — the exact conservation wall the
+      regenerative note above refuses. A high-Q loop recycles nearly everything but never more
+      than everything: hover can be ≈ free, but <em>work is always paid for</em>. He is the
+      inspiration <em>and</em> the warning — <strong>keep the shape, keep the books.</strong></li>
+  </ul>
+</div>
+
+<h2><span class="num">§3</span>The force law — and is it per area or per weight?</h2>
+<p>
+  The force is an energy-gradient law (full derivation: <code>CHI_NU_FORCE_LAW.md</code>):
+</p>
+<div class="eq">
+  \( F \;=\; -\,\nabla E_{\rm int} \;=\; \big(C_{\rm sub}\,|\chi_\nu|^2\big)\;U_{\rm drive}\,\dfrac{\kappa}{L_{\rm grad}} \)
+</div>
+<p>
+  with <em>U</em><sub>drive</sub> the stored coherent energy (for a field drive,
+  ½ε<sub>r</sub>ε<sub>0</sub><em>E</em>²·<em>V</em>), κ the drive-asymmetry factor that
+  sets direction, <em>L</em><sub>grad</sub> the gradient length (≈ body radius), |χ<sub>ν</sub>|²
+  the squared lattice-coupling strength, and <em>C</em><sub>sub</sub> the substrate
+  normalization. Both answers to your question are correct, and they are linked:
+</p>
+<ul>
+  <li><strong>The drive is rated per area — it is a pressure.</strong> Written per unit
+    face area, the force is <em>P</em><sub>w</sub> = <em>C</em><sub>sub</sub>|χ<sub>ν</sub>|²·κ · ½ε<sub>r</sub>ε<sub>0</sub><em>E</em>²
+    — the coupled, <em>asymmetry-weighted</em> fraction of the electrostatic pressure
+    (units N/m² = Pa). The κ is not optional: drop it and this is the full symmetric Maxwell
+    stress, which produces <em>no net thrust</em> (§4). This is the natural device spec, and
+    it matches the one real dataset: Buhler's thrust scaled with electrode <em>area</em>.</li>
+  <li><strong>Self-lift is per weight — and it is size-independent.</strong> Total lift
+    is <em>P</em><sub>w</sub> × (face area); the craft's weight is ρ·<em>t</em>·<em>g</em> ×
+    (face area). The area cancels, leaving the hover condition
+    <div class="eq" style="margin:0.5rem 0;">\( P_{\rm w} \;\ge\; \rho\,t\,g \qquad\text{(drive pressure} \ge \text{areal weight)} \)</div>
+    so whether a disk can lift itself depends on the <em>material and the field</em>, not
+    the size — a thinner, lower-density body self-lifts at lower pressure.</li>
+</ul>
+<p>
+  <strong>The total-force and pressure forms are one statement, not two.</strong> For a slab
+  of face area <em>A</em>, thickness <em>t</em>, volume <em>V = A·t</em>, driven across its
+  thickness (so L<sub>grad</sub> ≈ <em>t</em> and U<sub>drive</sub> = u<sub>drive</sub>·<em>V</em>
+  with u<sub>drive</sub> = ½ε<sub>r</sub>ε<sub>0</sub><em>E</em>²):
+</p>
+<div class="eq">
+  \( F = C_{\rm sub}|\chi_\nu|^2\kappa\,\dfrac{U_{\rm drive}}{L_{\rm grad}}
+       = C_{\rm sub}|\chi_\nu|^2\kappa\, u_{\rm drive}\, A
+       = P_{\rm w}\, A \)
+</div>
+<p>
+  Dimensions check both ways — [N] = (J)/(m) and [Pa] = (J/m³) — and the bridge is just
+  U<sub>drive</sub> = u<sub>drive</sub>·<em>V</em> with L<sub>grad</sub> ≈ <em>t</em>. Full
+  dimensional audit: <code>WARP_DRIVE_MATH_AUDIT.md</code> §1.
+</p>
+<div class="ic">
+  <strong>The two figures are linked by the disk's areal density ρ·<em>t</em>.</strong>
+  Quote the drive in <strong>Pa (force per area)</strong>; quote the vehicle in
+  <strong>F/W = P<sub>w</sub>/(ρ·<em>t</em>·<em>g</em>) (per weight)</strong>. For
+  scale: a 1 mm diamond skin has areal weight ρ·<em>t</em>·<em>g</em> ≈ 34 Pa, so it
+  hovers once the drive delivers ~34 Pa; the best reported device to date (~200 µN over
+  ~8 in²) is ~0.04 Pa — about 10³× short, which is the gap §4's levers (more stored
+  energy, sharper gradient, better coupling) are meant to close.
+</div>
+
+<h2><span class="num">§4</span>The levers — stored energy and its gradient first; frequency is open</h2>
+<p>
+  The elastic-metric law settles which levers are primary. The force is the gradient of
+  the warp, and the warp is set by the energy stored on the lattice edges — so the two
+  certain levers are exactly the two you would expect:
+</p>
+<ol>
+  <li><strong>How much coherent energy you store (U<sub>drive</sub>).</strong> More
+    stored energy → deeper warp → larger force, linearly. <em>So the instinct "build up
+    as much stored coherent energy as possible" is correct.</em></li>
+  <li><strong>How asymmetric it is (κ).</strong> A <em>uniform</em> store warps the
+    lattice uniformly and produces <em>no net force</em> — the slopes cancel. The force
+    comes entirely from the <strong>gradient</strong>. This is the one addition to the
+    stored-energy instinct: it is not stored energy that drives, it is stored-energy
+    <em>asymmetry</em>.</li>
+</ol>
+<p>
+  A third factor is the <em>coupling</em>: how efficiently the body's stored energy
+  actually lands on the lattice edges, where the warp lives. The naive estimate for that
+  coupling efficiency is η ≈ v<sub>phase</sub>/c — the coherent mode's phase velocity over
+  <em>c</em> — which, if correct, would favour a high-frequency electromagnetic drive:
+</p>
+<table>
+  <thead><tr><th>Drive / mode</th><th>v<sub>phase</sub></th><th>η ≈ v/c (naive)</th></tr></thead>
+  <tbody>
+    <tr><td>DC / electrostatic (ω → 0)</td><td class="n">→ 0</td><td class="n">→ small</td></tr>
+    <tr><td>bulk acoustic</td><td class="n">~5 km/s</td><td class="n">~10⁻⁵</td></tr>
+    <tr><td>THz / optical (c/n)</td><td class="n">~0.1–0.3c</td><td class="n">~0.1–0.3</td></tr>
+  </tbody>
+</table>
+<div class="lemma">
+  <strong>Whether frequency matters at all is open — this paper does not assert it as
+  the dominant lever.</strong> η ≈ v<sub>phase</sub>/c is a <em>naive overlap estimate</em>,
+  not a derived result, and the elastic-metric law of §1 makes no reference to frequency —
+  it ties the warp to stored energy and its gradient. Pointing the other way, Buhler's
+  vacuum result (if real) is <em>DC</em> and <em>persists with the static stored field</em>,
+  which suggests a static store already couples — i.e. that stored energy, not frequency,
+  is what matters. So there are two live hypotheses: <strong>(A)</strong> coupling rises
+  with frequency (η ≈ v/c → high-frequency AC wins), or <strong>(B)</strong> coupling is
+  set by the stored field regardless of frequency (DC + maximum stored energy works). The
+  §7 frequency sweep is built precisely to decide between them. <em>(An earlier draft
+  called frequency "the dominant lever" — that over-stated the naive estimate; corrected
+  here.)</em>
+</div>
+<p>
+  Independent of that fork, three substrate properties raise the coupling (the ladder of
+  <code>hover_disk.html</code> §4): lattice-symmetry match (icosahedral / φ geometry), a
+  broken-symmetry coupling channel (multiferroic / spin–orbit), and a phase-coherent
+  condensate at the boundary. Those are the substrate's job; storing a large, sharply
+  asymmetric coherent energy is the drive's job.
+</p>
+<div class="ic">
+  <strong>The asymmetry wants to be a swirl — and the swirl is one object under four names.</strong>
+  The force needs a directional asymmetry (κ ≠ 0), and its <em>natural</em> form is not a static
+  lopsidedness but a <strong>handed inward spiral</strong> — because the lattice itself is one
+  (pentagons force cos&nbsp;36° = φ/2, φ is a handed spiral, the loops are chiral). A swirl drive
+  matches that chirality, so it couples <em>consonantly</em> (the §13 chemical ether), imposes
+  angular momentum, and selects a handedness (A<sub>5</sub> → A<sub>5</sub>⋊ℤ<sub>2</sub>). The same
+  swirl appears across the network under four names:
+  <ul>
+    <li><strong>Implosion</strong> (Schauberger, §2) — create by drawing a medium <em>inward</em>
+      in a cold, handed cycloid spiral: the everyday-water picture of the inward-fall.</li>
+    <li><strong>Spin</strong> (Pais's HEEMFG, claims stripped) — a spinning charged/polarized body
+      builds a high-stored-energy field with a built-in axis, a clean spatial symmetry-breaker in
+      ordinary, well-posed electrodynamics (no vacuum mysticism needed).</li>
+    <li><strong>The ring-cascade drive</strong> (<code>all_you_need_is_water.html</code>) — twelve
+      ports phased by 2π/12, a rotating field on the lattice's twelve: the engineered version of the
+      handed spiral, named there <em>after</em> Schauberger.</li>
+    <li><strong>Jerk</strong> (the temporal companion) — a time-asymmetric envelope (fast spin-up,
+      hold, slow spin-down, chirped bursts) is the <em>non-conservative cycle</em> regime (b) needs
+      (§2). Spatial swirl and temporal jerk are the two faces of one directional drive.</li>
+  </ul>
+  So &ldquo;spin&rdquo; is not a hopeful add-on: it is the directional asymmetry realized in the form
+  the lattice's own chiral φ-geometry prefers. (Keep Pais's spin/jerk and Schauberger's implosion;
+  discard the HEEMFG causal story — vacuum polarization, 10³³ W/m², mass reduction — and the
+  over-unity claim: §1's elastic-metric law and §2's conservation books supply the physics.)
+</div>
+
+<h3>The boundary-coverage ladder <em>(added 2026-08-13, from the 2026-07-18 revision notes)</em></h3>
+<p>
+  A second lever hides inside κ that the list above states only implicitly: <strong>how much of the
+  drive body's boundary is under independent control</strong>. The interior field of a bounded
+  region is set by its boundary data (§11's Kirchhoff–Helmholtz note makes this rigorous), so the
+  number of independently driven boundary elements is the number of interior modes the drive can
+  address. That gives a programmability ladder, each rung a strict superset of the one below:
+</p>
+<ul>
+  <li><strong>1 plate</strong> — a single asymmetric capacitor face: one fixed κ direction, no
+    steering. Brown's geometry, and every published null device.</li>
+  <li><strong>2 plates</strong> — amplitude ratio and relative phase: κ becomes signable and
+    modulable, still one axis.</li>
+  <li><strong>6 faces</strong> — a closed box under independent drive: κ steerable in 3-D, the
+    first rung where a closed-shell interior exists at all.</li>
+  <li><strong>12 ports</strong> — the lattice-matched rung (icosahedral placement, the ring-cascade
+    2π/12 phasing of §4's swirl): enough boundary DOF to write a rotating, handed pattern that
+    matches the carrier's own symmetry.</li>
+  <li><strong>Fullerene shell</strong> — boundary elements at every cage vertex: the continuum
+    limit, a fully programmable boundary, the §8 whole-shell regime's hardware form.</li>
+</ul>
+<p>
+  The ladder reframes the published record: the nulls all sit on rung 1, which cannot steer, cannot
+  rectify a cycle, and addresses one mode. It also names what the §5 build buys — the 12-segment
+  rim is rung 4, not a styling choice.
+</p>
+
+<h2><span class="num">§5</span>The current-best build</h2>
+<p>
+  The full material survey is in <code>hover_disk.html</code>; here is the single
+  recommended device, chosen to win the levers that are buildable today. It is, in one
+  line, <strong>Buhler's asymmetric high-K capacitor + our frequency lever + a
+  coupling-active dielectric</strong>:
+</p>
+<table>
+  <thead><tr><th>Layer</th><th>Choice</th><th>Why</th></tr></thead>
+  <tbody>
+    <tr><td>Electrodes (both faces)</td><td>graphene (12-segment rim), few-layer on the HV bus</td><td>transparent, patternable for directional drive, atomically smooth (raises breakdown); does not short the dielectric</td></tr>
+    <tr><td>Coupling dielectric</td><td>epitaxial <strong>BiFeO₃</strong> (multiferroic), hBN-buffered</td><td>high-K insulator that holds the field <em>and</em> carries a magnetoelectric coupling channel (P2); THz-electromagnon driveable</td></tr>
+    <tr><td>Geometry</td><td>asymmetric / graded (electrode area or dielectric gradient)</td><td>makes ∂|χ<sub>ν</sub>|²/∂X ≠ 0 — the asymmetry sets the force direction (κ)</td></tr>
+    <tr><td>Drive</td><td><strong>RF → THz</strong> (with a DC arm)</td><td>exercises the §4 coupling <em>fork</em>: RF→THz tests hypothesis A (coupling rises with frequency) and, if it holds, is what distinguishes this from prior DC asymmetric-capacitor work; the paired DC arm tests hypothesis B — the build settles the fork rather than assuming it</td></tr>
+  </tbody>
+</table>
+<p>
+  The clean-field alternative (highest breakdown, no leakage, with the icosahedral
+  geometry etched in as a photonic quasicrystal) is a <strong>diamond</strong> dielectric
+  in the same graphene/hBN stack — see <code>hover_disk.html</code> §14. Either way the
+  drive spec is the pressure of §3, and the target is <em>P</em><sub>w</sub> ≥ ρ·<em>t</em>·<em>g</em>.
+</p>
+<div class="ic">
+  <strong>Build the BiFeO₃ layer strain-engineered and ultrathin, not bulk.</strong>
+  Recent work (2026) stabilises a metastable, strain-rotated "S-phase" in epitaxial
+  ultrathin BiFeO₃ — e.g. (BiFeO₃/Ca<sub>0.96</sub>Ce<sub>0.04</sub>MnO₃)<sub>4</sub>
+  multilayers on LaAlO₃ — that beats the ~30 nm thinning limit and quadruples the
+  piezoelectric response (d₃₃ ≈ 30 pm/V) via interfacial-strain-driven
+  <em>polarization rotation</em>. Polarization is the broken-symmetry order parameter
+  that carries the P2 coupling channel, so a strain-rotated, few-nm BiFeO₃ multilayer is
+  both the thin high-field layer the stack wants and a tuned order parameter. <em>Honest
+  caveat: the measured 4× is piezoelectric, not the magnetoelectric / χ<sub>ν</sub>
+  coupling — the link to lattice coupling is inference, not a measured input. It sharpens
+  the build, not the force number.</em>
+</div>
+<div class="ic">
+  Everything above the dielectric is conventional, buildable hardware (graphene
+  electrodes, hBN buffers, HV/RF drive). The single open material number is the coupling
+  C<sub>sub</sub>|χ<sub>ν</sub>|² at the chosen frequency — which is what §7 measures.
+</div>
+
+<h2><span class="num">§6</span>The empirical case — real, and not yet confirmed</h2>
+<p>
+  The honest state of the evidence, stated plainly so the mechanism above is not
+  oversold:
+</p>
+<div class="receipt">
+  <strong>Two independent reports show the predicted signature.</strong> Thomas
+  Townsend Brown reported (1920s–1960s) that high-voltage asymmetric capacitors produce
+  thrust, with accounts (the Cornillon testimony, a 1956 Paris vacuum-chamber report) of
+  a positive result in vacuum. Charles Buhler (NASA Kennedy Space Center electrostatics
+  lead; Exodus Propulsion), across ~2,000 vacuum test-articles (2026), reports 5–10 mN
+  of thrust that is <em>not</em> ion wind (a sealed-box lifter flatlines while his device
+  does not) and that <em>persists while the stored field persists</em> — and frames the
+  mechanism, correctly, as field-momentum → mechanical-momentum conversion. Both reports
+  match the warp drive prediction: a propellantless force scaling with stored field energy, not
+  ion wind, persisting with the coherent state.
+</div>
+<div class="lemma">
+  <strong>Neither has been independently confirmed, and controlled tests have returned
+  nulls.</strong> Brown's record is contested and partly anecdotal; Buhler's is
+  unpublished, unreviewed, and unreplicated by an outside lab, and does not yet exclude
+  thermal/outgassing or charge-coupling-to-chamber artifacts. The controlled,
+  peer-reviewed vacuum experiments on the record (Talley 1991, Campbell 2004, Tajmar
+  2004 to &lt;10 µN, Bartlett &amp; Tajmar 2021 to nano-Newton) found <em>no</em> net
+  force. So the position of this paper is exact: <strong>the mechanism is sound and the
+  empirical case is genuinely suggestive, but the force is not yet established.</strong>
+  What separates "suggestive" from "confirmed" is one experiment, below.
+</div>
+<p>
+  A third case sharpens both the design and the honesty. <strong>Salvatore Pais</strong>
+  (US Navy / NAWC) patented and ran a funded program (HEEMFG, 2016–19) on a different
+  bet: that <em>accelerated spin + vibration of a charged body in a rapid transient mode</em>
+  produces the effect. The institutional facts are real (granted patents; the CTO vouched
+  it "operable"; ~$0.5M program), but the physics is unvalidated and the test came back
+  <em>null</em> — with a crucial asterisk: the rig <em>spun the disk but could not vibrate
+  it</em>, and never reached the charge regime Pais specified, so it <strong>never tested
+  his actual hypothesis</strong>. Two honest reads follow. The "suppressed breakthrough"
+  story is <em>not</em> supported by the record (public patents, a published paper, and
+  FOIA-released null reports are the opposite of suppression); but the null is <em>weak</em>
+  evidence against the idea, because the experiment was incomplete. Pais is best treated as
+  an <em>engineering-motif source</em> (§4: spin and jerk), not a result.
+</p>
+<p>
+  Notably, Brown and Buhler are DC; Pais bet the other way (high-frequency accelerated
+  transients). So the existing record straddles the §4 fork rather than settling it — which
+  is exactly why the §7 frequency/transient sweep is the measurement that matters.
+</p>
+
+<h2><span class="num">§7</span>The experiment that settles it</h2>
+<p>
+  One measurement promotes the warp drive from "sound mechanism, suggestive record" to
+  "confirmed," and it is the one nobody — including Buhler — has run. Drive the §5
+  structure on a <strong>vacuum force balance</strong>, and apply the two controls that
+  the χ<sub>ν</sub> mechanism makes decisive:
+</p>
+<ol>
+  <li><strong>Stored-energy &amp; gradient scaling (the positive test).</strong> Vary the
+    stored coherent energy U<sub>drive</sub> and the drive asymmetry κ. The mechanism
+    predicts the force scales with the <em>stored-energy gradient</em> — linear in
+    U<sub>drive</sub>, and vanishing as the drive becomes symmetric (κ → 0). A force that
+    tracks the asymmetric stored energy, and dies when the drive is made symmetric, is the
+    elastic-metric signature.</li>
+  <li><strong>Frequency sweep (the A/B decider).</strong> Sweep the drive DC → RF →
+    (toward) THz at fixed stored energy. This settles the §4 fork: if the force
+    <em>rises with frequency</em>, the coupling is mode-overlap-limited (η ∝ v<sub>phase</sub>/c,
+    hypothesis A); if it is <em>frequency-independent</em> but tracks the stored field,
+    the coupling is stored-energy-limited (hypothesis B — consistent with Buhler's DC
+    result). Either outcome is informative; neither is assumed.</li>
+  <li><strong>Chamber variation (the artifact-killer).</strong> Hold the device and its
+    charge state fixed and vary the chamber (wall distance, geometry, grounded vs
+    floating). A lattice coupling is <em>chamber-independent</em> (the lattice is
+    everywhere); a trapped-charge / wall-coupling artifact <em>tracks the chamber</em>.
+    This directly tests Buhler's "persists unplugged" result: real → unchanged by the
+    walls; artifact → changes.</li>
+  <li><strong>Standard nulls:</strong> heated dummy-mass (thermal/outgassing),
+    same-power resistive load, polarity flip, and the stored-energy audit (does the field
+    energy drain as work is done?).</li>
+</ol>
+<div class="receipt">
+  Pass condition: a directional force that <strong>scales with the asymmetric stored
+  energy</strong> (and dies at κ → 0), is <strong>independent of the chamber</strong>,
+  survives the thermal and dummy-load nulls, and exceeds the ~2×10⁻¹⁰ N balance bound.
+  That result is the first confirmation of the warp drive; the frequency sweep then tells
+  you <em>how</em> to make it stronger (A or B). A null across stored energy and frequency
+  bounds C<sub>sub</sub>|χ<sub>ν</sub>|² at that substrate — a real measurement either way.
+</div>
+<div class="ic">
+  <strong>The procedural lesson from Pais's null:</strong> the HEEMFG rig <em>spun</em> the
+  charged disk but had no way to <em>vibrate</em> it at the same time, so it never applied
+  the spin-and-vibration coupling its own hypothesis required — an uninterpretable null,
+  not a refutation. This apparatus must therefore apply <strong>drive, spin, and vibration
+  to the same body simultaneously, with independent phase/frequency control</strong>, or it
+  will reproduce the same ambiguous result.
+</div>
+
+<h2><span class="num">§8</span>From force to warp bubble — the capability ladder</h2>
+<p>
+  The force of §3 is the <em>weak-coupling</em> limit of the warp. The same mechanism,
+  driven harder, is the whole point: as the substrate aggregate approaches saturation
+  (<em>g</em><sub>sub</sub>·<em>S</em><sub>coh</sub> → 1 — a full closed coherent shell at
+  a strong charge, not a single driven face), the warp stops being a gentle gradient and
+  becomes strong enough to <em>close</em> — a warp bubble, or a wormhole throat. This is
+  one mechanism across a ladder (UFO §13, §18A), not separate effects — and §13 makes it
+  <em>quantitative</em>: the same closed-form thrust, read off one coherence dial, gives every
+  rung below.
+</p>
+<table>
+  <thead><tr><th>Regime</th><th>Acceleration / capability</th><th>Coupling</th></tr></thead>
+  <tbody>
+    <tr><td>Hover, flight (the near-term drive)</td><td class="n">0.1–1 g</td><td>modest η</td></tr>
+    <tr><td>Tic-Tac envelope</td><td class="n">10³–10⁴ g</td><td>near-saturation, full shell</td></tr>
+    <tr><td>Near-c flight</td><td class="n">→ relativistic</td><td>near-saturation</td></tr>
+    <tr><td><strong>Warp bubble / wormhole (the goal)</strong></td><td class="n good">effective FTL</td><td>g<sub>sub</sub>·S<sub>coh</sub> → 1 (ceiling ~c²/L)</td></tr>
+  </tbody>
+</table>
+<div class="doctrine">
+  The warp drive and the warp bubble are the same machine at two strengths. A weak,
+  asymmetric warp is a force (hover, thrust). A strong warp from a whole shell at a high
+  charge <em>closes</em> the geometry into a bubble or a wormhole throat — and that is the
+  goal: not faster atmospheric flight, but <strong>effective faster-than-light transit</strong>.
+</div>
+<div class="lemma">
+  <strong>Effective FTL, not flat-space FTL — and that distinction is the framework's
+  own, not a hedge.</strong> A warp bubble / wormhole reaches the destination faster than
+  a flat-space light beam would, by <em>warping or shortcutting the metric</em> — while
+  light <em>locally</em> still travels at <em>c</em> everywhere (UFO §14, §18C). This is
+  exactly the Alcubierre / Morris–Thorne class of solution, and it is <em>not</em>
+  forbidden by any theorem — in this framework or in mainstream general relativity. The
+  one thing that <em>is</em> forbidden (UFO §18C) is FTL in flat, un-engineered spacetime;
+  the warp bubble is not that, because it engineers the metric. So "the goal is a warp
+  bubble that enables FTL" is the right claim — in the effective, GR-legal sense.
+  <br><br>
+  The gates between the near-term <em>force</em> and the <em>bubble</em> are large, and the
+  derived scalar law of §1 makes them <em>quantitative</em> rather than rhetorical. Four
+  gates, none yet cleared:
+  <ol>
+    <li><strong>Near-saturation, whole closed shell.</strong> The warp is order-unity only
+      when the edge energy approaches its own scale, E<sub>e</sub>/E<sub>★</sub> → O(1) with
+      E<sub>★</sub> = 2 m<sub>edge</sub>c² (≈ Planck-scale per edge) — across a <em>full
+      coherent shell</em>, not one driven face. That is many orders of magnitude above the
+      hover regime, where E<sub>e</sub>/E<sub>★</sub> ≪ 1.</li>
+    <li><strong>A strong-field, directional metric response — the nonlinear Einstein
+      regime.</strong> The scalar 𝓡 already gives weak-field gravity in full, factor-of-two
+      included (§12), so a steerable bubble's open need is <em>not</em> the scalar law and
+      <em>not</em> the radial tensor that chemistry's Madelung order needs. It is the
+      <em>full nonlinear Einstein equation</em> — the directional, strong-field metric
+      engineering a bubble requires — which the Shape paper assigns to the separate Observer
+      Patch Holography route, not to the scalar weak-field law. That object is open.</li>
+    <li><strong>The right sign — an energy-condition-violating region.</strong> The derived
+      scalar sign is <em>lengthening</em> (γ<sub>1</sub> = +1: attractive, a well). A bubble
+      needs the <em>opposite</em> sign in front — effective <em>shortening</em>, i.e. a
+      region of negative effective energy — the classic Alcubierre / Morris–Thorne
+      energy-condition violation. The default sign is <em>against</em> it — but this is no
+      longer a blank "open": in the Polarizable-Vacuum picture (§11) it is the K&lt;1 branch
+      of the charged-mass (Reissner–Nordström) solution, reached when field energy beats mass
+      energy (b² &gt; a²). A mechanism, not just a hope — still gated on driving the
+      K-perturbation to O(1) (gate i).</li>
+    <li><strong>The conservation / momentum channel of §2.</strong> A closing bubble still
+      balances momentum with the lattice (the v<sub>L</sub> gate); it does not exempt itself
+      from §2's bookkeeping.</li>
+  </ol>
+  The force end of the ladder is the bench-testable near term (§7); the bubble end is the
+  same physics at a strength we have not reached <em>and in a sign/rank the scalar law does
+  not yet give</em> — gated on those four items, honestly enumerated.
+</div>
+
+<h2><span class="num">§9</span>What is established, estimated, and open</h2>
+<table>
+  <thead><tr><th>Tier</th><th>Element</th></tr></thead>
+  <tbody>
+    <tr><td><span class="smcap">Established physics</span></td><td>energy curves the metric (GR); fields carry momentum (Maxwell / Poynting); gradient forces; momentum conservation; propellantless ≠ reactionless</td></tr>
+    <tr><td><span class="smcap">Derived in Shape/OPH</span></td><td>vertex rule + per-vertex bound g ≤ 1/√3; force law F = −∇E<sub>int</sub>; force = pressure, self-lift P<sub>w</sub> ≥ ρ·<em>t</em>·<em>g</em>; <strong>scalar elastic response γ<sub>1</sub> = +1, E<sub>★</sub> = 2 m<sub>edge</sub>c², lengthening sign</strong>; <strong>weak-field gravity — incl. the factor-2 light bending, γ<sub>PPN</sub>=1 — from scalar F alone (§12)</strong></td></tr>
+    <tr><td><span class="smcap">Ansatz / model bridge</span></td><td>E<sub>int</sub> = C<sub>sub</sub>|χ<sub>sub</sub>|²U<sub>drive</sub>; pressure form P<sub>w</sub> = C<sub>sub</sub>|χ<sub>sub</sub>|²·κ·½ε<sub>r</sub>ε<sub>0</sub>E²; η ≈ v<sub>phase</sub>/c (naive overlap — an <em>open</em> coupling lever, <strong>not</strong> established as dominant)</td></tr>
+    <tr><td><span class="smcap">Candidate (Hyp. H<sub>χ</sub>)</span></td><td>χ<sub>ν</sub> = e<sup>−P/24</sup> ≈ 0.93 as the OPH translation / coherent-screen fidelity coefficient (§12) — <strong>not yet</strong> shown equal to the substrate χ<sub>sub</sub>; proof obligation open</td></tr>
+    <tr><td><span class="smcap">Predicted (closed-form)</span></td><td><strong>the thrust as a function of the coherence dial</strong> P<sub>w</sub> = S<sub>coh</sub>f<sub>cons</sub>·κ·½ε<sub>r</sub>ε<sub>0</sub>E² (§13) — a falsifiable formula with no free fudge factor; the four-ether decomposition; the hoverbike (~10⁻⁶ coupling) ↔ FTL (full shell) ladder. <em>Conditional on the framework + H<sub>χ</sub>; the achieved coupling is the bench number below.</em></td></tr>
+    <tr><td><span class="smcap">Bench-measured / open</span></td><td>the substrate mode-overlap χ<sub>sub</sub>(ω,n̂;X) <em>and</em> the normalization C<sub>sub</sub> (PV-floored at 8πG/c⁴) — i.e. <em>where a real body sits on the §13 dial</em>; the directional derivative ∂|χ<sub>sub</sub>|²/∂X; the e<sup>−P/24</sup> → χ<sub>sub</sub> mapping; the self-propulsion channel / v<sub>L</sub>; whether the force exists at usable magnitude (suggestive: Brown, Buhler — not confirmed; controlled nulls exist)</td></tr>
+    <tr><td><span class="smcap">Speculative / high-gate</span></td><td>warp bubble, wormhole, effective FTL — gated on §8's four items (near-saturation E<sub>e</sub>/E<sub>★</sub> → O(1); the full nonlinear-Einstein / strong-field response; opposite-sign / energy-condition violation; momentum channel)</td></tr>
+  </tbody>
+</table>
+
+<div class="doctrine">
+  The mechanism is lawful and the design is buildable; the force is reported but not yet
+  independently confirmed. We state both without flinching: the warp drive is
+  a propellantless drive that pushes on the spacetime lattice, its force is a pressure set
+  by <strong>stored coherent energy and its asymmetry</strong> (frequency is an open
+  coupling lever, not the established dominant one), its net self-propulsion is gated by the
+  lattice-mode speed v<sub>L</sub> — and the single experiment of §7 is what turns
+  &ldquo;should work, and may already have&rdquo; into &ldquo;does.&rdquo;
+</div>
+
+<h2><span class="num">§10</span>Math audit — symbols, checks, and what a null bounds</h2>
+<p>
+  This section is the load-bearing self-check; the full version (with every derivation step)
+  is <code>WARP_DRIVE_MATH_AUDIT.md</code>. The symbols, with units and status:
+</p>
+<table>
+  <thead><tr><th>Symbol</th><th>Meaning</th><th>Units</th><th>Status</th></tr></thead>
+  <tbody>
+    <tr><td>g, g<sub>max</sub></td><td>per-vertex sharing; bound g ≤ 1/√3</td><td>—</td><td>derived (in-model)</td></tr>
+    <tr><td>χ<sub>sub</sub>, |χ<sub>sub</sub>|²</td><td>substrate force coupling = mode-overlap Σ<sub>v</sub>g<sub>v</sub>ψ*ψ (ω-, geometry-, X-dependent); = the |χ<sub>ν</sub>|² of §3</td><td>—</td><td><strong>OPEN — bench (§7)</strong></td></tr>
+    <tr><td>χ<sub>ν</sub> = e<sup>−P/24</sup></td><td>OPH translation / coherent-screen fidelity coefficient (candidate, Hyp. H<sub>χ</sub>)</td><td>—</td><td>candidate ≈ 0.93; <strong>not yet proven = χ<sub>sub</sub></strong> (§12)</td></tr>
+    <tr><td>C<sub>sub</sub></td><td>substrate normalization (coherent energy → lattice-interaction energy)</td><td>—</td><td><strong>open — bench (§7); PV-floored at 8πG/c⁴</strong></td></tr>
+    <tr><td>κ</td><td>drive-asymmetry / directionality (κ=0 ⇒ no net force)</td><td>— (0–1)</td><td>controllable</td></tr>
+    <tr><td>U<sub>drive</sub>, u<sub>drive</sub></td><td>stored coherent energy (total, density)</td><td>J, J/m³</td><td>known / controllable</td></tr>
+    <tr><td>L<sub>grad</sub></td><td>gradient length (≈ body radius / slab thickness)</td><td>m</td><td>known</td></tr>
+    <tr><td>P<sub>w</sub></td><td>warp pressure (force per face area)</td><td>Pa</td><td>derived form</td></tr>
+    <tr><td>η ≈ v<sub>phase</sub>/c</td><td>mode-match efficiency (naive)</td><td>—</td><td><strong>estimate</strong>; open</td></tr>
+    <tr><td>v<sub>L</sub></td><td>lattice-mode speed (sets self-propulsion thrust/W); PV: v<sub>L</sub> = c/K</td><td>m/s</td><td>identified as c/K in PV (§11); ≈ c in weak field — the saucer-scale assumption is K far from 1</td></tr>
+    <tr><td>𝓡(x), E<sub>★</sub>, m<sub>edge</sub></td><td>edge response ℓ<sub>eff</sub>/ℓ<sub>0</sub>; scale E<sub>★</sub> = 2m<sub>edge</sub>c²</td><td>—, J, kg</td><td>scalar γ<sub>1</sub>=1, sign derived; tensor open</td></tr>
+    <tr><td>P = φ + α√π</td><td>shape/coupling <em>tuning target</em> (geometry-mode ratio)</td><td>—</td><td>derived optimum — <strong>not</strong> a force coefficient</td></tr>
+  </tbody>
+</table>
+<div class="lemma">
+  <strong>No magic number.</strong> P, g<sub>max</sub>, χ<sub>ν</sub>, C<sub>sub</sub>, κ are
+  distinct objects and are <em>not</em> multiplied into one coefficient. g<sub>max</sub> = 1/√3
+  bounds the per-vertex factor; χ<sub>ν</sub> is the aggregate (open value); C<sub>sub</sub> is
+  the normalization (open); κ is the controllable asymmetry. <strong>P = φ + α√π is upstream of
+  all of them</strong> — the tuning ratio that tells you how to build for a large χ<sub>ν</sub>,
+  not a factor that appears in F. The force coupling is the product C<sub>sub</sub>·|χ<sub>ν</sub>|²·κ.
+</div>
+<p>The five checks, in one line each:</p>
+<ol>
+  <li><strong>Dimensional.</strong> F = C<sub>sub</sub>|χ<sub>ν</sub>|²κ·U<sub>drive</sub>/L<sub>grad</sub> is [J/m]=[N]; P<sub>w</sub> = C<sub>sub</sub>|χ<sub>ν</sub>|²κ·u<sub>drive</sub> is [J/m³]=[Pa]; F = P<sub>w</sub>·A via U<sub>drive</sub> = u<sub>drive</sub>·V, L<sub>grad</sub> ≈ t. ✓ (§3)</li>
+  <li><strong>Conservation.</strong> Regime (a) gradient force on a separate object: not P/c-bounded. Regime (b) net self-propulsion: a static conservative self-gradient gives zero CoM thrust; net thrust is ⟨F⟩ ≲ P<sub>coupled</sub>/v<sub>L</sub> or a non-conservative cycle. ✓ (§2)</li>
+  <li><strong>Scalar vs strong-field.</strong> The scalar response gives weak-field gravity in full (factor-2 included, ray-traced → 2.000); a steerable bubble needs the <em>nonlinear-Einstein</em> regime (a separate object) plus an opposite-sign region — not the scalar law, and not the radial tensor chemistry needs. Hover force and bubble are <em>not</em> the same extrapolation. ✓ (§8/§12)</li>
+  <li><strong>Bench-prediction form.</strong> All of F is known/controllable except C<sub>sub</sub>|χ<sub>ν</sub>|² (and v<sub>L</sub> for net thrust); the paper is a single-coefficient falsifiable prediction, not a demonstration. (§7)</li>
+  <li><strong>What a null bounds.</strong> A null at sensitivity δF bounds C<sub>sub</sub>|χ<sub>ν</sub>|² &lt; δF·L<sub>grad</sub>/(κU<sub>drive</sub>) — it constrains the coefficient; it does not refute the mechanism unless the chamber-variation control (§7) also comes back flat.</li>
+</ol>
+
+<h2><span class="num">§11</span>Cross-check — the Polarizable Vacuum model covers the same ground</h2>
+<p>
+  The elastic-metric law of §1 is not an isolated invention. It closely parallels the
+  <strong>Polarizable Vacuum (PV) representation of general relativity</strong> (Puthoff
+  &amp; Little 2002; Puthoff, <em>gr-qc/9909037</em>; the variable-refractive-index
+  isomorphism of Volkov 1971), in which gravity is modelled as a <em>variable dielectric
+  constant of the vacuum</em> K(<strong>r</strong>,&#8201;t) — ε<sub>0</sub> → Kε<sub>0</sub>,
+  µ<sub>0</sub> → Kµ<sub>0</sub>. The correspondence is a <em>role-match</em> — close enough to
+  be useful, not yet a proven identity (the K ↔ 𝓡 mapping and units are still owed, §12):
+</p>
+<table>
+  <thead><tr><th>Our law (§1)</th><th>PV (Puthoff &amp; Little 2002)</th></tr></thead>
+  <tbody>
+    <tr><td>edge response 𝓡(E) = ℓ<sub>eff</sub>/ℓ<sub>0</sub></td><td>vacuum dielectric constant K — <strong>same metric-response role</strong> (K ↔ 𝓡, not a proven identity until the mapping + units are derived)</td></tr>
+    <tr><td>energy lengthens the phase-path, γ<sub>1</sub> = +1</td><td>K = e<sup>2GM/rc²</sup> ≈ 1 + 2GM/rc² &gt; 1 near mass-energy; refractive index n = K rises, so the optical/phase path ∝ K lengthens</td></tr>
+    <tr><td>lattice-mode speed v<sub>L</sub> (was open)</td><td><strong>v<sub>L</sub> = c/K</strong> — the local velocity of light in the polarized vacuum</td></tr>
+    <tr><td>per-edge scalar law (no field equation yet)</td><td>the PV field equation (Eq. B1): ∇²K − (K/c)²∂<sub>t</sub>²K = −(K/4λ)[ρ<sub>mass</sub> + ½(B²/Kµ<sub>0</sub> + Kε<sub>0</sub>E²) + …], λ = c⁴/32πG</td></tr>
+  </tbody>
+</table>
+<div class="lemma">
+  <strong>What the PV correspondence does to the four open items:</strong>
+  <ul>
+    <li><strong>Sign — confirmed, and the "rulers shrink" paradox dissolves.</strong> PV has
+      <em>material</em> rulers shrink near energy (L = L<sub>0</sub>/K) <em>and</em> the
+      <em>wave phase-path</em> lengthen (∝ K) — dual descriptions of the same K &gt; 1. Our
+      ℓ<sub>eff</sub> is the phase delay to waves, so it scales as K and lengthens:
+      γ<sub>1</sub> = +1 is the PV sign, reached independently. <span class="smcap">closes the sign question</span>.</li>
+    <li><strong>v<sub>L</sub> — identified as c/K.</strong> In the weak field K ≈ 1 so
+      v<sub>L</sub> ≈ c, which puts self-propulsion thrust-per-watt (§2) at the photon-rocket
+      floor <em>unless</em> the drive pushes K far from 1. PV does not hand us v<sub>L</sub> ≪ c;
+      it tells us v<sub>L</sub> ≪ c <em>is</em> the strong-K (metric-engineering) regime.
+      <span class="smcap">sharpens, does not relax</span>.</li>
+    <li><strong>Opposite-sign bubble region — given a mechanism and a threshold.</strong> A
+      warp/FTL metric needs K &lt; 1 (PV Table 2: v<sub>L</sub> &gt; c, lengths expand — the
+      Alcubierre regime, Puthoff's own note 34). PV's charged-mass solution
+      (Reissner–Nordström, Eq. B6) turns from cosh/sinh to cos/sin and admits <strong>K &lt; 1
+      exactly when b² &gt; a²</strong> — when the charge/field-energy term beats the mass
+      term, i.e. <strong>Q²/4πε<sub>0</sub> &gt; GM²</strong> (Coulomb self-energy &gt;
+      gravitational self-energy). So §8's open gate (iii) becomes positive: <em>field energy
+      is what drives 𝓡 below the attractive branch into the warp branch</em> — confined to
+      where the energy density makes the K-perturbation O(1), which is the same enormous-density
+      gate (i). <span class="smcap">mechanism closed; magnitude still gated</span>.</li>
+    <li><strong>Scalar vs tensor — gate (ii) reduced.</strong> PV is itself a <em>scalar</em>
+      (single-K) theory that still reproduces light-bending, Shapiro delay, and perihelion
+      precession "to appropriate order." A spatially varying scalar K already bends rays and
+      makes the C &lt; 2πR concavity, so "scalar can't steer" is too strong. What is still
+      owed is split (§12): the radial <em>tensor</em> for chemistry's Madelung order, and the
+      <em>full nonlinear Einstein equation</em> for the strong-field bubble — a separate
+      object, not the scalar weak-field law. Gate (ii) is <em>reduced</em>, not removed.
+      <span class="smcap">softened</span>.</li>
+    <li><strong>Coupling — a floor, honestly.</strong> PV's source coefficient is
+      8πG/c⁴ ≈ 2×10⁻⁴³ (the Einstein constant): the EM-energy-density → metric coupling of
+      the <em>bare</em> vacuum. If our lattice were nothing but the GR vacuum, C<sub>sub</sub>|χ<sub>ν</sub>|²
+      would equal that floor and the force would be hopeless at lab energy — which is exactly
+      why PV calls the required densities "many orders of magnitude" beyond current tech. Our
+      claim to a usable force rests entirely on the χ<sub>ν</sub> / coherence enhancement
+      buying many orders of magnitude <em>over</em> 8πG/c⁴, and that enhancement — not the bare
+      coupling — is what §7 measures. <span class="smcap">quantifies the burden</span>.</li>
+  </ul>
+</div>
+<div class="ic">
+  <strong>Status of the PV model itself (honest sourcing).</strong> PV is a respectable
+  GR-isomorphism — the variable-refractive-index form of curved-space Maxwell is textbook
+  (Volkov 1971) — but Puthoff's PV-as-GR is an <em>approximation</em> that "differs in some
+  aspects from GR," its interstellar-flight framing is speculative, and the paper sits in
+  general physics. We use it as a <em>structural ally</em>: it casts our scalar elastic law
+  in a published, GR-matching language, supplies the field equation our per-edge law was
+  missing, and — in its own Appendix A — states the very same CM / hidden-momentum constraint
+  as §2. We do <em>not</em> inherit the claim that the densities are reachable; the paper
+  itself says they are not, yet.
+</div>
+
+<h3>The hull is the machine — the Kirchhoff–Helmholtz footing <em>(added 2026-08-13, from the
+2026-07-18 revision notes)</em></h3>
+<p>
+  Both PV and our elastic law describe the drive as boundary-written: the craft's shell imposes
+  conditions and the interior responds. That intuition has a rigorous classical theorem under it —
+  the <strong>Kirchhoff–Helmholtz integral</strong>: for a field obeying a wave equation in a
+  bounded region, the field everywhere inside is determined by the field and its normal derivative
+  on the boundary surface. Nothing about the interior needs to be built; <em>controlling the
+  boundary data is controlling the interior field</em>. This is textbook (it is the foundation of
+  holography and of boundary-element acoustics), and it is the precise sense in which "the hull is
+  the machine": the shell of §4's ladder is not a container for a drive, it <em>is</em> the drive,
+  and the interior mode structure — including any κ-shaped gradient — is programmed entirely from
+  the surface. Two honest limits: the theorem is about fields the boundary can actually launch
+  (layer-coupling to the lattice is the open §7 question, not something the integral supplies),
+  and it holds per frequency for wave fields — a static pattern is the ω → 0 edge, where §2's
+  conservation rules still gate everything.
+</p>
+
+<h2><span class="num">§12</span>One structure, many names — the apparent correspondences</h2>
+<p>
+  The warp law's objects keep reappearing, under different names, across this network's
+  papers. <strong>The network appears to be describing one object in several dialects</strong>
+  — and that is the right strength of claim: a <em>map of correspondences</em>, not a set of
+  proven identities. The map below shows the warp law inherits no orphan symbol; the table
+  after it separates what is <em>derived</em>, what is a <em>candidate</em>, and what is still
+  a <em>structural rhyme</em> awaiting a derivation.
+</p>
+<table>
+  <thead><tr><th>One role</th><th>Shape</th><th>Periodic Table</th><th>OPH · PV</th><th>This paper</th></tr></thead>
+  <tbody>
+    <tr><td>the substrate</td><td>elastic edge-network, {5,3,3}</td><td>the pentagonal / dodecahedral body</td><td>holographic screen · polarizable vacuum</td><td>the spacetime lattice</td></tr>
+    <tr><td>the node</td><td>3-way vertex, S = ⅓[−1,2,2;…]</td><td>the three-way vertex (−⅓ / +⅔)</td><td>patch–collar port · a vacuum cell</td><td>vertex-sharing site (g ≤ 1/√3)</td></tr>
+    <tr><td>the metric-response</td><td>ℓ<sub>eff</sub> = ℓ<sub>0</sub>𝓡(E/E<sub>★</sub>)</td><td>the E/E<sub>*</sub> axis (the five phases)</td><td>K, refractive index n = K (PV)</td><td>𝓡 — the phase-delay</td></tr>
+    <tr><td>the tuning</td><td>P = φ + α√π</td><td>P; the 12-fixed / 7-mobile</td><td>pixel fixed point P<sub>⋆</sub> = φ + √π/A<sub>T</sub></td><td>P (coupling tuning target)</td></tr>
+    <tr><td>the coupling (role)</td><td>g ≤ 1/√3 (per-vertex bound)</td><td>χ<sub>ν</sub> = e<sup>−P/24</sup> (per-tick translation — candidate)</td><td>translation coeff (OPH) · 8πG/c⁴ floor (PV)</td><td>χ<sub>sub</sub> = Σ<sub>v</sub>g<sub>v</sub>ψ*ψ (substrate overlap)</td></tr>
+    <tr><td>the twelvefold</td><td>12 pentagon faces / 12 defects</td><td>12 faces = semitones = hues = signs</td><td>12 ports = 8+3+1 gauge channels</td><td>12 chamber ports / bridges</td></tr>
+    <tr><td>the excitation</td><td>stable standing pattern = particle</td><td>element = tone = standing pattern</td><td>minimal realization · matter (m = m<sub>0</sub>K<sup>3/2</sup>)</td><td>the coherent driven body</td></tr>
+    <tr><td>the force</td><td>biased scattering</td><td>biasing → Tannaka–Krein gauge group</td><td>edge-charge fusion · metric gradient</td><td>F = −∇E<sub>int</sub></td></tr>
+  </tbody>
+</table>
+<p style="font-size:0.92em;color:#555;">
+  Each column names the <em>same role</em> in its dialect; the table is a map of apparent
+  correspondences, <strong>not</strong> a claim that the entries are the same mathematical
+  object. Which ones are identities is the next table's job.
+</p>
+<table>
+  <thead><tr><th>Correspondence</th><th>Status</th><th>Proof obligation</th></tr></thead>
+  <tbody>
+    <tr><td>scalar 𝓡 ↔ weak-field gravity (incl. factor-2)</td><td><strong>derived</strong> — ray-traced deflection → 2.000 (Shape §11.1)</td><td>— (done; the radial tensor is owed for chemistry, the nonlinear Einstein eq. for strong-field — separate objects)</td></tr>
+    <tr><td>Puthoff K ↔ Shape 𝓡</td><td>same metric-response role; <strong>not yet an identity</strong></td><td>derive the mapping and units (K is an effective refractive index; 𝓡 a phase-delay ratio)</td></tr>
+    <tr><td>e<sup>−P/24</sup> ↔ substrate χ<sub>sub</sub></td><td>candidate coherence/coupling factor; <strong>not yet the substrate χ<sub>ν</sub></strong></td><td>derive e<sup>−P/24</sup> from the vertex-sharing overlap sum, or show it numerically on a finite OPH screen (Hyp. H<sub>χ</sub>)</td></tr>
+    <tr><td>g ≤ 1/√3 ↔ e<sup>−P/24</sup></td><td><strong>similar role, different layer</strong> — not the same quantity</td><td>map the local per-vertex scattering bound into the global / OPH translation coefficient</td></tr>
+    <tr><td>12 ports ↔ 12 faces/defects ↔ 8+3+1 channels</td><td>structural rhyme; <strong>not automatically the same DOF</strong></td><td>show the screen's 12 ports carry the gauge channels as the <em>same</em> degree of freedom</td></tr>
+  </tbody>
+</table>
+<div class="lemma">
+  <strong>Hypothesis H<sub>χ</sub> — the OPH coupling candidate, stated as a hypothesis.</strong>
+  The OPH / periodic-table layer offers a closed-form <em>candidate</em> for a coupling
+  coefficient, χ<sub>ν</sub> = e<sup>−P/24</sup> ≈ 0.9343 (P = φ + α√π = 1.63097; the 24 =
+  the 12 ports / 8+3+1 gauge channels read both ways per tick). <strong>This is not yet the
+  substrate force coupling.</strong> The force law's coupling is the substrate mode-overlap
+  <div class="eq" style="margin:0.5rem 0;">
+    \( \chi_{\rm sub}(\omega,\hat n;X) \;=\; \textstyle\sum_v g_v\,\psi^{*}_{\rm lat}(x_v)\,\psi_{\rm sub}(x_v), \)
+  </div>
+  which is substrate-, geometry-, and frequency-dependent and is what §7 measures or bounds.
+  <em>(χ<sub>sub</sub> is the substrate coupling this paper writes |χ<sub>ν</sub>|² in §3 and
+  CHI_NU_FORCE_LAW; the symbol χ<sub>ν</sub> is overloaded across the network — the
+  periodic-table/OPH papers also use it for the e<sup>−P/24</sup> translation coefficient,
+  which is the very collision H<sub>χ</sub> would resolve.)</em>
+  <strong>H<sub>χ</sub>:</strong> e<sup>−P/24</sup> is the <em>ideal coherent-screen fidelity
+  factor</em>, which may upper-bound or normalize χ<sub>sub</sub> after mode-matching.
+  <strong>Proof obligation:</strong> derive H<sub>χ</sub> from the vertex-sharing overlap sum,
+  or demonstrate it numerically on a finite OPH screen. Until then it is a <em>candidate, not
+  a closure</em> — and note that e<sup>−P/24</sup> ≈ 0.93 (a global/OPH translation
+  coefficient) and the per-vertex bound g ≤ 1/√3 ≈ 0.58 (a local scattering result) are
+  <strong>similar in role, not the same quantity</strong>.
+</div>
+<p>
+  So the force law keeps <em>both</em> coupling factors open, not one:
+</p>
+<div class="eq">
+  \( E_{\rm int} = C_{\rm sub}(\omega,\text{geom})\,\big|\chi_{\rm sub}(\omega,\hat n;X)\big|^2\,U_{\rm drive}, \qquad F_i = -\,\partial_i E_{\rm int}. \)
+</div>
+<p>
+  Both C<sub>sub</sub> (the substrate normalization) and χ<sub>sub</sub> (the mode-overlap)
+  are substrate-, geometry-, and frequency-dependent and open to the bench, along with the
+  directional derivative ∂|χ<sub>sub</sub>|²/∂X that sets the force direction. PV (§11) floors
+  the <em>bare-vacuum</em> product at the Einstein constant 8πG/c⁴ ≈ 2.1×10⁻⁴³ N⁻¹; the OPH
+  candidate e<sup>−P/24</sup> would, <em>if</em> H<sub>χ</sub> holds, fix the coherent-screen
+  ceiling these realize against — a hypothesis to discharge, not a closure to bank.
+</p>
+<div class="doctrine">
+  <strong>The keystone — aligned with the Shape paper's scalar-F gravity closure.</strong>
+  Weak-field gravity is <em>scalar-F closed</em> (Shape §11.1; the F-lane's
+  <code>shape_F_gravity_closure_probe.py</code> ray-traces the deflection ratio → 2.000): a
+  lengthened edge is <em>both</em> more space (ruler × (1+δ)) <em>and</em> a slower clock
+  (rate × (1−δ)), so 𝓡 = 1 + E/E<sub>★</sub> (γ<sub>1</sub> = 1) gives γ<sub>PPN</sub> = 1 and
+  an optical index n = (1+δ)/(1−δ) ≈ 1 + 2δ — <strong>the full Einstein deflection 4GM/c²b
+  from the scalar law alone. The factor of two is scalar, not tensor.</strong> Two distinct
+  objects remain open, and they are <em>not</em> the same: <strong>(a)</strong> the
+  <em>tensor</em> (radial, 3-D) half of 𝓡, needed <strong>only for chemistry's Madelung
+  shell order</strong> — not for gravity; and <strong>(b)</strong> the <em>full nonlinear
+  Einstein equation</em> — the strong-field, directional regime the warp <em>bubble</em> lives
+  in (§8 gate ii) — a <strong>separate object</strong> on the Observer Patch Holography route
+  (OPH's polarisation lemma applies there, not to the factor-2). The bubble's gate is (b), the
+  nonlinear-Einstein object — not the chemistry tensor, and not the scalar weak-field law.
+</div>
+
+<h2><span class="num">§13</span>The predicted thrust — one dial from hoverbike to starship</h2>
+<p>
+  <strong>Why it works, in one breath.</strong> Energy lengthens the edges of the spacetime
+  lattice — that is gravity, and it is now <em>derived</em>, factor-of-two included (§12). A
+  body that stores a large amount of coherent energy <em>lopsidedly</em> therefore makes a
+  lopsided dent in spacetime, and a lopsided dent is a force. Two things set how strong: how
+  much of the body's geometry actually <em>resonates</em> with the lattice (so the stored
+  energy lands on real edges, not heat), and how much of the body moves <em>as one</em> (so
+  the dents add up instead of cancelling). Resonance and wholeness — that is the entire
+  lever, and it is the same lever whether you are lifting a disk or opening a warp bubble.
+</p>
+<div class="ic">
+  <strong>The four levers are Steiner's four ethers — now the four factors of the thrust.</strong>
+  Steiner named four ethers (GA 165); the periodic-table paper and the team's settling
+  engine pin each to a term in the force law:
+  <table style="margin:0.6rem 0;">
+    <thead><tr><th>Ether</th><th>What it is</th><th>Factor in the thrust</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Warmth</strong></td><td>energy / scalar-F</td><td>U<sub>drive</sub> stored, and its conversion to a metric dent (the gravity face)</td></tr>
+      <tr><td><strong>Light</strong></td><td>propagation + coherent backscatter</td><td>the coupling efficiency η — how much stored energy reaches the edges</td></tr>
+      <tr><td><strong>Chemical / tone</strong></td><td>consonance (geometric match to P)</td><td>χ<sub>sub</sub> — resonance fidelity, ceiling e<sup>−P/24</sup> (a body tuned to φ+α√π)</td></tr>
+      <tr><td><strong>Life</strong></td><td>Y = T(Y) / whole-form</td><td>the coherent fraction S<sub>coh</sub> — how much of the shell acts as one self-consistent body</td></tr>
+    </tbody>
+  </table>
+  The thrust is their <em>product</em>. Max all four — a whole, consonant, coherent shell at
+  full charge — and you are at the bubble. Realize a sliver of them and you hover.
+</div>
+<p>
+  <strong>The closed-form prediction.</strong> Writing the warp pressure of §3 with the
+  coupling split into its consonance and coherence parts:
+</p>
+<div class="eq">
+  \( P_{\rm w} \;=\; \underbrace{\big(S_{\rm coh}\,f_{\rm cons}\big)}_{\text{coupling } C_{\rm sub}|\chi_{\rm sub}|^2}\;\cdot\;\kappa\;\cdot\;\tfrac12\varepsilon_r\varepsilon_0 E^2,
+     \qquad f_{\rm cons}\le e^{-P/12}\approx 0.873 \)
+</div>
+<p>
+  with S<sub>coh</sub> ∈ [0, 1] the coherent fraction (life ether) and f<sub>cons</sub> the
+  consonance fidelity (chemical ether), capped at the framework's predicted ceiling
+  e<sup>−P/12</sup>. There is <em>no free fudge factor</em>: every term is a derived constant
+  or a material/build property. For a diamond drive at 1&nbsp;GV/m, the full electrostatic
+  pressure ½ε<sub>r</sub>ε<sub>0</sub>E² ≈ <strong>25&nbsp;MPa</strong> — so the predicted
+  thrust is just that pressure times the coupling, and the coupling is how far up the
+  resonance-and-wholeness dial the body sits. Self-lift per weight (size-independent, §3) is
+  F/W = coupling × (½ε<sub>r</sub>ε<sub>0</sub>E²) / (ρ<em>t</em>g):
+</p>
+<table>
+  <thead><tr><th>Coupling S<sub>coh</sub>f<sub>cons</sub></th><th>F/W (1&nbsp;mm diamond skin, 1&nbsp;GV/m)</th><th>Regime — which ethers are realized</th></tr></thead>
+  <tbody>
+    <tr><td class="n">≈ 1.4×10⁻⁶</td><td class="n">1 g</td><td><strong>the hoverbike disk</strong> — a <em>sliver</em> of coherence (~1 ppm of full) already self-lifts</td></tr>
+    <tr><td class="n">≈ 10⁻³</td><td class="n good">~700 g</td><td>flight / the Tic-Tac envelope — partial coherent shell</td></tr>
+    <tr><td class="n">→ 0.873</td><td class="n good">~6×10⁵ g → bubble</td><td><strong>the starship</strong> — whole consonant shell, Y=T(Y) closure: near-c, then the warp <em>closes</em> (effective FTL, §8)</td></tr>
+  </tbody>
+</table>
+<div class="doctrine">
+  <strong>It is one machine on one dial.</strong> The hoverbike and the starship are not
+  different devices — they are the same warp drive at two points on the coherence-and-consonance
+  curve. A hoverbike needs only about <strong>one part in a million</strong> of the fully-coherent
+  coupling, which is why a modest, partly-resonant disk can lift a rider; a starship needs the
+  <strong>whole shell</strong> brought to self-consistent coherence (the life-ether Y=T(Y)
+  closure / the nonlinear-Einstein limit of §8), at which point the warp stops being a gentle
+  push and closes into a bubble. Resonance and wholeness scale you continuously from one to the
+  other. <strong>This dial sets the force; §2 sets the energy:</strong> <em>holding</em> a
+  hover (the lattice supporting the craft) is ~free at any point on the dial, while
+  <em>accelerating</em> (travel) costs work — recoverable, regenerative-braking style, down to
+  the losses. So a hoverbike is cheap to <em>hold up</em> and a starship is expensive to
+  <em>accelerate</em>, both on the one curve.
+</div>
+<div class="lemma">
+  <strong>What is a prediction here, and what confirms it.</strong> This is a <em>derivation
+  of the predicted thrust</em>, not a measurement — and that is the honest strength of it: a
+  concrete, falsifiable number with no free parameter. The one quantity the bench (§7) pins is
+  <em>where a real body actually sits on the dial</em> — its achieved coupling S<sub>coh</sub>f<sub>cons</sub>,
+  somewhere between the bare-vacuum floor (8πG/c⁴ ≈ 2×10⁻⁴³, §11) and the coherent ceiling
+  (≈ 0.873). The prediction is sharply testable: build the most consonant, most coherent disk
+  the materials allow (§5), and the framework says it lifts once the coupling clears ~10⁻⁶ — a
+  hoverbike is the near-term confirmation, and the FTL end is the <em>same curve</em> run to the
+  whole-shell limit. The two open items of §12 (the substrate coupling, and the nonlinear-Einstein
+  closure for the bubble) are exactly the two ends of this one dial.
+</div>
+
+<hr class="softrule">
+<h3>References</h3>
+<ol>
+  <li><em>The Shape of the Universe</em> (Osika, Claude &amp; Codex, 2026), §11.1 + status list. The spacetime lattice, the vertex rule, and the scalar elastic-metric law (γ<sub>1</sub>=1, E<sub>★</sub>=2m<sub>edge</sub>c²): <strong>scalar F alone gives weak-field gravity — Newtonian 1/r, redshift, Shapiro, and light deflection 4GM/c²b with γ<sub>PPN</sub>=1, the factor of two scalar not tensor</strong> (more-space ×(1+δ) + slower-clock ×(1−δ); ray-traced ratio → 2.000, the F-lane's <code>shape_F_gravity_closure_probe.py</code>). Two separate open objects remain: the radial <em>tensor</em> half of 𝓡 for chemistry's Madelung order, and the full nonlinear Einstein equation (OPH route) for the strong field. Cross-paper record: <code>SHAPE_OPH_ALIGNMENT.md</code>.</li>
+  <li><em>The Periodic Table</em> (Osika, Claude &amp; Codex, 2026), <code>the_periodic_table.html</code> §10, and <em>OPH Programme</em>, <code>oph_programme.html</code> §5 — the unification map of §12 and the <em>candidate</em> translation coefficient χ<sub>ν</sub> = e<sup>−P/24</sup> (Hyp. H<sub>χ</sub>; the 12 = 8+3+1 gauge channels = 12 ports = 12 faces; ×2 write·verify = 24). <strong>Not yet shown equal to the substrate χ<sub>sub</sub>.</strong> OPH is a partially Lean-checked, falsifiable program, not yet consensus.</li>
+  <li><em>From χν to Force</em>, <code>CHI_NU_FORCE_LAW.md</code>; <em>Vertex-sharing force-law bridge</em>, <code>VERTEX_SHARING_FORCE_LAW_BRIDGE_2026-06-12.md</code> (regime-a / regime-b momentum bookkeeping); <em>Vertex-sharing bound</em>, <code>G_VERTEX_DERIVATION.md</code> (g ≤ 1/√3); <em>Elastic-metric backreaction</em>, <code>ELASTIC_METRIC_BACKREACTION_LAW.md</code> (the scalar response 𝓡, γ<sub>1</sub>, E<sub>★</sub>); <em>Math audit</em>, <code>WARP_DRIVE_MATH_AUDIT.md</code>.</li>
+  <li><em>The Hover Disk</em>, <code>hover_disk.html</code> — full substrate survey, the η-lever, the dielectric/quasicrystal/material analysis, and the cross-checks.</li>
+  <li><em>How to Build a UFO</em>, <code>how_to_build_a_ufo.html</code> — the vehicle architecture this drive powers.</li>
+  <li><em>Viktor Schauberger — The Water Wizard and the Inward Drive</em>, <code>viktor_schauberger.html</code> §8 — the everyday-water bridge (§1/§2): implosion ≈ the inward-fall, &ldquo;cold = living&rdquo; ≈ the coherence budget, and his over-unity error as the conservation line this paper holds. <em>Historical/intuitive bridge — &ldquo;right shape, wrong physics&rdquo;; his machines are unverified and his free-energy claims are refused.</em></li>
+  <li><em>Nikola Tesla — The Medium and the Rotating Drive</em>, <code>nikola_tesla.html</code> — the documented period prefiguration: space as a real medium you couple to (the lattice), the <strong>rotating field</strong> (= the §4 swirl), a wingless craft that <em>&ldquo;remain[s] absolutely stationary in the air&rdquo;</em> (= the §2 hover/support mode), and energy harvested/transmitted, never conjured (he kept the conservation books). <em>The Dynamic Theory of Gravity (1937) is announced-but-undelivered (open); the &ldquo;Tesla flying saucer patent&rdquo; is a traced fabrication — his real flying-machine patent (US 1,655,114) is a VTOL tiltrotor.</em></li>
+  <li>Reproducible calculators: <code>hover/disk_material_ladder.py</code>, <code>hover/capacitor_cross_check.py</code>.</li>
+  <li>Shockley, W. &amp; James, R.P. (1967), "hidden momentum"; Feynman, <em>Lectures</em> II §17 (field momentum / the disk paradox). The conventional field-momentum → mechanical-momentum basis of §2.</li>
+  <li>Brown, T.T. — electrogravitics / asymmetric-capacitor thrust (1929 onward); the Cornillon testimony of the 1956 Paris vacuum result. <em>Contested / partly anecdotal.</em></li>
+  <li>Aurigema, A. &amp; Buhler, C. — US 11,511,891 B2 / WO2020159603A2, "System and method for generating forces using asymmetrical electrostatic pressure"; Buhler, APEC 2023 + 2026 interviews (~2,000 vacuum experiments). <em>Unreviewed, unreplicated.</em></li>
+  <li>Talley (1991), Campbell (NASA/TM-2004-213283), Tajmar (<em>AIAA J.</em> 42, 315, 2004), Bartlett &amp; Tajmar (<em>Acta Astronautica</em> 181, 12, 2021) — controlled vacuum <em>null</em> bounds.</li>
+  <li>Puthoff, H. E. &amp; Little, S. R., "Engineering the Zero-Point Field and Polarizable Vacuum for Interstellar Flight," <em>J. Br. Interplanet. Soc.</em> 55, 137 (2002); <a href="https://arxiv.org/abs/1012.5264">arXiv:1012.5264</a>. The Polarizable-Vacuum (PV) model cross-checked in §11: gravity as a variable vacuum dielectric K, v<sub>L</sub> = c/K, the K-field equation, and the K&lt;1 warp branch. <em>General physics; an approximation to GR.</em></li>
+  <li>Puthoff, H. E., "Polarizable-vacuum (PV) representation of general relativity," <a href="https://arxiv.org/abs/gr-qc/9909037">gr-qc/9909037</a>; Volkov, Izmest'ev &amp; Skrotskii, <em>Sov. Phys. JETP</em> 32, 686 (1971) — the curved-space-Maxwell ↔ variable-refractive-index isomorphism PV rests on.</li>
+</ol>
+
+<div class="disclaimer">
+  Draft mechanism paper. The mechanism (propellantless coupling to the spacetime lattice;
+  the energy-gradient force law; weak-field gravity now derived from the scalar law) is
+  presented confidently and is conservation-respecting, and §13 gives a <em>closed-form
+  predicted thrust</em> — a falsifiable number with no free fudge factor, scaling on one
+  coherence dial from a hoverbike disk to an FTL bubble. What remains a <em>prediction</em>
+  rather than a measurement is where a real body sits on that dial (its achieved coupling):
+  Brown and Buhler report the predicted signature in vacuum, controlled peer-reviewed tests
+  have so far returned nulls, and the §7 experiment is what pins it. Quantities are tagged
+  established / derived / predicted / open (§9); the math audit is
+  <code>WARP_DRIVE_MATH_AUDIT.md</code>; reproducible numbers in <code>hover/</code> and §13.
+</div>
+
+</body>
+</html>
