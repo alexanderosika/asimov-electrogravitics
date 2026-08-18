@@ -291,6 +291,98 @@ datum in the lineage that ejecta cannot cover.</li>
 transient regime is an open thread with a named conventional candidate —
 not evidence for the coupling, and not evidence against it.</p>
 
+<h3 id="s1-2">1.2 From first principles: why the transient regime is the only one
+— imported from the energy lane</h3>
+
+<p>The project's energy-lane papers (The
+Zero-Point Machine, The VTA,
+The Optical-Cavity Device) reach the
+same conclusion from a different door, and their bookkeeping is worth
+carrying over verbatim, because it turns "it needs transients" from an
+observation into a derivation. Five statements, each with its receipt:</p>
+
+<ol>
+<li><strong>Port locality.</strong> Closed, symmetric configurations feel and
+output nothing; net effect exists exactly where a subsystem is <em>open</em>
+— where its circuit closes through something beyond itself
+(<code>PORT_LOCALITY_SYNTHESIS_2026-07-20.md</code>; Ampère/Lorentz sim: closed
+loop 0.033% agreement and zero self-force, open bridge 29% divergence at the
+ports). A charged capacitor rigidly carrying its own static field is a closed
+loop. That is the refuted half, said in the energy lane's words.
+<span class="tag t-der">DERIVED</span></li>
+<li><strong>Adiabatic is quiet; abrupt is productive and paid for.</strong> The
+charging-half identity: writing a quadratic ledger to standing displacement
+suddenly costs x² gross, exactly half dissipated; an adiabatic ramp waives the
+dissipated half (<code>oph_charging_half_identity_run.json</code>). The
+mainstream twin: the dynamical Casimir effect — change a boundary in time and
+the vacuum yields real quanta, with production set by <em>how abruptly</em>
+the boundary changes (Wilson et al., <em>Nature</em> 479:376, 2011; Rukan,
+Gulla &amp; Skaar, PRL 2026 — the count is infinite only for infinitely fast
+removal). Slow boundary change: nothing. Abrupt: something, and the pulse pays
+for it. A vacuum flash is the most abrupt boundary change a capacitor can
+undergo. <span class="tag t-meas">MEASURED</span> (DCE) /
+<span class="tag t-der">DERIVED</span> (identity)</li>
+<li><strong>Rectification needs an asymmetric waveform.</strong> The
+retrodiction sim's own law: F(+Δ) = −F(−Δ) exactly, so an unrectified cycle
+averages to zero; net force needs a preferred direction in <em>time</em> as
+well as in space (§6; the "swirl / spin / jerk" clause). Symmetric AC on an
+asymmetric capacitor is therefore predicted null — and the record agrees:
+Bahnson's notebook, May 1958, "AC: none" on the tent rig, and small only when
+biased. A <em>spark-and-recharge cycle is a natural sawtooth</em>: nanosecond
+collapse, millisecond recovery. Brown's §42 puts the impulse "with the
+recovery of potential." That is a rectified time-asymmetry occurring by
+accident. <span class="tag t-der">DERIVED</span></li>
+<li><strong>High-K is the coupling channel, not a curiosity.</strong> The
+energy lane's one clean measured law is output ∝ capacitance (the 1/d slope
+race, only linear capacitive near-field coupling lands on −1.00; Moddel,
+Maclay). Coupling scales with C, and C scales with K. Montgolfier's 1959
+conclusion — a high-permittivity dielectric "makes the phenomenon more
+vigorous," the BaTiO₃ article being the only one to move — and Talley's
+PZT and Buhler's dielectric stacks are that signature. And BaTiO₃ and PZT are
+sintered ceramics: the VTA paper's grain-boundary junction fabric, a
+disordered array of nm gaps, is what a strapped-on titanate block is made of.
+Offered as structural rhyme, not receipt. <span class="tag t-open">OPEN</span></li>
+<li><strong>The small input is the grid, not the fuel.</strong> In the VTA
+reading nothing is amplified: the drive breaks symmetry and clocks the
+device; the output <em>format</em> follows the drive. Transferred here: the
+pulse is not the thrust's energy source in any exotic sense — the parametric
+route is a <em>transducer</em>, conservation applies in the ordinary way, and
+the figure of merit is impulse per joule of pulse energy at a given edge
+rate. "Propellantless, not reactionless" (§2): the reaction partner is the
+medium the open port closes through, or it is ejecta — which is what the
+discriminators decide. <span class="tag t-der">DERIVED</span></li>
+</ol>
+
+<p><strong>What this does to Brown's own control.</strong> §1.1 kept the
+honest caveat that Brown saw the impulse with the spark "and not when wholly
+due to a chopper in the external circuit." Under (2) that is not a
+refutation of the transient reading; it is a <em>rate</em> datum. A 1956
+mechanical or tube chopper gives an edge of microseconds to milliseconds; a
+vacuum spark collapses in nanoseconds. "Spark yes, chopper no" is exactly what
+production-scales-with-abruptness predicts if the effect lives above the
+chopper's edge rate — and it is what ejecta recoil predicts too, since only
+the spark ejects metal. So the two readings separate on one axis Brown could
+not scan and we can: <strong>discriminator 5 — impulse versus edge rate at
+fixed transferred charge, spark-free</strong>. Modern solid-state HV pulsers
+(nanosecond edges, no arc) put a controlled dV/dt on the same asymmetric
+article without a discharge; ejecta gives nothing without the arc; a
+boundary-abruptness coupling gives an impulse that climbs with edge rate.
+Added to §6.</p>
+
+<div class="box">
+<strong>The sentence the field guide should have carried from the start:</strong>
+the static Biefeld–Brown effect is zero by port locality and by measurement;
+the transient Biefeld–Brown effect is the one configuration in which the
+project's own physics — the evenness lemma, the charging-half identity, the
+capacitance-coupling law, and the dynamical-Casimir precedent — permits a net
+effect at all; every positive in the seventy-year record sits in that
+configuration; and it has never been tested against its conventional twin
+with the five measurements that would tell them apart. That is a target, and
+Brown's geometry — an asymmetric high-K capacitor under an abrupt, rectified
+drive — is the right first article for it. Register: <span class="tag t-open">OPEN</span>,
+and it stays there until the bench speaks.
+</div>
+
 
 <h2 id="s2">2. Sixty seconds of gravity, and what "engineering it" would mean</h2>
 
@@ -799,10 +891,15 @@ positive in the record is a flash, pulse or breakdown event, log
 <em>impulse per coulomb</em> on the same trace as force (ejecta recoil sits at
 ~10⁻⁵ N·s/C); weigh the electrodes before and after; run Brown's own
 external-chopper-vs-internal-spark control at matched dV/dt with a current
-log; and take force <em>per coulomb</em> against dielectric K. A pulsed
-positive that survives these four is the first datum in the lineage that
+log; take force <em>per coulomb</em> against dielectric K; and (fifth, from
+§1.2) sweep <em>edge rate at fixed transferred charge</em> with a spark-free
+solid-state nanosecond HV pulser — ejecta needs the arc, an abruptness
+coupling needs only the edge. A pulsed positive that survives these five is
+the first datum in the lineage that
 discharge physics cannot cover; one that fails them is a vacuum-arc thruster,
-which is a fine thing to have built and not what anyone was looking for.</li>
+which is a fine thing to have built and not what anyone was looking for.
+The pulse energy is the budget: log impulse per joule as well as per
+coulomb, so the parametric reading is priced honestly as a transducer.</li>
 </ol>
 <p>Any force that survives all six is worth a phone call. A null across the
 sweep is also a result: it is the tightest bound ever placed on the coherent
