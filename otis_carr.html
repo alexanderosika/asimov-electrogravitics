@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Otis T. Carr and the OTC-X1 — The Record, the Machine, the Physics</title>
+<style>
+  :root{
+    --ink:#1c1c1c; --paper:#fbfaf6; --page:#ece8df;
+    --green:#5a7d3a; --amber:#b88a2a; --steel:#3a5a7d; --teal:#2f6d5e;
+    --slate:#5a6470; --blood:#7a1f1f; --violet:#6a4a8a;
+    --rule:#d2cdbf; --soft:#8a8676; --wash:#f3efe4;
+  }
+  html{background:var(--page)}
+  body{
+    font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    max-width:820px; margin:2.5rem auto; padding:2.6rem 2.4rem 4rem;
+    color:var(--ink); line-height:1.62; background:var(--paper);
+    box-shadow:0 1px 4px rgba(0,0,0,.06); font-size:17px;
+  }
+  h1{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-weight:700;
+     font-size:1.9rem; line-height:1.18; border-bottom:2px solid var(--ink);
+     padding-bottom:.55rem; margin:.3rem 0 .5rem}
+  h2{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:1.24rem;
+     margin-top:2.4rem; border-bottom:1px solid var(--rule); padding-bottom:.25rem}
+  h3{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:1.02rem;
+     margin-top:1.6rem; color:#444}
+  .part{font-family:"Helvetica Neue",Helvetica,sans-serif; font-size:.82rem;
+     letter-spacing:.1em; text-transform:uppercase; color:var(--soft);
+     margin-top:2.8rem; border-top:2px solid var(--ink); padding-top:.7rem}
+  .banner{background:#eef5fa; border-bottom:2px solid var(--steel);
+     margin:-2.6rem -2.4rem 2rem; padding:.65rem 2.4rem;
+     font-family:"Helvetica Neue",Helvetica,sans-serif; font-size:.85rem;
+     color:var(--steel); line-height:1.5; text-align:center}
+  .banner a{color:var(--steel); font-weight:600}
+  .sub{color:var(--soft); font-style:italic; font-size:1.02rem}
+  .meta{color:var(--soft); font-size:.85rem; margin-bottom:1.6rem}
+  table{border-collapse:collapse; width:100%; margin:1.1rem 0; font-size:.88rem}
+  th,td{border:1px solid var(--rule); padding:.42rem .6rem; text-align:left; vertical-align:top}
+  th{background:#f0eadb; font-family:"Helvetica Neue",Helvetica,sans-serif; font-size:.82rem}
+  tr:nth-child(even) td{background:#faf7ef}
+  blockquote{border-left:4px solid var(--amber); background:#fff8e8;
+    margin:1.2rem 0; padding:.7rem 1.1rem; color:#4a4437; font-size:.97rem}
+  .box{border-left:4px solid var(--green); background:#eef3e8;
+    padding:.85rem 1.1rem; margin:1.3rem 0; font-size:.94rem}
+  .warn{border-left:4px solid var(--blood); background:#f3e7e7;
+    padding:.85rem 1.1rem; margin:1.3rem 0; font-size:.94rem}
+  code,pre{font-family:"JetBrains Mono",Menlo,Consolas,monospace; background:var(--wash);
+    border-radius:2px}
+  code{font-size:.85em; padding:.05em .3em}
+  pre{font-size:.78rem; padding:.8rem 1rem; overflow-x:auto; border:1px solid var(--rule); line-height:1.5}
+  a{color:var(--steel)}
+  .overflow{overflow-x:auto}
+  ol li,ul li{margin:.3rem 0}
+  .tag{font-family:"Helvetica Neue",Helvetica,sans-serif; font-size:.68rem;
+    font-weight:700; letter-spacing:.06em; padding:.1em .45em; border-radius:2px;
+    vertical-align:middle; white-space:nowrap}
+  .t-doc{background:#e7efdd; color:var(--green); border:1px solid var(--green)}
+  .t-der{background:#e3ebf3; color:var(--steel); border:1px solid var(--steel)}
+  .t-single{background:#f6eed9; color:var(--amber); border:1px solid var(--amber)}
+  .t-legend{background:#efe8f5; color:var(--violet); border:1px solid var(--violet)}
+  .t-null{background:#f3e7e7; color:var(--blood); border:1px solid var(--blood)}
+  .t-open{background:#e2efeb; color:var(--teal); border:1px solid var(--teal)}
+  figure{margin:1.4rem 0; text-align:center}
+  figcaption{font-size:.85rem; color:var(--soft); margin-top:.4rem; text-align:left}
+  svg text{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif}
+</style>
+</head>
+<body>
+
+<style id="eg-site-nav-css">
+  .eg-nav{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:.8rem;
+    background:#1c1c1c;color:#ece8df;padding:.55rem 1.2rem;line-height:1.6;
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    box-shadow:0 1px 3px rgba(0,0,0,.25)}
+  body{margin-top:5.2rem !important}
+  .eg-nav a{color:#ece8df;text-decoration:none;margin-right:1rem;white-space:nowrap}
+  .eg-nav a:hover{text-decoration:underline}
+  .eg-nav .eg-home{font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+    margin-right:1.4rem}
+  .eg-nav .eg-cur{border-bottom:2px solid #b88a2a}
+  .eg-nav .eg-cat{color:#b88a2a;font-weight:600;letter-spacing:.03em}
+  .eg-nav .eg-catcur{text-decoration:underline}
+  .eg-nav .eg-sep{color:#8a8676;margin-right:1rem}
+  .eg-nav .eg-wrap{max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;
+    align-items:baseline}
+  .eg-nav .eg-pdf{margin-left:auto;margin-right:0;border:1px solid #b88a2a;
+    color:#ece8df;padding:.1rem .6rem;border-radius:2px;font-weight:600}
+  .eg-nav .eg-pdf:hover{background:#b88a2a;color:#1c1c1c;text-decoration:none}
+  @media print{.eg-nav{display:none} body{margin-top:0 !important}}
+</style>
+<div class="eg-nav"><div class="eg-wrap"><a class="eg-home" href="index.html">Papers</a><a class="eg-cat" href="index.html#electrogravitics">Electrogravitics</a><a class="eg-cat eg-catcur" href="index.html#people">The People</a><span class="eg-sep">·</span><a href="nikola_tesla.html">Tesla</a><a href="john_keely.html">Keely</a><a href="viktor_schauberger.html">Schauberger</a><a href="townsend_brown.html">Brown</a><a class="eg-cur" href="otis_carr.html">Carr</a><a href="walter_russell.html">Russell</a><a class="eg-pdf" href="pdf/otis_carr.pdf" download>Download PDF ↓</a></div></div>
+
+
+<div class="banner">
+  Companion papers:
+  <a href="electrogravitics.html">Electrogravitics</a> (the field guide) ·
+  <a href="antigravity_devices.html">Antigravity Devices</a> (the bench floor) ·
+  <a href="hover_disk.html">The Hover Disk</a> (the materials) ·
+  <a href="the_shape_of_gravity.html">The Shape of Gravity</a> (the law) ·
+  <a href="walter_russell.html">Walter Russell</a> (the scorecard template)
+</div>
+
+<h1>Otis T. Carr and the OTC-X1</h1>
+<p class="sub">The record, the machine, and the physics — a documentary and
+engineering audit of the 1957–61 "circular-foil spacecraft," written so a drone
+company can spend exactly zero dollars re-learning it.</p>
+<p class="meta">v1.0 · 2026-08-18 · Osika Innovation AB · Alexander Osika, Claude ·
+lane: electrogravitics / propellantless flight</p>
+
+<div class="box">
+<strong>What this paper is.</strong> Otis Carr (1904–1982) is the most-cited
+American "flying saucer inventor" of the 1950s, and his machine keeps
+resurfacing — most recently in a 2021 General Science Journal paper (Gobbi,
+"Carr Technology") that reads his 1959 amusement-ride patent as a complete
+spacecraft schematic and derives 10¹³ W of free power from it. This paper does
+three things. <strong>Part I</strong> reconstructs what is <em>documented</em>
+about Carr from the patent, the court record, and dated press — and separates
+it cleanly from the legend that accreted after 2006. <strong>Part II</strong>
+describes the machine as Carr described it, faithfully. <strong>Part III</strong>
+prices every load-bearing claim against textbook physics with the original
+numbers, and identifies the two small residues that are real. The register is
+the same as the companion field guide: no claim without a tag; the anti-reflex
+guardrail (never dismiss a fringe claim without doing the arithmetic) applied
+in full — and, in this case, the arithmetic and the paperwork both close.
+</div>
+
+<p>Tags used:
+<span class="tag t-doc">DOCUMENTED</span> (contemporary record — patent, court,
+dated press — or multiply corroborated) ·
+<span class="tag t-single">SINGLE-SOURCE</span> (one witness or one derivative
+source) ·
+<span class="tag t-legend">LEGEND</span> (later, uncorroborated, or contradicted
+by the record) ·
+<span class="tag t-der">DERIVED</span> (follows from stated physics; arithmetic
+shown) ·
+<span class="tag t-null">REFUTED / PRICED</span> (fails on its own numbers) ·
+<span class="tag t-open">RESIDUE</span> (a real thread worth keeping).</p>
+
+<div class="part">Part I — The record</div>
+
+<h2 id="s1">1. Who Otis Carr was, in dated facts</h2>
+
+<p>Otis T. Carr was born 7 December 1904 in Elkins, West Virginia, and died
+20 September 1982 in a Pittsburgh hospital of pneumonia and renal failure; he
+is buried in Allegheny Cemetery. In the 1942 census he was a night clerk at
+the Southern Hotel, Baltimore. <span class="tag t-doc">DOCUMENTED</span>
+(SSDI; <em>Pittsburgh Press</em>, 21 Sept 1982; Find-a-Grave 122223228). The
+widely repeated "died in Gardnerville, Nevada, in 2005" is false.
+<span class="tag t-legend">LEGEND</span></p>
+
+<p>The documented arc of the OTC-X1 episode fits on one page:</p>
+
+<table>
+<tr><th style="width:9rem">Date</th><th>Event</th><th style="width:7rem">Status</th></tr>
+<tr><td>Mar 1952 (written) / 1958 (published)</td><td><em>Dimensions of Mystery</em>, a mystical allegory (the Sphinx speaks to five-year-old Carr in 1909). Concepts copyrighted 1958: "Carrotto Gravity Motor," "Utron Electrical Battery," "OTC-X1."</td><td><span class="tag t-doc">DOCUMENTED</span></td></tr>
+<tr><td>1 Aug 1955</td><td>Trademark filing "Carrotto." OTC Enterprises Inc. (Baltimore) sells stock from 18 Nov 1955.</td><td><span class="tag t-doc">DOCUMENTED</span></td></tr>
+<tr><td>Jun 1957</td><td>Norman Evans Colton — ex-editor of the Army's <em>PS</em> magazine, previously FBI-investigated for fraud (not prosecuted) — joins as brochure editor, becomes "Director of Sales and Engineering" and Carr's public voice.</td><td><span class="tag t-doc">DOCUMENTED</span></td></tr>
+<tr><td>28 Oct 1957</td><td>Press conference; AP national story. Army inspects the model 16 Dec 1957 and declines ("does not meet present or foreseeable needs").</td><td><span class="tag t-doc">DOCUMENTED</span></td></tr>
+<tr><td>Apr–Nov 1958</td><td>Multiple appearances on Long John Nebel's WOR <em>Party Line</em> (19 Apr, 28 Jun, 11 Jul, 15 Nov). OTC-X1 model plans sold Oct 1958 at "$5, two for $9, three for $12." <em>FATE</em>, "Gravity Machine?", May 1958 p.17.</td><td><span class="tag t-doc">DOCUMENTED</span></td></tr>
+<tr><td>23 Nov 1958</td><td>Frontier City (Oklahoma City) manager James Burge invests $32,800 (21,000 shares) + $10,000 for a 45-ft "Educational Space Ride" — 35 passengers, counter-rotating shells, hydraulic lift.</td><td><span class="tag t-doc">DOCUMENTED</span></td></tr>
+<tr><td>22 Jan 1959</td><td>Patent application filed (Ser. 788,392).</td><td><span class="tag t-doc">DOCUMENTED</span></td></tr>
+<tr><td>Sun 19 Apr 1959</td><td><strong>Demo day.</strong> The 6-ft × 4-ft, ~600-lb (272 kg) prototype, built by Aircraftsmen Inc., is to fly at 3 PM from a gravel pit to 400–600 ft before ~3,000 people. Postponement announced 2½ h late ("technical difficulties" / a bearing housing "off one-sixteenth of an inch"). Carr is in Mercy Hospital, Room 302 (per aide Aho, a "lung hemorrhage… from over-work and strain").</td><td><span class="tag t-doc">DOCUMENTED</span></td></tr>
+<tr><td>Mon 20 Apr 1959</td><td>Bench test with an <em>external</em> drive motor, filmed by WKY-TV: "mercury then leaked from the innards of the machine, and the plastic halves began to come apart from the vibration" (Walter McGraw, NBC <em>Monitor</em>). Engineer Eugene Carini (2001): the two aluminium halves formed a capacitor that "would be a dead short to the batteries."</td><td><span class="tag t-doc">DOCUMENTED</span></td></tr>
+<tr><td>28 May – 5 Jun 1959</td><td>SEC complaint → permanent injunction against OTC stock sales. Investigator's figures: ~$150,000 raised in Baltimore; $61,007 from &gt;400 people 11 Mar 1958–7 Feb 1959; $34,997 deposited in Oklahoma. Carr "took the fifth amendment 84 times."</td><td><span class="tag t-doc">DOCUMENTED</span></td></tr>
+<tr><td>Aug 1959</td><td><em>FATE</em>, "The Saucer That Didn't Fly," W.E. Du Soir, p.32.</td><td><span class="tag t-doc">DOCUMENTED</span></td></tr>
+<tr><td>10 Nov 1959</td><td><strong>US Patent 2,912,244, "Amusement Device," granted.</strong> Nine claims. See §2.</td><td><span class="tag t-doc">DOCUMENTED</span></td></tr>
+<tr><td>19 Nov 1959</td><td>One-day jury trial (Okla. Co. Dist. Ct., Judge Clarence Mills), single count: selling 100 unregistered shares to Gurney Warnberg of Yukon. Guilty in &lt;40 min; jury assesses the <strong>statutory-maximum $5,000 fine</strong>, no prison term. Affirmed <em>Carr v. State</em>, 1961 OK CR 15, 359 P.2d 606 (11 Jan 1961).</td><td><span class="tag t-doc">DOCUMENTED</span></td></tr>
+<tr><td>11 Aug 1960</td><td>NY Attorney General Lefkowitz press release: investigating "space age charlatans" who "victimized investors of more than $50,000" in OTC stock; subpoena for Carr and Colton (26 Sept 1960). An investigation, not a fine.</td><td><span class="tag t-doc">DOCUMENTED</span></td></tr>
+<tr><td>Jan 1961</td><td><em>True</em> magazine, "King of the Non-Flying Saucers" (Gehman). Nebel's <em>The Way Out World</em> devotes a chapter to Carr's "$20,000,000 ticket to the moon."</td><td><span class="tag t-doc">DOCUMENTED</span></td></tr>
+<tr><td>14 Jul 1961 – 17 Jan 1962</td><td>Jailed for non-payment of the fine, "serving it out at $1 a day"; released after the six-month maximum / pauper's oath. (Wikipedia's "14-year sentence" is a garble of his lawyer's "5,000 days at a dollar a day.")</td><td><span class="tag t-doc">DOCUMENTED</span></td></tr>
+<tr><td>1963–67</td><td>Homestead, PA "power gain machine" demos; a five-witness notarised statement (23 Nov 1963) later disavowed in writing by engineer-witness Milton Palkowitz. Half-scale wooden model shown to Dept. of Interior 1967. No patent ever issued on any power-gain device.</td><td><span class="tag t-doc">DOCUMENTED</span></td></tr>
+</table>
+
+<p>Primary compilations: Curt Collins, <em>The Saucers That Time Forgot</em>,
+"The Life and Legend of Otis T. Carr," Parts 1–4 (2020–21), built on dated
+newspaper citations, the SEC/court record, and Lance Moody's 2001 interviews
+with six OTC participants; Kenneth Arnold, <em>Joyland, Aliens and the Men in
+Black Behind Otis T. Carr's Flying Saucer</em> (2021, document compilation incl.
+FBI files); the rexresearch.com Carr file (transcripts and brochures). Full
+list in References.</p>
+
+<h2 id="s2">2. The patent, read as a patent</h2>
+
+<p>US 2,912,244 is the single primary technical document Carr left. It is
+worth quoting its own statement of purpose, because the entire post-2006
+literature rests on the premise that it is a disguised spacecraft:</p>
+
+<blockquote>"…a novel amusement device having the overall configuration of a
+space craft and being formed in various sections, with portions of the sections
+being rotated in opposite directions to give the impression of movement to the
+passengers." Claim 1: "In an amusement device simulating a space ride, the
+combination of: an outer tubular shell…" — passengers receive "the impression
+of flying in an interplanetary space craft" via counter-rotating shells, minor
+vertical displacement on hydraulic jacks, and a projected film of "heavenly
+bodies" on an overhead screen.</blockquote>
+
+<p>Prior art cited: US 754,532 (1904), 868,369 (1907), 981,672 (1911),
+1,818,647 (a merry-go-round, 1931). It has since been cited by amusement-ride
+patents (e.g. US 6,220,171, Universal Studios, 2001). It contains no
+propulsion claim, no energy claim, no electrical schematic, and no Utron.
+The Frontier City ride it describes was actually built and opened in 1959.
+<span class="tag t-doc">DOCUMENTED</span></p>
+
+<p>The claim that Carr "decided to patent his invention as if it were an
+educational and recreational device" to hide it (Gobbi 2021 §1; Project
+Camelot) has no support inside the document and is contradicted by Carr's own
+behaviour: in January 1960 he mailed supporters a photostat of the
+<em>Official Gazette</em> page as if the amusement patent validated the
+spacecraft (<em>True</em>, Jan 1961). <span class="tag t-legend">LEGEND</span></p>
+
+<h2 id="s3">3. The Tesla connection</h2>
+
+<p>Carr's own account, first aired on <em>Party Line</em> on 19 April 1958:
+he met Tesla in summer 1925 while a package clerk at a New York hotel; Tesla
+nicknamed him "the sponge." Retellings place this at the Hotel New Yorker,
+which opened in 1930 and housed Tesla only 1934–43 — an anachronism; the
+1925-consistent hotel is the Pennsylvania. Gobbi's version ("over a period of
+three years… began his investigations in 1937") is a third, incompatible
+telling. On 28 June 1958, asked on air to name a single Tesla discovery, Carr
+answered: "That's funny — I cannot remember even one." Jim Murray, who visited
+Carr in the 1970s, came away "uncertain if the two had ever met." No
+contemporary document links them.
+<span class="tag t-legend">LEGEND</span> (Carr's claim, self-undermined)</p>
+
+<h2 id="s4">4. The Ralph Ring testimony</h2>
+
+<p>The version of Carr that circulates today is almost entirely Ralph Ring's
+— given to Project Camelot (Kerry Cassidy, Las Vegas, August 2006; Ring aged
+71), forty-five years after the events. Its load-bearing claims:</p>
+
+<blockquote>"Fly is not the right word. It traversed distance. It seemed to
+take no time. I was with two other engineers when we piloted the 45' craft
+about ten miles… we had returned with samples of rocks and plants from our
+destination… It was more like a kind of teleportation." — "We felt we were in
+the craft about fifteen or twenty minutes. We were told afterwards that we'd
+been carefully timed as… no longer than three or four minutes." — "…the metal
+turned to Jell-o. You could push your finger right into it." — the lab was
+"forcibly shut down by government agents" two weeks later (1961), "all files
+and documentation confiscated." — "We went into a kind of meditative state
+and all three of us focused our intentions on the effect we wanted to achieve."</blockquote>
+
+<p>Applied against the record:</p>
+<ul>
+<li>The only 45-ft object OTC ever built was the Frontier City ride, which
+had no power plant and did not leave its foundation. The one flight-intended
+article was the 6-ft prototype, which never flew and ended up bolted to a
+billboard outside Carr's Apple Valley, CA shop (leased 12 April 1960); by
+Carini's account it was later stolen off the billboard and stored in a barn
+in Dike, Iowa. <span class="tag t-doc">DOCUMENTED</span> /
+<span class="tag t-single">SINGLE-SOURCE</span> (barn)</li>
+<li>No raid appears in the press, SEC, court, or FBI material assembled by
+Collins and Moody. In 1961 Carr was in Oklahoma serving out his fine, having
+first gone to Vashon Island, WA to avoid it.</li>
+<li>Rexresearch's editor reports that Ring told <em>him</em> he had "flown in
+a short test flight of a small model of the craft" — a different story from
+the 45-ft, ten-mile account. Ring's own 2012–16 "pod" replication programme
+(Blue Star Enterprise; UK/California/Australia builds) reports hand-spun
+counter-rotating models with "no voltage… no lift data"; a 2016 write-up
+concedes "there are not any real test results," citing hearsay of "35 to
+40 volts" from a pod utron.</li>
+<li>No second crew member has ever been named or come forward. Camelot's
+framing page also gives the demo date as 15 April (it was the 19th), the NY
+action as a "January 1961 $50,000 fine" (it was an August 1960 subpoena), and
+Carr's death as 2005 in Nevada (1982, Pittsburgh).</li>
+</ul>
+
+<p>Verdict on the testimony: a single witness, first speaking after 45 years,
+whose central object did not exist, whose retellings differ, whose own
+replication attempts produced nothing, embedded in a page with four
+checkable errors of fact. The "consciousness-melds-with-engineering" element
+is by Ring's own statement not writable into equations, i.e. not testable.
+<span class="tag t-legend">LEGEND</span></p>
+
+<div class="warn">
+<strong>On suppression.</strong> This project adopts, as private frame, the
+thesis that some exotic-propulsion work has been suppressed. That frame does
+not license reading <em>every</em> failed inventor as a suppressed one, and
+Carr is a poor poster child for it: the file is unusually thick and points the
+other way. The prototype failed on a bench, in front of a television camera,
+with an <em>external</em> motor turning it, by leaking its mercury and
+vibrating apart. The government action was a public securities trial for
+selling unregistered stock, with a jury, an appeal, and a published opinion —
+not a seizure. If suppression needs evidence, it must be found elsewhere;
+citing Carr weakens the case.
+</div>
+
+<div class="part">Part II — The machine, as Carr described it</div>
+
+<h2 id="s5">5. The OTC-X1 architecture</h2>
+
+<p>Faithfully rendered from the Nebel transcripts, the 1957–58 OTC brochures,
+and Gobbi's reading of the patent figures (which, for the <em>mechanical</em>
+layout of the ride, is fair):</p>
+
+<figure>
+<svg viewBox="0 0 720 300" width="100%" role="img" aria-label="OTC-X1 cross-section schematic">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#5a6470"/></marker>
+  </defs>
+  <!-- ground -->
+  <line x1="40" y1="262" x2="680" y2="262" stroke="#8a8676" stroke-width="1.5"/>
+  <!-- tripod -->
+  <path d="M360,262 L360,175 M300,262 L340,200 M420,262 L380,200" stroke="#5a6470" stroke-width="3" fill="none"/>
+  <!-- outer ring (electromagnets) -->
+  <path d="M60,175 L120,140 L600,140 L660,175 L600,190 L120,190 Z" fill="#e3ebf3" stroke="#3a5a7d" stroke-width="2"/>
+  <!-- electromagnets -->
+  <g fill="#3a5a7d">
+    <rect x="80" y="160" width="14" height="14"/><rect x="626" y="160" width="14" height="14"/>
+    <rect x="130" y="150" width="14" height="14"/><rect x="576" y="150" width="14" height="14"/>
+  </g>
+  <!-- inner platform -->
+  <rect x="150" y="150" width="420" height="30" fill="#f6eed9" stroke="#b88a2a" stroke-width="2"/>
+  <!-- utrons (bicone = diamond) -->
+  <g fill="#fff" stroke="#b88a2a" stroke-width="2">
+    <path d="M190,150 L205,165 L190,180 L175,165 Z"/>
+    <path d="M530,150 L545,165 L530,180 L515,165 Z"/>
+    <path d="M280,150 L295,165 L280,180 L265,165 Z"/>
+    <path d="M440,150 L455,165 L440,180 L425,165 Z"/>
+  </g>
+  <!-- capacitor plates -->
+  <g stroke="#7a1f1f" stroke-width="2">
+    <line x1="225" y1="153" x2="255" y2="177"/><line x1="465" y1="153" x2="495" y2="177"/>
+    <line x1="315" y1="153" x2="345" y2="177"/><line x1="375" y1="153" x2="405" y2="177"/>
+  </g>
+  <!-- central utron battery -->
+  <path d="M360,140 L385,165 L360,190 L335,165 Z" fill="#fff8e8" stroke="#b88a2a" stroke-width="2.5"/>
+  <!-- cabin -->
+  <path d="M310,140 Q360,60 410,140 Z" fill="#eef3e8" stroke="#5a7d3a" stroke-width="2"/>
+  <line x1="360" y1="60" x2="360" y2="140" stroke="#5a7d3a" stroke-width="1" stroke-dasharray="3,3"/>
+  <!-- labels -->
+  <g font-size="12" fill="#1c1c1c">
+    <text x="418" y="90">stationary cabin (crew)</text>
+    <text x="418" y="106" fill="#5a6470" font-size="11">on the shaft, held still "like a bearing"</text>
+    <text x="392" y="200" font-size="11" fill="#b88a2a">central Utron accumulator (battery), 2 kV / 12 kV</text>
+    <text x="60" y="128" font-size="11" fill="#3a5a7d">outer ring: 12 electromagnets, counter-rotates (CCW)</text>
+    <text x="150" y="222" font-size="11" fill="#b88a2a">inner platform (CW): 6 Utrons (◇, themselves counter-spinning on 45° axes) + 6 capacitor plates (∕)</text>
+    <text x="300" y="282" font-size="11" fill="#5a6470">tripod / hydraulic jacks (per patent)</text>
+  </g>
+  <!-- rotation arrows -->
+  <path d="M120,205 Q140,215 160,205" stroke="#3a5a7d" stroke-width="1.5" fill="none" marker-end="url(#a)"/>
+  <path d="M600,205 Q580,215 560,205" stroke="#3a5a7d" stroke-width="1.5" fill="none" marker-end="url(#a)"/>
+</svg>
+<figcaption>Figure 1 — The OTC-X1 as described: three concentric bodies on one
+shaft. Inner platform (clockwise) carrying the central Utron "accumulator," six
+peripheral Utrons and six capacitor plates; outer ring (counter-clockwise)
+carrying twelve electromagnets; cabin stationary between them. Layout after
+US 2,912,244 Figs. 2, 5, 6 and the Nebel transcripts. This is a faithful
+rendering of the claim, not an endorsement of any function.</figcaption>
+</figure>
+
+<p><strong>The bodies.</strong> (1) An inner platform rotating clockwise,
+carrying a large central battery ("Utron accumulator" — Carr: "1,000 2-volt
+cells inside this one unit," 12,000 V planned for the 45-ft craft), six
+peripheral <em>Utrons</em> on bearings, and six capacitor plates. (2) An outer
+ring rotating counter-clockwise, carrying twelve horseshoe electromagnets;
+Utrons pass through their air gaps. (3) A cabin on the central shaft, kept
+stationary because "when you have rotation in both directions, the cabin
+itself is like a bearing and extension of the shaft."</p>
+
+<p><strong>The Utron.</strong> A bicone ("two ice-cream cones put together at
+the wide ends," 90° included angle) — "completely round and completely
+square," which Carr called "the geometric form of space" — with a hollow
+spherical interior. In Gobbi's reconstruction the cavity holds mercury as a
+liquid rotor, the outside carries a coil wound "from apex to equator to apex,"
+and fins make it spin like a turbine in the platform's own airflow. Carr:
+"All energy comes from these two cones… we have put a battery in motion."</p>
+
+<p><strong>The operating claim.</strong> Electromagnets pulse in commutated
+sequence to spin the platform (a brushed motor); above some speed the Utrons
+passing the electromagnet gaps generate more than they consume ("the
+generative coils will put back into the batteries… the same amount of volts
+going out"), the capacitor plates "utilize atmospheric electricity" and glow
+blue-green, and:</p>
+
+<blockquote>"Any vehicle accelerated to an axis rotation relative to its
+attractive inertial mass, immediately becomes activated by free-space-energy
+and acts as an independent force… When the exact counter-rotation matches the
+forward rotation the body loses its polarity entirely and immediately becomes
+activated by free-energy (tensor stresses in space)… The above-described
+assembly of counter-rotating charged masses becomes weightless and will escape
+the immediate attraction of gravitational forces."</blockquote>
+
+<p><strong>The numbers Carr gave.</strong> "Our 45-foot craft has a rotation
+of 580 rpm and when it reaches this rotation it is totally independent of its
+inertial attractive mass" — Colton's gloss: 580 rpm on 45 ft is "relatively
+equal to the earth's rotation speed" (Earth "8,000 miles in diameter rotating
+once in 24 hours"). And: "This model was spun at 40,000 rpm and when it did it
+set a pressure pattern of 1,000 tons; the horsepower reading was a little over
+700. Six engineers checked this out. Now the relative rotation of this model
+would be about 68,000 rpm, and when it reaches this rotation, it would
+immediately take off." (An OTC bulletin of Dec 1957 places the "1,000 tons"
+in 1952, from a 4-inch model.) <span class="tag t-doc">DOCUMENTED</span>
+(as statements)</p>
+
+<h2 id="s6">6. Gobbi's 2021 reconstruction</h2>
+
+<p>Julio Gobbi's "Carr Technology" (General Science Journal, 30 Jan 2021) is
+the only attempt to put equations under the description, and it is useful
+precisely because it commits to numbers. Its chain: the Utron is a mercury
+Faraday (unipolar) disc; rotation in the coil's field separates charge in the
+mercury (Lorentz/Hall); the separated current reinforces the coil field
+(positive feedback); the rotating Utrons project atmospheric charge onto the
+capacitor plates, which become "superconducting" and generate a central
+magnetic field that "repulses the vertical component of the terrestrial
+magnetic field"; counter-rotating masses induce a "gravitational potential"
+via an "inertial current" I = ω²(r₂²−r₁²)/2. Headline outputs: B ≈ 1.4×10⁵ T
+inside a 1-m Utron; ≈10⁹ T on the craft axis; 5×10¹³ W available per coil;
+1.6×10⁶ kg levitated magnetically; 25 t neutralised at 4×10⁴ rpm; an
+"artificial gravity" of 45 m/s² four metres above the deck. It contains no
+experiment and no measurement; its sources are the Camelot page and the
+rexresearch transcripts. Its citation dates for <em>FATE</em> ("May 1995,"
+"August 1995") are the 1958 and 1959 items misdated. Priced in §§8–9.
+<span class="tag t-single">SINGLE-SOURCE</span> (theory only)</p>
+
+<div class="part">Part III — The physics, priced</div>
+
+<h2 id="s7">7. The one number that decodes</h2>
+
+<p>Start with the number everyone quotes and nobody checks. "580 rpm for a
+45-ft craft equals the Earth's rotation" is dimensionally meaningless as
+angular velocity (Earth: 7.3×10⁻⁵ rad/s; 580 rpm: 60.7 rad/s). But Colton's
+"one mile in diameter would be 8,000 turns in 24 hours" is a
+<em>circumference</em> scaling — and it decodes: he is matching the craft's
+<strong>rim linear speed</strong> to Earth's equatorial surface speed.</p>
+
+<div class="box">
+45 ft → r = 6.86 m. At 580 rpm, ω = 60.7 rad/s, rim speed
+v = ωr = <strong>417 m/s</strong>. Earth's equatorial surface speed is
+<strong>465 m/s</strong> (exact match at 647 rpm — Gobbi's "corrected" 660
+rpm is this same arithmetic). So the "580 rpm" is a coherent, if
+unmotivated, engineering statement: <em>spin the rim as fast as the ground
+under it moves</em>. <span class="tag t-der">DERIVED</span>
+</div>
+
+<p>Two things follow immediately.</p>
+<ol>
+<li><strong>The premise fails on Earth itself.</strong> Earth's equator
+<em>does</em> move at 465 m/s, and the resulting centrifugal relief is
+ω²R = 0.034 m/s² — <strong>0.35% of g</strong>. Rotation at Earth's surface
+speed does not make Earth's surface weightless; it makes it 0.35% lighter.
+The number Carr matched has no relation to lift.
+<span class="tag t-null">REFUTED</span></li>
+<li><strong>The hull cannot survive the number.</strong> Hoop stress in a
+thin spinning ring is σ = ρv². At 417 m/s: aluminium 6061-T6, 4.7×10⁸ Pa
+against a 2.7×10⁸ Pa yield — <strong>1.7× past yield</strong>; 4340 steel,
+1.4×10⁹ vs 1.1×10⁹ — 1.2× past; Ti-6Al-4V just survives at 0.87 of yield,
+before any bending, ports, bearings, or the twelve electromagnets bolted to
+the rim. And Carr's "relative rotation" doubles it: 1,160 rpm actual on each
+ring gives 833 m/s (Mach 2.4 rim speed in air) and 1.9×10⁹ Pa in aluminium —
+seven times yield. The 45-ft craft, built as described, disintegrates well
+before its magic number. <span class="tag t-null">PRICED</span></li>
+</ol>
+
+<p>The 40,000-rpm model: on a 4-inch model (r = 5 cm) rim speed is 213 m/s
+and aluminium hoop stress 1.2×10⁸ Pa — survivable, so that statement is at
+least mechanically possible. "A pressure pattern of 1,000 tons" has no
+referent (pressure is not measured in tons; if it means thrust on a stand it
+was not observed on 20 April 1959, when the 272-kg prototype sat still under
+external drive). "Horsepower reading a little over 700" is 522 kW into a
+hand-sized model — the drive shaft would glow. On the 6-ft prototype the same
+40,000 rpm gives a rim at 3.8 km/s (Mach 11) and 4×10¹⁰ Pa: not a machine, an
+explosion. <span class="tag t-null">PRICED</span></p>
+
+<h2 id="s8">8. The Utron, priced</h2>
+
+<p>The Utron reduces, in every reconstruction, to a homopolar (Faraday-disc)
+generator with a liquid-mercury rotor inside a self-wound coil. That is real
+physics, so price it with the real formulas.</p>
+
+<h3>8.1 What a mercury Faraday disc actually delivers</h3>
+<p>The open-circuit EMF of a rotating conductor of radius r in axial field B
+is V = ½Bωr². Gobbi's own worked case — r = 0.10 m, B = 1.25 T (a neodymium
+surface field), 12,000 rpm (ω = 1,257 rad/s) — gives
+<strong>V = 7.9 volts</strong>. Homopolar machines are low-voltage,
+high-current devices by construction (which is why every real one — from
+Faraday's 1831 disc to the 500 MJ Canberra machine — uses brushes or liquid
+metal contacts and lives at a few volts). There is nothing in a bicone that
+changes this. Gobbi's derivation of "12,000 V" from a Utron passing through a
+transformer gap is a separate, and separately broken, calculation (§8.4).
+<span class="tag t-der">DERIVED</span></p>
+
+<h3>8.2 The 10¹¹-ampere step</h3>
+<p>Gobbi's large numbers all originate in one move: taking <em>every
+conduction electron in the mercury</em> (n = 4.08×10²⁸ m⁻³) as circulating
+current at the rotation frequency: I = n·e·V·f = 1.1×10¹¹ A for a 1-m Utron,
+hence H = 1.1×10¹¹ A/m and <strong>B = 1.4×10⁵ T</strong>. But conduction
+electrons in a rotating metal rotate <em>with the lattice</em>; they are not
+a net current unless separated from the ions. The separation available from
+rotation is the Tolman–Stewart / centrifugal effect, potential
+V ≈ m_eω²r²/2e = <strong>4.5×10⁻⁸ V</strong> at 12,000 rpm and 10 cm — and
+Gobbi in fact computes the Lorentz-separated charge himself, honestly, and gets
+3.1×10⁻⁶ C and <strong>6.2×10⁻⁴ A</strong> (his §5.1.2, "a very small electric
+current"). He then observes that this "would still fall short… by a factor of
+10" and proceeds with the all-electrons figure anyway. The gap between the
+honest number and the used one is <strong>fourteen orders of magnitude</strong>.
+<span class="tag t-null">REFUTED</span> (on the paper's own arithmetic)</p>
+
+<h3>8.3 What 10⁵ T means</h3>
+<p>Field energy density is B²/2μ₀. At 1.4×10⁵ T that is 7.8×10¹⁵ J/m³ — a
+cubic metre of it is <strong>1.9 megatons of TNT</strong>. At Gobbi's
+on-axis 1.0×10⁹ T (§7 of his paper), 4×10²³ J/m³, ten thousand times the
+field of a magnetar. The strongest steady laboratory field is 45 T (NHMFL);
+the strongest pulsed non-destructive, ~100 T; destructive single-shot flux
+compression peaks near 1,200 T and vaporises the coil. The magnetic pressure at
+1.4×10⁵ T is 7.8×10¹⁵ Pa — the yield strength of steel is 10⁹. Any Utron
+carrying such a field would be its own bomb.
+<span class="tag t-null">PRICED</span></p>
+
+<h3>8.4 The 5×10¹³ W step</h3>
+<p>The power figure multiplies a field energy (2.2×10¹⁰ J) by a passage
+frequency (2,400 Hz), treating the magnetic energy as <em>delivered</em> every
+time a Utron passes a gap. Field energy is not consumed by passing a coil; a
+generator delivers only the work done <em>against</em> the induced current by
+whatever spins the rotor — here, the platform's own motor. The construction is
+a closed regenerative loop (battery → electromagnets → platform → Utrons →
+battery) with no reservoir named — the exact <em>closed-system over-unity</em>
+package the companion field guide's §7 flags as this literature's most reliable
+fraud marker. The discipline there applies unchanged: never argue conservation
+by reflex, demand the reservoir. Carr's reservoirs were "atmospheric
+electricity" and "free-space energy." Priced next.
+<span class="tag t-null">FORBIDDEN as closed loop</span></p>
+
+<h3>8.5 Atmospheric electricity, priced</h3>
+<p>Fair-weather field ~100 V/m, fair-weather current density
+~2×10⁻¹² A/m². Over Gobbi's 150 m² of capacitor plate that is
+<strong>3×10⁻¹⁰ A</strong> — thirty picowatts at 100 V. Gobbi's model
+instead assigns the atmosphere an electron density of 4×10²⁵ m⁻³, which is
+larger than the density of air <em>molecules</em> (2.5×10²⁵ m⁻³) and
+~10¹⁶ times the actual fair-weather ion density (~10⁹ m⁻³). Every downstream
+number (9.7×10¹⁰ C/s onto the plates, plates going "superconducting" by
+"structural change in their atoms," the 1.6×10⁶ kg magnetically levitated
+against Earth's 5×10⁻⁵ T field) inherits that factor.
+<span class="tag t-null">REFUTED</span></p>
+
+<h3>8.6 The mercury shell</h3>
+<p>Gobbi's 1-m Utron at 12,000 rpm carries mercury (13,580 kg/m³) at
+r = 0.4 m: centrifugal pressure ρω²r²/2 = <strong>1.7×10⁹ Pa
+(17,000 bar)</strong> against a wall specified as "nylon, celeron, bakelite."
+Rim speed 628 m/s, Mach 1.8. It bursts. At the 25-cm scale (r = 0.1 m,
+12,000 rpm) the pressure is 1.1×10⁸ Pa (1,100 bar) — still an order past any
+plastic and marginal for steel. The 20 April 1959 film shows a plastic
+housing that "began to come apart from the vibration" and leaked its mercury
+under a mere external drive motor: the failure mode was demonstrated.
+<span class="tag t-null">PRICED</span> / <span class="tag t-doc">DOCUMENTED</span></p>
+
+<h2 id="s9">9. Counter-rotation and gravity, priced</h2>
+
+<p>The mechanism at the centre of Carr's own words is <em>counter-rotation</em>
+— two charged bodies spun oppositely on one axis until "the body loses its
+polarity entirely" and "becomes weightless." Three independent bounds
+close this.</p>
+
+<ol>
+<li><strong>Zero net angular momentum is the ordinary case, not an exotic
+one.</strong> Two equal counter-rotating rotors have L_total = 0; that is
+every coaxial helicopter, every counter-rotating propeller, every reaction
+wheel pair. Nothing about the state is anomalous, and it is realised a
+million times a day. <span class="tag t-der">DERIVED</span></li>
+<li><strong>Spinning masses do not lose weight, to high precision.</strong>
+The one serious claim that they do — Hayasaka &amp; Takeuchi (PRL 63:2701,
+1989), ~10 mg loss on a right-spinning gyroscope — was refuted within a year
+by three independent groups: Faller et al. (PRL 64:825, 1990), Nitschke &amp;
+Wilmarth (PRL 64:2115, 1990), Quinn &amp; Picard (Nature 343:732, 1990), the
+last at a sensitivity ~30× below the claimed effect. Rotating-mass weight
+anomalies are bounded at the 10⁻⁷ level of the mass. Counter-rotating them
+adds a symmetry, not an effect. <span class="tag t-null">NULL</span>
+(published record)</li>
+<li><strong>The framework this lane uses predicts zero for symmetric drives
+by construction</strong> (companion field guide, Claim 5: "symmetric drives
+give zero"). Carr's core configuration — matched counter-rotation, "the exact
+counter-rotation matches the forward rotation" — is precisely the symmetric
+case. On the lane's own physics, the moment the machine reaches its design
+condition is the moment any coupling would cancel.
+<span class="tag t-der">DERIVED</span></li>
+</ol>
+
+<p>Gobbi's "gravitoinertial" section introduces a "gravitational permeability
+of vacuum γ₀ = 1.19×10⁹ kg² N⁻¹ m⁻²" and an "inertial current"
+I = ω²(r₂²−r₁²)/2 with units of gravitational potential; from these he obtains
+25 t neutralised at 40,500 rpm on a 15-m ring (rim speed 32 km/s — nearly
+Earth's orbital velocity, and 3.5×10⁵ g at the rim), and an "artificial
+gravity" of 45 m/s² four metres above the deck from six 200-kg Utrons at
+24,000 rpm on 4-m arms (rim speed 10 km/s, Mach 29, 2.6×10⁶ g). These
+quantities are not in any physics; the numbers they generate would shred the
+craft by ten decades before any gravitational effect could be sought.
+<span class="tag t-null">REFUTED</span></p>
+
+<h2 id="s10">10. The "metal turned to Jell-O"</h2>
+
+<p>Ring's most vivid claim — that at speed "the metal turned to Jell-o; you
+could push your finger right into it… as if it was not entirely here in this
+reality" — is repeated by Gobbi as the plates and hull "becoming
+superconducting due to the structural change in their atoms," which is then
+made load-bearing for the ×1,000 field amplification. There is no mechanism
+offered, no analogue in condensed matter (superconductors are not soft; a
+type-II superconductor is the same solid it was above T_c), and no test
+proposed by which it could be checked. It is unfalsifiable as stated and
+therefore carries no weight either way. <span class="tag t-legend">LEGEND</span></p>
+
+<h2 id="s11">11. What survives — the residues</h2>
+
+<p>The anti-reflex rule requires listing what is <em>real</em> in the
+vicinity, so the next reader does not have to rediscover it.</p>
+
+<ol>
+<li><strong>Liquid-metal homopolar machines are real</strong> and useful:
+NaK-brush homopolar generators (the Canberra 500 MJ machine, US Navy
+railgun pulsed-power work) exist because liquid-metal contacts carry the
+mega-amp currents a few volts demand. Mercury as a rotor is Faraday's own
+1821–31 choice. None of this is a source of energy; all of it converts shaft
+work to electricity at a few volts. <span class="tag t-open">RESIDUE</span>
+(engineering, not propulsion)</li>
+<li><strong>Self-excited dynamo action in a rotating conductor is real</strong>
+— Gobbi's "positive feedback" has a lawful cousin. Riga (2000) and Karlsruhe
+(1999) achieved it in liquid sodium; the threshold is a magnetic Reynolds
+number Rm = μ₀σvL of order 10–100 for optimised flows and several hundred for
+unconstrained spherical Couette flow (Madison and Grenoble sodium spheres did
+not self-excite at Rm ~ 100–200). A 25-cm mercury Utron at 12,000 rpm has
+Rm ≈ 10 (σ_Hg = 1.04×10⁶ S/m, v ≈ 78 m/s, L = 0.1 m) — <em>one to two orders
+short</em>, not fourteen; a 1-m mercury Utron at 12,000 rpm would reach
+Rm ≈ 260, but its wall is at 17,000 bar (§8.6). And a dynamo is a
+<em>load</em>: field growth is paid by increased drag on the drive, exactly as
+in every generator. So the honest version of "the Utron reinforces its own
+field" is: <em>possible in principle in a sodium sphere the size of a room,
+sourced by a motor, producing a field measured in gauss.</em>
+<span class="tag t-open">RESIDUE</span> (interesting physics, wrong claim)</li>
+<li><strong>Counter-rotating coaxial rotors</strong> are the correct
+architecture for a torque-neutral disc-shaped drone — for the ordinary reason
+(§9.1). The companion vehicle paper (<em>The Hexalock</em>) already assumes
+it. Carr's geometry is not evidence for that choice, but it is not against it
+either. <span class="tag t-open">RESIDUE</span> (aerodynamics)</li>
+<li><strong>The rim-speed decode (§7)</strong> is worth recording as a
+methodological point: the fringe number was not random; it encoded a
+specific (wrong) physical intuition — "match the ground's speed." Finding
+the intuition is how one prices a claim instead of dismissing it, and it is
+also how one sees exactly where it fails (0.35% of g).</li>
+</ol>
+
+<h2 id="s12">12. Scorecard</h2>
+
+<div class="overflow">
+<table>
+<tr><th style="width:38%">Claim</th><th>Status</th><th>Receipt / reason</th></tr>
+<tr><td>Carr met Tesla; Tesla was his source</td><td><span class="tag t-legend">LEGEND</span></td><td>Self-contradicted on air (28 Jun 1958); hotel anachronism; three incompatible dates; no document.</td></tr>
+<tr><td>US 2,912,244 is a disguised spacecraft schematic</td><td><span class="tag t-legend">LEGEND</span></td><td>Patent text: "amusement device simulating a space ride"; nine claims, all ride mechanics; Carr himself used it as PR.</td></tr>
+<tr><td>A prototype flew (6-ft, 1959)</td><td><span class="tag t-null">REFUTED</span></td><td>Bench test 20 Apr 1959, external motor, mercury leak, housing came apart (WKY-TV film, NBC report).</td></tr>
+<tr><td>A 45-ft craft flew ten miles with three crew (Ring)</td><td><span class="tag t-legend">LEGEND</span></td><td>Only 45-ft article was the Frontier City ride; single witness, 45 years later, contradictory retellings, no second witness, no replication.</td></tr>
+<tr><td>Lab raided and files seized by government (1961)</td><td><span class="tag t-legend">LEGEND</span></td><td>Absent from press/SEC/court/FBI record; Carr was serving a fine in Oklahoma.</td></tr>
+<tr><td>Carr was persecuted / sentenced to 14 years</td><td><span class="tag t-null">REFUTED</span></td><td>$5,000 fine (statutory max), no prison term; ~6 months in lieu; SEC civil injunction; NY AG subpoena. Public trial and published appeal.</td></tr>
+<tr><td>580 rpm on 45 ft "equals Earth's rotation" → weightless</td><td><span class="tag t-null">REFUTED</span></td><td>Decodes as rim speed ≈ 465 m/s; Earth's own centrifugal relief at that speed is 0.35% of g; hull is 1.7× past yield (Al).</td></tr>
+<tr><td>Utron = mercury homopolar generator</td><td><span class="tag t-der">DERIVED</span></td><td>Fair reconstruction; delivers ~8 V at 1.25 T, 12,000 rpm, r = 10 cm.</td></tr>
+<tr><td>Utron field 10⁵–10⁹ T; 10¹³ W; 10⁶ kg levitated (Gobbi)</td><td><span class="tag t-null">REFUTED</span></td><td>All-electron current error (10¹⁴× over the paper's own Hall estimate); field energy 1.9 Mt/m³; atmosphere ion density 10¹⁶× over.</td></tr>
+<tr><td>Regenerative loop runs itself</td><td><span class="tag t-null">FORBIDDEN</span></td><td>Closed-system over-unity, no reservoir named; atmospheric supply is 3×10⁻¹⁰ A on 150 m².</td></tr>
+<tr><td>Counter-rotation cancels weight</td><td><span class="tag t-null">NULL</span></td><td>Gyroscope-weight nulls 1990 (Faller; Nitschke; Quinn &amp; Picard); framework predicts zero for symmetric drives.</td></tr>
+<tr><td>Metal becomes soft/superconducting at speed</td><td><span class="tag t-legend">LEGEND</span></td><td>No mechanism, no analogue, no test.</td></tr>
+<tr><td>Self-excited dynamo in a rotating liquid-metal sphere</td><td><span class="tag t-open">RESIDUE</span></td><td>Real (Riga/Karlsruhe, sodium); mercury Utron 1–2 decades short in Rm and mechanically impossible at the size that closes it; a load, not a source.</td></tr>
+<tr><td>Coaxial counter-rotation for a disc drone</td><td><span class="tag t-open">RESIDUE</span></td><td>Correct for torque balance; ordinary reasons; see <em>Hexalock</em>.</td></tr>
+</table>
+</div>
+
+<h2 id="s13">13. What a drone company should take from Carr</h2>
+
+<ol>
+<li><strong>Nothing to build.</strong> There is no configuration in the OTC-X1
+that survives its own numbers long enough to be a bench item; the mercury
+Utron is a homopolar generator with a burst hazard.</li>
+<li><strong>Two failure signatures worth recognising</strong>, because they
+recur in this literature: the <em>demo that is postponed at the hour</em>
+(inventor unavailable; a "one-sixteenth-inch" bearing) and the
+<em>number that inflates under scrutiny</em> (1,000 tons in 1952 from a
+4-inch model → 45-ft craft at $20 million). The companion field guide records
+the mirror signature — the claimed force that <em>shrinks</em> 40× under
+instrumentation (Buhler). Both are the same lesson: instrument first, announce
+second. A company that publishes its balance, its five controls and its nulls
+becomes the credible instrument this field has never had.</li>
+<li><strong>Do not import the mystique with the geometry.</strong> Bicones,
+counter-rotation, and liquid-metal rotors are all legitimate objects; none
+of them acquires new physics by being arranged as Carr arranged them. The
+lane's rotating-mass thread that <em>is</em> worth a bench date is Wallace's
+(nuclear-spin-selected rotors, unreplicated, no published null) — see the
+field guide §8 — not Carr's.</li>
+<li><strong>The rim-speed lesson.</strong> Any disc-craft concept should have
+its rim speed and hoop stress computed on the first page. Carr's design
+condition was Mach 1.2 at the rim on a rotor carrying twelve electromagnets;
+Gobbi's is Mach 29. A one-line check would have priced both.</li>
+</ol>
+
+<h2>References &amp; receipts</h2>
+<ul>
+<li>US Patent 2,912,244, "Amusement Device," O.T. Carr, filed 22 Jan 1959,
+granted 10 Nov 1959 (Google Patents / patentimages PDF).</li>
+<li><em>Carr v. State</em>, 1961 OK CR 15, 359 P.2d 606 (Okla. Crim. App., 11 Jan
+1961; rehearing denied 1 Mar 1961) — justia.com. SEC News Digest, 9 June 1959.
+<em>Daily Oklahoman</em>, 29 May 1959; 20 Nov 1959; 18 Jul 1961; 18 Jan 1962.
+NY AG press release, 11 Aug 1960.</li>
+<li>Curt Collins, "The Life and Legend of Otis T. Carr," Parts 1–4,
+<em>The Saucers That Time Forgot</em> (thesaucersthattimeforgot.blogspot.com),
+Nov 2020 – May 2021 (incl. Lance Moody's 2001 interviews with Carini, Ring
+et al.). Lance Moody, "Daylight Disk: The Otis T. Carr Story,"
+<em>Cincinnati Skeptic</em>, Apr/May 2003. Kenneth Arnold, <em>Joyland, Aliens
+and the Men in Black Behind Otis T. Carr's Flying Saucer</em> (2021).</li>
+<li>Long John Nebel, <em>Party Line</em> (WOR) transcripts, 1958 — rexresearch.com/carr/1carr.htm
+(dated there "1959"; Project Camelot dates it "29 Oct 1957"; Collins documents
+the 1958 broadcasts). Nebel, <em>The Way Out World</em> (1961). Richard Gehman,
+"King of the Non-Flying Saucers," <em>True</em>, Jan 1961. <em>FATE</em>,
+"Gravity Machine?", May 1958 p.17; W.E. Du Soir, "The Saucer That Didn't Fly,"
+Aug 1959 p.32.</li>
+<li>O.T. Carr, <em>Dimensions of Mystery</em> (Millennium, Baltimore, 1958);
+OTC Enterprises, <em>Atoms for Peace</em> brochure (1957) and Information
+Bulletin #3 (23 Dec 1957) — archive.org / rexresearch.</li>
+<li>Kerry Cassidy, "Ralph Ring and Otis T. Carr: Aquamarine Dreams," Project
+Camelot, Aug 2006. Blue Star Enterprise, "OTC-X1 Model Progress Report —
+Australian Pod" (2012); warp-drive-physics.com, "OTC-X1 Reverse Engineering
+Breakthrough" (2016).</li>
+<li>J.C. Gobbi, "Carr Technology," <em>General Science Journal</em>, 30 Jan 2021
+(gsjournal.net #8685) — the paper this audit answers.</li>
+<li>Rotating-mass nulls: Hayasaka &amp; Takeuchi, PRL 63, 2701 (1989); Faller
+et al., PRL 64, 825 (1990); Nitschke &amp; Wilmarth, PRL 64, 2115 (1990);
+Quinn &amp; Picard, <em>Nature</em> 343, 732 (1990).</li>
+<li>Dynamo experiments: Gailitis et al., PRL 84, 4365 (2000) (Riga);
+Stieglitz &amp; Müller, Phys. Fluids 13, 561 (2001) (Karlsruhe); Madison
+Dynamo Experiment and DTS Grenoble reports (no self-excitation at Rm ~ 100–200).</li>
+<li>Arithmetic in this paper (§§7–9): rim speed v = ωr; hoop stress
+σ = ρv²; Faraday-disc EMF ½Bωr²; Tolman–Stewart potential m_eω²r²/2e;
+Rm = μ₀σvL; field energy B²/2μ₀; centrifugal pressure ρω²r²/2. Material
+data: Al 6061-T6 σ_y 270 MPa; 4340 steel 1.1 GPa; Ti-6Al-4V 880 MPa;
+ρ_Hg 13,580 kg/m³; σ_Hg 1.04×10⁶ S/m; fair-weather J ≈ 2 pA/m².</li>
+</ul>
+
+<h2>Changelog</h2>
+<ul>
+<li><strong>2026-08-18</strong> — v1.0. Written from the Gobbi 2021 paper
+(supplied), the patent, the Oklahoma court record, the Collins/Moody documentary
+work, and the Camelot/rexresearch transcripts. Documentary timeline, patent
+reading, Tesla and Ring audits, faithful architecture description, and the
+priced physics audit (rim-speed decode; hoop stress; homopolar EMF;
+14-decade current error; field-energy and magnetic-pressure bounds;
+atmospheric-supply bound; mercury burst pressure; gyroscope-weight nulls;
+dynamo Rm residue). Scorecard and drone-company takeaways.</li>
+</ul>
+
+</body>
+</html>

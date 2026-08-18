@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Townsend Brown — The Notebooks, the Instruments, and the Question of Time</title>
+<style>
+  :root{
+    --ink:#1c1c1c; --paper:#fbfaf6; --page:#ece8df;
+    --green:#5a7d3a; --amber:#b88a2a; --steel:#3a5a7d; --teal:#2f6d5e;
+    --slate:#5a6470; --blood:#7a1f1f; --violet:#6a4a8a;
+    --rule:#d2cdbf; --soft:#8a8676; --wash:#f3efe4;
+  }
+  html{background:var(--page)}
+  body{
+    font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    max-width:820px; margin:2.5rem auto; padding:2.6rem 2.4rem 4rem;
+    color:var(--ink); line-height:1.62; background:var(--paper);
+    box-shadow:0 1px 4px rgba(0,0,0,.06); font-size:17px;
+  }
+  h1{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-weight:700;
+     font-size:1.9rem; line-height:1.18; border-bottom:2px solid var(--ink);
+     padding-bottom:.55rem; margin:.3rem 0 .5rem}
+  h2{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:1.24rem;
+     margin-top:2.4rem; border-bottom:1px solid var(--rule); padding-bottom:.25rem}
+  h3{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:1.02rem;
+     margin-top:1.6rem; color:#444}
+  .part{font-family:"Helvetica Neue",Helvetica,sans-serif; font-size:.82rem;
+     letter-spacing:.1em; text-transform:uppercase; color:var(--soft);
+     margin-top:2.8rem; border-top:2px solid var(--ink); padding-top:.7rem}
+  .banner{background:#eef5fa; border-bottom:2px solid var(--steel);
+     margin:-2.6rem -2.4rem 2rem; padding:.65rem 2.4rem;
+     font-family:"Helvetica Neue",Helvetica,sans-serif; font-size:.85rem;
+     color:var(--steel); line-height:1.5; text-align:center}
+  .banner a{color:var(--steel); font-weight:600}
+  .sub{color:var(--soft); font-style:italic; font-size:1.02rem}
+  .meta{color:var(--soft); font-size:.85rem; margin-bottom:1.6rem}
+  table{border-collapse:collapse; width:100%; margin:1.1rem 0; font-size:.88rem}
+  th,td{border:1px solid var(--rule); padding:.42rem .6rem; text-align:left; vertical-align:top}
+  th{background:#f0eadb; font-family:"Helvetica Neue",Helvetica,sans-serif; font-size:.82rem}
+  tr:nth-child(even) td{background:#faf7ef}
+  blockquote{border-left:4px solid var(--amber); background:#fff8e8;
+    margin:1.2rem 0; padding:.7rem 1.1rem; color:#4a4437; font-size:.97rem}
+  .box{border-left:4px solid var(--green); background:#eef3e8;
+    padding:.85rem 1.1rem; margin:1.3rem 0; font-size:.94rem}
+  .warn{border-left:4px solid var(--blood); background:#f3e7e7;
+    padding:.85rem 1.1rem; margin:1.3rem 0; font-size:.94rem}
+  .note{border-left:4px solid var(--violet); background:#efe8f5;
+    padding:.85rem 1.1rem; margin:1.3rem 0; font-size:.94rem}
+  code,pre{font-family:"JetBrains Mono",Menlo,Consolas,monospace; background:var(--wash);
+    border-radius:2px}
+  code{font-size:.85em; padding:.05em .3em}
+  pre{font-size:.78rem; padding:.8rem 1rem; overflow-x:auto; border:1px solid var(--rule); line-height:1.5}
+  a{color:var(--steel)}
+  .overflow{overflow-x:auto}
+  ol li,ul li{margin:.3rem 0}
+  .tag{font-family:"Helvetica Neue",Helvetica,sans-serif; font-size:.68rem;
+    font-weight:700; letter-spacing:.06em; padding:.1em .45em; border-radius:2px;
+    vertical-align:middle; white-space:nowrap}
+  .t-doc{background:#e7efdd; color:var(--green); border:1px solid var(--green)}
+  .t-open{background:#efe8f5; color:var(--violet); border:1px solid var(--violet)}
+  .t-fab{background:#f3e7e7; color:var(--blood); border:1px solid var(--blood)}
+  .t-ref{background:#e3ebf3; color:var(--steel); border:1px solid var(--steel)}
+  .t-meas{background:#e7efdd; color:var(--green); border:1px solid var(--green)}
+  .t-est{background:#f6eed9; color:var(--amber); border:1px solid var(--amber)}
+  .small{font-size:.86rem; color:#4a4437}
+  figure{margin:1.4rem 0; text-align:center}
+  figcaption{font-size:.84rem; color:var(--soft); margin-top:.4rem; text-align:left}
+</style>
+</head>
+<body>
+
+<style id="eg-site-nav-css">
+  .eg-nav{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:.8rem;
+    background:#1c1c1c;color:#ece8df;padding:.55rem 1.2rem;line-height:1.6;
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    box-shadow:0 1px 3px rgba(0,0,0,.25)}
+  body{margin-top:5.2rem !important}
+  .eg-nav a{color:#ece8df;text-decoration:none;margin-right:1rem;white-space:nowrap}
+  .eg-nav a:hover{text-decoration:underline}
+  .eg-nav .eg-home{font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+    margin-right:1.4rem}
+  .eg-nav .eg-cur{border-bottom:2px solid #b88a2a}
+  .eg-nav .eg-cat{color:#b88a2a;font-weight:600;letter-spacing:.03em}
+  .eg-nav .eg-catcur{text-decoration:underline}
+  .eg-nav .eg-sep{color:#8a8676;margin-right:1rem}
+  .eg-nav .eg-wrap{max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;
+    align-items:baseline}
+  .eg-nav .eg-pdf{margin-left:auto;margin-right:0;border:1px solid #b88a2a;
+    color:#ece8df;padding:.1rem .6rem;border-radius:2px;font-weight:600}
+  .eg-nav .eg-pdf:hover{background:#b88a2a;color:#1c1c1c;text-decoration:none}
+  @media print{.eg-nav{display:none} body{margin-top:0 !important}}
+</style>
+<div class="eg-nav"><div class="eg-wrap"><a class="eg-home" href="index.html">Papers</a><a class="eg-cat" href="index.html#electrogravitics">Electrogravitics</a><a class="eg-cat eg-catcur" href="index.html#people">The People</a><span class="eg-sep">·</span><a href="nikola_tesla.html">Tesla</a><a href="john_keely.html">Keely</a><a href="viktor_schauberger.html">Schauberger</a><a class="eg-cur" href="townsend_brown.html">Brown</a><a href="otis_carr.html">Carr</a><a href="walter_russell.html">Russell</a><a class="eg-pdf" href="pdf/townsend_brown.pdf" download>Download PDF ↓</a></div></div>
+
+
+<div class="banner">
+  Companion papers:
+  <a href="electrogravitics.html">Electrogravitics</a> (the field guide) ·
+  <a href="antigravity_devices.html">Antigravity Devices</a> (the bench floor) ·
+  <a href="the_shape_of_gravity.html">The Shape of Gravity</a> (the law) ·
+  <a href="warp_drive.html">The Warp Drive</a> (the mechanism) ·
+  The Military-Industrial Complex (the filter)
+</div>
+
+<h1>Townsend Brown</h1>
+<p class="sub">The notebooks, the instruments, and the question of time — a
+provenance-and-scorecard paper on Thomas Townsend Brown (1905–1985): what he
+built, what he measured, what he wrote, and where every "time travel" sentence
+attached to his name actually comes from.</p>
+<p class="meta">draft 0.1 · 2026-08-18 · Osika Innovation AB · Alexander Osika, Claude</p>
+
+<div class="box">
+<strong>Claim boundary.</strong> This paper is <em>about</em> a person and his
+record; it makes no new physics claim and changes no other paper's verdicts.
+Its job is to correct a shallowness in our own electrogravitics lane, which
+had reduced Brown to "the asymmetric-capacitor man whose force is ion wind."
+That verdict stands (<a href="electrogravitics.html">Electrogravitics</a> §1),
+but it covers perhaps a fifth of what Brown actually spent sixty years doing.
+The other four fifths — a thirty-year "sidereal radiation" instrument
+program, a rock-electricity program, a structure-of-space program, and a
+family of gravitational-mass hypotheses — are laid out here from the primary
+record (his own dated notebooks, the 1952 Office of Naval Research audit,
+his patents and 1975 paper) and scored with the project's three registers:
+<span class="tag t-doc">DOCUMENTED</span>
+<span class="tag t-open">OPEN THREAD</span>
+<span class="tag t-fab">TRACED TO FABRICATION</span>, with
+<span class="tag t-ref">REFUTED</span> for claims that met an independent test
+and failed it. Method as in <a href="walter_russell.html">Walter Russell</a>
+and <a href="viktor_schauberger.html">Viktor Schauberger</a> §6, under the
+standing rule that "it is called a myth" is the start of an investigation,
+not the end — and that the filter cuts both ways.
+</div>
+
+<h2>0. The short version</h2>
+
+<ol>
+<li><strong>Brown was not a one-idea man.</strong> The released notebooks
+(Vols. 1, 2, 4; Vol. 3 was never released) contain 243 numbered, dated,
+sometimes witnessed entries from Oct 1955 to Feb 1977 covering at least
+seven distinct research programs. The asymmetric capacitor is one of them
+and, by his own 1973 re-appraisal, the least interesting to him.</li>
+<li><strong>Nothing Brown wrote claims time travel.</strong> Not the
+notebooks, not the patents, not the 1929 article, not the 1952 ONR file, not
+Project Winterhaven, not the 1975 petrovoltaics paper. What he <em>did</em>
+write about, obsessively, is <em>time as a coordinate of an unknown signal</em>:
+instrument readings he believed varied with solar, lunar, and above all
+<em>sidereal</em> time, plus secular drifts and sudden "glitches." That is a
+claim about a radiation, not about temporal displacement.</li>
+<li><strong>The closest thing to a "time" anomaly in his own hand</strong> is
+§213 (Avalon, 23 Jul 1975): a Catalina-granite sensor whose chart, he says,
+<em>led</em> Dow-Jones trend reversals by about four days (two days in
+1937/39). Five reversals, no statistics, no follow-up published. It is a
+correlation-hunting note by a man who also proposed a "Magnum Fund" to trade
+on it, and the ONR auditor who saw the 1937 claim in 1952 found "no convincing
+evidence." <span class="tag t-open">OPEN THREAD</span> at best — a
+retrievable-data question, not a physics result.</li>
+<li><strong>Every "Brown built / believed in a time machine" sentence traces
+to two chains, neither of which is Brown</strong>: (a) Moore &amp; Berlitz's
+1979 <em>Philadelphia Experiment</em> chapter → Bielek's 1990 Montauk
+time-travel lore; (b) Paul Schatzkin's anonymous e-mail source "Morgan"
+(2004–05) → <em>Defying Gravity</em> serial → <em>The Man Who Mastered
+Gravity</em> (2023) → the Jesse Michels documentary (2024) → Linda Brown's
+"My Father Was A Time Traveler" clip (2025–26). Schatzkin himself has since
+written that later insights "challenged the provenance" of Morgan and that he
+ran with a version of events "however uncertain I was of the veracity"; one
+of Morgan's checkable claims (an April 1945 Halifax drop into Germany) has
+been checked against the RAF 38 Group operations record and fails.
+<span class="tag t-fab">TRACED TO FABRICATION</span> as stated; see §5.</li>
+<li><strong>What is genuinely open</strong> is narrow and specific: the
+<em>sidereal harmonic</em> of his electrometer records was never tested by
+anyone (Cady tested solar and lunar and found none; he wrote that no test
+was applied for the sidereal claim); the petrovoltaic rocks were never
+independently instrumented with electrode controls; his 1937 hourly table
+exists (Cady held it in his hands) and is not public. Those are retrieval and
+bench tasks with binary outcomes, and §9 states them.</li>
+<li><strong>Where he was right</strong> is also worth saying: the in-air force
+points cathode→anode and scales with leakage current (his own 1973
+conclusion, which is the ion-wind mechanism); his 1975 guess that Weber's
+gravitational-wave "events" were not bar oscillations matched the eventual
+consensus; his 1957 "dielectric memory" note anticipates electret /
+ferroelectric non-volatile storage in spirit; his self-potential geothermal
+prospecting is real geophysics. A person can be right about the shape and
+wrong about the ingredient — the same verdict our field guide already gives
+his capacitor.</li>
+</ol>
+
+<div class="part">Part I — The record</div>
+
+<h2>1. Why we were shallow, and what the primary sources are</h2>
+
+<p>Our <a href="electrogravitics.html">field guide</a> and
+<a href="antigravity_devices.html">bench-floor survey</a> cite Brown for
+exactly one thing: the 1928 patent, the "gravitator," and the lineage of
+vacuum nulls that bracket its force. That is the part of Brown that reached
+the refereed literature (Talley 1988/91; Tajmar 2004; Tajmar &amp; Schreiber
+2020; Martins &amp; Pinheiro 2011). It is correct and we do not weaken it
+here.</p>
+
+<p>But it is a small window. Brown's own record is mostly self-published or
+family-curated, and it is large. The primary sources this paper stands on:</p>
+
+<table>
+<tr><th>Source</th><th>What it is</th><th>Provenance / status</th></tr>
+<tr><td>Scientific Notebooks Vols. 1, 2, 4</td><td>243 numbered, dated
+entries, Oct 1955 – Feb 1977; 310 pp. in the archive.org / rexresearch
+transcription (Townsend Brown Estate, 2006). Vol. 3 (secs. 123–178, ~1974)
+"was not released."</td><td>Photocopies circulated by William Moore (the
+<em>Philadelphia Experiment</em> co-author) in the 1980s; family site
+confirms. Brown's preface (1 Oct 1955): a record book because napkin notes
+"have ultimately been lost." <span class="tag t-doc">DOCUMENTED</span></td></tr>
+<tr><td>ONR Pasadena File 24-185 (W. M. Cady, 15 Sep 1952)</td><td>17-page
+audit of Brown's devices and data, opened 3 May 1952 at Navy request;
+declassified 1 Oct 1952.</td><td>The <em>only</em> independent technical
+audit Brown ever received. Contains the only calibrated numbers on a Brown
+saucer and the only outside statistics on his electrometer.
+<span class="tag t-doc">DOCUMENTED</span></td></tr>
+<tr><td>Patents</td><td>GB 300,311 (filed 15 Aug 1927); US 1,974,483
+(1934); US 2,949,550 (filed 3 Jul 1957, 1960); US 3,018,394 and 3,022,430
+(1962); US 3,187,206 (filed 9 May 1958, 1965); US 3,196,296
+(1965).</td><td><span class="tag t-doc">DOCUMENTED</span></td></tr>
+<tr><td>"Anomalous Diurnal and Secular Variations in the Self-Potential of
+Certain Rocks" (Honolulu, 22 Mar 1975)</td><td>Brown's one late paper;
+"publication was withheld." Family site.</td><td><span class="tag t-doc">DOCUMENTED</span> as
+a document; unrefereed.</td></tr>
+<tr><td>Bahnson–Brown notebooks (Winston-Salem, 1957–59; 55 pp.) and the
+Bahnson home-movie film</td><td>archive.org (2024); ~1 h silent 8/16 mm cut
+to ~5 min.</td><td><span class="tag t-doc">DOCUMENTED</span> that they exist; no
+numbers on screen or in the pages we could reach.</td></tr>
+<tr><td>Project Montgolfier reports (Sud Aviation, 1 Jul 1957; final,
+Courbevoie, 15 Apr 1959; Cornillon's copy on archive.org)</td><td>Paris
+1955–59 tests, in air and vacuum.</td><td>Read in the original for this paper
+(<code>MONTGOLFIER_REPORT_RETRIEVAL_2026-08-18.md</code>); §7 carries the
+numbers. <span class="tag t-doc">DOCUMENTED</span></td></tr>
+<tr><td>Secondary chains</td><td>Schatzkin (ttbrown.com; 2005–08 serial;
+2023 book), Linda Brown, Nick Cook (2001), Moore &amp; Berlitz (1979),
+Michels (2024), family site thomastownsendbrown.com.</td><td>Registered
+per claim in §5.</td></tr>
+</table>
+
+<h2>2. The documented life</h2>
+
+<p class="small">Dates below are the ones with a document behind them
+(patent, Navy record, DANFS, archive listing, dated notebook entry, ONR
+file). Family-timeline items with no independent document are marked.</p>
+
+<table>
+<tr><th>Date</th><th>Event</th><th></th></tr>
+<tr><td>18 Mar 1905</td><td>Born, Zanesville, Ohio.</td><td><span class="tag t-doc">DOC</span></td></tr>
+<tr><td>1923–25</td><td>One year at Caltech (Millikan unimpressed); Denison University 1924–25. The
+"Biefeld" of Biefeld–Brown is Denison's Paul Biefeld; Denison stated in
+2004 it has no record of the experiments or the association. Biefeld's
+1930 affidavit is family-held.</td><td><span class="tag t-open">OPEN</span></td></tr>
+<tr><td>Aug 1927 / Nov 1928</td><td>GB 300,311 filed / published — "A method of and an apparatus or machine
+for producing force or motion." Text asserts an unbalanced force from a
+charge difference.</td><td><span class="tag t-doc">DOC</span></td></tr>
+<tr><td>Aug 1929</td><td>"How I Control Gravitation," <em>Science and Invention</em>.</td><td><span class="tag t-doc">DOC</span></td></tr>
+<tr><td>Sep 1930 – May 1933</td><td>US Navy: enlisted; NRL Anacostia from Mar 1931 (project on massive
+high-K dielectrics; the "sidereal radiation electrometer" dates from here
+by his account); 1932 Navy–Princeton gravity expedition on submarine
+S-48; 1933 Johnson–Smithsonian expedition, yacht <em>Caroline</em>.</td><td><span class="tag t-doc">DOC</span></td></tr>
+<tr><td>1937 / 1939</td><td>Electrometer recording stations, Ohio and Philadelphia. Only the 1937
+hourly table survived to 1952.</td><td><span class="tag t-doc">DOC</span> (via Cady)</td></tr>
+<tr><td>1938–42</td><td>Recalled as Lt.; Bureau of Ships acoustic/magnetic mine-sweeping design
+(Oct 1940 – Mar 1941); Atlantic Fleet Radar School, Norfolk (1942).
+Resigned Sep/Oct 1942 "to escape trial by General Court Martial" (his
+own timeline's words). Vega/Lockheed radar consultant 1942–45.</td><td><span class="tag t-doc">DOC</span></td></tr>
+<tr><td>Dec 1947 – 1951</td><td>Hawaii; Pearl Harbor Navy Yard consultant; Adm. Radford's interest;
+"shift of capacitance mid-point" experiments (Notebook §51).</td><td><span class="tag t-doc">DOC</span> (residence, notebook) / <span class="tag t-open">OPEN</span> (demonstration details)</td></tr>
+<tr><td>1952–53</td><td>Townsend Brown Foundation, Los Angeles; Project Winterhaven proposal
+(UMD archives); April 1952 press demonstrations; ONR audit (Cady, 15 Sep
+1952) concludes the force is electric wind.</td><td><span class="tag t-doc">DOC</span></td></tr>
+<tr><td>Oct 1955</td><td>Notebook Vol. 1 begins, Leesburg VA.</td><td><span class="tag t-doc">DOC</span></td></tr>
+<tr><td>1955–57</td><td>Paris, SNCASO, Project Montgolfier (Cornillon); funding lost at the
+Sud-Aviation merger; report 1959.</td><td><span class="tag t-doc">DOC</span></td></tr>
+<tr><td>Oct 1956 – Jan 1957</td><td>Co-founds NICAP (president pro-tem); ousted Jan 1957.</td><td><span class="tag t-doc">DOC</span></td></tr>
+<tr><td>Nov 1957 – 1960</td><td>Bahnson Laboratories / Whitehall-Rand, Winston-Salem NC (Notebook §§57–81
+are dated Winston-Salem/Walkertown). "100% counterbary" claimed 11 Jan
+1958, in air, tethered. Then a nine-year notebook silence: "October 1958
+to October 1967 (9 years) no notes were made."</td><td><span class="tag t-doc">DOC</span></td></tr>
+<tr><td>1962–68</td><td>Electrokinetics Inc. (Bala Cynwyd); Bahnson killed in a plane crash 3 Jun
+1964; Homestead FL 1964; Guidance Technology (Santa Monica) 1967.</td><td><span class="tag t-doc">DOC</span></td></tr>
+<tr><td>1970–73</td><td>Atherton/Palo Alto (capacitor gravitational-wave bridge, §87, May 1970);
+Catalina Island 1973 (triboexcitation, the resistance bridges, K-μ waves,
+§§89–122).</td><td><span class="tag t-doc">DOC</span></td></tr>
+<tr><td>1974–78</td><td>Petrovoltaics: Haleakala (1974), Hawaii Inst. of Geophysics vault (1975),
+Honolulu paper (Mar 1975), Sunnyvale, UC Berkeley Lawson Adit (1976),
+SRI screen rooms, NASA-Sunnyvale steel chamber (1978); preliminary
+patent applications (rock battery, "electric clock").</td><td><span class="tag t-doc">DOC</span></td></tr>
+<tr><td>Feb 1977</td><td>Last released notebook entry (§243): "no conclusions can yet be
+reached."</td><td><span class="tag t-doc">DOC</span></td></tr>
+<tr><td>27 Oct 1985</td><td>Dies, Catalina Island; buried Avalon.</td><td><span class="tag t-doc">DOC</span></td></tr>
+</table>
+
+<div class="note">
+<strong>Absent from the notebooks, worth stating.</strong> Across 243 entries
+Brown never names Biefeld, Bahnson, Whitehall-Rand, Cornillon, SNCASO or
+Paris. The Winston-Salem entries are dated and placed but the sponsor is
+invisible. If a session later reads "the notebooks describe the Bahnson
+vacuum tests," it is wrong; they describe field-shaping theory written
+<em>at</em> Bahnson's lab.
+</div>
+
+<h2>3. The seven programs in the notebooks</h2>
+
+<p>Read whole, the released volumes are not one project but seven,
+overlapping in time. Section numbers are Brown's.</p>
+
+<h3>3.1 Gravitational isotopes and the g/i ratio (§§1–2, 9, 17–18, 23, 44, 90, 95)</h3>
+<p>The founding hypothesis of Vol. 1 (7 Oct 1955): every element is a
+mixture of "lighter and heavier isotopes (values of specific gravity)";
+gravitational and inertial mass are reciprocal, "m<sub>g</sub>·m<sub>i</sub>
+= E," so a "light" fraction has g/i &lt; 1. He credits the observed scatter
+in tabulated specific gravities, Charles F. Brush's 1920s "retardation of g"
+in complex silicates and Brush's "spontaneous evolution of heat," and
+proposes "beneficiation" by settling and centrifuging (patent applications
+were filed; a DuPont heavy-liquid project is described in §16). By 1973
+(§95) the Foundation had a "gravitational periodic table" — ytterbium "59%
+light," silicon 31%, aluminium 30%. In §90 he concedes Dicke's 10<sup>−11</sup>
+equivalence bound and retreats to "strong fields would show
+non-equivalence."</p>
+<p><strong>Status.</strong> <span class="tag t-ref">REFUTED</span> by physics
+bounds: Eötvös/Dicke/MICROSCOPE constrain composition-dependent g at
+10<sup>−13</sup>–10<sup>−15</sup>, twelve to fourteen orders below Brown's
+clay and Brush's aluminate. Specific-gravity scatter is porosity, allotropy,
+impurity, working. His 1973 Mason-jar paint-shaker tests (§§90–91: damp
+Sorrento clay loses ¼ oz in 30 oz on the Avalon post-office scale, "0.8–1%")
+are inside moisture loss, electrostatic charging and thermal buoyancy; he
+himself writes the scales "could be in error" and never records the
+Fisher-balance follow-up he ordered.</p>
+
+<h3>3.2 Photo-, tribo- and spark-excitation (§§6–14, 20–24, 40, 45–49, 89–96)</h3>
+<p>Irradiated silicates "may lose weight" and stay warm; freshly ground rock
+is lightest and recovers on a half-life curve, so "the approximate date of
+grinding may be determined" (§47); ancient builders may have rubbed
+sun-baked Nile mud on megaliths (§24). One marginal note reads
+"Ultrasonic resonance plus laser" (§45). <span class="tag t-ref">REFUTED</span>
+by the same bounds; the proposed quartz-capsule-under-UV weighing (§40) was
+never run.</p>
+
+<h3>3.3 The vacuum impulse effect (§§42–43, Apr 1956)</h3>
+<p>The one first-hand vacuum observation in Brown's own hand, and it is
+worth quoting his framing rather than the lore's: at ≤10<sup>−6</sup> mm Hg
+"any simple vacuum capacitor will appear to flash as the voltage increases,
+and, concurrent with the vacuum spark, an impulse force is noted in the
+direction of the negative to positive." Flash thresholds 30–40, 50–60,
+80–90, 130–140 kV; forces "measurable in thousands of dynes." He then names
+the mechanism himself: "positive conduction, at least as the initiator,"
+"occluded atoms … metallic ions … perhaps even microscopic pieces of metal,"
+reddish anode luminescence, "white star-like spots of considerable
+brilliance" on the cathode.</p>
+<p><strong>Status.</strong> <span class="tag t-doc">DOCUMENTED</span> and
+<em>explained</em>: those are cathode spots. A vacuum arc ejects metal
+plasma at ~10<sup>4</sup> m/s and recoils the cathode toward the anode —
+the vacuum-arc thruster, a mature technology (~10–20 µN per amp of arc).
+Martins &amp; Pinheiro (Phys. Procedia 20, 2011) map the published Brown-type
+vacuum impulses onto exactly this; Talley (AFAL 1988, PL-TR-91-3009) found no
+DC thrust at 10<sup>−6</sup> torr and forces only during breakdown. Brown's
+notebook agrees with the nulls: the impulse rides on the spark, not on the
+static field. That is why our field guide can carry both "Brown saw a force
+in vacuum" and "there is no static vacuum force" without contradiction.</p>
+
+<h3>3.4 Field shaping, the toroid, dielectricity (§§56–81, Winston-Salem 1958)</h3>
+<p>The most engineering-dense stretch: shaped high-flux regions as "a kind
+of ether pump"; a cathode toroid at the focus of a parabolic anode; the
+push-pull control grid ("Reversal of polarity does not reverse the direction
+of the force"); a new fluid "dielectricity — conducted by vacuum, insulated
+by metals," generated by "dielectromotance," flowing in vortices, producing
+"dielectric wind"; Jeans's Maxwell-stress bookkeeping (§77) and electrostatic
+"pressure confinement" for a saucer (§§79–81); the January 1958 analysis of
+the Adamski "Venusian scout ship" photograph as an engineering exhibit —
+opened with "This may be a bit of fantasy or it could be significant" and
+never revisited after 1958.</p>
+<p><strong>Status.</strong> No anomaly. "Dielectric flux" is
+<b>D</b> = ε<sub>0</sub><b>E</b> + <b>P</b>; motion of a neutral dielectric
+toward high field is dielectrophoresis (Pohl 1951), ∝ ∇E², polarity-blind,
+AC or DC — precisely the polarity-independence Brown records; oil "swirl" is
+EHD plus ion injection, which is Cady's 1952 mechanism supported by Brown's
+own glass-plate control. He concedes the electric-wind confound in §71
+("difficult to purify the results"). US 3,187,206 (filed 1958) is this program
+as a patent — shaped electrodes and graded-K dielectrics — and its "not zero in
+vacuum" clause is the one Talley contradicted.</p>
+
+<h3>3.5 The sidereal radiation electrometer → the resistance bridges (§§5, 51, 97–122)</h3>
+<p>The longest thread of Brown's life and the one our lane had never looked
+at. Treated in full in §4.</p>
+
+<h3>3.6 The structure of space: K–μ waves (§§107–109, 113, 234, 238)</h3>
+<p>Catalina, Sep 1973: "space, so-called empty space may actually have
+structure"; c = 1/√(Kμ) because K and μ are "twin energy-storage means" that
+delay light; regions of differing K, μ may propagate as "K waves" and "μ
+waves," which "may be instantaneous (infinite velocity) and be truly 'action
+at a distance' as envisioned by Newton"; a differential-K capacitance bridge
+and differential-μ inductance bridge would detect them. Then, in the same
+entry: "no, on second thought, I take this back. We will run into trouble."
+Mass is added as a third permeability, m, "gravitational permeability."</p>
+<p><strong>Status.</strong> <span class="tag t-open">OPEN THREAD</span> as
+speculation, never operated as an instrument beyond the bench bridges of
+§4.4. Note for this project: it is a
+polarizable-vacuum picture (variable K, μ, hence variable c) — the same
+family as Puthoff's PV formulation that our <a href="warp_drive.html">warp
+paper</a> cites; Brown reached the shape in 1973 with no mathematics behind
+it. Nothing here concerns time beyond the superluminal-signalling remark.</p>
+
+<h3>3.7 Petrovoltaics, the gravitocell, qualight (§§179–243, 1975–77)</h3>
+<p>Treated in §6.</p>
+
+<div class="part">Part II — The instruments</div>
+
+<h2>4. The sidereal radiation electrometer</h2>
+
+<h3>4.1 What it was</h3>
+<p>Brown's own account (§§97, 106, 200; 1975 paper): first model as a
+Caltech undergraduate, 1923; the NRL 1931 version discussed with Hulburt,
+Maris, Gunn and Dawson as "a mass and dielectric constant effect"; by 1975
+"twenty-nine models." The best hardware description is not Brown's but
+Cady's, who inspected the Los Angeles instrument in 1952 in a thermostated
+sub-basement:</p>
+<ul>
+<li>An oil-filled steel tank ~2 ft in diameter; a 12-inch, 1-inch-thick
+disc of six <em>pine</em> sectors alternating with six <em>marble</em>
+sectors (low-K vs high-K, low vs high density) on a Bakelite hub, separated
+by copper strips alternately grounded and connected to a mercury cup; hung on
+a music-wire torsion fibre; grounded shield ½ inch away.</li>
+<li>Drive: −11.1 kV smoothed half-wave DC, leakage current 0.45 mA, applied
+for 30 s every 3 minutes; the disc rotates "several degrees" and the
+deflection is recorded by a spark on rice paper on a once-a-day drum.
+Cady: "The apparatus appears to be well engineered and extremely
+reliable."</li>
+<li>Rest reading 50; deflected ≈ 80 in 1952 — but ≈ 20 eighteen months
+earlier, i.e. the <em>sign of the torque had reversed once, permanently</em>.
+Superposed fluctuations of 10–50%.</li>
+</ul>
+<p>Brown's own numbers for the 1937 Ohio and 1939 Philadelphia stations
+(§§98–99, 119): a peak at 16 h sidereal time, resistance maximum about 2 h
+after the Moon's upper transit, minimum at solar noon, a ~4-day lag after
+full Moon which he attributes to "capacitance lag" of an Earth of ~1 farad.
+He compares his 1939 Philadelphia curve directly with Dayton Miller's 1926
+Mt Wilson interferometer curve, notes both have features at 16 h ST, and
+records that Miller, shown the electrometer records in Cleveland, called
+them "inverted" — which Brown in 1973 (§98) accepts: the instrument scale
+was inverted, so his 16 h ST <em>peak</em> "would actually be a thrust
+minimum."</p>
+
+<h3>4.2 The one independent analysis: Cady, 1952</h3>
+<p>Cady's §5 is the only outside statistics ever run on these data. He worked
+from a table Brown handed him, "Hourly Readings of Instrument, 1937," and a
+second table of the same year against lunar hour angle. His findings:</p>
+<ul>
+<li>Half-monthly means at 01:00 and 13:00 (Table 2) track each other closely
+through a strong, real rise during spring 1937 (means ~26 → ~30) — hence "no
+conspicuous diurnal effect."</li>
+<li>Hour-of-day means over twelve selected days (Table 3): "no strong
+diurnal periodicity, with the dubious exception of a peak at 1100 hours."</li>
+<li>Twenty-four lunar-hour-angle means, Jan–Jun 1937 (Table 4): "Their
+constance is most striking; they show no dependence upon lunar hour."</li>
+<li>Conclusion §5.3: the data "drift significantly" week to week; there is
+"no evidence of a solar diurnal period"; the data "most emphatically … deny"
+a lunar diurnal period. And §8.6, in full weight: <em>no test has been
+applied for the claimed sidereal diurnal period</em>, nor for the Dow-Jones
+correlation.</li>
+<li>Mechanism (§§8.4–8.5): an electric-wind analogue in oil — ion injection at
+the copper strips, differential mobility and differential surface leakage of
+pine versus marble; the permanent sign reversal "attributable to changed
+surface conductivity of the sectors." Brown's own control — a grounded disc
+suspended above the sector disc deflected when the sectors were charged, but
+not with a glass plate interposed — "would seem to corroborate the idea that
+a swirling of the oil is essential."</li>
+</ul>
+<p>Brown's own 1973 re-analysis (§§105, 113) reaches the same mechanism
+from the inside: the torque is "a direct function of the total current.
+There is no other energy source"; "Perfectly dry transformer oil produces no
+torque"; and, of the 1920s gravitators, "It was even believed that the
+kinetic energy was somehow derived from the gravitational field!" — the
+motion is electrical energy → kinetic via leakage current. What he did
+<em>not</em> concede is that the <em>variation</em> was mundane; he
+re-attributed it to a real secular/cyclic variation of electrical
+resistivity itself, "one of the most significant discoveries in physics"
+(§101), and rebuilt the instrument as resistor bridges (§4.4).</p>
+
+<div class="warn">
+<strong>Register.</strong> The electrometer's torque:
+<span class="tag t-doc">DOCUMENTED</span>, mechanism = ion injection / EHD in
+leaky oil (Cady 1952; Brown 1973 concurs). Its claimed <em>solar</em> and
+<em>lunar</em> periodicities: <span class="tag t-ref">REFUTED</span> on the
+only tabulated year, by the only outside analyst. Its claimed
+<em>sidereal</em> periodicity and the Dow-Jones correlation:
+<span class="tag t-open">OPEN THREAD</span> in the strict sense that no one
+has ever tested them — and Cady said so in writing. The Tables 2–4 in the
+ONR file are means only; the raw 1937 hourly table is not public.
+</div>
+
+<h3>4.3 The comparators</h3>
+<p>Brown placed his instrument in a family; the family's fate is the fair
+context.</p>
+<table>
+<tr><th>Instrument / claim</th><th>Sidereal signature claimed</th><th>Where it stands</th></tr>
+<tr><td>Dayton Miller, ether-drift interferometer (1926–33)</td><td>Apex
+RA 4h54m, Dec −70°, 208 km/s; minima near 16 h ST</td><td>Shankland et al.
+1955: thermal; Roberts 2006 reanalysis of the raw sheets: not significant,
+&lt;6 km/s. Brown's §98 defence ("Miller observed something") is a fair
+sentence about a real dataset that did not survive re-analysis.</td></tr>
+<tr><td>Joseph Weber, resonant bars (1969–70)</td><td>Coincidences peaked
+in sidereal time toward the galactic centre, ~1661 Hz</td><td>Every
+independent bar (Garwin, Tyson, Drever, Braginsky, Kafka) null. Brown's §192
+(18 Mar 1975, "I am 70 years old today"): the events "are not indicative of
+cylinder oscillations" but of something "within, or related to the electrical
+circuit" — a resistance/voltage burst in the strain gauges. The first half
+matched the eventual verdict; his proposed cause (secondary radiation from
+the bar mass) did not.</td></tr>
+<tr><td>Piccardi (chemical precipitation, 1950s–70s)</td><td>Solar/sidereal
+modulation</td><td>1987 statistical review: no common long-term pattern.</td></tr>
+<tr><td>Shnoll (histogram fine structure, 1990s–2010s)</td><td>1436-min and
+1440-min recurrences; collimator pointing</td><td>Rests on expert visual
+histogram matching; not independently accepted. Closest modern analogue to
+Brown's "sidereal-time noise" claims, with the same weakness: post-hoc
+selection.</td></tr>
+<tr><td>Hodowanec "gravity-wave detector" (1986)</td><td>Capacitor + op-amp
+noise with sidereal structure</td><td>Amplified 1/f noise; unconfirmed.</td></tr>
+<tr><td>Cosmic-ray sidereal anisotropy</td><td>Real; ~0.05–0.1%
+(Compton–Getting + galactic dipole)</td><td>The one <em>true</em>
+ground-based sidereal signal — three orders of magnitude below Brown's 10–50%
+swings and below his documented drift.</td></tr>
+<tr><td>DAMA/LIBRA; Lorentz-violation clock/cavity comparisons</td><td>Sidereal
+modulation searched explicitly</td><td>Nulls at present sensitivity;
+sidereal frequency shifts bounded at 10<sup>−19</sup>–10<sup>−21</sup>.</td></tr>
+</table>
+<p>The pattern is instructive: <em>every</em> claimed macroscopic sidereal
+modulation in a laboratory instrument has failed re-analysis or been left
+unconfirmed, and the one real sidereal signal is at the 10<sup>−3</sup> level
+in particle counts, not in torques or voltages. That is a strong prior against
+Brown's 10–50% signal being sidereal. It is not a test of it.</p>
+
+<h3>4.4 The resistance bridges and the "space compass" (Catalina 1973, §§99–122)</h3>
+<p>Brown's late-life reinterpretation: the electrometer had really been
+measuring a <em>resistivity differential</em>, and simple electrical
+resistance "of copper, and possibly all substances, does vary in a secular
+and possibly cyclic manner" with lunar/solar/sidereal time and with the
+Earth's absolute motion. He cites Fernando Sanford's 1892 copper-wire report
+(peaks 29 days apart, "6 days before full moon" by his re-reading), builds
+Models A-14/15/16 (carbon vs wire-wound resistors, 6–300 V, µA nulls) and a
+"Resistance Cross" of buried Stableohm arms, and proposes a semiconducting
+rod as "a compass for space" pointing at Miller's apex. He records
+two-week downward drifts, ~1 mV "jumps," "spectral bands" by V×R, and
+"glitches" — momentary conductivity losses.</p>
+<p><strong>Status.</strong> <span class="tag t-doc">DOCUMENTED</span>;
+never operated with controls; the behaviours listed (voltage coefficient,
+humidity drift, 1/f and burst "popcorn" noise of carbon-composition
+resistors) are textbook component behaviour, and his temperature control is a
+single point (heat to 90 °F, "no change"). Also DOCUMENTED and worth
+keeping: the resistance-cross concept — a long-baseline differential null
+instrument — is unobjectionable and was never built beyond the bench.</p>
+
+<h2>5. The question of time</h2>
+
+<p>This is the section the paper exists for. We take it in three layers:
+what Brown wrote; where the time-travel sentences come from; and the verdict
+under the project's forensic filter.</p>
+
+<h3>5.1 What Brown wrote about time — the exhaustive list</h3>
+<p>We read all 9,196 lines of the released notebooks for it. Every passage a
+reader might construe as "time" falls in one of six bins:</p>
+
+<table>
+<tr><th>Bin</th><th>What is actually there</th><th>Sections</th></tr>
+<tr><td><strong>(a) Time as coordinate of an unknown signal</strong></td><td>Solar,
+lunar and sidereal periodicities and secular drift of electrometer torque,
+resistance, rock self-potential; "circadian signatures" of sensors; the
+16 h / 17 h ST features; a 4-day post-full-Moon lag read as Earth's RC time
+constant.</td><td>5, 51, 74, 97–122, 179–243 (dozens)</td></tr>
+<tr><td><strong>(b) Dielectric memory</strong> — "The Possibilities of a New
+Type of Time-Space Data Preservation. A Method of Recording or 'Memory'"
+(30 Jan 1957)</td><td>Despite the title, this is a <em>storage</em> proposal:
+all recorders to date need an element "moving at a constant rate"; a
+dielectric may "remember the manner of recharging" as long as it holds
+charge, via domain progression paced by the data; test with a ±20 kV
+capacitor bridge and a Brush galvanometer. It is a rate-encoded electret /
+dielectric-absorption memory. Not temporal physics.</td><td>50</td></tr>
+<tr><td><strong>(c) Absolute motion</strong></td><td>"Detection of Absolute
+Motion by Means of Modulated Inertial Mass" (witnessed, 18 Feb 1956): a
+mass whose inertial mass is modulated should swing along its absolute
+velocity vector; later, the space compass. Pre-relativistic framing; no
+time content.</td><td>30–31, 36, 114–117</td></tr>
+<tr><td><strong>(d) Superluminal K-waves</strong></td><td>"K waves may be
+instantaneous (infinite velocity)"; "Are K waves limited to the velocity of
+light? … If not, why should they be limited?" Then, in-line, "I take this
+back."</td><td>107, 109, 183, 238</td></tr>
+<tr><td><strong>(e) Dating by decay</strong></td><td>Freshly ground rock is
+lightest, so "the approximate date of grinding may be determined";
+megaliths' weight recovery dated to "70,000 to 200,000 years ago."</td><td>3, 47</td></tr>
+<tr><td><strong>(f) A signal that leads the future</strong></td><td>§213,
+23 Jul 1975: "a correlation may be found between sidereal radiation and the
+stock market. Even as early as 1937 such a correlation seemed to exist";
+now a Catalina granite on a Triplett meter shows "a phenomenal correlation
+with the DJ Averages," lag radiation → DJ "about 4 days" (2 days in
+1937/39); "Five reversal of trend have, so far, taken place. The probability
+of this is astronomical"; "No explanation seems to exist"; a "Magnum Fund"
+prospectus under the Foundation.</td><td>213 (and Cady §5.1)</td></tr>
+</table>
+
+<p>Bin (f) is the only place Brown's own hand puts a physical signal
+<em>ahead</em> of an event, and it is the one bin a reader could honestly
+call a "time" anomaly. So it deserves care:</p>
+<ul>
+<li>It is not new in 1975. Cady recorded in 1952 that Brown claimed a
+Dow-Jones correlation for the 1937 data ("it has been claimed that a
+chi-square analysis has been performed, with positive results") and that he,
+Cady, "has seen no convincing evidence." The family site's Babson-era
+(1948–49) "electrogravitic stock market predictor" is the same claim.</li>
+<li>Five trend reversals in eight weeks is not "astronomical" — daily
+market series reverse trend constantly, and any drifting sensor chart can be
+aligned to some of them by choosing the lag. Brown supplied no
+pre-registration, no lag-fixed scoring, and, in the released volumes, no
+follow-up after July 1975.</li>
+<li>Even taken at face value, a signal that <em>leads</em> a human aggregate
+by four days is not precognition or time travel; it is a claim that both the
+rock and the market respond to a common driver with different lags. Brown
+says as much in his own framing ("incoming radiation covers a broad
+spectrum").</li>
+</ul>
+<p>Register for bin (f): <span class="tag t-open">OPEN THREAD</span>, and
+a shallow one — decidable by retrieval of the 1937 table and the 1975
+Catalina chart, both of which existed and one of which Cady physically
+examined. Everything else in the list is either instrumentation (a), an
+engineering idea (b), or speculation he withdrew (d).</p>
+
+<h3>5.2 Where the time-travel sentences come from</h3>
+<p>Two chains, fully traceable, neither passing through anything Brown
+wrote:</p>
+
+<p><strong>Chain 1 — the Philadelphia Experiment.</strong> Jessup / "Allende"
+letters (1955–56) → Berlitz &amp; Moore, <em>The Philadelphia Experiment</em>
+(1979), whose chapter 10 attaches Brown because he was a Navy officer working
+on magnetic mine-sweeping in 1940–41 (true) → Al Bielek (1990) adds Montauk
+and time travel, with Tesla and von Neumann as the "team" and Brown only via
+Berlitz &amp; Moore. Moore planted a paragraph in a draft; Brown returned it
+"essentially correct" — and a long-time associate reports that phrase was
+Brown's private code for a hole "big enough to drive a truck through."
+Schatzkin himself writes "TPX is a myth"; Cook's source "Marckus" called it
+"a neat bit of misinformation." <span class="tag t-fab">TRACED TO
+FABRICATION</span> — this is the Bennewitz pattern of
+MIC §25, a real man's
+real Navy record used as the seed of a manufactured story.</p>
+
+<p><strong>Chain 2 — "Morgan."</strong> Paul Schatzkin's serialised
+biography <em>Defying Gravity: The Parallel Universe of T. Townsend Brown</em>
+(2005–08) and its book form <em>The Man Who Mastered Gravity</em> (2023) carry
+the theme via an anonymous e-mail correspondent, "Morgan," who claimed to have
+known Brown in the 1960s and who wrote, of Brown's work as described in
+Cook's <em>Hunt for Zero Point</em>: "It's a f—ing time machine." Morgan's
+Christmas-1965 Homestead anecdote has Brown answering a question about time
+travel with "Yes, I believe it is possible. In your lifetime." Morgan is also
+the sole source of the "Caroline Group" — a Stephenson/BSC-flavoured private
+network said to have worked on "a time machine … traveling between
+dimensions." Chapter 20 of the serial, in which Schatzkin himself speculates
+that bending space bends time, is labelled speculation by its author.</p>
+<p>What has since happened to Chain 2:</p>
+<ul>
+<li>Cook confirmed his own source ("Marckus") was British and met in person;
+Schatzkin's was e-mail only. Schatzkin: "Maybe not a word I've written is
+true."</li>
+<li>Morgan's one checkable wartime story — an April 1945 Halifax NA337 drop
+into Germany — was checked against RAF 38 Group operations records by a forum
+researcher: the aircraft's sorties were Denmark (aborted) and Norway (ditched
+in Lake Mjøsa); no Germany sortie was possible.
+<span class="tag t-fab">REFUTED</span> on record.</li>
+<li>Schatzkin's 2023–24 "Outtakes-37" states that later insights "have
+challenged the provenance" of Morgan and the "O'Riley/Boston/Twigsnapper"
+persona, and concedes he ran with a version "however uncertain I was of the
+veracity." His collaborator adds the "MIB" testimony "may not all be exactly
+100% accurate."</li>
+<li>Downstream: the Jesse Michels documentary (Oct 2024; audited in
+<code>MICHELS_BROWN_DOCUMENTARY_AUDIT_2026-08-13.md</code> — 109 minutes,
+zero measured data) and Linda Brown's 2025–26 "My Father Was A Time
+Traveler!" clip inherit Chain 2 whole. Linda's own journals show "Morgan" first
+as a real boyfriend, later merged with the correspondent; she also reports a
+1955 three-saucer encounter and a "shared dream-visitation," and describes
+sceptics as "agents." That is a family witness paying a real cost — the
+filter's honest-witness criterion — but it is a witness to a
+<em>persona</em>, not to a device or a document.</li>
+</ul>
+<p>Provenance map, in one line:
+<em>Jessup/Allende 1955 → Moore &amp; Berlitz 1979 → Bielek 1990 ∥ Cook 2001 →
+Schatzkin/Morgan 2004–08 → book 2023 → Michels 2024 / Linda 2025–26.</em>
+Brown's paper trail contributes zero links.</p>
+
+<h3>5.3 Verdict under the filter</h3>
+<div class="box">
+<p><strong>"Brown figured out time travel":</strong>
+<span class="tag t-fab">TRACED TO FABRICATION</span>. The claim's every
+appearance is downstream of (1) a book its own co-author's associate
+disowned and Schatzkin calls a myth, or (2) an anonymous e-mail persona whose
+one testable claim fails the archival record and whose sponsor has publicly
+withdrawn confidence in it. There is no witness at cost to a device, no
+document, no drawing, no notebook line. By the §26/§27 forensic test this is
+the "anonymous packet" case, exactly as the Haunebu papers were in the
+Schauberger paper.</p>
+<p><strong>"Brown worked on time":</strong> true only if reworded to what he
+actually did — thirty years of instruments read against sidereal time, plus
+one dielectric-memory idea, plus one signal-leads-market note. Reworded,
+<span class="tag t-doc">DOCUMENTED</span> as a program and
+<span class="tag t-open">OPEN THREAD</span> as to whether any of it was real,
+with the solar/lunar parts <span class="tag t-ref">REFUTED</span> by Cady.</p>
+<p><strong>The filter cutting the other way:</strong> a wrongly-dismissed
+observation is rescued by evidence, and here the evidence that could rescue
+Brown's sidereal claim exists in principle — the 1937 hourly table Cady held —
+and has never been examined for the sidereal harmonic. That is the honest
+residue, and §9 turns it into a task.</p>
+</div>
+
+<h2>6. Petrovoltaics — the rock program (1974–78)</h2>
+
+<h3>6.1 What Brown claimed</h3>
+<p>Family-site definition: "the spontaneous rectification and storage of
+radiation in the form of electrical potential by certain materials," neither
+piezo- nor pyroelectric. Silver or copper electrodes plated on opposite faces
+of flat granitic/basaltic rocks give DC potentials "up to 700 mV," typically
+60–115 mV in the Hawaii notebooks (Waikiki rock ~10 cm, 60 mV; +Kuhio-Beach
+sand core 63 → 115 mV; Koolau basalt ~400 mV, the best material), with
+"systematic diurnal variations" (low 6–7 AM, high 6–8 PM), "sudden random
+spikes or bursts" (the "glitches": 21 Dec 1974 and 7 Jan 1975 at Haleakala;
+4 May 1976 at Berkeley — granite off-scale at 97 mV, at "approx 17 h sidereal
+time, at approx upper meridian transit of the galactic center. This may or
+may not be a coincidence") and long-term secular drift. Sensors extended to
+BaTiO<sub>3</sub>, PZT, glycerin–litharge, tungsten carbide in carnauba,
+ceramic "cartwheel" and electrolytic capacitors, which "behave like rocks."
+The 1975 paper cites Weber's galactic-centre claim as its frame and posits
+"an energy influx of possibly extreme penetrability."</p>
+<p>The theory built on it (§§200–208, "the gravitocell"): incident
+gravitational radiation ("qualight," made from starlight crossing cosmic
+fields) is absorbed in proportion to mass, knocks charge carriers loose,
+and self-polarised rocks rectify it; bias of 45 V raises the diurnal signal
+~10×; a 10 kV "self-sustaining gravitoelectric generator" is sketched.
+Pyramids as gravitic-flux concentrators (§223) and biological effects
+(§224) follow as explicit speculation.</p>
+
+<h3>6.2 Controls he says he ran, and what is missing</h3>
+<p>Brown's list is not nothing: Haleakala at 10,000 ft; sea level; the
+Hawaii Institute of Geophysics seismic vault (long-term drift only, diurnal
+suppressed — his own §211); UC Berkeley Lawson Adit, 200 ft of overburden
+("200% increase vs surface"); NASA-Sunnyvale 90-ton cobalt-steel chamber
+(1978); SRI screen rooms; enclosures held to ±0.1 °C; "concurrent bursts"
+80 km apart; and the statement that humidity, atmospheric electricity,
+geomagnetism, cosmic/gamma/neutrino flux "have as yet provided no answers."
+What is missing is what would decide it: the electrode control. Two plated
+metal films on a moist ionic conductor form a galvanic cell whose potential
+is exactly hundreds of millivolts; the self-potential geophysics literature
+says electrode effects must be modelled explicitly; a dawn-minimum /
+evening-maximum diurnal is the classic thermal-lag/humidity signature;
+"steel framing reduces readings" is what a high-impedance electrostatic
+pickup does; and Brown's own last entry (§243) concedes "the emf developed
+would surely be temperature dependent, and this, it appears, is true." No
+electrode-swap, no dry-inert-atmosphere, no shorted-Faraday-cage null is
+recorded.</p>
+
+<h3>6.3 Replications and citations</h3>
+<p>None peer-reviewed. Laurie &amp; Salisbury (c. 1998–2008) saw mV-scale
+<em>changes</em> in various rocks with rate-of-change converters and
+interpret them artistically; an amateur page (now dead) reported a
+persistent small voltage and "cannot rule out a chemical reaction or some
+kind of thermal effect." A search for citations of the 1975 Honolulu paper
+returns only the family site and unrelated self-potential geophysics. The
+mainstream neighbour of Brown's diurnal claim — tidal influence on
+self-potential measurements — exists and does not cite him.</p>
+
+<div class="warn">
+<strong>Register.</strong> <span class="tag t-doc">DOCUMENTED</span> claim
+with real dated notebooks and a real 1975 paper; <span class="tag t-ref">REFUTED</span>
+as an energy source (10<sup>−1</sup> V into &gt;10<sup>8</sup> Ω is pW–nW,
+never near "self-sustaining"); mainstream account (electrode
+electrochemistry + moisture + thermal lag) is sufficient and was never
+excluded by a published control; <span class="tag t-open">OPEN THREAD</span>
+strictly on whether any <em>sidereal</em> component survives such controls
+— untested by anyone, and cheap to test (§9).
+</div>
+
+<h2>7. The vacuum ledger, restated in Brown's own terms</h2>
+
+<p>Because Brown's name is the vacuum claim's flag, it is worth lining up
+what <em>he</em> said against what was measured, so no reader has to
+reconcile them later.</p>
+
+<table>
+<tr><th>Source</th><th>Vacuum statement</th><th>Register</th></tr>
+<tr><td>Brown, Notebook §§42–43 (Apr 1956)</td><td>Impulse rides on the
+vacuum spark; anode ions and metal fragments named as initiators.</td><td>DOCUMENTED;
+= cathode-spot recoil</td></tr>
+<tr><td>Brown, Notebook §67 (Jan 1958)</td><td>Force ∝ K and m; "In vacuum,
+with a K of unity and m = 0, the force should be minimum."</td><td>DOCUMENTED
+— his own theory predicts near-null in vacuum</td></tr>
+<tr><td>Brown, Notebook §113 (Sep 1973)</td><td>The gravitator "moved in the
+neg to pos direction when charged. This is what happened, even in vacuum."
+No pressure, no number.</td><td>Self-report, un-numbered</td></tr>
+<tr><td>Cady / ONR (1952)</td><td>Efficiency of the air devices ~1.4% (0.3%
+overall); thrust "presumably … zero in a vacuum"; ~7 g at 30 kV falling to ~1
+g with the corona wire shrouded; calculated electric-wind thrust "about twice
+the observed" — "satisfactory in order of magnitude."</td><td>MEASURED
+(the only calibrated Brown-saucer numbers)</td></tr>
+<tr><td>Montgolfier / Cornillon (1957 report; 1959 final report) — read
+in the original 2026-08-18, receipt
+<code>MONTGOLFIER_REPORT_RETRIEVAL_2026-08-18.md</code></td><td>1957 bell
+jar (2–5×10⁻⁵ mm Hg): discs "always moved toward the positive pole," motion
+often flash-driven, stopped by a grounded screen, 2–4 µA at 40 kV, unmeasurable;
+Brown's ~100 suggested variations during his second stay produced no effect
+above bell-charging noise; Cornillon's own hypothesis = "anodic effect"
+(particle emission). 1959 torsion balance (1.48 m chamber, 5×10⁻⁵ mm Hg,
+±50–55 kV): Brown disc–wire article <strong>null</strong>; two other
+articles null; plexiglas capacitor 3–4°; BaTiO₃-loaded capacitor 30° ≈
+1 g·cm, reversing with polarity; no current/breakdown/lever-arm
+record.</td><td>OPEN THREAD, now numbered — null on Brown's own geometry;
+one uncontrolled positive on a high-K article</td></tr>
+<tr><td>Bahnson (1957–60)</td><td>Vacuum runs claimed; film silent; no
+numbers on screen or in the 55 released pages.</td><td>DOCUMENTED artefact,
+no datum</td></tr>
+<tr><td>Talley, AFAL/PL (1988, 1991)</td><td>10<sup>−6</sup> torr: no
+thrust under DC; forces only at breakdown / pulsed PZT.</td><td>NULL</td></tr>
+<tr><td>Tajmar (2004); Canning/NASA (2004); Tajmar &amp; Schreiber (2020,
+±0.3 mg); Tajmar (2024)</td><td>No thrust without current; corona wind in
+air.</td><td>NULL</td></tr>
+<tr><td>Martins &amp; Pinheiro (2011)</td><td>Vacuum "anomalies" = vacuum-arc
+thruster physics.</td><td>DERIVED explanation</td></tr>
+</table>
+
+<p>This is the same ledger as <a href="electrogravitics.html">Electrogravitics</a>
+§3, with two additions: Brown's own theory (§67) and his own observation
+(§42) both place the static vacuum force at or near zero; and the Montgolfier
+reports, read for this paper, put Brown's own disc–wire geometry at
+<em>null</em> on the sponsors' 1959 torsion balance while giving one
+uncontrolled positive on a barium-titanate article. The lore's "Brown proved
+it works in vacuum" is asserted neither by Brown's notebooks nor by the
+French report; what the French report does say is that a high-K dielectric
+"makes the phenomenon more vigorous" — which is the one sentence in the whole
+1950s vacuum record that a builder could act on, and it points at the
+dielectric, not at Brown's capacitor.</p>
+
+<div class="part">Part III — Scorecard and residue</div>
+
+<h2>8. Scorecard</h2>
+
+<table>
+<tr><th>#</th><th>Claim</th><th>Brown's own numbers</th><th>Independent test</th><th>Verdict</th></tr>
+<tr><td>1</td><td>In-air force on asymmetric capacitor</td><td>1927–58 patents; ~7 g at 30 kV (Cady's measurement)</td><td>Cady 1952; Tajmar 2004; Canning 2004</td><td><span class="tag t-doc">DOC</span> real force; ion wind. Brown 1973 concurs on mechanism.</td></tr>
+<tr><td>2</td><td>Static thrust in vacuum</td><td>none in his hand; §67 predicts minimum</td><td>Talley; Tajmar &amp; Schreiber; Tajmar 2024</td><td><span class="tag t-ref">REFUTED</span> (as coupling bound; see field guide §3)</td></tr>
+<tr><td>3</td><td>Vacuum impulse at spark</td><td>onset 30–40 kV; "thousands of dynes"</td><td>Talley (breakdown only); Martins &amp; Pinheiro</td><td><span class="tag t-doc">DOC</span>, explained (arc recoil)</td></tr>
+<tr><td>4</td><td>Gravitational isotopes / g varies by material</td><td>Yb "59% light"; clay −1% on shaking</td><td>Eötvös-class bounds 10<sup>−13</sup>; Brush's NBS/GE checks failed</td><td><span class="tag t-ref">REFUTED</span></td></tr>
+<tr><td>5</td><td>Dielectromotance / dielectric wind / field shaping</td><td>none</td><td>—</td><td>No anomaly (D-field, dielectrophoresis, EHD)</td></tr>
+<tr><td>6</td><td>Electrometer torque</td><td>0.45 mA, −11 kV; deflection 50→80; sign reversal</td><td>Cady 1952</td><td><span class="tag t-doc">DOC</span>; ion injection in oil</td></tr>
+<tr><td>7</td><td>Electrometer solar / lunar period</td><td>noon min; +2 h lunar max</td><td>Cady 1952, 1937 table</td><td><span class="tag t-ref">REFUTED</span> ("most emphatically")</td></tr>
+<tr><td>8</td><td>Electrometer sidereal period (16 h ST)</td><td>1937/39</td><td>none — "no test has been applied"</td><td><span class="tag t-open">OPEN</span> (retrievable)</td></tr>
+<tr><td>9</td><td>Signal leads Dow-Jones by 2–4 days</td><td>1937/39; 1975 five reversals</td><td>Cady: "no convincing evidence"</td><td><span class="tag t-open">OPEN</span>, weak; not precognition even if true</td></tr>
+<tr><td>10</td><td>Resistance of conductors varies with sidereal time / absolute motion</td><td>Models A-14/15/16; drifts, mV jumps</td><td>none; Lorentz-violation clock bounds 10<sup>−19</sup> as prior</td><td><span class="tag t-open">OPEN</span> as stated; component-noise account sufficient</td></tr>
+<tr><td>11</td><td>K–μ structure of space; superluminal K-waves</td><td>none</td><td>—</td><td>Speculation; PV-family shape; withdrawn in-line</td></tr>
+<tr><td>12</td><td>Petrovoltaic self-potential</td><td>60–700 mV; diurnal; glitches</td><td>none peer-reviewed</td><td><span class="tag t-doc">DOC</span>; galvanic/thermal sufficient; <span class="tag t-open">OPEN</span> on sidereal residue</td></tr>
+<tr><td>13</td><td>Gravitocell / qualight / pyramid focus</td><td>none</td><td>—</td><td>Speculation, labelled so by him</td></tr>
+<tr><td>14</td><td>Weber events are not bar oscillations</td><td>§192, 1975</td><td>Garwin et al. 1972–74</td><td>Right conclusion, wrong cause</td></tr>
+<tr><td>15</td><td>Dielectric "time-space" memory</td><td>§50, 1957</td><td>—</td><td>Engineering idea; anticipates electret/FeRAM in spirit; not time physics</td></tr>
+<tr><td>16</td><td>Adamski scout-ship analysis</td><td>§§58–63, 1958</td><td>—</td><td>Hedged by him; dropped after 1958</td></tr>
+<tr><td>17</td><td>Philadelphia Experiment participation</td><td>—</td><td>Navy record 1940–42; Moore/Berlitz provenance</td><td><span class="tag t-fab">FABRICATION</span></td></tr>
+<tr><td>18</td><td>Time machine / "Caroline Group"</td><td>—</td><td>Morgan e-mails; RAF ORB refutation; Schatzkin retraction</td><td><span class="tag t-fab">FABRICATION</span></td></tr>
+</table>
+
+<h2>9. What this project takes forward</h2>
+
+<p>The residue is small, specific, and cheap. Each item is a bounded task
+with a binary outcome, in the same spirit as the field guide's §6.</p>
+
+<ol>
+<li><strong>Retrieve the 1937 hourly table.</strong> Cady's ONR file
+reproduces only means (Tables 2–4, as images). The full "Hourly Readings of
+Instrument, 1937" and its lunar-hour-angle companion existed in Los Angeles in
+1952 and presumably passed to the estate (papers went to San Antonio per the
+family timeline). If retrieved: fold by <em>sidereal</em> hour with the drift
+removed (Cady's spring rise is a 15% ramp), score the 16 h ST amplitude
+against a shuffled-day null. This is the single test Cady said had not been
+applied. Also retrieve the July 1975 Catalina chart against the DJIA with the
+4-day lag fixed <em>before</em> looking. Outcome: either the sidereal claim
+gets its first number, or Brown's central lifelong claim is closed on his
+own data.</li>
+<li><strong>Add a "Brown channel" to the sidereal-folding control of the
+field guide's bench program.</strong> Our five-control discriminator already
+includes sidereal folding of the drive/force record. Mounting one
+plated-electrode basalt and one carbon-composition resistor bridge on the
+same logger, with an electrode-swapped twin, a shorted twin, and a
+dry-nitrogen twin, costs nothing and answers §6 and §4.4 in the same run:
+if the controls track the live sensors, the diurnal is galvanic/thermal; if a
+sidereal residue survives all three, that is a real datum. Pre-register the
+amplitude threshold at the cosmic-ray anisotropy level (10<sup>−3</sup>) as
+the only physically motivated prior.</li>
+<li><strong>Do not import Brown's structure-of-space (§3.6) as support for
+anything.</strong> It is a shape without a calculation; the PV-family
+resemblance is resemblance. The <a href="warp_drive.html">warp paper</a> and
+<a href="the_shape_of_gravity.html">gravity paper</a> own that territory.</li>
+<li><strong>Keep the two fabrication verdicts load-bearing.</strong> Any
+future session that finds "Brown, time travel, Caroline Group" in a source
+should route it here rather than re-litigating; and, symmetrically, any
+session that finds a <em>document</em> — a drawing, a witnessed page, an
+archive box — must reopen §5, because the verdict is on provenance, not on
+plausibility.</li>
+<li><strong>Update the sibling papers</strong> so that "Brown" no longer
+means only "capacitor": one sentence and a link in
+<a href="electrogravitics.html">Electrogravitics</a> §1 and
+<a href="antigravity_devices.html">Antigravity Devices</a> §4 pointing here
+for the notebooks, the electrometer, and the time question.</li>
+</ol>
+
+<h2>10. A closing word about the man</h2>
+
+<p>The notebooks show a careful, self-critical, unlucky experimenter, not a
+charlatan. He dated and witnessed entries; wrote "correction," "I take this
+back," "the scales could be in error," "possibly 'to absurdity'," "no
+conclusions can yet be reached"; noticed the ion-wind confound in his own
+oil (§71) and the current-dependence of his own torque (§105); saw through
+Weber before Weber's peers did; and kept, for fifty years, records of an
+instrument that nobody but one Navy physicist ever analysed. He was wrong
+about gravitational isotopes, wrong about dielectricity as a substance, wrong
+— on the only tabulated year — about the Sun and Moon in his electrometer,
+and right that his capacitor pointed the direction it did and scaled with
+the current it drew. He never wrote a word about time machines. The version
+of him that did is a character in other people's books, and the man deserves
+to be scored on his own pages. That is what this paper does; the one test he
+was owed and never got — the sidereal fold of 1937 — is now on our list.</p>
+
+<h2>Sources</h2>
+<ul class="small">
+<li>T. T. Brown, <em>Scientific Notebooks</em> Vols. 1, 2, 4 (Townsend Brown
+Estate 2006; archive.org "townsend-brown-electrogravitics-notebooks";
+rexresearch transcription). All section numbers above are Brown's.</li>
+<li>W. M. Cady, ONR Pasadena File 24-185, "Thomas Townsend Brown: Electro-Gravity
+Devices," 15 Sep 1952 (declassified 1 Oct 1952; PDF mirrored at
+irp.cdn-website.com and rexresearch).</li>
+<li>T. T. Brown, "Anomalous Diurnal and Secular Variations in the Self-Potential
+of Certain Rocks," Honolulu, 22 Mar 1975 (thomastownsendbrown.com/petro/).</li>
+<li>Patents: GB 300,311; US 1,974,483; 2,949,550; 3,018,394; 3,022,430;
+3,187,206; 3,196,296. Bahnson US 2,958,790; 3,263,102.</li>
+<li>Bahnson–Brown notebooks (archive.org, 2024); Bahnson film (YouTube cut).</li>
+<li>Project Montgolfier report (1959; Starburst Foundation / archive.org 2023).</li>
+<li>Talley, AFAL-TR-88-031 (1988) and PL-TR-91-3009 (1991, DTIC ADA237853);
+Bahder &amp; Fazi ARL-TR-3005 (2003); Tajmar, AIAA J. 42:315 (2004); Canning et
+al., NASA/CR-2004-213312; Martins &amp; Pinheiro, Phys. Procedia 20:112
+(2011); Bhatt &amp; Becker arXiv:1810.04368; Tajmar &amp; Schreiber, J.
+Electrostatics 107:103477 (2020); Tajmar, Sci. Rep. 14:19427 (2024).</li>
+<li>Comparators: Shankland et al., Rev. Mod. Phys. 27:167 (1955); Roberts,
+arXiv:physics/0608238; Weber, PRL 25:180 (1970); Piccardi review (1987);
+Shnoll arXiv:physics/0501004, 0605064; Van Flandern &amp; Yang, PRD 67:022002
+(2003); DAMA/LIBRA arXiv:1403.4733; Lorentz-violation sidereal bounds
+arXiv:1809.10742; cosmic-ray sidereal anisotropy arXiv:1407.2144; Pohl,
+<em>Dielectrophoresis</em> (1978); Zubko et al., Annu. Rev. Mater. Res.
+43:387 (2013).</li>
+<li>Secondary chains: Berlitz &amp; Moore, <em>The Philadelphia Experiment</em>
+(1979); Cook, <em>The Hunt for Zero Point</em> (2001); Schatzkin,
+<em>Defying Gravity</em> (serial 2005–08) and <em>The Man Who Mastered
+Gravity</em> (2023), ttbrown.com pages "just-the-facts," "ttb-tpx,"
+"time-travel-is-plausible," "blended-characters," "outtakes-37"; ttownsendbrown.com
+forum thread on the NA337 sortie record; Michels documentary (Oct 2024);
+Boyle, Substack review (2023); family timeline thomastownsendbrown.com/misc/timeline.htm.</li>
+<li>Internal: <code>MICHELS_BROWN_DOCUMENTARY_AUDIT_2026-08-13.md</code>;
+<code>RESULTS_BIEFELD_BROWN_2026-08-13.md</code>; <code>GRAVITY_ENGINEERING_DEEPDIVE_2026-08-13.md</code>;
+notebook digest and web dossiers in the session scratchpad (2026-08-18).</li>
+</ul>
+
+<p class="meta">Draft 0.1, 2026-08-18. Registers follow the project filter
+(Documented / Open thread / Traced-to-fabrication; Refuted where an
+independent test exists). No number in this paper is new; every number is
+Brown's, Cady's, or a cited author's. Not deck material.</p>
+
+</body>
+</html>

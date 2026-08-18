@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nikola Tesla — The Medium and the Rotating Drive</title>
+<style>
+  :root {
+    --ink: #1c1c1c; --paper: #fbfaf6; --green: #5a7d3a; --amber: #b88a2a;
+    --rust: #b04a2a; --rule: #d2cdbf; --soft: #8a8676; --blue: #1a5276;
+  }
+  html { background: #ece8df; }
+  body {
+    font-family: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+    max-width: 800px; margin: 2.5rem auto; padding: 2.5rem 2rem 4rem;
+    color: var(--ink); line-height: 1.62; background: var(--paper);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  }
+  h1 { font-family: "Helvetica Neue", Helvetica, sans-serif; font-weight: 700; font-size: 1.85rem; line-height: 1.25; border-bottom: 2px solid var(--ink); padding-bottom: 0.6rem; }
+  h2 { font-family: "Helvetica Neue", Helvetica, sans-serif; font-size: 1.25rem; margin-top: 2.6rem; }
+  h2 .num { color: var(--soft); font-weight: normal; margin-right: 0.4em; }
+  h3 { font-family: "Helvetica Neue", Helvetica, sans-serif; font-size: 1.05rem; margin-top: 1.7rem; color: #444; }
+  .byline { color: var(--soft); font-style: italic; margin-bottom: 2.2rem; font-size: 0.95rem; }
+  .tldr { background: #eef3e8; border-left: 4px solid var(--green); padding: 0.9rem 1.1rem; margin: 1.2rem 0; font-style: italic; }
+  .companion { background: #f0eee8; border-left: 4px solid var(--soft); padding: 0.6rem 1rem; margin: 1.2rem 0; font-size: 0.92rem; }
+  .doctrine { background: #1c1c1c; color: #f5f1e6; padding: 1rem 1.2rem; margin: 1.6rem 0; font-style: italic; line-height: 1.5; border-radius: 2px; }
+  .doctrine::before { content: "Doctrine sentence  ·  "; font-style: normal; color: var(--amber); font-family: "Helvetica Neue", Helvetica, sans-serif; font-size: 0.85rem; letter-spacing: 0.05em; }
+  .receipt { background: #eef3e8; border-left: 4px solid var(--green); padding: 0.8rem 1.1rem; margin: 1.2rem 0; font-size: 0.94rem; }
+  .receipt::before { content: "Documented  ·  "; font-style: normal; color: var(--green); font-family: "Helvetica Neue", Helvetica, sans-serif; font-size: 0.82rem; letter-spacing: 0.05em; font-weight: 600; }
+  .lemma { background: #fff8e8; border-left: 4px solid var(--amber); padding: 0.8rem 1.1rem; margin: 1.2rem 0; font-size: 0.94rem; }
+  .lemma::before { content: "Open thread — judged from best sources  ·  "; font-style: normal; color: var(--rust); font-family: "Helvetica Neue", Helvetica, sans-serif; font-size: 0.82rem; letter-spacing: 0.05em; font-weight: 600; }
+  .forgery { background: #f4f1ea; border: 1px dashed var(--soft); padding: 0.8rem 1.1rem; margin: 1.2rem 0; font-size: 0.94rem; }
+  .forgery::before { content: "Forensically-traced  ·  "; font-style: normal; color: var(--soft); font-family: "Helvetica Neue", Helvetica, sans-serif; font-size: 0.82rem; letter-spacing: 0.05em; font-weight: 600; }
+  .ic { background: #f0eee8; border-left: 3px solid var(--soft); padding: 0.6rem 1rem; margin: 1rem 0 1.6rem 0; font-size: 0.92rem; }
+  .ic::before { content: "How the network reads it  ·  "; font-style: normal; color: var(--ink); font-family: "Helvetica Neue", Helvetica, sans-serif; font-size: 0.82rem; letter-spacing: 0.05em; font-weight: 600; }
+  .quote { border-left: 3px solid var(--rule); padding: 0.2rem 0 0.2rem 1.1rem; margin: 1.2rem 0; color: #3a382f; font-style: italic; }
+  code { font-family: "JetBrains Mono", Consolas, monospace; background: #f3eee0; padding: 0.05rem 0.3rem; border-radius: 2px; font-size: 0.9em; }
+  table { border-collapse: collapse; margin: 1.1rem auto; font-size: 0.9rem; }
+  th, td { border: 1px solid var(--rule); padding: 0.38rem 0.7rem; text-align: left; vertical-align: top; }
+  th { background: #f0eadb; font-family: "Helvetica Neue", Helvetica, sans-serif; }
+  hr.softrule { border: none; border-top: 1px solid var(--rule); margin: 2rem 0; }
+  ul, ol { padding-left: 1.5rem; } li { margin: 0.3rem 0; }
+  .smcap { font-variant-caps: small-caps; letter-spacing: 0.04em; }
+  .disclaimer { font-size: 0.84rem; color: var(--soft); border: 1px dashed var(--soft); padding: 0.7rem 1.1rem; margin: 2rem 0; border-radius: 2px; }
+</style>
+</head>
+<body>
+
+<style id="eg-site-nav-css">
+  .eg-nav{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:.8rem;
+    background:#1c1c1c;color:#ece8df;padding:.55rem 1.2rem;line-height:1.6;
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    box-shadow:0 1px 3px rgba(0,0,0,.25)}
+  body{margin-top:5.2rem !important}
+  .eg-nav a{color:#ece8df;text-decoration:none;margin-right:1rem;white-space:nowrap}
+  .eg-nav a:hover{text-decoration:underline}
+  .eg-nav .eg-home{font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+    margin-right:1.4rem}
+  .eg-nav .eg-cur{border-bottom:2px solid #b88a2a}
+  .eg-nav .eg-cat{color:#b88a2a;font-weight:600;letter-spacing:.03em}
+  .eg-nav .eg-catcur{text-decoration:underline}
+  .eg-nav .eg-sep{color:#8a8676;margin-right:1rem}
+  .eg-nav .eg-wrap{max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;
+    align-items:baseline}
+  .eg-nav .eg-pdf{margin-left:auto;margin-right:0;border:1px solid #b88a2a;
+    color:#ece8df;padding:.1rem .6rem;border-radius:2px;font-weight:600}
+  .eg-nav .eg-pdf:hover{background:#b88a2a;color:#1c1c1c;text-decoration:none}
+  @media print{.eg-nav{display:none} body{margin-top:0 !important}}
+</style>
+<div class="eg-nav"><div class="eg-wrap"><a class="eg-home" href="index.html">Papers</a><a class="eg-cat" href="index.html#electrogravitics">Electrogravitics</a><a class="eg-cat eg-catcur" href="index.html#people">The People</a><span class="eg-sep">·</span><a class="eg-cur" href="nikola_tesla.html">Tesla</a><a href="john_keely.html">Keely</a><a href="viktor_schauberger.html">Schauberger</a><a href="townsend_brown.html">Brown</a><a href="otis_carr.html">Carr</a><a href="walter_russell.html">Russell</a><a class="eg-pdf" href="pdf/nikola_tesla.pdf" download>Download PDF ↓</a></div></div>
+
+<div style="background:#eef5fa;border-bottom:2px solid #1a5276;padding:10px 24px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;text-align:center;color:#1a5276;line-height:1.45;font-size:0.88em;">
+Companion in the Boundary Problem network. The documented intuition behind <a href="warp_drive.html">The Warp Drive</a> &amp; <a href="how_to_build_a_ufo.html">How to Build a UFO</a>; sibling to <a href="viktor_schauberger.html">Viktor Schauberger</a>; read with the filter of The Military-Industrial Complex.
+</div>
+
+<h1>Nikola Tesla — The Medium and the Rotating Drive</h1>
+<p class="byline">
+  The electrician who insisted empty space is a real, energetic <em>medium</em> you can stand on
+  and draw power from; the rotating field he actually invented; the flying machine he described in
+  documented interviews but patented only as a tiltrotor; the gravity theory he announced and never
+  delivered; and the flying saucer that is <em>not</em> his — read with the network's filter,
+  trusting the documented genius, holding the missing theory open, and naming the forged disc by
+  its real author.<br>
+  Osika Innovation AB · Alexander Osika, Claude — draft 0.1, 2026-06-20.
+</p>
+
+<div class="tldr">
+  Nikola Tesla (1856&ndash;1943) gave the world alternating current, the induction motor, radio,
+  and the <strong>rotating field</strong> — and spent his last decades insisting on two things this
+  network is built on: that empty space is a real, energetic <em>medium</em> you couple to (his
+  &ldquo;ether&rdquo;), and that the way to move a craft is not to throw mass but to set up a field
+  the medium and the earth push against. He described, in documented interviews, a flying machine
+  with <em>&ldquo;no wings, no propellers, no fuel&rdquo;</em> that could
+  <em>&ldquo;remain absolutely stationary in the air&hellip; for a great length of time&rdquo;</em>
+  — hover — powered wirelessly from the medium. And he <em>kept the books</em>: his
+  &ldquo;radiant energy&rdquo; was <em>harvesting</em>, his wireless power was <em>transmission</em>
+  — neither was free energy. Two things the legend adds are not his. The <strong>Dynamic Theory of
+  Gravity</strong> (announced on his 81st birthday, 1937 — gravity from the medium, an alternative
+  to Einstein) was never published and left no surviving mathematics: an open door, not an
+  inheritance. And the <strong>&ldquo;Tesla flying saucer patent&rdquo;</strong> that circulates
+  online is a modern fabrication, traced to the author William Lyne — Tesla's <em>real</em>
+  flying-machine patent (US 1,655,114, 1928) is a VTOL tiltrotor, not a disc. The verdict:
+  <strong>Tesla had the right medium and the right method, kept honest books, left one theory
+  unfinished, and never drew the saucer his name is attached to.</strong> The medium, the rotating
+  field, and the hover are the inheritance; the gravity theory is an open thread; the saucer is
+  something done <em>to</em> his name, not <em>by</em> him.
+</div>
+
+<div class="companion">
+  <strong>Companion papers.</strong> The mechanism his documented intuition prefigures:
+  <code>warp_drive.html</code> (§2 the hover/support mode; §4 the swirl). The vehicle:
+  <code>how_to_build_a_ufo.html</code> (the Sport Model, §11). The water-domain sibling, with the
+  same &ldquo;right shape&rdquo; reading: <code>viktor_schauberger.html</code>. The build that
+  realises the rotating field as a 12-port drive: <code>all_you_need_is_water.html</code>
+  (the ring-cascade). The filter this paper is written through:
+  <code>the_military_industrial_complex.html</code> §27.
+</div>
+
+<h2><span class="num">§0</span>How to read this paper — the filter</h2>
+<p>
+  This paper uses the same method as its sibling on
+  <a href="viktor_schauberger.html">Schauberger</a> (§0) and the network's
+  Military-Industrial Complex book (§27):
+  <em>presence beats absence; corroboration across vantage points; cost is credibility; weird is
+  not the same as false; name the frauds.</em> The point of the method is that it cuts a
+  much-mythologised record into registers and the cut is the whole content — and Tesla, of all
+  people, needs it, because almost no other name in physics is so heavily over-claimed in both
+  directions at once (worshipped as a suppressed god of free energy, dismissed as a spent eccentric).
+  Neither caricature survives the filter.
+</p>
+<ul>
+  <li><strong>Documented</strong> (green) — on the public record: patents, dated interviews,
+    contemporaneous reporting, agreed by his biographers and his skeptics alike.</li>
+  <li><strong>Open thread</strong> (amber) — a claim no independent source has confirmed
+    <em>or</em> forensically killed. The honest default is <em>open</em>, judged from its best
+    sources — neither <em>true</em> nor &ldquo;debunked.&rdquo;</li>
+  <li><strong>Doctrine sentence</strong> (black) — the load-bearing reading this paper commits to.</li>
+  <li><strong>Forensically-traced</strong> (dashed) — set aside <em>only</em> when the best sources
+    identify the actual provenance of a claim as later fabrication or misattribution (a modern
+    image, a named author's reconstruction), never merely because it sounds grand.</li>
+</ul>
+<p>
+  Tesla's case is, if anything, easier to keep honest than Schauberger's, for one reason that turns
+  out to matter to the whole network: <strong>Tesla did not cross the conservation line.</strong>
+  Schauberger's tragedy was that he reached for over-unity and his own benches never confirmed it —
+  never, in fact, measured anything (<code>viktor_schauberger.html</code> §9.0).
+  Tesla's documented energy work — wireless <em>transmission</em>, radiant-energy <em>harvesting</em>
+  — stays inside the first law. So with him there is no perpetual-motion machine to refuse; there is
+  a real medium-coupling intuition to inherit, a theory he never delivered to hold open, and a
+  posthumous forgery to name. We do all three below.
+</p>
+
+<h2><span class="num">§1</span>The thesis — the right medium, the missing theory, the forged saucer</h2>
+<p>
+  Tesla matters to this network not as a saucer engineer — he was not one — but as the man who, more
+  clearly and earlier than anyone, said the two things the framework is built on: that <em>space is a
+  real medium</em>, and that you move through it by <em>spinning a field</em>, not by throwing mass.
+  He invented the rotating field for the electric motor; he insisted the &ldquo;ether&rdquo; was an
+  energetic medium you could draw on; he described a wingless, fuelless craft that hovers; and he
+  announced — but never wrote down — a theory in which gravity itself is a property of that medium.
+  When an electrician working from first principles and a 4&times;4 scattering matrix working from
+  symmetry land on the same picture — <em>a medium, a spinning field, a hover</em> — the picture is
+  doing the talking.
+</p>
+<div class="doctrine">
+  Tesla had the right medium and the right method, and he kept the books. His documented
+  intuitions — space as an energetic medium, the rotating field as the way to push on it,
+  propellantless hover, gravity as a property of the medium — are the engineer's-eye version of the
+  network's inward-fall drive, and unlike Schauberger he never claimed something for nothing. What
+  is <em>not</em> his is the part the legend supplies: the gravity theory he announced and never
+  delivered (open), and the flying-saucer patent that circulates under his name (forged). Inherit
+  the medium and the field; hold the theory open; return the saucer to its real author.
+</div>
+<p>
+  Hold that in both hands as you read the life. It is what lets us take the documented genius
+  completely seriously and still refuse to pretend a theory exists because a great man said it did,
+  or that a drawing is his because the internet says so.
+</p>
+
+<h2><span class="num">§2</span>The documented genius — AC, the rotating field, resonance, the medium</h2>
+<p>
+  The floor under everything is not in dispute by anyone. Tesla (born 10 July 1856 in Smiljan,
+  then Austrian Empire; died 7 January 1943 in New York) built the electrical world we live in.
+</p>
+<div class="receipt">
+  The polyphase alternating-current system; the <strong>induction motor</strong>, whose operating
+  principle <em>is</em> a <strong>rotating magnetic field</strong> (his single most important
+  invention, 1887&ndash;88); the Tesla coil (resonant air-core transformer); foundational work in
+  radio and remote control; the high-voltage, high-frequency resonance experiments at
+  <strong>Colorado Springs</strong> (1899) and the wireless-power station at
+  <strong>Wardenclyffe</strong> (1901&ndash;06). These are textbook, patented, and world-changing —
+  agreed by his most sympathetic biographers and his most skeptical ones alike.
+</div>
+<p>
+  Two threads in that record are the ones the framework actually inherits, and both are documented,
+  not legendary.
+</p>
+<p>
+  <strong>The rotating field.</strong> Tesla's break-through was that you do not need a commutator
+  flinging current back and forth; you set up a field that <em>rotates in space</em>, and matter
+  follows it. The induction motor is nothing but a rotating field with a conductor caught in it.
+  This is the seed of the whole &ldquo;spin, don't throw&rdquo; idea: the way to apply a force
+  smoothly and directionally is a turning field, not an explosion.
+</p>
+<p>
+  <strong>The medium.</strong> Tesla never accepted &ldquo;empty&rdquo; space. For him the vacuum
+  was a real, energetic <em>medium</em> — he kept the older word &ldquo;ether&rdquo; long after
+  fashion dropped it — and his wireless ambition was literally to <em>couple machines to that
+  medium</em> and move energy through it without wires. Wardenclyffe was that bet in brick and
+  copper: transmit power by making the Earth and its medium resonate. The project failed for money,
+  not for that idea.
+</p>
+<div class="ic">
+  Both threads are the network's premise stated in 1900s language. &ldquo;Space is a real medium you
+  couple to&rdquo; is the spacetime <em>lattice</em>; Tesla's &ldquo;ether&rdquo; is the medium the
+  <a href="warp_drive.html">warp drive</a> pushes against, and his wireless coupling is the χ<sub>&nu;</sub>
+  vertex-sharing channel in period dress. And the <em>rotating field</em> he invented for the motor
+  is exactly the directional asymmetry the warp force needs — the &ldquo;swirl&rdquo; of warp §4 and
+  the 12-port ring-cascade are a rotating field on the
+  lattice. He built the rotating field for iron; the framework runs it on spacetime.
+</div>
+
+<h2><span class="num">§3</span>The flying machine — documented words, reconstructed mechanism</h2>
+<p>
+  From about 1910 onward Tesla spoke, repeatedly and on the record, about a flying machine unlike any
+  aeroplane. The <em>statements</em> are documented; the detailed <em>mechanism</em> usually quoted
+  with them is a later reconstruction, and the two must be kept apart.
+</p>
+<div class="receipt">
+  In the <em>New York Herald</em> (15 Oct 1911) Tesla said his flying machine would be
+  &ldquo;heavier than air, but it will not be an aeroplane. It will have <strong>no wings</strong>.&rdquo;
+  In a <em>Collier's</em> interview (1926) he called the wireless propulsion of a flying machine
+  &ldquo;perhaps the most valuable application of wireless energy,&rdquo; a craft that &ldquo;will
+  carry <strong>no fuel</strong>&rdquo; and be free of the aeroplane's limitations — with
+  &ldquo;<strong>neither wings nor propellers</strong>,&rdquo; able to &ldquo;move at will through
+  the air in any direction,&rdquo; and to &ldquo;<strong>remain absolutely stationary in the air,
+  even in a wind, for a great length of time</strong>.&rdquo; Wingless, fuelless, propellantless,
+  electrostatic, powered from the medium, and able to <em>hover</em> indefinitely: that is Tesla's
+  own description, on the record.
+</div>
+<div class="lemma">
+  The mechanism usually attached — <em>multiple coils firing in rapid succession to build a rotating
+  electrostatic field on the hull, whose charge is opposed by the earth and the air, lifting the
+  craft</em> — is a <strong>reconstruction</strong>, assembled by later interpreters (prominently
+  William Lyne, §6), not a Tesla patent or paper. It is plausible <em>and</em> unverified, and it is
+  not in his hand. What <em>is</em> in his hand is the rotating field itself (§2): Tesla did invent a
+  rotating field; the leap to a rotating <em>electrostatic propulsion</em> field is the interpreters'
+  step, not his. Mark the join honestly.
+</div>
+<div class="ic">
+  Even read at its conservative, documented core — wingless, fuelless, hovering, electrostatic,
+  drawn from the medium — Tesla's flying machine is the closest period prefiguration of the actual
+  warp mechanism the network has found. &ldquo;Remain absolutely stationary in the air, charge
+  opposed by the earth&rdquo; is precisely the <strong>hover / support mode</strong> of warp §2: a
+  static field the earth's gravity-gradient pushes against, holding the craft like a table holds a
+  book, at near-zero energy. The <em>rotating</em> part is the swirl (§4). He described the Sport
+  Model's Omicron (hover) mode in 1926, in plain English, without a saucer in sight.
+</div>
+
+<h2><span class="num">§4</span>The machines, and the books he kept</h2>
+<p>
+  Tesla left two patents that bear directly on the flying-machine story, and both correct the legend
+  in the same direction: he was an <em>aeronautical</em> and an <em>energy-harvesting</em> engineer,
+  not an anti-gravity one, and he stayed inside conservation.
+</p>
+<div class="receipt">
+  <strong>The flying-machine patents — a tiltrotor, not a saucer.</strong> US 1,655,113 and
+  <strong>1,655,114, &ldquo;Apparatus for Aerial Transportation&rdquo;</strong> (both granted 3 Jan
+  1928; among his last), describe a <strong>VTOL &ldquo;helicopter-plane&rdquo;</strong>: it rises
+  vertically, then tilts to fly forward like an aeroplane, with the cabin on trunnions so the
+  occupants stay upright through the rotation. It is widely credited as an early tilt-rotor /
+  tilt-wing concept. It was <em>never built</em>, and it is emphatically <em>not</em> an
+  antigravitational or electrostatic disc — its &ldquo;overlapping discs&rdquo; are a propulsion-and-
+  attitude mechanism, the most likely innocent seed of the later &ldquo;Tesla saucer&rdquo; confusion.
+</div>
+<div class="receipt">
+  <strong>Radiant energy — harvesting, not free energy.</strong> US 685,957,
+  &ldquo;Apparatus for the Utilization of Radiant Energy&rdquo; (1901), charges a condenser from an
+  insulated plate exposed to sunlight, ultraviolet, or other ionising radiation, then discharges the
+  stored charge to do work. Read by its own claims it is a <em>collector</em> of naturally available
+  radiation — a primitive cousin of a solar cell — <strong>not</strong> a perpetual-motion or
+  over-unity device. His wireless power was <em>transmission</em> of energy generated elsewhere.
+  Neither claim asks for something from nothing.
+</div>
+<div class="ic">
+  This is the cleanest difference between Tesla and Schauberger, and it is the difference the network
+  cares about most. <a href="viktor_schauberger.html">Schauberger</a> reached for the
+  <em>self-running</em> machine and crossed the conservation line his own benches — un-instrumented to
+  the end — could not carry.
+  Tesla — harvesting on one side, transmitting on the other — <em>kept the books</em>. He is the
+  historical figure who has both the right medium-coupling intuition <em>and</em> the right
+  arithmetic: hover can be ≈ free (you hold a static field, doing no work, warp §2), energy is paid
+  for when you accelerate, and nothing is ever conjured. He is the bridge that does not have to be
+  apologised for.
+</div>
+
+<h2><span class="num">§5</span>The Dynamic Theory of Gravity — announced, never delivered</h2>
+<div class="receipt">
+  On his <strong>81st birthday (10 July 1937)</strong>, Tesla issued a prepared statement saying he
+  had &ldquo;worked out a dynamic theory of gravity&rdquo; that he hoped soon to give the world. The
+  fragments he described frame gravity as an effect of the <em>medium</em>: a phenomenon of the ether,
+  built from transverse and longitudinal electromagnetic waves, with the medium having
+  &ldquo;an indispensable function&rdquo; in gravity, inertia, and the motion of bodies — explicitly
+  offered as an <em>alternative</em> to Einstein's curved spacetime, which Tesla rejected.
+</div>
+<div class="lemma">
+  He never published it. There is <strong>no surviving mathematical statement</strong> of the theory,
+  and — beyond his own announcement — no independent evidence that the equations were ever worked
+  out. He died in January 1943 with the theory undelivered, and the rumour of seized papers (§6)
+  attaches to it but does not supply it. So the Dynamic Theory of Gravity is a genuine
+  <em>open thread</em>: a documented announcement of a real intuition, with the content missing. We
+  can report that Tesla aimed at gravity-from-the-medium; we cannot inherit a derivation that was
+  never written.
+</div>
+<div class="ic">
+  The <em>intuition</em> is, remarkably, the network's: gravity is not a separate geometric entity
+  but a <strong>property of the medium</strong> — in the framework, energy stored on a lattice edge
+  lengthens it, and that length-gradient is gravity (the elastic-metric law, warp §12). Tesla's
+  &ldquo;gravity is an effect in the ether, not curvature&rdquo; lands on the same side of the same
+  argument. But this is a <em>matching intuition</em>, not a usable theory transferred: the
+  framework derives its weak-field gravity (including the factor-of-two light-bending) from the
+  scalar elastic law itself; Tesla's contribution is the correct instinct, announced, not the math,
+  which is gone. Honesty: a shared hunch, not a borrowed result.
+</div>
+
+<h2><span class="num">§6</span>The saucer that is not his</h2>
+<p>
+  Now the forgery, named — because the filter must cut this way too. A &ldquo;Nikola Tesla flying
+  saucer patent,&rdquo; complete with a disc-shaped craft that does look strikingly like a Sport-Model
+  saucer, circulates widely online. It is not real.
+</p>
+<div class="forgery">
+  There is <strong>no authentic Tesla patent for a flying saucer.</strong> The disc &ldquo;patent
+  drawing&rdquo; passed around is a <em>modern fabrication / misattribution</em> — an image made and
+  re-posted until repetition reads as provenance — not a document from the patent record. The
+  <em>attribution</em> of the saucer to Tesla traces to a named author, <strong>William R. Lyne</strong>
+  (<em>Occult Ether Physics: Tesla's Hidden Space Propulsion System and the Conspiracy to Conceal It</em>;
+  <em>Pentagon Aliens</em>), who argues Tesla invented the flying saucer in the 19th century and that
+  mainstream physics is a cover-up — a conspiracist reconstruction, not a Tesla source. By the §0
+  test (a modern image, a named author's reconstruction, no contemporaneous document) the saucer
+  attribution is <em>forensically traced</em> and set aside. Tesla's real flying-machine patent is
+  the 1928 tiltrotor (§4).
+</div>
+<div class="ic">
+  This is the honest answer to the most natural question a reader brings to this paper — <em>but the
+  drawing looks just like the Sport Model</em>. Two things are true at once. The specific
+  <em>image</em> is forged; do not cite it. And the <em>intuition</em> behind your recognition is
+  <strong>correct</strong>: Tesla genuinely did describe a wingless, fuelless craft that hovers and is
+  driven by a rotating field drawn from the medium (§3), and <em>that</em> is a real prefiguration of
+  the Sport Model's mechanism. So cite the documented words and the rotating field; never the saucer
+  drawing. The recognition is real; the artifact is fake. Keeping those apart is the whole method.
+</div>
+
+<h2><span class="num">§7</span>How the network reads him — the bridges</h2>
+<p>
+  Each documented Tesla intuition against the network claim it prefigures. Note that the bridges run
+  to the <em>drive</em> mechanism more directly than any other historical figure's — and that the
+  conservation row is the one Schauberger could not offer.
+</p>
+<table>
+  <tr><th>Tesla's documented intuition</th><th>The network's physics</th></tr>
+  <tr><td><strong>Space is a real, energetic medium you couple to</strong> (his &ldquo;ether&rdquo;); wireless coupling to it</td><td>The spacetime <a href="warp_drive.html">lattice</a> — a real medium that carries the reaction. χ<sub>&nu;</sub> vertex-sharing <em>is</em> coupling a body to the medium.</td></tr>
+  <tr><td><strong>The rotating field</strong> (his actual invention, for the motor)</td><td>The directional asymmetry the force needs is a <strong>handed swirl</strong> (warp §4) — a rotating field on the lattice; the 12-port ring-cascade is the engineered form.</td></tr>
+  <tr><td><strong>&ldquo;Remain absolutely stationary in the air&hellip; charge opposed by the earth&rdquo;</strong></td><td>The <strong>hover / support mode</strong> (warp §2, the Sport Model's Omicron): a static field the earth's gravity-gradient pushes against — the lattice holds the craft like a table, at ≈ zero energy.</td></tr>
+  <tr><td><strong>&ldquo;No wings, no propellers, no fuel&rdquo;</strong></td><td>Propellantless: throw nothing; the reaction goes into the medium, not an exhaust (warp §2, propellantless ≠ reactionless).</td></tr>
+  <tr><td><strong>Resonance &amp; standing waves</strong> (the coil, Colorado Springs)</td><td>The chamber's resonant settling and the standing-pattern picture — the framework read &ldquo;in the analogy of music.&rdquo;</td></tr>
+  <tr><td><strong>Gravity is an effect of the medium, not curvature</strong> (Dynamic Theory, content lost)</td><td>The elastic-metric law: gravity is a length-gradient in the lattice (warp §12). A matching <em>intuition</em> — the math is the framework's, not Tesla's. <span style="color:var(--amber)">[open]</span></td></tr>
+  <tr><td><strong>Energy is harvested or transmitted, never conjured</strong> (radiant energy; wireless)</td><td>The conservation books warp §2 keeps: hover ≈ free (no work), travel is paid for, regeneration recovers but never exceeds. Tesla is the figure who already kept them.</td></tr>
+</table>
+
+<h2><span class="num">§8</span>The register table — documented / open / forensically-traced</h2>
+<table>
+  <tr><th>Claim</th><th>Register</th><th>Reading</th></tr>
+  <tr><td>AC system, induction motor / rotating field, Tesla coil, radio, Colorado Springs &amp; Wardenclyffe resonance and wireless work</td><td style="color:var(--green)"><strong>Documented</strong></td><td>World-changing, patented, agreed by all. The floor under everything.</td></tr>
+  <tr><td>Flying machine: wingless, fuelless, electrostatic, hovers, powered from the medium (1911, 1926 interviews)</td><td style="color:var(--green)"><strong>Documented (as his statements)</strong></td><td>His own on-record words. The closest period prefiguration of the drive mechanism.</td></tr>
+  <tr><td>The &ldquo;rotating electrostatic field on the hull, opposed by the earth&rdquo; <em>mechanism</em></td><td style="color:var(--amber)"><strong>Reconstruction — open</strong></td><td>A later interpreters' assembly (Lyne et al.), not a Tesla document. Plausible, unverified; mark the join.</td></tr>
+  <tr><td>VTOL flying-machine patents 1,655,113 / 114 (1928)</td><td style="color:var(--green)"><strong>Documented</strong></td><td>A tiltrotor &ldquo;helicopter-plane,&rdquo; never built — <em>not</em> a saucer.</td></tr>
+  <tr><td>Radiant-energy patent 685,957 (1901); wireless power</td><td style="color:var(--green)"><strong>Documented</strong></td><td>Harvesting / transmission — inside conservation, not over-unity.</td></tr>
+  <tr><td>Dynamic Theory of Gravity (gravity from the medium, vs Einstein)</td><td style="color:var(--amber)"><strong>Announced — content lost</strong></td><td>Real 1937 announcement; no surviving math; no evidence it was worked out. Open, not delivered.</td></tr>
+  <tr><td>The &ldquo;Tesla flying saucer patent&rdquo; disc drawing</td><td style="color:var(--soft)"><strong>Fabrication — traced</strong></td><td>Modern misattributed image; the saucer-as-Tesla claim traces to William Lyne's reconstruction, not a Tesla source.</td></tr>
+</table>
+
+<h2><span class="num">§9</span>Legacy — the line the network inherits</h2>
+<p>
+  Tesla's most important bequest to this network is not a machine and not a lost theory; it is a
+  <em>stance</em>, held a century early and held cleanly: <strong>treat space as a real medium, move
+  through it by spinning a field, and never ask it for something for nothing.</strong> He built the
+  rotating field that the warp drive runs on spacetime; he described, in plain English, the wingless
+  hovering craft drawn from the medium; he aimed his last theory straight at gravity-from-the-medium
+  — and he did all of it without crossing the conservation line that broke Schauberger. Where
+  Schauberger is the network's <em>warning</em> (right shape, real physics, unmeasured machine —
+  <code>viktor_schauberger.html</code> §1), Tesla is closer to its
+  <em>blueprint-in-words</em>: right medium, right method, honest books, one theory left unfinished.
+</p>
+<p>
+  And the discipline he models is exactly the one this paper has tried to keep on him in return.
+  Tesla deserved better than to be turned, after death, into a god of free energy and the secret
+  father of the flying saucer — claims that are not only unsupported but, in the saucer's case,
+  forged, and that bury his real and stranger achievement under a costume. The honest inheritance is
+  the documented one, and it is enough: the medium, the rotating field, the hover, and the refusal of
+  the free lunch. Comprehend the medium; set the field spinning; keep the books. The first two he
+  gave us. The third he never broke.
+</p>
+
+<h2><span class="num">§10</span>References &amp; sourcing note</h2>
+<p>
+  Tesla is among the most over-sourced and least neutrally-sourced figures in the history of
+  technology; the literature splits between hagiography and dismissal, and the conspiracist tier
+  (Lyne and successors) actively manufactures attributions. Per §0, no single source is taken on its
+  own, documented claims are anchored to patents and dated contemporaneous reporting, and the
+  fabrications are named.
+</p>
+<div class="disclaimer">
+  <strong>Sources.</strong> Patents: US 1,655,113 / 1,655,114, &ldquo;Apparatus for Aerial
+  Transportation&rdquo; (1928); US 685,957 / 685,958, &ldquo;Apparatus for / Method of Utilizing
+  Radiant Energy&rdquo; (1901) — via the patent record (Google Patents, Tesla Universe, Internet
+  Archive). Interviews: <em>New York Herald</em> (15 Oct 1911); <em>Collier's</em> (1926); the
+  collected flying-machine interviews at Open Tesla Research. The Dynamic Theory of Gravity: Tesla's
+  prepared 81st-birthday statement (10 July 1937) and the secondary record noting its non-publication
+  and absent mathematics (incl. the cautious Wikipedia / Talk:Dynamic theory of gravity discussion).
+  The saucer fabrication and its provenance: William R. Lyne, <em>Occult Ether Physics</em> and
+  <em>Pentagon Aliens</em>, identified as the source of the Tesla-saucer attribution, with the
+  circulating disc image flagged as a modern misattribution by debunking surveys.
+  <strong>Marked throughout:</strong> green = documented; amber = open / undelivered; dashed =
+  forensically-traced fabrication. The network's own conservation ledger
+  (<code>warp_drive.html</code> §2, <code>antigravity_devices.html</code>) is what licenses calling
+  Tesla the rare figure who kept the books.
+</div>
+
+</body>
+</html>

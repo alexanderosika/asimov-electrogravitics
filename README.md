@@ -1,8 +1,11 @@
-# Electrogravitics — the paper network
+# Electrogravitics & The People — the paper network
 
-A curated, navigable set of papers on engineering local gravity: from Townsend
-Brown's capacitors to a coherent-substrate drone. Start at `index.html`
-(the reading path) or go straight to `electrogravitics.html` (the field guide).
+A curated, navigable set of papers in two shelves. **Electrogravitics**: the
+engineering network on local gravity, from Townsend Brown's capacitors to a
+coherent-substrate drone. **The People**: the inventors and seers who reached
+for the same thing first — Tesla, Keely, Schauberger, Townsend Brown, Otis
+Carr, Walter Russell — each read from best sources and priced against physics.
+Start at `index.html` or go straight to `electrogravitics.html` (the field guide).
 
 Every claim carries a register tag — measured / derived / estimate /
 pre-registered / open / null — and every number names its receipt.

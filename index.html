@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Electrogravitics — the paper network</title>
+<title>Electrogravitics &amp; The People — the paper network</title>
 <style>
   :root{--ink:#1c1c1c;--paper:#fbfaf6;--page:#ece8df;--steel:#3a5a7d;
     --amber:#b88a2a;--green:#5a7d3a;--rule:#d2cdbf;--soft:#8a8676}
-  html{background:var(--page)}
+  html{background:var(--page);scroll-behavior:smooth}
   body{font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
     max-width:960px;margin:2.5rem auto;padding:2.6rem 2.4rem 4rem;color:var(--ink);
     line-height:1.6;background:var(--paper);box-shadow:0 1px 4px rgba(0,0,0,.06);
@@ -18,14 +18,20 @@
   .sub{color:var(--soft);font-style:italic;font-size:1.05rem;margin-bottom:1.6rem}
   .box{border-left:4px solid var(--green);background:#eef3e8;padding:.85rem 1.1rem;
     margin:1.3rem 0;font-size:.95rem}
-  .path{font-family:"Helvetica Neue",Helvetica,sans-serif;font-size:.85rem;
-    letter-spacing:.08em;text-transform:uppercase;color:var(--soft);
-    margin:2.2rem 0 .6rem;border-top:2px solid var(--ink);padding-top:.7rem}
+  .toc{font-family:"Helvetica Neue",Helvetica,sans-serif;font-size:.9rem;
+    margin:1rem 0 0}
+  .toc a{color:var(--steel);font-weight:600;margin-right:1.4rem;text-decoration:none;
+    border-bottom:1px solid var(--rule)}
+  .path{font-family:"Helvetica Neue",Helvetica,sans-serif;font-size:1.05rem;
+    letter-spacing:.08em;text-transform:uppercase;color:var(--ink);font-weight:700;
+    margin:2.6rem 0 .3rem;border-top:2px solid var(--ink);padding-top:.7rem;
+    scroll-margin-top:1rem}
+  .catblurb{color:#444;font-size:.97rem;margin:0 0 1rem;font-style:italic}
   .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
     gap:1rem}
   a.paper{display:block;border:1px solid var(--rule);background:#fff;padding:1rem
     1.1rem;text-decoration:none;color:var(--ink);position:relative;
-    transition:box-shadow .15s}
+    transition:box-shadow .15s;height:100%;box-sizing:border-box}
   a.paper:hover{box-shadow:0 2px 10px rgba(0,0,0,.09)}
   a.paper .n{font-family:"Helvetica Neue",Helvetica,sans-serif;font-size:.75rem;
     color:var(--amber);font-weight:700;letter-spacing:.1em}
@@ -43,10 +49,13 @@
 </style>
 </head>
 <body>
-<h1>Electrogravitics</h1>
-<p class="sub">A navigable network of papers on engineering local gravity — from
-Townsend Brown's capacitors to a coherent-substrate drone. Read in order, or
-jump in anywhere; every paper links its companions.</p>
+<h1>Electrogravitics &amp; The People</h1>
+<p class="sub">A navigable network of papers on engineering local gravity — and on
+the inventors who reached for it first. Two shelves: the engineering network, from
+Townsend Brown's capacitors to a coherent-substrate drone; and the people — Tesla,
+Keely, Schauberger, Brown, Carr, Russell — each read from best sources and priced
+against physics. Read in order, or jump in anywhere; every paper links its companions.</p>
+<p class="toc"><a href="#electrogravitics">Electrogravitics</a><a href="#people">The People</a></p>
 
 <div class="box">
 <strong>How this network is written.</strong> Every claim carries a register tag —
@@ -55,11 +64,14 @@ jump in anywhere; every paper links its companions.</p>
 mechanism is a theorem (electromagnetic fields curve spacetime); the magnitude
 at bare coupling is settled and bracketed by the published null program; the
 coherent enhancement is the one open bet, and the field guide names the bench
-that decides it. Nothing here licenses a product claim; everything here tells
-you exactly where the frontier is.
+that decides it. The people papers apply the same discipline to biography:
+<em>documented</em>, <em>open</em>, <em>legend</em>, or <em>traced fraud</em> — by
+provenance, never by plausibility, and the filter cuts both ways. Nothing here
+licenses a product claim; everything here tells you exactly where the frontier is.
 </div>
 
-<div class="path">Reading path</div>
+<div class="path" id="electrogravitics">Electrogravitics</div>
+<p class="catblurb">The engineering network — the law, the mechanism, the materials, the vehicle, the bench floor, and the coherence science underneath.</p>
 <div class="grid">
       <div class="card">
       <a class="paper" href="electrogravitics.html">
@@ -140,6 +152,58 @@ you exactly where the frontier is.
         <p>"The scalar" as the global normalization inside the gravity law — a constraint, not a wave — with the fringe reading adjudicated.</p>
       </a>
       <a class="pdf" href="pdf/the_scalar_field.pdf" download>PDF ↓</a>
+      </div>
+</div>
+<div class="path" id="people">The People</div>
+<p class="catblurb">The inventors and seers who reached for the same thing before us — each life read from its best sources, each machine priced against physics, each claim placed in its register: documented, open, legend, or traced fraud. Neither hagiography nor debunking.</p>
+<div class="grid">
+      <div class="card">
+      <a class="paper" href="nikola_tesla.html">
+        <div class="n">11</div>
+        <h3>Nikola Tesla</h3>
+        <p>The medium and the rotating drive: the documented intuition behind the network's mechanism — rotating field, wireless coupling, the announced-but-unpublished gravity theory — and why his books always balanced.</p>
+      </a>
+      <a class="pdf" href="pdf/nikola_tesla.pdf" download>PDF ↓</a>
+      </div>
+      <div class="card">
+      <a class="paper" href="john_keely.html">
+        <div class="n">12</div>
+        <h3>John Ernst Worrell Keely</h3>
+        <p>Sympathetic vibratory physics, the Keely Motor, and the 1899 cellar: the resonance idea that survives, the machine that was a traced fraud, and the physics of what a three-ton air sphere can actually do.</p>
+      </a>
+      <a class="pdf" href="pdf/john_keely.pdf" download>PDF ↓</a>
+      </div>
+      <div class="card">
+      <a class="paper" href="viktor_schauberger.html">
+        <div class="n">13</div>
+        <h3>Viktor Schauberger</h3>
+        <p>The water wizard and the inward drive: the flumes, the Repulsine priced against ordinary physics, every flight account traced to its source, the SS years, and the Texas contract — right shape, real physics, unmeasured machine.</p>
+      </a>
+      <a class="pdf" href="pdf/viktor_schauberger.pdf" download>PDF ↓</a>
+      </div>
+      <div class="card">
+      <a class="paper" href="townsend_brown.html">
+        <div class="n">14</div>
+        <h3>Townsend Brown</h3>
+        <p>The notebooks, the instruments, and the question of time: the Biefeld–Brown record read from its primary sources, with the vacuum nulls and the one untested predicate.</p>
+      </a>
+      <a class="pdf" href="pdf/townsend_brown.pdf" download>PDF ↓</a>
+      </div>
+      <div class="card">
+      <a class="paper" href="otis_carr.html">
+        <div class="n">15</div>
+        <h3>Otis T. Carr</h3>
+        <p>The OTC-X1 audited: an amusement-ride patent, a demonstration that failed on film, a securities trial — and the rim-speed decode of "580 rpm".</p>
+      </a>
+      <a class="pdf" href="pdf/otis_carr.pdf" download>PDF ↓</a>
+      </div>
+      <div class="card">
+      <a class="paper" href="walter_russell.html">
+        <div class="n">16</div>
+        <h3>Walter Russell</h3>
+        <p>The Universal One, redrawn and scored: which of his 1926 shapes were vindicated, which were misunderstandings on our side, and which are falsified or unfalsifiable.</p>
+      </a>
+      <a class="pdf" href="pdf/walter_russell.pdf" download>PDF ↓</a>
       </div>
 </div>
 

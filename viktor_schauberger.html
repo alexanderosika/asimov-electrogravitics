@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Viktor Schauberger — The Water Wizard and the Inward Drive</title>
+<style>
+  :root {
+    --ink: #1c1c1c; --paper: #fbfaf6; --green: #5a7d3a; --amber: #b88a2a;
+    --rust: #b04a2a; --rule: #d2cdbf; --soft: #8a8676; --blue: #1a5276;
+  }
+  html { background: #ece8df; }
+  body {
+    font-family: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+    max-width: 800px; margin: 2.5rem auto; padding: 2.5rem 2rem 4rem;
+    color: var(--ink); line-height: 1.62; background: var(--paper);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  }
+  h1 { font-family: "Helvetica Neue", Helvetica, sans-serif; font-weight: 700; font-size: 1.85rem; line-height: 1.25; border-bottom: 2px solid var(--ink); padding-bottom: 0.6rem; }
+  h2 { font-family: "Helvetica Neue", Helvetica, sans-serif; font-size: 1.25rem; margin-top: 2.6rem; }
+  h2 .num { color: var(--soft); font-weight: normal; margin-right: 0.4em; }
+  h3 { font-family: "Helvetica Neue", Helvetica, sans-serif; font-size: 1.05rem; margin-top: 1.7rem; color: #444; }
+  .byline { color: var(--soft); font-style: italic; margin-bottom: 2.2rem; font-size: 0.95rem; }
+  .tldr { background: #eef3e8; border-left: 4px solid var(--green); padding: 0.9rem 1.1rem; margin: 1.2rem 0; font-style: italic; }
+  .companion { background: #f0eee8; border-left: 4px solid var(--soft); padding: 0.6rem 1rem; margin: 1.2rem 0; font-size: 0.92rem; }
+  .doctrine { background: #1c1c1c; color: #f5f1e6; padding: 1rem 1.2rem; margin: 1.6rem 0; font-style: italic; line-height: 1.5; border-radius: 2px; }
+  .doctrine::before { content: "Doctrine sentence  ·  "; font-style: normal; color: var(--amber); font-family: "Helvetica Neue", Helvetica, sans-serif; font-size: 0.85rem; letter-spacing: 0.05em; }
+  .receipt { background: #eef3e8; border-left: 4px solid var(--green); padding: 0.8rem 1.1rem; margin: 1.2rem 0; font-size: 0.94rem; }
+  .receipt::before { content: "Documented  ·  "; font-style: normal; color: var(--green); font-family: "Helvetica Neue", Helvetica, sans-serif; font-size: 0.82rem; letter-spacing: 0.05em; font-weight: 600; }
+  .lemma { background: #fff8e8; border-left: 4px solid var(--amber); padding: 0.8rem 1.1rem; margin: 1.2rem 0; font-size: 0.94rem; }
+  .lemma::before { content: "Open thread — judged from best sources  ·  "; font-style: normal; color: var(--rust); font-family: "Helvetica Neue", Helvetica, sans-serif; font-size: 0.82rem; letter-spacing: 0.05em; font-weight: 600; }
+  .ic { background: #f0eee8; border-left: 3px solid var(--soft); padding: 0.6rem 1rem; margin: 1rem 0 1.6rem 0; font-size: 0.92rem; }
+  .ic::before { content: "How the network reads it  ·  "; font-style: normal; color: var(--ink); font-family: "Helvetica Neue", Helvetica, sans-serif; font-size: 0.82rem; letter-spacing: 0.05em; font-weight: 600; }
+  .build { background: #eaf0f4; border-left: 4px solid var(--blue); padding: 0.8rem 1.1rem; margin: 1.2rem 0; font-size: 0.94rem; }
+  .build::before { content: "Build recommendation — for the bench  ·  "; font-style: normal; color: var(--blue); font-family: "Helvetica Neue", Helvetica, sans-serif; font-size: 0.82rem; letter-spacing: 0.05em; font-weight: 600; }
+  .quote { border-left: 3px solid var(--rule); padding: 0.2rem 0 0.2rem 1.1rem; margin: 1.2rem 0; color: #3a382f; font-style: italic; }
+  code { font-family: "JetBrains Mono", Consolas, monospace; background: #f3eee0; padding: 0.05rem 0.3rem; border-radius: 2px; font-size: 0.9em; }
+  table { border-collapse: collapse; margin: 1.1rem auto; font-size: 0.9rem; }
+  th, td { border: 1px solid var(--rule); padding: 0.38rem 0.7rem; text-align: left; vertical-align: top; }
+  th { background: #f0eadb; font-family: "Helvetica Neue", Helvetica, sans-serif; }
+  hr.softrule { border: none; border-top: 1px solid var(--rule); margin: 2rem 0; }
+  ul, ol { padding-left: 1.5rem; } li { margin: 0.3rem 0; }
+  .smcap { font-variant-caps: small-caps; letter-spacing: 0.04em; }
+  .disclaimer { font-size: 0.84rem; color: var(--soft); border: 1px dashed var(--soft); padding: 0.7rem 1.1rem; margin: 2rem 0; border-radius: 2px; }
+</style>
+</head>
+<body>
+
+<style id="eg-site-nav-css">
+  .eg-nav{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:.8rem;
+    background:#1c1c1c;color:#ece8df;padding:.55rem 1.2rem;line-height:1.6;
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    box-shadow:0 1px 3px rgba(0,0,0,.25)}
+  body{margin-top:5.2rem !important}
+  .eg-nav a{color:#ece8df;text-decoration:none;margin-right:1rem;white-space:nowrap}
+  .eg-nav a:hover{text-decoration:underline}
+  .eg-nav .eg-home{font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+    margin-right:1.4rem}
+  .eg-nav .eg-cur{border-bottom:2px solid #b88a2a}
+  .eg-nav .eg-cat{color:#b88a2a;font-weight:600;letter-spacing:.03em}
+  .eg-nav .eg-catcur{text-decoration:underline}
+  .eg-nav .eg-sep{color:#8a8676;margin-right:1rem}
+  .eg-nav .eg-wrap{max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;
+    align-items:baseline}
+  .eg-nav .eg-pdf{margin-left:auto;margin-right:0;border:1px solid #b88a2a;
+    color:#ece8df;padding:.1rem .6rem;border-radius:2px;font-weight:600}
+  .eg-nav .eg-pdf:hover{background:#b88a2a;color:#1c1c1c;text-decoration:none}
+  @media print{.eg-nav{display:none} body{margin-top:0 !important}}
+</style>
+<div class="eg-nav"><div class="eg-wrap"><a class="eg-home" href="index.html">Papers</a><a class="eg-cat" href="index.html#electrogravitics">Electrogravitics</a><a class="eg-cat eg-catcur" href="index.html#people">The People</a><span class="eg-sep">·</span><a href="nikola_tesla.html">Tesla</a><a href="john_keely.html">Keely</a><a class="eg-cur" href="viktor_schauberger.html">Schauberger</a><a href="townsend_brown.html">Brown</a><a href="otis_carr.html">Carr</a><a href="walter_russell.html">Russell</a><a class="eg-pdf" href="pdf/viktor_schauberger.pdf" download>Download PDF ↓</a></div></div>
+
+<div style="background:#eef5fa;border-bottom:2px solid #1a5276;padding:10px 24px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;text-align:center;color:#1a5276;line-height:1.45;font-size:0.88em;">
+Companion in the Boundary Problem network. The intuition (and an engineering precedent) behind <a href="warp_drive.html">The Warp Drive</a>, <a href="hover_disk.html">The Hover Disk</a> &amp; <a href="how_to_build_a_ufo.html">How to Build a UFO</a>; read with the filter of The Military-Industrial Complex.
+</div>
+
+<h1>Viktor Schauberger — The Water Wizard and the Inward Drive</h1>
+<p class="byline">
+  A life in moving water: the forester who read <em>implosion</em> off a trout, the one thing he
+  built that no one disputes, the machines that were never measured — priced here against
+  ordinary physics for the first time in this network — the flight lore traced source by source, and how,
+  read as <em>architecture</em>, his Repulsine (with Tesla's turbine beside it) turns out
+  to be the warp drive's actuation levers, pre-assembled in copper a decade before the theory that
+  names them. Plus the work taken from him in a Texas summer, and how this network reads the whole of
+  it — by best sources, never by reflex.<br>
+  Osika Innovation AB · Alexander Osika, Claude — draft 0.6, 2026-08-18 (draft 0.5, 2026-06-20).
+</p>
+
+<div class="tldr">
+  Viktor Schauberger (1885–1958) was an Austrian forester who spent a lifetime watching water and
+  concluded that modern technology <em>moves the wrong way</em> — outward, hot, and exploding,
+  where nature creates by moving inward, cold, and <em>imploding</em>. His one undisputed triumph
+  was real engineering: spiral log-flumes that floated sinking timber on cold, corkscrewing water.
+  His machines — the Repulsine, the Klimator, the home generator — were claimed to levitate and to
+  run themselves, and <em>none was ever measured</em>: no thrust, power, or temperature figure from
+  any of them survives, friendly or hostile. He was coerced into work for the
+  SS using concentration-camp labour, broken in a 1958 deal in Texas that stripped him of his
+  life's work, and dead five days after he came home. This paper tells that life with the network's
+  own filter, and lands three verdicts. The first: <strong>Schauberger had the right shape, real
+  physics underneath it, and a machine that was never measured</strong> — his geometric intuitions
+  (the inward spiral, cold-as-order, golden-ratio vortices, <em>comprehend and copy nature</em>) are
+  the everyday-water intuition behind the <a href="warp_drive.html">warp drive</a>'s inward-fall;
+  the Repulsine, priced against ordinary turbomachinery (§9.0), is a bladeless corrugated centrifugal
+  rotor whose <em>lift channel is real</em> (tens of kgf for a 0.6 m rotor at 10–20 kW), whose intake
+  <em>cooling is real</em>, and whose <em>glow is real</em> in wet or dusty air — so
+  <em>“pseudoscience” is the wrong stamp</em>; what is <em>unsupported</em> is the residue of
+  magnitude claims (228 t from a 20 cm disc, self-running after the motor is cut, net cooling of a
+  room). His “over-unity” is largely the <em>wrong words</em> — the network's own vertex rule is
+  conservation-built, but the lattice vacuum is a loaded reservoir, so his device is an <em>open
+  system</em> (§9.6), not a perpetual-motion machine; its net gain stays unproven, not forbidden.
+  The second (§5.1): the flight lore, traced to its sources, is <em>documented in his own 1941
+  correspondence and 1956 letters</em> — not invented by later mythologisers — but rests on
+  <em>no named first-hand witness and no instrument</em>; it earns the open register, not the
+  legend's and not the debunker's. The third (§9): read as <em>architecture</em>, his
+  spinning, charged, cold-vortex copper Repulsine — and Tesla's bladeless boundary-layer turbine and
+  resonant high-voltage coil — assemble <strong>four of the warp drive's named levers in one device</strong>,
+  and point at a build the current static-capacitor <a href="hover_disk.html">hover disk</a> does not
+  exercise: <strong>Architecture C, the spun charged chiral-vortex shell.</strong> The shape is the
+  inheritance; the unmeasured machine is the debt; the lever-stack is the gift to the bench.
+</div>
+
+<div class="companion">
+  <strong>Companion papers.</strong> The mechanism his shape prefigures:
+  <code>warp_drive.html</code> (the inward-fall force law; §4 spin/jerk levers). The build his
+  Repulsine informs: <code>hover_disk.html</code> (§12 spin, §14 capacitor architecture, §15
+  electrostatic-thrust cross-check), and the drone that flies six of them: <code>hexalock.html</code> §5.1. The vehicle: <code>how_to_build_a_ufo.html</code> (and the
+  <code>reverse_engineering_the_sport_model.html</code> teardown). The water-domain build that names
+  him directly: <code>all_you_need_is_water.html</code> §5.7 (the chiral-helical attractor). The honest
+  fringe ledger: <code>antigravity_devices.html</code> §8. The filter this paper is written through:
+  <code>the_military_industrial_complex.html</code> §27.
+</div>
+
+<h2><span class="num">§0</span>How to read this paper — the filter</h2>
+<p>
+  This paper is written through the method of the network's Military-Industrial
+  Complex book (§27): <em>presence beats absence; corroboration across vantage points; cost is
+  credibility; weird is not the same as false; name the frauds.</em> Applied honestly — not
+  credulously, and not dismissively — that method cuts Schauberger's record into registers, and the
+  cut is the whole point. Most of his life is overwhelmingly <span class="smcap">documented</span>,
+  agreed even by his skeptics. His machine claims are <span class="smcap">open and unverified</span>.
+  And the war-era legends attached to his name do <em>not</em> all go to the same place — judged from
+  their best sources they split three ways, which §6 does in full.
+</p>
+<ul>
+  <li><strong>Documented</strong> (green) — on the public record; in his case, agreed by the family
+  archive (PKS) and by Wikipedia's skeptical entry alike.</li>
+  <li><strong>Open thread</strong> (amber) — a claim no independent test has confirmed <em>or</em>
+  forensically killed. The honest default is <em>open</em>, judged from its best sources — neither
+  <em>true</em> nor “myth.”</li>
+  <li><strong>Doctrine sentence</strong> (black) — the load-bearing reading this paper commits to.</li>
+  <li><strong>Forensically-traced forgery</strong> (dashed) — set aside <em>only</em> when the best
+  sources identify its actual provenance as fabrication (an anonymous packet, a staged film, a named
+  hoaxer, no witness at cost) — never merely because it sounds implausible.</li>
+  <li><strong>Build recommendation</strong> (blue, §9) — a concrete, buildable configuration the
+  historical machines argue for, offered to the bench as a hypothesis, not a result.</li>
+</ul>
+<p>
+  <strong>A word on the word “myth.”</strong> This is the part of the method that matters most for a
+  man like Schauberger, and it is worth stating sharply, because it is easy to get lazy with. This
+  network does <em>not</em> accept “pseudoscience,” “debunked,” or “myth” as verdicts when they are
+  only social reflexes — because a real share of what got filed under those labels was filed there by
+  active suppression, not by evidence. The MIC book's own §21 makes the case: remote viewing sat under
+  “fringe” for two decades while the government's <em>own</em> commissioned statistician judged the
+  effect real; and §25 (Bennewitz) shows the state <em>manufacturing</em> hoaxes precisely to discredit
+  real things by association. So “it is called a myth” is the <em>start</em> of an investigation, not
+  the end of one. The only honest way to set something aside is to find its best sources and apply the
+  §26 forensic test — anonymous paper, staged film, a named confessed hoaxer, no witness paying a cost.
+  And the filter must cut <em>both ways</em>: it rescues a wrongly-dismissed observation, and it names a
+  genuinely-forged document — both by evidence, neither by plausibility. This paper tries to do both, in
+  §6, on the same page.
+</p>
+<p>
+  The discipline that demands of us with <em>Schauberger specifically</em>: do not dismiss his
+  observations because the academy files him under “pseudoscience” — that is a borrowed institutional
+  verdict, and a lifetime of close watching, paid for in full, has earned a hearing (cost is
+  credibility). <em>And</em> do not inflate his machines into the working free-energy device the legend
+  wants, because his own prototypes melted, stalled, were never instrumented, and have not been
+  replicated at spec, and a closed vortex cannot out-yield its input (the network's
+  <a href="antigravity_devices.html">own ledger</a>; the <em>open</em>-system refinement is §9.6). Believe
+  the watcher; take the machine seriously as a machine and price it (§9.0); doubt the perpetual-motion
+  reading his own benches never confirmed; count the witnesses (§5.1); mine the geometry he left behind
+  for the build it prefigures (§9); and judge the war-era legends one at a time, from their best sources
+  — which, as §6 shows, sends them to three different places, not one.
+</p>
+
+<h2><span class="num">§1</span>The thesis — right shape, real physics, unmeasured machine</h2>
+<p>
+  Schauberger matters to this network for a reason that has nothing to do with whether his machines
+  worked. He is the proof that the architecture of the <a href="warp_drive.html">inward drive</a> is
+  <em>reachable from ordinary experience</em> — that a man with no mathematics, watching a trout
+  hold station in a cold stream, can arrive at the same geometry a 4×4 scattering matrix arrives at:
+  concentrate a medium inward, in a cold coherent spiral, on a closed boundary, and it stops obeying
+  the bulk-flow rules. When a forester and a vertex rule land on the same shape — inward, cold,
+  golden-ratio, handed — from opposite ends of the bridge, the shape is doing the talking.
+</p>
+<div class="doctrine">
+  Schauberger had the right shape, real physics underneath it, and a machine that was never
+  measured. His geometric intuition — implosion over explosion, the cycloid spiral, cold-as-order,
+  “comprehend and copy nature” — is the everyday-water picture of the network's inward-fall drive.
+  The mechanisms his Repulsine actually runs on — a bladeless corrugated centrifugal rotor's jet lift,
+  vortex expansion cooling, spray and dust electrification — are ordinary, established physics (§9.0),
+  and the water-vortex residue of his programme is now peer-reviewed (§11). What he got wrong was
+  <em>magnitude and ledger</em>: he priced his own device by intuition (tonnes from a 20 cm disc), he
+  read a standing vortex as a source rather than a store, and he never once put an instrument on a
+  machine. The shape is the inheritance; the unmeasured machine is the debt; the over-claimed
+  magnitudes are the warning that comes with it.
+</div>
+<p>
+  Hold that doctrine in both hands as you read the life. It is what lets us love the watcher, take
+  the machine seriously as a machine, and still refuse the perpetual-motion reading his own benches
+  never confirmed — and it is, precisely, the place where his story stops being his and becomes
+  ours. §9.0 prices the machine; §9 turns the “shape” half of it into hardware.
+</p>
+<div class="ic">
+  <strong>What changed in draft 0.6, and why.</strong> Draft 0.5 carried the doctrine sentence
+  “right shape, wrong physics,” and the sibling <a href="antigravity_devices.html">antigravity
+  ledger</a> stamped the Repulsine <em>pseudoscience</em>. Both were reflex verdicts of the kind §0
+  forbids: neither had actually priced the machine against fluid mechanics, and neither had traced
+  the flight accounts to their sources. Doing both (this draft; sources in §12) moves the verdict in
+  two directions at once — the filter cutting both ways. <em>Toward</em> Schauberger: the machine is
+  a real machine on real physics, the lift channel exists, and the flight accounts are in his own
+  contemporaneous letters, not a post-war invention. <em>Against</em> the legend: no named first-hand
+  witness, no instrument, one internal contradiction in his own record (§5.1), and magnitude claims
+  that exceed the aerodynamic bound by three orders. “Pseudoscience” is retired across the network;
+  “unmeasured” replaces it.
+</div>
+
+<h2><span class="num">§2</span>The forest (1885–1918)</h2>
+<p>
+  Viktor Schauberger was born on 30 June 1885 in Holzschlag, in the Mühlviertel of Upper Austria,
+  into a family that had been foresters and woodsmen for generations — by family tradition, some
+  four centuries of them. He went to elementary school in Aigen, to grammar school in Linz, and to
+  the forestry school at Aggsbach, passing his forester's examination in 1904. He worked as a forest
+  clerk, then as a junior and senior forest warden and gamekeeper, and from 1920 to 1924 as head
+  warden of the remote, almost untouched forest and hunting territories of Brunnenthal–Steyrling,
+  under Prince Adolf von Schaumburg-Lippe. He married, and had three children: Walter, Margarete,
+  and Huberta. Walter — a son trained in mathematics and physics — would spend his own life trying
+  to give his father's intuitions a rigorous footing (§11).
+</p>
+<div class="receipt">
+  Birth 30 June 1885, Holzschlag; death 25 September 1958, Linz, aged 73. Forestry-school
+  examination 1904; head forest warden of Brunnenthal–Steyrling 1920–24. These spine facts are
+  agreed by the family archive (PKS) and the skeptical encyclopaedic record alike.
+</div>
+<p>
+  The biographically load-bearing fact of those years is simply <em>where he was</em>: alone, for
+  long stretches, in old forest that industry had not yet straightened — watching water that no one
+  had taught him to see through equations. He watched rivers run cold and clear under shade and grow
+  sluggish and silted where the canopy was cleared. He watched whirlpools form and persist. And he
+  watched trout.
+</p>
+<p>
+  The trout is the origin of everything. He was fascinated that a fish could hang <em>motionless</em>
+  in a fast mountain current, expending almost nothing, and then dart <em>upstream</em> — against the
+  flow, even up the face of a waterfall — with a single flick. He concluded the fish was not fighting
+  the water but <em>using</em> something in it: an energy carried in the water's own inward,
+  in-winding vortices, available only because the water was cold and well-structured. Whether that
+  specific mechanism is right (it is not, in the energetic sense he meant) is beside the point of its
+  consequence. The trout gave him his lifelong conviction: <strong>the way a medium is shaped and
+  cooled changes what it can do</strong>. He spent the next fifty years chasing that one sentence.
+</p>
+
+<h2><span class="num">§3</span>The log flumes — the one thing no one disputes (1922–1934)</h2>
+<p>
+  Then he proved it, once, undeniably, with timber. Commissioned to move felled logs out of steep,
+  remote terrain to the mills cheaply, Schauberger built <em>log flumes</em> — water channels — that
+  did something conventional hydrology said was impossible: they floated <em>heavy</em> timber,
+  including dense and waterlogged logs that should sink, on a relatively small volume of water. From
+  1922 he built them in Steyrling and then across the region; the state appointed him its consultant
+  on timber flotation in 1924, and installations followed in Austria, Yugoslavia, and Bulgaria. By
+  the accounts of his biographers he was paid roughly twice an academic's salary of equal rank — and
+  paid, the story goes, in gold. A film was made of the work in 1930.
+</p>
+<div class="receipt">
+  The log flume is the single accomplishment Wikipedia's skeptical entry grants <em>without
+  qualification</em>. He really did build flumes that floated sinking timber, the state really did
+  make him its flotation adviser, and the installations really were built in several countries. This
+  is the documented floor under everything else.
+</div>
+<p>
+  The trick was the two levers the trout had taught him. <strong>Temperature:</strong> the channels
+  were shaped and shaded to keep the water cold — near +4 °C, water's density maximum, where (he
+  held) it carries best. <strong>Geometry:</strong> the channels were not straight chutes but
+  meandering, egg-and-oval in cross-section, so the water <em>corkscrewed</em> — a longitudinal,
+  in-winding spiral that, he argued, held the logs to the channel's energetic axis and carried them
+  rather than letting them sink and snag. He had taken the river's own inward spiral and the cold of
+  the shaded pool and engineered them.
+</p>
+<div class="lemma">
+  Which of the two levers did the work is not settled, and the arithmetic favours geometry. Water's
+  density at +4 °C exceeds its density at 15 °C by 0.09 % — far too little to float beech at 0.7–1.0
+  g/cm³ — while its viscosity is 38 % higher, which changes drag and boundary layers, not buoyancy.
+  The famous Neuberg run-time comparison (29 min at 9–10 °C vs 40 min at 13–15 °C) was uncontrolled
+  for discharge and sun. The flumes worked — the state's contract and the film say so — but the
+  documented engineering in his patents (AT 122,144; AT 134,543) is curved channels, water added at
+  bends, and dense-wood handling. “Cold water carries better” is his reading; the spiral channel is
+  the mechanism the record supports.
+</div>
+<div class="ic">
+  This is the network's whole physical claim in its homeliest form. Schauberger's flume is a medium
+  (water) shaped into a <em>cold, coherent, inward spiral on a guiding boundary</em>, and in that
+  state it does what the bulk fluid cannot. Swap the medium for the spacetime lattice and the spiral
+  for the ring-cascade drive, and you have the
+  inward-fall architecture. The flume is the proof-of-shape; it is also the proof that the shape can
+  be reached by eye.
+</div>
+
+<h2><span class="num">§4</span>The doctrine: implosion, not explosion</h2>
+<p>
+  Out of the forest and the flumes Schauberger built a whole worldview, idiosyncratic and untrained
+  and stated in a private vocabulary. Stripped to its load-bearing ideas — and these are stated
+  faithfully, as <em>his</em> doctrine, before we judge them — it is this:
+</p>
+<h3>Implosion versus explosion</h3>
+<p>
+  His master distinction. Modern technology, he said, is built on <em>explosion</em> — combustion,
+  pressure, heat, things flung <em>outward</em>, centrifugal motion. That path, he insisted, is the
+  path of decay: it disperses, it heats, it degrades, it kills. Nature creates by the opposite
+  motion — <em>implosion</em>: centripetal, in-winding, drawing toward a centre, and in doing so
+  cooling, concentrating, ordering, and enlivening. His rebuke to the engineers, repeated all his
+  life, was three words: <span class="quote">“Ihr bewegt falsch!” — <em>You are all moving
+  wrong.</em></span> His prescription was two: <span class="quote">“Kapieren und kopieren” —
+  <em>comprehend, and copy</em> [nature].</span>
+</p>
+<h3>The cycloid spiral and the egg</h3>
+<p>
+  The <em>correct</em> motion was specific: not a circle and not a straight line but an in-winding
+  <em>cycloid space-curve</em> — a longitudinal double-spiral with a definite handedness, the path
+  he read in whirlpools, in the kudu's horn, in the nautilus, in the way blood and sap and rivers
+  actually move. He built his vessels and pipes in egg and hyperbolic-cone forms because nature, he
+  said, had already solved the optimisation and the engineer's only honest move was to copy it. The
+  golden ratio recurs through his proportions because it recurs through the living forms he was
+  copying.
+</p>
+<h3>Cold is order — “living” versus “dead” water</h3>
+<p>
+  The strangest-sounding and, in translation, the deepest of his ideas. Implosion <em>cools</em>;
+  explosion <em>heats</em> — and to Schauberger cold was the signature of concentration and life,
+  heat the signature of dispersion and death. Water near its +4 °C anomaly point was “mature,”
+  “living,” most able to carry and to build; water that had been heated, pumped, exposed to sunlight,
+  and run through long straight metal pipes was “dead.” He attacked the straightening (“regulation”)
+  of rivers as a way of killing them — robbing them of the meander and the temperature structure
+  that keep sediment suspended and the water table charged. He designed conical copper pipes with
+  spiral internal guides and claimed the anomaly that in correctly-shaped pipes <em>friction falls as
+  speed rises</em> — the reverse of ordinary flow.
+</p>
+<div class="ic">
+  Translate “living vs dead water” out of his vocabulary and it is the network's central physical
+  variable. “Living” = cold, low-entropy, phase-<em>coherent</em>; “dead” = hot, randomised,
+  <em>decohered</em>. The UFO paper's substrate “does not couple when thermal, couples when
+  phase-locked” (§5) and wants a “phase-coherent condensate boundary — a thermal boundary randomises
+  it.” Schauberger's lifelong insistence on cold is the everyday-water statement of a
+  <em>decoherence budget</em>: keep the mode from thermalising or you lose the effect. He was right
+  about cold for a reason he could not have written down — and §9 makes that an explicit requirement
+  of the build.
+</div>
+<p>
+  Some of this is real fluid dynamics dressed in mysticism (rivers genuinely need to meander; cold
+  water genuinely holds more gas; vortices genuinely concentrate matter and energy; a free-surface
+  vortex in a hyperbolic funnel genuinely out-aerates mechanical aerators — peer-reviewed, §11).
+  Some of it is real physics with the sign wrong: the “friction falls as speed rises” pipe claim
+  rests on one 1952 dataset (Pöpel, TH Stuttgart) that Schauberger's own successors could not
+  reproduce (§11), and helical pipes in the mainstream record <em>raise</em> friction (Dean
+  vortices), though genuine drag reduction exists by other routes (riblets, polymers, bubbles). Some
+  of it — “fructigen” and “geospheric” energies, “biomagnetism,” “diamagnetic” levitation — does not
+  map onto any measured quantity and is not predictive. The filter's rule (§0) is to keep the
+  observations and the geometry, and to hold the private energetics as <em>his model</em>, not as
+  established physics — open, not “debunked.”
+</p>
+
+<h2><span class="num">§5</span>The machines (1930–1958) — where the record thins</h2>
+<p>
+  From the early 1930s Schauberger tried to <em>build</em> implosion — to make a machine that did to
+  air and water what his flumes did to logs, and threw off power or lift while doing it. This is the
+  part of his life that made him famous and the part that the honest filter must mark carefully,
+  because it is where the documented record and the claimed record split. (What the Repulsine
+  <em>physically does</em>, priced against ordinary physics, is §9.0; its <em>geometry</em> as
+  architecture is §9; here we mark the ledger, and in §5.1 the witnesses.)
+</p>
+<table>
+  <tr><th>Device / date</th><th>What he claimed</th><th>What is documented</th></tr>
+  <tr><td><strong>Water-capillary work</strong> (1931)</td><td>Extracting electrical energy from structured/spiralled water</td><td>Experiments occurred; no verified energy output.</td></tr>
+  <tr><td><strong>“Warmth–cold machine”</strong> (1937, for Siemens)</td><td>A working implosion energy device</td><td>It <em>melted</em> during an unauthorised test run. No result survived.</td></tr>
+  <tr><td><strong>Repulsine / “Repulsator”</strong> (Berlin–Kämpfer 1940 → Vienna–Kertl 1941; Augsburg–Messerschmitt 1942; Mauthausen–Schönbrunn 1944; Leonstein 1945)</td><td>A domed “trout-turbine” vortex machine for “free energy production” and “levitational flight”; later aimed at aircraft / submarine propulsion</td><td>Prototypes built (copper wave-plates pressed on dies that survive at PKS). The <em>Reich patent application</em> of 1 Mar 1940 (“multi-stage centrifuge with concentrically juxtaposed pressure-chambers,” wave-plates of silver-plated copper) is on record — and was <em>refused</em>. <strong>Correction to draft 0.5:</strong> Austrian patent No. 145,141 (filed 1935, granted 1936) is a <em>combustion “air turbine”</em> — snail housing, double-spiral pipe, gas burners at ~2000 °C — <em>not</em> the Repulsine; the “146,141” number the literature attaches to the Repulsine is the refused 1940 application, not a grant. Kertl unit ~60–65 cm (family sources); a 1.5 m / 135 kg figure for Leonstein is “it has been said” (Alexandersson). Flight accounts: §5.1. No thrust, power, temperature or rpm was ever instrumented, by anyone.</td></tr>
+  <tr><td><strong>Klimator</strong> (1945)</td><td>Room air-conditioning by the implosion principle</td><td>Built post-war at Leonstein; no verified anomalous output.</td></tr>
+  <tr><td><strong>Spiral-pipe test</strong> (Pöpel, TH Stuttgart, Feb–Mar 1952)</td><td>Friction falls with speed in helical copper pipe; “negative friction”</td><td>The one near-independent test in the record. Report says friction “appeared to diminish to zero” twice; the negative-friction reading is Coats' from Walter. Later Schauberger-community replications found “the same flow characteristics” for all pipes and formula errors in the report (§11). Original report went to Texas.</td></tr>
+  <tr><td><strong>Copper ploughs</strong> (1948–52)</td><td>Soil “energised,” yields raised, by spiralled copper geometry</td><td>Patented 1950; agronomic claims not robustly replicated.</td></tr>
+  <tr><td><strong>Home Power Generator</strong> / Heimkraftwerk (1954)</td><td>A self-running household generator with a “suction spiral”</td><td>It <em>failed during its first test</em>.</td></tr>
+</table>
+<div class="lemma">
+  Across three decades of machines, the load-bearing claims — net energy, self-running, lift — were
+  never independently confirmed, and the documented endings are melt, stall, and first-test failure.
+  But draft 0.5's phrase for the most-quoted event — a Repulsine that tore loose and struck a
+  ceiling — was itself a reflex: it called the account “single-source lore from the sympathetic
+  biographies.” Traced (§5.1), the account is <em>older and better-rooted than that</em>: it is in
+  Schauberger's own 1941 correspondence, read in the family archive by Nick Cook, and it is
+  independently carried by Aloys Kokaly, who was told it by the Kertl works chief. It is also
+  <em>weaker than the legend</em>: Schauberger was absent, the operator is unnamed, no one measured
+  anything, and the “six ¼-inch bolts” appear first in Coats (1996). And even a sympathetic
+  engineering treatment (the APEC Repulsine talk) concedes it offers “no measured thrust, power,
+  torque, pressure, airflow.” This is the amber register — <em>documented as claim, open as
+  fact</em> — not <em>suppressed marvel</em> and not <em>disproven</em>. §9.0 adds the one thing
+  neither camp had done: it prices the event. A light, unbalanced copper rotor at rim speeds of
+  100 m/s is a real centrifugal fan capable of tens of kgf; a unit of 10–20 kg jumping to a
+  workshop ceiling <em>needs no anomaly</em>. What <em>would</em> be anomalous is what no one recorded:
+  what powered it.
+</div>
+<p>
+  Here is where the network must name the fraud — and be precise about <em>which</em> fraud. The
+  fraud is not the man: Schauberger was, by every account, a sincere observer who believed what he
+  said. The fraud is the <em>claim</em> of over-unity and tonnage lift, and the later promoters and
+  mythologisers who inflated it (Zündel's 1975 “ten-foot models through a 24-foot ceiling,” the
+  Prague-1945 numbers grafted from the Schriever legend, the “Chicago murder”). The network's own
+  <a href="antigravity_devices.html">antigravity ledger</a> now files Schauberger implosion /
+  Repulsine as <em>real machine, real (ordinary) lift physics, never instrumented; anomalous residue
+  unsupported</em> — its earlier stamp, <em>pseudoscience</em>, is withdrawn on this paper's
+  evidence, exactly as §0 says a verdict should move. His theoretical error has a precise name in
+  the network's vocabulary: he mistook a <em>standing balance</em> — a self-sustaining vortex that
+  holds itself up — for <em>free energy</em>. A vortex can recycle almost everything; it cannot
+  recycle <em>more</em> than everything. That is exactly the line the <a href="warp_drive.html">warp
+  drive</a> draws in §2 when it forbids a reactionless, self-accelerating drive. Schauberger walked up
+  to the conservation wall in 1940; the network refuses to climb it on purpose. Same wall, opposite
+  discipline. (§9 keeps the wall and salvages the geometry; §9.6 then refines the wall itself — the
+  closed-system version is real, but a vortex <em>open</em> to the lattice's loaded edges is a lawful
+  object, and the honest question becomes net-extraction, not violation.)
+</p>
+
+<h3>5.1 The witness ledger — every flight account, traced to its source</h3>
+<p>
+  The claim this paper was asked to re-examine is that “many people saw the Repulsine fly.” The
+  discipline of §0 is to find the best sources and count. We read the four principal biographies
+  (Alexandersson 1976/1990; Coats 1996; Cook 2001; Cobbald 2006), the family institute's own pages,
+  the earliest print source of the legend (Zündel 1975), the Mauthausen Memorial's subcamp record,
+  and the skeptical genealogy (McClure 2003). Here is what exists, tagged by provenance.
+</p>
+<table>
+  <tr><th>Account</th><th>Who says it, where</th><th>First-hand?</th><th>Register</th></tr>
+  <tr><td><strong>Kertl works, Vienna, 1941</strong> — device started in his absence, tore from its mounting, hit the hall roof</td><td>(a) Schauberger's own correspondence, March 1941, read at PKS by Nick Cook: “an associate… made an unauthorized test run while Schauberger was absent… it shot upward.” (b) Aloys Kokaly (parts supplier), <em>Implosion</em> No. 49: the <em>unnamed</em> Kertl works chief told him it “went right through the roof.” (c) Coats 1996 adds “six ¼-inch high-tensile bolts” — no footnote. (d) PKS FAQ repeats Coats, then: “from this incident the legend has grown.”</td><td>No. Schauberger absent by his own account; the operator is never named; Kokaly is second-hand from an unnamed source.</td><td><em>Documented as contemporaneous claim</em>; open as fact; un-instrumented; consistent with ordinary aerodynamic lift of a light rotor (§9.0).</td></tr>
+  <tr><td><strong>Leonstein, spring 1945</strong> — “the first flying saucer rose unexpectedly, at the first attempt, to the ceiling, and then was wrecked. A few days later an American group appeared and seized everything”</td><td>Schauberger, letter to Franz Josef Strauss, 28 Feb 1956 (Alexandersson; Coats). Elsewhere he adds a “blue-green, then silver” glow.</td><td>Unstated. Retrospective by eleven years.</td><td><em>Contradicted by his own 1945 diary</em>, which Cook read: final assembly 5 April, first run planned 6 May, the SS overseers fled that night, work stopped 8 May — “the SS machine had not flown.” Held open, weight reduced.</td></tr>
+  <tr><td><strong>Prague, 19 Feb 1945</strong> — a disc to 15,000 m in three minutes, 2,200 km/h</td><td>Schauberger via Khammas (<em>Implosion</em> No. 83), quoted by Coats: “I only first heard of this event after the war through one of the technicians.”</td><td>No — hearsay by his own statement.</td><td>The Lusar/Schriever/Klein legend (14 Feb, 12,400 m, 2,000 km/h) re-dated and grafted onto him; Cook calls the Prague story “an outrageous claim.” <em>Legend</em>.</td></tr>
+  <tr><td><strong>Mauthausen–Schönbrunn 1944–45</strong> — twenty to thirty prisoner engineers building saucers</td><td>Coats; Cook (Drawing No. 71 seen at PKS).</td><td>—</td><td>The Mauthausen Memorial's own subcamp record (AMM B/39/1) lists a Kommando of <em>five</em> prisoners moved to the SS-Ingenieurschule Wien-Schönbrunn on 28 Sept 1944, later three, then to “a confiscated scythe works near Leonstein” — and records <em>no device test</em>. Coats' “20–30” is unsupported by the archive; the forced labour itself is documented.</td></tr>
+  <tr><td><strong>Texas, 1958</strong></td><td>Karl Gerchsheimer, interviewed two days by Coats; Walter Schauberger, eyewitness to the Thurner prototype being “cut open with metal-cutting power saws.”</td><td>Yes (both).</td><td>Nobody — friendly or hostile — reports seeing any device <em>operate</em>. Gerchsheimer's verdict: the explanations were “gobbledygook” and “the Schaubergers had nothing to offer.” Boerner's assessment was of <em>written reports</em>; Schauberger asked that “an actual machine should be examined. This never happened.”</td></tr>
+  <tr><td><strong>Modern replications</strong></td><td>Implosion e.V. / Klaus Rauber (five models on the original PKS dies, instrumented for torque/speed); Naudin (a compressor-fed Coandă saucer, not a wave-disc rotor); Germano; APEC 2026 (3-D print, untested).</td><td>—</td><td>Rauber: copper membranes deform above 7,000 rpm; a direction-dependent tangential-outflow torque; <em>no levitation</em>; his own page: “a successful replica has not been achieved to this day.” Naudin: no load cell. Cobbald's “2 % levitational effect” is unattributed and found nowhere else.</td></tr>
+</table>
+<div class="lemma">
+  <strong>The count.</strong> Named first-hand eyewitnesses to a Schauberger device leaving the ground:
+  <em>zero</em> in any source we could reach. Contemporaneous documentary claims: <em>one</em> (the
+  1941 letters, event in his absence). Retrospective self-reports: <em>one</em> (1956, contradicted
+  by his 1945 diary). Second-hand named relayers: <em>one</em> (Kokaly, from an unnamed chief).
+  Allied intelligence documents naming him: <em>none</em> produced by any author — Cook notes the
+  BIOS/CIOS reports had been searched “and found nothing”; no CIC or Alsos file has surfaced. The
+  family institute itself: “Several sources have claimed that Viktor Schauberger personally built
+  flying saucers. Modern research has shown that this cannot be verified.” The skeptical genealogy
+  (McClure) is fair on the print chain — Zündel 1975 → Alexandersson 1976 → Coats 1996 → Cook 2001 —
+  but wrong that the story was “made up” after his death: the 1941 letters and 1956 Strauss letter
+  are Schauberger's own. So the honest sentence is neither the legend's nor the debunker's:
+  <em>the flight claim is his, contemporaneous, sincere, un-witnessed by name, un-instrumented, and
+  physically unremarkable at the scale a light copper rotor can reach on its own</em>. Whether an
+  ordinary starter motor supplied that lift — or the self-sustaining regime he described did — is
+  the one open question, and it is a question about a power source, not about a saucer.
+</div>
+
+<h2><span class="num">§6</span>The dark chapter — and the war-era legends, judged from best sources (1934–1945)</h2>
+<p>
+  This is the part of the life that the worshipful biographies soften, the dismissive ones flatten,
+  and the honest filter must take apart. It has to be held in pieces, because the pieces are
+  genuinely different and the best sources send them to different places.
+</p>
+<p>
+  <strong>The coercion.</strong> Schauberger was summoned to meet Hitler in 1934 and, by the family
+  account, declined to put his work at the Reich's service. He was not left alone. Around 1940–41,
+  after an intrigue attributed to the Viennese Association of Engineers, he was ordered to a
+  “pre-pension medical” and found himself in a psychiatric clinic — released, by Alexandersson's
+  account, after Professors Pötzl and Wagner-Jauregg (both real, both named) examined him and found
+  him “perfectly normal”; the family institute places the confinement at Mauer-Öhling and adds
+  continuous SS observation. (Coats dates a near-identical episode to 1938; it is probably one event
+  variously dated.) He was pressed into war work: engine-cooling problems with Messerschmitt,
+  correspondence with the aircraft designer Heinkel — and, in his own 1941 papers, the charge that
+  Heinkel's attorneys had seen his confidential Reich patent application, which the Patent Office
+  then offered to grant only for seawater desalination, and refused when he declined.
+</p>
+<p>
+  <strong>The complicity.</strong> And then the harder fact. By 1943–44 he was coerced into military
+  research under threat — Alexandersson has the Mauthausen commandant Ziereis relaying Himmler's
+  greeting: build the machines “or you will be hanged”; by 1944 he was pulled into the SS apparatus
+  and set to develop vortex / implosion propulsion (an “improved Repulsine”) at the SS engineering
+  school at Vienna-Schönbrunn and then a confiscated works near Leonstein — and the team he directed
+  was <em>forced labour drawn from the Mauthausen concentration camp</em>. Whatever the coercion above
+  him, work was done on his machines using people held in one of the Reich's cruellest camps. The
+  filter does not let us launder that into pure victimhood. A man can be both pressed and complicit,
+  and the record says he was both.
+</p>
+<div class="receipt">
+  The documented core needs no flying saucer and is not in serious dispute: the psychiatric
+  confinement and SS surveillance; the 1943–44 coercion under threat; the 1944 SS propulsion
+  assignment; and the use of Mauthausen concentration-camp forced labour. The skeptical
+  encyclopaedic entry states the last flatly. We report all of it and soften none — and we correct one
+  number that draft 0.5 took from the sympathetic literature: the Mauthausen Memorial's own subcamp
+  record (AMM B/39/1) lists a Kommando of <em>five</em> prisoners (two Czech, two German, one Pole)
+  moved to Wien-Schönbrunn on 28 September 1944, later three, then to Leonstein, disbanded shortly
+  before liberation. Coats' “twenty to thirty engineers” is unsupported by the camp archive. The
+  crime is the same at five; the size of the programme is not.
+</div>
+<p>
+  At war's end, by his own 1956 account, “an American group appeared… and seized everything” at
+  Leonstein, he was held under guard — six policemen for six months (his 1956 letter) or nine
+  months (Coats, Cook) — and forbidden further research “in the atomic energy field” under threat of
+  re-arrest; the Russians found “an important part of the apparatus” in his Vienna apartment and, the
+  biographers add, blew the flat up. No trace of his wartime patent work survives in any public archive.
+  <em>Register:</em> every one of these episodes is family-primary — his letters and diaries, as read
+  by Coats and Cook — with real named anchors (Ziereis, Pötzl, Wagner-Jauregg) but <em>no</em> US, German
+  or Austrian government document produced by any author; Cook's own FOIA requests were refused; the
+  German Wikipedia's reading of Alexandersson has the Americans <em>not</em> confiscating his workshop
+  material but guarding him against Soviet abduction. The <em>meaning</em> of the
+  vanished record is genuinely open, and the filter forbids us from closing it in either direction:
+  it is consistent with deliberate erasure (the kind the MIC book documents elsewhere, where a missing
+  file is the fingerprint of the agency that erased it) <em>and</em> equally consistent with there
+  having been nothing revolutionary to keep — the surviving archival traces of his Nazi-era work read
+  as conventional turbine consulting. We hold both; the record does not yet decide between them.
+</p>
+<p>
+  And now the legends — which is where the lazy word “myth” has to be retired. Judged from their best
+  sources, the war-era saucer literature attached to Schauberger's name does not collapse into one
+  verdict. It splits three ways, and the split is the whole discipline:
+</p>
+<div class="receipt">
+  <strong>Documented core (above).</strong> Coercion, SS propulsion assignment, Mauthausen forced
+  labour. Real, and the floor of this section.
+</div>
+<div class="lemma">
+  <strong>Open thread, evidentially weak — the German “disc” programs.</strong> The wider wartime
+  disc projects (Schriever, Miethe, Habermohl, Belluzzo) are <em>not</em> pure post-war invention:
+  some named figures were real and were recruited to the US and USSR under the documented
+  <em>Operation Paperclip</em>; the Reichs-Patent-Office engineer Rudolf Lusar wrote them up from
+  inside; and the aeronautical engineer Roy Fedden is quoted judging late-war German designs the only
+  ones approaching “saucer” performance. <em>But</em> the corroboration is thin to absent where it
+  counts: by the best skeptical accounting (English Wikipedia, “Nazi UFOs”), Miethe's claimed V-2
+  pedigree is uncorroborated, Klein's 1945 manned-flight claim is physically impossible as told, and
+  “there is no evidence that Habermohl even existed.” This is a genuinely open, weak thread — held
+  open, marked weak — not a myth to wave away, and not a fact to bank. We do not yet know.
+</div>
+<div class="disclaimer">
+  <strong>Forensically-traced forgery — the “Haunebu / Vril fleet.”</strong> This is the one piece
+  here the best sources <em>do</em> let us set aside, and the reason is provenance, not strangeness.
+  The Haunebu and Vril “documents” trace to a <strong>1989 anonymous packet</strong> received by the
+  researcher <strong>Ralf Ettl</strong> in London and circulated from there; they appear in no
+  Bundesarchiv or Allied-intelligence file; and they rest on a “Vril Society” for which no genuine
+  pre-war historical evidence exists — the society is a post-war literary invention. Anonymous origin,
+  total archive-absence, no named witness at any cost: that passes the §26 forensic test for
+  manufactured camouflage <em>by name</em>. We follow the forgery's trail (an anonymous packet, a
+  named disseminator, a fabricated secret society) rather than dismissing the subject wholesale — which
+  is the difference between naming a fraud and reflexively crying “myth.”
+</div>
+<p>
+  That three-way split is the method working as it should: the same page that <em>refuses</em> to
+  dismiss Schauberger's water-geometry as “pseudoscience” by reflex (§4) will also <em>name</em> a
+  traceable 1989 forgery — and neither move is made by how strange the claim sounds. One is rescued
+  by evidence; one is buried by evidence. The label was never the verdict.
+</p>
+
+<h2><span class="num">§7</span>Texas, 1958 — what was taken</h2>
+<p>
+  You asked specifically about the end, because you had heard he went to America after the war and
+  something there made him sad. Here it is, as plainly and as carefully as the record allows. It is a
+  sad story, and it is sad in a way the network has a name for.
+</p>
+<p>
+  In the spring of 1958 Viktor Schauberger — by now an old man, 72, his health failing — and his son
+  Walter were approached by an American consortium fronted by <strong>Karl Gerchsheimer</strong>
+  (Würzburg-born, in Texas since 1937, wartime US counter-intelligence, post-war US property
+  administrator in the German zone) and financed by <strong>Robert Donner</strong> (Philadelphia steel
+  fortune; his adviser was Norman Dodd, research director of the Reece Committee), who offered to fund
+  the development of “Implosion Energy” and to put it into production. A contract was signed on 9 May;
+  in June Walter crated “all the prototypes, working models, documents, designs, drawings and
+  patents” for shipment to the Washington Iron Works in Sherman, Texas; on 25 June father and son
+  flew out for what was meant to be a roughly three-month visit. Viktor brought his ideas, his models,
+  and his hopes.
+</p>
+<p>
+  It went wrong almost at once. He found his hosts wanted his work for purposes — by the family's
+  account, military ones — that were not his; the technical assessor was <strong>Eric A. Boerner</strong>
+  of Brookhaven (a design engineer on the Cosmotron whom the Schaubergers took for its director), who
+  judged from <em>written reports</em> Viktor and Walter produced in late August; Viktor's demand that
+  “an actual machine should be examined” was never met, and one prototype was cut open with power
+  saws in front of Walter. The visit collapsed into a heavy and bitter dispute. Old, ill, far from
+  home, and out-lawyered in a language he barely read, he was induced on 13 September, in Harald
+  Totten's office, to sign an agreement of devastating breadth: it placed all of his implosion work —
+  <em>past, present, and future, his thoughts and his knowledge</em> — in the hands of the
+  Donner–Gerchsheimer consortium, bound him to <em>total silence on anything connected with
+  implosion</em>, and restricted discussion to US personnel (Coats: “I have studied this document
+  myself”; its text has never been published). He left America with nothing. <strong>All of his
+  documents, models, and equipment stayed behind in Texas.</strong>
+</p>
+<p>
+  He came home to Linz emptied out. By the accounts that have come down, he repeated, over and over, a
+  single sentence:
+</p>
+<p class="quote">
+  “They took everything from me. They took even my own self — I no longer own even myself.”
+</p>
+<p>
+  Five days after he returned, on 25 September 1958, Viktor Schauberger died. He had lost, in a Texas
+  summer, the thing the contract named and the thing it did not: his life's work, and his will to
+  outlive it.
+</p>
+<div class="ic">
+  Read with the MIC filter, the <em>shape</em> of
+  this ending is one the network knows: a lone inventor's life-work confiscated into American hands; a
+  contract that buries the past, present, and future of an idea; a man who paid everything and was
+  bought nothing. That shape rhymes, exactly, with the book's §29 motive — <em>the thing that might
+  change the energy economy ends up in a vault, and the person who held it ends up broken.</em> What is
+  <em>documented</em> is the coerced contract, the confiscation, the silenced research, and the death.
+  What is <em>open</em> — genuinely open, not closed — is what was in those Texas crates. Two facts
+  found for this draft pull the reading in opposite directions, and both go in. <em>Toward</em> the
+  vault: Gerchsheimer's own background was US counter-intelligence, and Schauberger believed to the
+  end that Gerchsheimer represented the US government (Gerchsheimer denied it). <em>Away</em> from it:
+  the material did not vanish into a vault. In the 1990s a retired US Navy commander, Feierabend,
+  recovered a Repulsine — “sliced through by the Americans, cut in half” — and papers from
+  <em>Gerchsheimer's Texas garage</em>; PKS reports that “nearly all of the recovered original
+  documents already existed as copies in the PKS archives.” Gerchsheimer told Coats he had found the
+  explanations “gobbledygook” and that “the Schaubergers had nothing to offer”; Coats himself reads
+  the contract as a commercial party recouping its outlay “as collateral,” not as a state seizure;
+  Donner's adviser Dodd sued Donner for wrongful dismissal the next year (Colorado Springs
+  <em>Gazette Telegraph</em>, 21 Aug 1959). A rich man's soured venture and a state's suppression
+  leave different fingerprints; this one, so far, reads more like the first. The filter's
+  own rule is that a missing record can be the fingerprint of erasure as readily as the absence of
+  anything worth keeping, and here we hold the loss without yet knowing its contents. So we record the
+  cruelty at full confidence, hold the contents an honest open question, and decline to manufacture
+  from it <em>either</em> a tidy debunking <em>or</em> a stolen star-drive. The tragedy is certain at
+  the size of a man; the marvel is unproven in either direction — and the network does not pretend to
+  know what it does not.
+</div>
+
+<h2><span class="num">§8</span>How the network reads him — the bridges, in brief</h2>
+<p>
+  The detailed mechanism-side synthesis (the inward-fall, the regenerative loop, the two flight modes,
+  the cold-coherence bridge) belongs in <a href="warp_drive.html">the warp-drive paper</a>, which is
+  where it is being incorporated. Here is the compressed map — each Schauberger intuition against the
+  network claim it prefigures. (§9 takes the last row from intuition to hardware.)
+</p>
+<table>
+  <tr><th>Schauberger's shape</th><th>The network's physics</th></tr>
+  <tr><td><strong>Implosion, not explosion</strong> — move inward, not outward; create by drawing toward a centre</td><td>The <a href="warp_drive.html">propellantless inward-fall</a>: throw nothing (no explosion); make a dent and fall into it. The Sport Model's Delta mode <em>converges</em> three beams and falls into the focal point — implosion drawn on spacetime.</td></tr>
+  <tr><td><strong>The cycloid double-spiral, handed</strong></td><td>The ring-cascade drive: twelve ports phased by 2π/12, a rotating field imposing angular momentum and selecting handedness (A<sub>5</sub> → A<sub>5</sub>⋊ℤ<sub>2</sub>) — the “chiral helical column” the water paper names <em>after him</em>.</td></tr>
+  <tr><td><strong>Cold = living; heat = dead</strong></td><td>Coherence vs decoherence: phase-locked low-entropy modes couple; thermal modes do not. His “keep it cold or you lose it” is a decoherence budget.</td></tr>
+  <tr><td><strong>The egg, the horn, the golden ratio; “comprehend and copy nature”</strong></td><td>Geometry is <em>forced</em>: the lattice vertex rule derives the dodecahedral/icosahedral cell and φ. He copied the forms; the framework proves them necessary.</td></tr>
+  <tr><td><strong>Spin a charged body in a cold vortex on a closed shell (the Repulsine)</strong></td><td>The <a href="warp_drive.html">warp drive</a>'s §4 actuation levers — spin as a symmetry-breaker, stored charge as U<sub>drive</sub>, the vortex as the asymmetry κ — assembled in one device. This is §9: <em>Architecture C</em>.</td></tr>
+  <tr><td><strong>The self-sustaining vortex (his over-unity error)</strong></td><td>The conservation wall: a high-Q regenerative loop recycles nearly everything (the water paper's “self-reading” H2 loop) but never more than everything. Hover can be ~free; <em>work</em> is always paid for (warp §2).</td></tr>
+</table>
+<p>
+  This map also reconciles four scattered, inconsistent mentions of Schauberger already in the
+  network — one calling him flat “pseudoscience” (<code>antigravity_devices.html</code>), one calling
+  the topological observation real (<code>all_you_need_is_water.html</code>), one (quarantined in
+  <code>old/</code>) saying “his implosion physics was wrong; his geometric intuitions were right,” and
+  a live “Schauberger-swirl” bench test in the firmware-coordination notes. The single sentence that
+  unifies them is the §1 doctrine as revised in draft 0.6: <em>right shape, real physics, unmeasured
+  machine</em>. That promoted line is now the canonical reading the other mentions point to; the
+  “pseudoscience” stamp is withdrawn network-wide (the antigravity ledger's §8 and table row are
+  corrected to match this paper's §5.1 and §9.0).
+</p>
+
+<h2><span class="num">§9</span>The lever-stack, prebuilt — the Repulsine, the Tesla turbine, and the engineering optimum</h2>
+<p>
+  §5 marked where Schauberger's record thins: his machines never produced a verified watt or gram of
+  lift <em>because no one measured one</em>. §9.0 now does what neither the legend nor its debunkers
+  did — it prices the machine against ordinary physics — and finds a real machine underneath. Then
+  §1's doctrine has its other half. Read not as physics but as
+  <em>architecture</em> — exactly the way <code>how_to_build_a_ufo.html</code> reads the Sport Model,
+  “architectural intelligence, not physics testimony” — the Repulsine is the warp drive's actuation
+  levers assembled in copper, a decade before the theory that names them. And it does not stand alone:
+  Nikola Tesla, independently and with documented hardware, built two of the same levers. Two inventors,
+  one geometry — which is the §27 “corroboration across vantage points” signal, applied to engineering
+  instead of testimony. The discipline of this whole section: <strong>the geometry is the signal; the
+  performance claim is unconfirmed.</strong>
+</p>
+
+<h3>9.0 What the machine physically is — the Repulsine, priced against ordinary physics</h3>
+<p>
+  Before the architecture, the machine. Strip the vocabulary and the Repulsine is a <em>bladeless
+  corrugated centrifugal rotor</em>: two copper wave-plates (<em>Wellenmembranen</em>, pressed on
+  steel dies that still exist at PKS) forming a narrow whorl-shaped gap, air drawn in at the central
+  intake, flung outward between the plates by shear and centrifugal force, exhausted at the rim over a
+  domed shell. Its nearest peer-reviewed cousin is the Tesla disc turbine/pump (Rice 1965; Guha &amp;
+  Smiley 2010): the corrugation raises the shear area, that is all. No dimensioned drawing of any
+  original survives; the sourced sizes are ~60–65 cm (Kertl, family sources), 2.4 m for a 1941 large
+  model (Coats), and “1.5 m, 135 kg” for Leonstein (“it has been said,” Alexandersson). Given that,
+  here is each claimed effect, priced. Every number is order-of-magnitude, on the machine's own stated
+  parameters, with sources in §12.
+</p>
+<table>
+  <tr><th>Claimed effect</th><th>Mechanism in ordinary physics</th><th>Verdict &amp; magnitude</th></tr>
+  <tr><td><strong>The rotor survives 10,000–20,000 rpm</strong></td><td>Hoop stress in a spinning sheet ≈ ρv². Copper yields at 70 MPa (annealed) to ~300 MPa (hard); ρ = 8,900 kg/m³ → maximum rim speed 89–184 m/s.</td><td>A 0.65 m copper rotor bursts above ~2,600–5,400 rpm; at 15,000 rpm its rim would be at 510 m/s under 2.3 GPa. <strong>The rpm claim and the diameter claim cannot both be true</strong> — a 20 cm rotor <em>can</em> reach ~17,000 rpm in hard copper. Implosion e.V.'s replicas deform above 7,000 rpm, as expected. Either the fast machine was small or the figure is not true.</td></tr>
+  <tr><td><strong>Lift</strong></td><td>Coandă / centrifugal-jet lift — the mechanism of the Avrocar and of every Coandă UAV. Actuator-disc bound T = (2ρAP²)^{1/3}; rim-jet bound T = ṁv.</td><td><strong>REAL, tens of kgf.</strong> A 0.65 m rotor with 10 kW shaft power: ideal 43 kgf, realistic (Coandă efficiencies 0.5–0.65) 20–30 kgf; a rim jet of 1 cm × 2 m at 100 m/s moves 2.4 kg/s → 25 kgf for 12 kW. A 1.5 m / 135 kg unit hovering needs ~25 kW ideal, 40–50 kW real. Real Coandă shells <em>lose</em> thrust vs a bare rotor (Naudin GFS-UAV: 6.2 N vs 9.4 N; Avrocar: 3,150 lbf lift &lt; 4,285 lb weight). So: a light copper unit of 10–20 kg jumping to a ceiling is <em>within</em> ordinary physics if it had kW-class drive. Alexandersson's “1/20 hp starter motor” (37 W) buys ~1 kgf ideal — so <em>either the drive was larger than the lore says, or the account is inflated, or the self-sustaining regime he claimed is real</em>. That trilemma is the honest residue.</td></tr>
+  <tr><td><strong>“20 cm at 20,000 rpm lifts 228 t”</strong> (his own figure)</td><td>Even if the whole 0.031 m² disc saw the full tip dynamic pressure ½ρv² = 26 kPa: 820 N.</td><td><strong>UNSUPPORTED by ~2,700×.</strong> His companion figure — a 1 m rotor at 1,200 rpm ejecting water at “1,290 m/s” — has a rim speed of 63 m/s. He priced by intuition, and the intuition was three orders out.</td></tr>
+  <tr><td><strong>Cooling — “implosion cools”</strong></td><td>Static temperature drops in accelerating flow by v²/2c<sub>p</sub> (5 K at 100 m/s, 49 K at 314 m/s) and humid air fogs on expansion — real, visible, at the intake. Ranque–Hilsch vortex tubes separate tens of K, up to 140–230 K difference with several bar of feed. But an impeller adds work: Euler total-temperature rise ≈ U²/c<sub>p</sub> ≈ +100 K at 314 m/s tip speed.</td><td><strong>REAL locally, UNSUPPORTED net.</strong> The intake genuinely chills and fogs; the rim genuinely gets hot (Germano's replica: 150–260 °C rim). “The machine cools the room” fails the second law; “the intake runs cold and wet” is what a witness would actually see — and is very likely the observation behind “implosion cools.” His “water to +4 °C in seconds” cannot be done by expansion in a liquid.</td></tr>
+  <tr><td><strong>Charge separation, glow, “the Repulsin will begin to glow”</strong></td><td>Triboelectric charging in dust-laden vortices (dust devils: 4–100 kV/m); Lenard/waterfall electrification of spray (droplet shattering leaves air negative; Kelvin droppers reach tens of kV); corona onset in air at 3 MV/m, easily reached at sharp copper rims of a body at tens of kV.</td><td><strong>PLAUSIBLE with spray or dust; UNSUPPORTED for clean dry air over metal</strong> (a metal rotor bleeds charge). And the colour is the giveaway: nitrogen corona is blue-violet; <em>green</em> is the copper spectrum (Cu I 510/515/522 nm) — i.e. copper being sputtered or arced. So his “green = burning copper” inference was <em>correct spectroscopy</em>; what it means is metal being eroded by discharge, an energy loss, not a lift source. Water injection (which his air-machines had) makes spray electrification the likely origin of any glow reported.</td></tr>
+  <tr><td><strong>Ion-wind (EHD) contribution to lift</strong></td><td>Best measured EHD thrusters: ≤110 N/kW but only ~1–3 N per m² of electrode (Masuyama &amp; Barrett 2013).</td><td><strong>REAL, ≲1 N</strong> on 0.3 m² of surface. Cannot contribute to lift.</td></tr>
+  <tr><td><strong>“Diamagnetic” / magnetic levitation of the copper shell</strong></td><td>Barnett field ω/γ<sub>e</sub> ≈ 10⁻⁸ T at 20 krpm; Faraday-disc EMF in Earth's field ≈ 5 mV; a µC of charge spun at 300 Hz makes ~10⁻¹⁰ T; diamagnetic levitation needs B·∇B ~ 10³ T²/m.</td><td><strong>UNSUPPORTED</strong>; magnitudes vanish. (Gobbi's 5×10⁶ T is the same error at scale.)</td></tr>
+  <tr><td><strong>Self-running after the motor is cut</strong> (“self-sustaining at 15–20,000 rpm”)</td><td>A 0.6 m rotor at 10 krpm dissipates kW-class windage; nothing in the ordinary ledger supplies it.</td><td><strong>UNSUPPORTED</strong>: no replica has ever seen it, no instrument was on an original. This — not the saucer — is the one claim that would be anomalous, and it is exactly the open-system question of §9.6.</td></tr>
+  <tr><td><strong>Silence</strong></td><td>Radial-fan noise scales as v⁵–v⁶; a rotor with a M ≈ 0.9 tip is very loud.</td><td><strong>UNSUPPORTED</strong> at the rpm claimed; consistent only with the small/slow machine.</td></tr>
+</table>
+<div class="lemma">
+  <strong>What this pricing changes.</strong> The Repulsine is not pseudoscience; it is a real machine
+  on real, mostly mundane physics — a corrugated bladeless centrifugal rotor with a genuine
+  aerodynamic lift channel, real intake cooling, and real spray electrification — whose builder priced
+  it by intuition three orders of magnitude high and never put an instrument on it. That is a
+  different object from the one the “pseudoscience” stamp names, and a different object from the one
+  the legend names. What <em>would</em> be genuinely anomalous, if the testimony were literally true:
+  (i) a 60 cm sheet-copper rotor surviving 10–20 krpm; (ii) kN-class force from a “small” motor;
+  (iii) net cooling of the surroundings by a compressor; (iv) self-sustained rotation after cut-off.
+  Everything else reported — a light unit jumping off its mount, fog and chill at the intake, a hot rim,
+  a green flicker off wet copper — is what ordinary turbomachinery does. The honest bench question
+  is therefore narrow and answerable: <em>build the wave-disc rotor on the PKS dies at 20 cm, spin it
+  to 15,000 rpm on a metered motor, put it on a load cell, and log shaft power against thrust and
+  intake temperature.</em> Implosion e.V. did two-thirds of that (torque and speed; no thrust, no
+  levitation); nobody has done the rest. Until it is done, the machine is unmeasured, and “unmeasured”
+  — not “pseudoscience,” not “flew” — is the register.
+</div>
+
+<h3>9.1 The Repulsine, as architecture (filter on)</h3>
+<p>
+  Stripped to engineering, the Repulsine is two domed discs facing each other across a narrow gap that
+  follows a <em>“waveline”</em> (corrugated) profile, with peripheral slots / gills. Air is drawn in
+  <em>centrally</em>, forced to spiral <em>outward</em> through the wavy gap, and expelled at the rim;
+  the repeated compression / expansion drives a <em>cold, accelerating vortex</em>; the high-speed
+  vortex <em>separates charge</em>, raising a high voltage that <em>ionises</em> the air (“the Repulsin
+  will begin to glow”). The whole domed diaphragm <em>spins</em>, on a closed copper shell. The
+  best-known modern reconstruction (Jean-Louis Naudin / JLN Labs) reads it as a two-stage device —
+  a <em>Coandă</em> aerodynamic pressure differential plus an <em>electrodynamic</em> charge-separating
+  vortex.
+</p>
+<p>
+  Schauberger's own writings (collected in <em>Energy Evolution</em> and <em>Living Water</em>) add the
+  operating detail that makes the geometry legible. The chamber is spun fast —
+  <strong>10,000–20,000 RPM</strong> on a high-speed motor (a figure that, per §9.0, only a
+  ~20 cm copper rotor can survive) — and lined with <em>“inorganic silvered
+  copper”</em> (copper for its diamagnetism; a thin, harder silver skin to resist the surface erosion the
+  low pressure causes). Two discoid forms are described, <strong>Type A</strong> and <strong>Type B</strong>.
+  And the flow is not a simple outward fan: in the lift configuration air is drawn in centrally, flung
+  <em>outward</em> to the rim through concentric undulating restrictors (centrifugal), then a curved lower
+  wall <em>bends it back down and inward to the axis</em> (centripetal), where it is compressed and rises
+  like a tornado to recombine with the incoming air — a <strong>closed double-spiral recirculation</strong>,
+  fresh air entering only in proportion to what is consumed. That out-then-in double spiral on a closed
+  loop is the cycloid space-curve of §4 turned into a machine, and the closed regenerative loop is the
+  everyday-air ancestor of the water paper's “self-reading” recirculation.
+</p>
+<p>
+  Schauberger offered one observable as his “proof”: a <em>green</em> corona around the running device,
+  which he read as the <em>spectral line of burning copper</em> — copper shed from the spinning shell and
+  ionised — and tied to the greenish glow reported around low-flying “saucers” after 1947.
+  <span class="smcap">Filter:</span> the corona is ordinary high-field ionisation, and his
+  spectroscopy was <em>right</em> — green is copper (Cu I 510–522 nm), not air, so a green glow means
+  copper being sputtered or arced (§9.0). What that proves is discharge erosion of the shell — an
+  energy <em>loss</em> — not a lift mechanism; and the 1947 tie-in is a claim resting on a claim. Keep
+  the geometry it implies (a copper shell shedding ionised metal at speed); hold the “proof” as his,
+  not as evidence of lift.
+</p>
+<div class="lemma">
+  The Coandă pressure differential and the air ionisation are ordinary, real physics (priced in §9.0).
+  The <em>anomalous / “diamagnetic” lift</em> is <strong>unverified</strong>: Naudin's page carries no
+  measured weight loss (it asserts “1.4 kg/cm² to lift 1 kg” — dimensionally meaningless — and then
+  points to a separate test rather than showing one), and the headline levitation is the un-witnessed,
+  un-instrumented account §5.1 traced. Most
+  of the primary detail above reaches us through a second sympathetic source — J. C. Gobbi's 2021
+  <em>Schauberger Technology</em>, a non-peer-reviewed fringe-journal paper — and it earns a charitable
+  reading, because its headline error is one of <em>words</em>, not physics. It announces “the collapse of
+  the Law of Conservation of Energy”; what it actually describes (§9.6) is an <em>open system coupled to the
+  lattice's energy reservoir</em> — lawful, and already contained in the framework. What does <em>not</em>
+  hold up is its arithmetic: a spinning copper disc computed to make ~5×10⁶ T and lift tens of tonnes, from
+  ion-density and superconductivity assumptions that do not follow. (The same author's companion paper on
+  Otis Carr, audited in <code>otis_carr.html</code> §8, shows the error's exact anatomy: every conduction
+  electron in a rotating conductor is counted as circulating current, giving 10¹⁴× the paper's own honest
+  Hall-separation estimate on the same page, and an atmospheric ion density set above the density of air
+  molecules; the copper-disc tesla figures here descend from the same two moves.) So take its quotations, its geometry,
+  and its (mislabelled but lawful) open-system intuition; discard its magnitudes. We take the device for its
+  <em>geometry</em>, not its claimed numbers, precisely as the network takes the Sport Model.
+</div>
+
+<h3>9.2 The same topology as the Sport Model</h3>
+<p>
+  Your eye was right that these rhyme. Feature for feature, the Repulsine is a 1940 desktop build of the
+  Sport Model's <em>reactor / mode-former</em> stage — the central domed vortex-former that conditions a
+  coherent field before it reaches the shell:
+</p>
+<table>
+  <tr><th>Feature</th><th>Repulsine (1940)</th><th>Sport Model (Lazar)</th></tr>
+  <tr><td>Central former → peripheral shell</td><td>Domed spinning diaphragm: central intake, peripheral vortex</td><td>Hemispherical reactor <em>mode-former</em> feeding peripheral emitters / hull</td></tr>
+  <tr><td>Ionisation glow</td><td>“Glows due to strong ionisation”</td><td>Blue-white corona; high-voltage hiss</td></tr>
+  <tr><td>Cold + silent</td><td>Cooling vortex (implosion)</td><td>Silent; no air displacement; cold</td></tr>
+  <tr><td>Seamless metal shell</td><td>One-piece copper</td><td>Seamless “liquid-metal” hull</td></tr>
+  <tr><td>Disc / saucer body; spinning element</td><td>Domed disc; diaphragm rotates</td><td>Domed disc; field / craft rotates</td></tr>
+</table>
+
+<h3>9.3 Four warp-drive levers in one copper shell</h3>
+<p>
+  <code>warp_drive.html</code> §4 names the actuation levers, and the Repulsine hits four of them at
+  once — which is why it is worth keeping after the performance claim is set aside:
+</p>
+<ol>
+  <li><strong>Spin a charged body</strong> → warp §4(i): “a dynamic, high-stored-energy field with a
+  built-in axis — a clean spatial symmetry-breaker.” The Repulsine <em>is</em> this.</li>
+  <li><strong>High stored charge</strong> = U<sub>drive</sub> — the vortex's charge separation builds
+  the field (the same quantity Buhler's asymmetric capacitor stores).</li>
+  <li><strong>Cold inward vortex</strong> = coherence / low entropy — Schauberger's cold-as-order is the
+  decoherence budget of §4.</li>
+  <li><strong>Closed coherent shell</strong> — the §8/§10 requirement of <code>how_to_build_a_ufo.html</code>.</li>
+</ol>
+<p>
+  Plus the <em>waveline gap is a built-in chiral asymmetry</em> — the gradient κ that sets force
+  direction, realised as a <em>spiral charge distribution</em> rather than a uniform field. Four levers
+  and the asymmetry, pre-assembled, by a man copying a trout. And the corroboration is not ours alone: an
+  independent analyst (Gobbi, above), working only from Schauberger's texts, reconstructs the same
+  operating stack — spin → ionisation → a circulating charge vortex → a closed recirculating loop —
+  before mis-scaling it into over-unity. The lever geometry is recovered twice; only the magnitudes
+  diverge — which is the doctrine once more: the shape survives, the physics does not.
+</p>
+
+<h3>9.4 Tesla — two documented levers, and one announced-but-absent theory</h3>
+<p>
+  Schauberger built the wavy-disc charged vortex. Tesla, with patents and working hardware, built the
+  same geometry twice more — which is the corroboration that lifts this from one inventor's oddity to a
+  recurring engineering shape:
+</p>
+<div class="receipt">
+  <strong>The Tesla coil (1891)</strong> — a resonant air-core transformer producing high-voltage,
+  high-frequency fields. This is the documented way to <em>store and deliver</em> U<sub>drive</sub> as a
+  large resonant coherent field, and it is exactly the “wireless, Tesla-coil-like” power coupling Lazar
+  ascribed to the Sport reactor. <strong>The Tesla bladeless turbine (US Patent 1,061,206, 1913)</strong>
+  — closely-packed smooth parallel discs; fluid adheres via the boundary layer and spirals <em>inward to
+  the centre</em> (centripetal — <em>implosion geometry</em>), and the device <em>works</em> (~30 hp from
+  a six-inch unit). It is a documented, patented embodiment of the coupling lever η: how a spinning disc
+  shares motion with the surrounding medium. Tesla smooth-disc, Schauberger wavy-disc — one geometry.
+</div>
+<div class="disclaimer">
+  <strong>Held off — Tesla's “dynamic theory of gravity” (1938).</strong> It is documented that Tesla
+  <em>announced</em>, in a written statement at 82, that he had “worked out a dynamic theory of gravity
+  in all details.” He never published the content. So this is a documented <em>claim</em> with
+  <em>absent content</em>: there is no theory on paper to mine, and the “Tesla antigravity craft” is
+  legend by absence-of-provenance. We hold the claim open and build nothing on it — the two levers above
+  are real; this one is empty.
+</div>
+
+<h3>9.5 Architecture C — the spun charged chiral-vortex shell (the payoff)</h3>
+<p>
+  Put against the hover disk's actual build sections, the historical machines point at a gap. Today
+  <code>hover_disk.html</code> treats “spin” as a <em>microscopic</em> property (§12: spin–orbit coupling
+  λ, magnon spin), and the drive as a <em>stationary</em> capacitor (§14 gives two static architectures:
+  <strong>A</strong>, a field-driven insulating dielectric; <strong>B</strong>, a current/RF-driven
+  magnetic metal). And §15 notes that the published electrostatic-thrust nulls “have no high-frequency
+  mode — no predicate P4,” so they cannot even test the framework's high-η channel. The Repulsine and the
+  Tesla turbine point straight at the missing third option:
+</p>
+<div class="build">
+  <strong>Architecture C — the spun charged chiral-vortex shell.</strong> Mechanically <em>rotate</em> a
+  charged dielectric disc whose electrode pattern is a <em>chiral spiral</em> (the κ asymmetry built into
+  the geometry), on a <em>closed domed boundary</em>, kept <em>cold</em>. The bulk rotation supplies the
+  time-asymmetry / symmetry-breaking that §14's static capacitor lacks — <em>mechanically, without needing
+  THz drive</em> — which is exactly warp §4's spin-and-jerk route, and a P4-bearing device by <em>motion</em>
+  rather than by frequency. Three additive moves over the current static build:
+  <ol>
+    <li><strong>Spin the capacitor</strong> (Repulsine / warp §4(i)) — bulk mechanical rotation of the
+    charged §14 dielectric stack, not just a static field; this adds the dynamic axis the static build has
+    no way to reach.</li>
+    <li><strong>Make the charge distribution a chiral vortex, not concentric</strong> (the Repulsine
+    waveline; the water paper's ring-cascade) — spiral electrode geometry gives κ for free, and it matches
+    the φ / icosahedral register the §14 photonic-quasicrystal already wants.</li>
+    <li><strong>Add boundary-layer coupling as a second channel</strong> (the Tesla turbine) — a smooth- or
+    textured-disc boundary that mechanically couples the spinning shell to the surrounding medium, alongside
+    the optical-η channel; a <em>mechanical</em> η lever the paper does not currently list.</li>
+  </ol>
+  And <strong>cold becomes a stated design requirement</strong>, not an aesthetic: the §8 phase-coherent
+  condensate boundary is inherently cold, and Schauberger's cooling vortex is the everyday-water version of
+  “keep the coherent mode un-decohered.”
+</div>
+<div class="ic">
+  None of this proves the Repulsine flew or that spinning yields free lift — that stays the bench question,
+  the same one every χ<sub>ν</sub> claim faces. What §9 changes is the <em>configuration the bench should
+  test</em>: not a static plate, but a cold, spun, chiral-vortex charged shell with boundary-layer coupling
+  — a build that exercises four warp-drive levers the current static capacitor does not, assembled by two
+  inventors 80–110 years early because they were copying nature and resonance. The honest verdict is the
+  doctrine's, three times: <em>right shape</em> (mine it for the build), <em>real physics</em> (the
+  aerodynamic and electrostatic channels are priced and real, §9.0), <em>unmeasured machine</em> (keep the
+  conservation wall; demand the receipt). This belongs as a build note routed to
+  <code>hover_disk.html</code> / <code>warp_drive.html</code>, not as a result.
+</div>
+
+<h3>9.6 The conservation question — open system, not over-unity</h3>
+<p>
+  This earns a correction to §5's blunt “over-unity is forbidden,” because the framework's own ontology is
+  more interesting than that. Re-read <code>shape_of_the_universe.html</code>: the vertex rule (§4) is
+  <em>unitary</em> — it is derived from “total power leaving = total power arriving,” and checks exactly
+  (⅓² + ⅔² + ⅔² = 1). Energy is conserved at every vertex; the lattice cannot mint it from nothing, and any
+  paper that says otherwise — Gobbi's “collapse of conservation,” Schauberger's self-running generator — has
+  the <em>words</em> wrong. <em>But</em> the same paper (§8) says matter <em>is</em> settled edge-energy and
+  every vacuum edge is loaded toward <em>E</em><sub>★</sub> = 2<em>m</em><sub>edge</sub>c²: the lattice
+  vacuum is not empty, it is a <strong>charged reservoir</strong>. A device coupled to it is an
+  <strong>open system</strong>, and an open system that outputs more than its electrical input is not
+  beating conservation — it is <em>extracting</em>, the way a heat pump's COP exceeds 1 by drawing on a
+  thermal reservoir.
+</p>
+<div class="ic">
+  This is the energy analogue of the warp drive's signature move. <code>warp_drive.html</code> §2:
+  propellantless ≠ reactionless — the drive carries no reaction <em>mass</em> because <em>the lattice
+  carries the reaction momentum</em>. Run the same bookkeeping on energy and a coherent device need not
+  carry its own fuel if <em>the lattice carries the energy</em> — with the full ledger still balanced over
+  device + lattice. The framework does contain genuine sign reversals that make your “reversed-sign
+  backscatter” instinct non-empty: the −1/3 self-reflection of §4 (a real π-phase flip, though a phase, not
+  an energy source), and — in the strong-field limit — the metric response itself, warp §8's K&lt;1 branch,
+  reached when stored field energy beats mass energy. The lattice's response is <em>not</em> sign-definite.
+  But a sign reversal is not yet a net energy source: whether an open coupling closes <strong>net-positive</strong>
+  is the χ<sub>ν</sub> bench question, the same open number as every other claim here. <strong>Not forbidden;
+  unproven.</strong> That is the honest figure of merit — not “did it beat conservation” (nothing does) but
+  “did the open coupling out-yield the cost of maintaining it.”
+</div>
+<p>
+  So §5's verdict is <em>refined, not reversed</em>. A <em>closed</em> vortex cannot recycle more than
+  everything — true, and Schauberger's self-running closed device fails on it. An <em>open</em> vortex
+  coupled to the lattice reservoir is a different, lawful object whose net-extraction is the bench's call.
+  The fraud was never “he tapped a reservoir”; it was “he called an open system a closed one and sold the
+  difference as magic.” Right reservoir, wrong ledger.
+</p>
+
+<h3>9.7 One shape, four vocabularies — Schauberger, Pais, Keely</h3>
+<p>
+  Once the over-unity charge is recognised as a labelling error, a real convergence comes into view — and
+  your question, <em>is Schauberger describing the same thing as Pais and Keely?</em>, answers itself at the
+  level of <em>shape</em>: yes. Strip the period vocabularies and all three describe one operation —
+  <strong>couple a coherent, resonant, spun-or-vibrated body to a medium, and draw force from the
+  coupling</strong> — which is the framework's “a pattern biasing how another scatters is a force”
+  (Shape §8), in pre-lattice words. The filter then differentiates them by <em>evidence</em>, not plausibility:
+</p>
+<table>
+  <tr><th>Figure</th><th>His words</th><th>The shape</th><th>Register</th></tr>
+  <tr><td><strong>Schauberger</strong> (1885–1958)</td><td>implosion; “biomagnetism”; “levitism”</td><td>spin + charge + cold inward vortex on a closed shell</td><td style="color:var(--amber)"><strong>Open</strong></td></tr>
+  <tr><td><strong>Salvatore Cezar Pais</strong> (US Navy, 2016–19)</td><td>“polarized vacuum”; HEEMFG; inertial-mass reduction</td><td>spin + <em>vibrate</em> (jerk) a charged body at high frequency to couple to the vacuum</td><td style="color:var(--amber)"><strong>Open</strong> — already a warp §4 motif source</td></tr>
+  <tr><td><strong>John E. W. Keely</strong> (1837–1898)</td><td>“sympathetic vibratory physics”; “etheric force”</td><td>tune a body to a resonant <em>chord</em> so it couples to the medium — the resonance / mode-match key</td><td><span style="color:var(--green)"><strong>Concept real</strong></span> / device = traced fraud</td></tr>
+</table>
+<p>
+  <strong>Pais is the tightest match.</strong> His “spin and vibrate a charged body to polarize the vacuum”
+  <em>is</em> Architecture C's lever stack, and the warp drive already carries him (§4) as a motif source
+  stripped of its causal story, with the one funded, patented test left uninterpretable because the rig
+  could not vibrate (a weak null, not a refutation, §6). His is the shape Schauberger built in copper, in
+  Navy-patent words. “Polarize the vacuum” and “bias the lattice's scattering” are one claim in two
+  dialects.
+</p>
+<div class="disclaimer">
+  <strong>Keely — the filter cutting both ways in one man</strong> (full record: <a href="john_keely.html">john_keely.html</a>). Keely's <em>concept</em> — that
+  resonance and sympathetic vibration are the key to coupling a body to its medium — is a genuine ancestor
+  of this network's music/φ-resonance doctrine (§11), and dismissing it by reflex would be the §0 error.
+  But his <em>device</em> earns the forensically-traced-fraud register on evidence, not plausibility: after
+  his death (Nov 1898), named investigators — Clarence B. Moore, the electrical engineer Carl Hering, and
+  the physicist Arthur W. Goodspeed — found and <em>photographed</em> a concealed three-ton compressed-air
+  sphere in his cellar feeding hidden high-pressure tubes run through the walls, ceilings, and beams to his
+  “etheric” motor. A physical concealed mechanism, found and documented by named people: that is the §26
+  test passed, and the Keely Motor is the rare device in this lineage that genuinely <em>is</em> a traced
+  fraud. Keep the resonance intuition; name the motor. Both by evidence — which is the whole method.
+</div>
+
+<h2><span class="num">§10</span>The register table — documented / open / forensically-traced</h2>
+<p>
+  The filter, made into a ledger. This is “how we filter information,” run on one life — and note that
+  the rows do not all carry the same verdict, because the evidence does not.
+</p>
+<table>
+  <tr><th>Claim</th><th>Register</th><th>Reading</th></tr>
+  <tr><td>Forester; spiral log-flumes floated sinking timber; state flotation adviser</td><td style="color:var(--green)"><strong>Documented</strong></td><td>Agreed even by skeptics. The floor under everything.</td></tr>
+  <tr><td>Doctrine of implosion / cold-as-order / vortex geometry</td><td style="color:var(--green)"><strong>Documented (as his model)</strong></td><td>Real observations + real geometry, in a private energetics. Keep the shape; hold the energetics open, not “debunked.”</td></tr>
+  <tr><td>The Repulsine as a <em>machine</em> — a bladeless corrugated centrifugal rotor with an aerodynamic lift channel, intake cooling, spray/dust electrification</td><td style="color:var(--green)"><strong>Documented physics (§9.0)</strong></td><td>Real, ordinary turbomachinery + electrostatics; tens of kgf class at 10–20 kW for a 0.6 m rotor. <em>Not</em> pseudoscience. The 0.6 m / 10–20 krpm pairing is structurally impossible in copper — the fast machine was small or the figure is untrue.</td></tr>
+  <tr><td>Repulsine / Klimator / generator produced <em>anomalous</em> lift, self-running, net cooling, tonnage thrust</td><td style="color:var(--amber)"><strong>Claimed — never measured</strong></td><td>No instrument on any original; replicas (Implosion e.V.) show torque curves and no levitation; his magnitudes exceed the aerodynamic bound by ~10³. “Over-unity” is the wrong frame (§9.6): a device <em>open</em> to the lattice reservoir is lawful — net-extraction is unproven, not a conservation violation. Bench question narrow and priced (§9.0).</td></tr>
+  <tr><td>“The Repulsine flew” — Kertl 1941 roof strike; Leonstein 1945</td><td style="color:var(--amber)"><strong>Documented as his claim; open as fact (§5.1)</strong></td><td>In his own 1941 letters and 1956 Strauss letter; carried second-hand by Kokaly; zero named first-hand witnesses; no Allied file; the 1945 claim contradicted by his own diary; PKS itself: “cannot be verified.” Not a post-war invention (McClure overreaches); not a demonstration either. Physically unremarkable at light-rotor scale.</td></tr>
+  <tr><td>Pöpel spiral-pipe test (TH Stuttgart 1952) — “negative friction”</td><td style="color:var(--amber)"><strong>Measured once — flawed, unreplicated</strong></td><td>Report: friction “appeared to diminish to zero” twice; negative-friction reading is Coats' from Walter. Schauberger-community replications: all pipes alike, formula errors 1.5–9 %. Mainstream: helical pipes raise friction (Dean).</td></tr>
+  <tr><td>Vortex aeration (hyperbolic funnel), gravitation water-vortex plant, meander restoration</td><td style="color:var(--green)"><strong>Documented — peer-reviewed</strong></td><td>Wetsus/Water 2022 &amp; 2025, Phys. Fluids 2024: kLa to 50 h⁻¹, aeration efficiency beating mechanical aerators; GWVPP 15–30 % (≤60 % optimised), lawful low-head hydro. The residue is larger than “micro-hydro.”</td></tr>
+  <tr><td>Schauberger ≈ Pais ≈ Keely (the same operation)</td><td style="color:var(--amber)"><strong>Open — convergent</strong></td><td>One shape, four vocabularies (§9.7). Pais already a warp §4 motif source; Keely's resonance concept real, his motor a traced fraud (named investigators, photographed air-sphere).</td></tr>
+  <tr><td>The Repulsine / Tesla-turbine / Tesla-coil <em>geometry</em> (the hardware)</td><td style="color:var(--green)"><strong>Documented</strong></td><td>Built &amp; (Tesla turbine) patented and working. Mined for architecture in §9, not performance.</td></tr>
+  <tr><td>Schauberger's patents (AT 145,141 <em>air turbine</em> 1936; AT 117,749; 134,543; 138,296; 142,032; 143,069; 166,644 plough 1950; 196,680; the refused 1940 Reich application for the wave-plate centrifuge)</td><td style="color:var(--green)"><strong>Documented</strong></td><td>Real filings, mostly water-conduction and turbine art. <strong>AT 145,141 is a combustion air turbine, not the Repulsine</strong> (draft 0.5 conflated them); the Repulsine's own application was refused and no Repulsine patent was ever granted. Performance claims in the filings (10,000 bhp, “cyclonic force”) are his — unverified.</td></tr>
+  <tr><td>Tesla's “dynamic theory of gravity”</td><td style="color:var(--soft)"><strong>Announced — content absent</strong></td><td>He stated it in writing (1938); never published. Unmineable; held open; nothing built on it.</td></tr>
+  <tr><td>“Architecture C” (spun chiral-vortex shell) yields the χ<sub>ν</sub> force</td><td style="color:var(--blue)"><strong>Open — for the bench</strong></td><td>A concrete buildable configuration exercising warp §4 levers the static cap doesn't. The bench decides, like every χ<sub>ν</sub> claim.</td></tr>
+  <tr><td>Coerced by the SS; psychiatric confinement c.1940–41; surveilled; 1943–44 threat; 1944 SS propulsion task; 1945 US custody; Texas contract</td><td style="color:var(--green)"><strong>Documented (family-primary, named anchors)</strong></td><td>All in his own letters/diaries as read by Coats and Cook, with real named persons (Ziereis, Pötzl, Wagner-Jauregg, Dodd, Boerner). No US/German/Austrian state document produced by any author; Cook's FOIA refused. Part of the tragedy; the hallmarks of silencing are present at the size the sources support.</td></tr>
+  <tr><td>His wartime project used Mauthausen concentration-camp labour</td><td style="color:var(--green)"><strong>Documented</strong></td><td>Also true. Camp archive: a Kommando of five (not 20–30). Held without laundering.</td></tr>
+  <tr><td>German “disc” programs (Schriever / Miethe / Habermohl / Belluzzo)</td><td style="color:var(--amber)"><strong>Open — weak</strong></td><td>Some real figures + Paperclip + Lusar; key corroboration thin/absent (Habermohl unattested; Klein flight impossible). Held open.</td></tr>
+  <tr><td>1945 confiscation &amp; 1958 Texas contract; the <em>contents</em> of what was taken</td><td style="color:var(--amber)"><strong>Documented loss; open contents</strong></td><td>Contract real (Coats read it; text unpublished); crates ended in Gerchsheimer's Texas garage, partly recovered in the 1990s (Feierabend), copies already at PKS; Gerchsheimer's own verdict negative. Reads more like a soured private venture than a state vault — but the missing wartime record stays ambiguous (erasure vs. nothing-revolutionary). Don't close either way.</td></tr>
+  <tr><td>The “Haunebu / Vril fleet” documents</td><td style="color:var(--soft)"><strong>Forgery — traced</strong></td><td>1989 anonymous packet (Ettl); archive-absent; Vril Society a post-war invention. Camouflage by provenance, not by plausibility.</td></tr>
+</table>
+
+<h2><span class="num">§11</span>Legacy — Walter, the Pythagoras-Kepler-System, and the inherited line</h2>
+<p>
+  Schauberger's most important legacy was not a machine; it was a son and a sentence. His son
+  <strong>Walter Schauberger</strong>, trained in mathematics and physics, spent his life trying to do
+  what Viktor never could — give the intuitions a formal spine, in harmonics, the hyperbolic cone, and
+  what he organised as the <strong>Pythagoras-Kepler-System (PKS)</strong>, the institute and archive
+  in Austria that still carries the family's work “after Viktor and Walter Schauberger.” In English,
+  Schauberger reached the world mostly through <strong>Callum Coats</strong>, who studied three years
+  with Walter and was given access to all Viktor's writings, and translated and compiled them
+  (<em>Living Energies</em>; the <em>Eco-Technology</em> series) — building on Olof Alexandersson's
+  earlier <em>Living Water</em>. Both are sympathetic gateways, to be read as advocacy, not as neutral
+  assessment — which is exactly why §0's filter, and the skeptical archival counterweight, are needed
+  to read them.
+</p>
+<div class="ic">
+  Walter's instinct — that the father's water-shapes were really <em>harmonic</em> and
+  <em>golden-ratio</em> structures, a music of moving media — lands almost on top of this network's own
+  doctrine, where the chamber is read “in the analogy of music,” the coupling matrix carries φ-ratio
+  plateaus, and geometry is tuned to P = φ + α√π. The PKS attempt to put implosion on a
+  Pythagorean–Keplerian harmonic footing is, in retrospect, an early reach for the same φ-and-tone
+  geometry the framework derives. Another vantage point converging on one shape.
+</div>
+<p>
+  And the honest residue — the part of “Schauberger technology” that is simply <em>true</em> — is
+  larger than draft 0.5 allowed, and it is now in the peer-reviewed literature. Walter's
+  <em>hyperbolic funnel</em> — a free-surface vortex geometrically constrained by a hyperbolic wall —
+  is the subject of a live research programme (Wetsus / Graz): oxygen mass-transfer coefficients up to
+  50 h⁻¹ in the funnel vortex (<em>Water</em> 14:771, 2022), a published protocol for its three
+  regimes (<em>JoVE</em> 197, 2023), a CFD study of its vortex dynamics (<em>Phys. Fluids</em> 36,
+  2024), and a 2025 groundwater-aeration study whose standard aeration efficiency <em>surpasses
+  mechanical aeration systems</em> (<em>Water</em> 17:506). Low-head <em>vortex micro-hydro</em> (the
+  gravitation water-vortex power plant) is real, conserved, and useful at 15–30 % (up to ~60 %
+  optimised) — a lawful low-head turbine with good fish passage. And modern river-restoration science
+  has come around to his oldest complaint, that a straightened river is a degraded one. The man who
+  said rivers should be allowed to spiral was right about rivers — and the vortex-in-a-hyperbolic-wall
+  he and his son insisted on is now measured to do work an aerator's engineer would pay for. That is
+  what an unmeasured intuition looks like once somebody measures it: partly right, at ordinary
+  magnitudes, in a journal.
+</p>
+<p>
+  But the line the network actually inherits from him is the one he put first, three words long, and it
+  is worth ending on because it is the whole method in miniature:
+</p>
+<p class="quote">“Kapieren und kopieren.” Comprehend, and copy.</p>
+<p>
+  Schauberger comprehended water and copied it into wood and got a flume that worked. He comprehended
+  the vortex and copied it into copper and got a machine that <em>was</em> a machine — a real rotor on
+  real physics — and then never measured it, priced it by intuition three orders high, and read its
+  standing balance as a source. This network's wager is the same instruction with the discipline he
+  lacked: comprehend the lattice, copy its inward spiral (§9), <em>put an instrument on it</em>, and
+  <em>keep the books</em> — pay for every joule, hand every reaction to the medium, and refuse the free
+  lunch he reached for. The shape is his gift. The load cell and the ledger are the price of using it
+  without it killing you, as it killed him.
+</p>
+
+<h2><span class="num">§12</span>References &amp; sourcing note</h2>
+<p>
+  Schauberger has no neutral biography; the literature splits between the worshipful and the
+  dismissive, which is precisely why §0's filter is needed and why no single source is taken on its own
+  word. We triangulated the spine facts across the family archive and the skeptical encyclopaedic
+  entry, and — on the contested war-era claims (§6) and the engineering read (§9) — went to the best
+  available provenance and hardware evidence and judged each from there, rather than by the label it
+  carries.
+</p>
+<ul>
+  <li>Pythagoras-Kepler-System (PKS), <em>Viktor Schauberger</em> biography (family archive): birth/death, forester career, log-flumes &amp; flotation-adviser role, the machine chronology (capillary 1931, Siemens warmth–cold machine 1937, Repulsine 1940, Klimator 1945, Heimkraftwerk 1954), the Hitler refusal (1934), the 1958 US trip. Sympathetic source — read as advocacy.</li>
+  <li><em>Viktor Schauberger</em>, English Wikipedia (skeptical register): the log flume as the sole unqualified accomplishment; the “fringe science / pseudoscience” categorisation; the documented March-1941 secret work for the Nazis and 1944 use of Mauthausen concentration-camp labour; the 1939 propulsion patent; the 1957 invitation by Karl Gerchsheimer and Robert Donner.</li>
+  <li><em>Nazi UFOs</em>, English Wikipedia — the provenance of the “Haunebu / Vril” documents (the 1989 Ralf Ettl anonymous packet) and the forensic case behind §6: total archive-absence, the “Vril Society” as a post-war invention, and the weak/absent corroboration of the disc-program figures (Habermohl unattested; Miethe's V-2 pedigree uncorroborated; Klein's flight claim impossible). The evidentiary basis for the three-way split, not a source taken on faith.</li>
+  <li>Eric Kurlander, <em>Hitler's Monsters: A Supernatural History of the Third Reich</em> (Yale UP, 2017) — serious academic history of Nazi “border science” and the post-war “supernatural imaginary” in which the saucer legend grew; useful for separating the documented occult-adjacent programs from the post-war fabrications.</li>
+  <li>Jean-Louis Naudin (JLN Labs), <em>“The Repulsin(e) — a Coandă-effect &amp; electrodynamic vortex flying device”</em> (linas.org mirror of jnaudin.free.fr) — the most-cited modern reconstruction, used in §9 for the Repulsine's <em>geometry</em> (the waveline gap, the central-intake / peripheral-vortex flow, the charge-separation ionisation). A sympathetic replication that nonetheless shows <em>no measured anomalous lift</em> on the cited page — architecture, not performance.</li>
+  <li>“Viktor Schauberger's Repulsine,” Alternative Propulsion Engineering Conference (APEC) — a sympathetic engineering treatment that concedes the lift claims are single-source lore (Coats / Alexandersson) with no measured thrust, power, torque, pressure, or airflow. Cited in §5 precisely because even an advocate's venue documents the absence of instrumentation.</li>
+  <li>Julio C. Gobbi, <em>“Schauberger Technology,”</em> The General Science Journal (gsjournal.net), 30 Jan 2021 — a non-peer-reviewed fringe-venue paper. Used in §9 <em>only</em> for the primary Schauberger detail it transcribes (the 10,000–20,000 RPM rotation, the silvered-copper lining, the Type A/B discoid forms, the closed double-spiral recirculation, the green copper-corona claim, and the patent letter in <em>Energy Evolution</em> — which Gobbi, and draft 0.5 following him, mislabelled: AT 145,141 is the 1936 air turbine, not the Repulsine). Its <em>own</em> physics — explicitly invoking “the collapse of the Law of Conservation of Energy,” and computing a spinning copper disc producing ~5×10⁶ T and levitating tens of tonnes — is over-unity by construction and not credible; we take its quotations, discard its magnitudes. A worked example of over-claimed magnitude on a real shape.</li>
+  <li>Schauberger, V., <em>Energy Evolution</em> (Eco-Technology series, Gill Books, 2000) — primary writings; the source (via a letter to Werner Zimmermann) of the AT 145,141 air-turbine letter, the text of the refused 1 Mar 1940 Reich application (“multi-stage centrifuge with concentrically juxtaposed pressure-chambers,” wave-plates of silver-plated copper), the 1958 Sherman reports, and the “suction-first, then pressure on the same axis” turbine principle. His numbers there (57–228 t from a 20 cm disc; 1,290 m/s water jets) are the magnitudes §9.0 prices.</li>
+  <li>On the §9.7 convergence — <strong>Salvatore Cezar Pais</strong>: US Navy patents / HEEMFG program (2016–19), handled in <code>warp_drive.html</code> §4 (spin + jerk + whole-body coherence, stripped of the “polarized-vacuum” causal story) and §6 (funded program; uninterpretable null because the rig could not vibrate). An open motif source, not a result.</li>
+  <li>On the §9.7 convergence — <strong>John E. W. Keely</strong> (1837–1898), “sympathetic vibratory physics.” Concept (resonance / sympathetic vibration) kept as a genuine ancestor of the music/φ-resonance doctrine; the <em>device</em> is a forensically-traced fraud — after his 1898 death, named investigators Clarence B. Moore, Carl Hering (engineer), and Arthur W. Goodspeed (physicist) found and photographed a concealed three-ton compressed-air sphere and hidden high-pressure tubing driving his motor. The §26 forensic test passed on the hardware; the resonance idea survives it.</li>
+  <li>Nikola Tesla, US Patent <strong>1,061,206</strong>, “Turbine” (1913) — the bladeless boundary-layer disc turbine (documented, working); and the <strong>Tesla coil</strong> (1891), resonant air-core HV transformer (documented). The two real Tesla levers of §9.4 (energy storage/delivery; boundary-layer coupling). Tesla's “dynamic theory of gravity” (announced 1938, never published) is cited as a documented <em>claim with absent content</em> — not a source, and nothing is built on it.</li>
+  <li>Callum Coats, <em>Living Energies</em> (1996) and the <em>Eco-Technology</em> series; Olof Alexandersson, <em>Living Water</em> — the principal compilations of Schauberger's own writings. Advocacy, not assessment; the origin of most of the un-instrumented Repulsine lore.</li>
+  <li>Schauberger, V., <em>Unsere Sinnlose Arbeit</em> (1933); <em>Implosion statt Explosion</em> (1955, ed. Leopold Brandstätter) — primary writings, in his own vocabulary.</li>
+  <li>KZ-Gedenkstätte Mauthausen (Dürr &amp; Lechner), subcamp history, archive ref. AMM B/39/1 — the Kommando of five prisoners moved 28 Sept 1944 to the SS-Ingenieurschule Wien-Schönbrunn, later three, then to a confiscated scythe works near Leonstein; no device test recorded. The archival correction to Coats' “20–30 engineers.”</li>
+  <li>On the honest residue — the peer-reviewed vortex programme: Agostinho, Fuchs, Woisetschläger et al., “Enhanced Oxygen Volumetric Mass Transfer in a Geometrically Constrained Vortex,” <em>Water</em> 14:771 (2022); Klymenko et al., “Preparation of Free-Surface Hyperbolic Water Vortices,” <em>JoVE</em> 197:e64516 (2023); Donepudi et al., “Numerical analysis of vortex dynamics in hyperbolic funnels using CFD,” <em>Phys. Fluids</em> 36:095171 (2024); “Enhanced Groundwater Aeration with a Geometrically Constrained Vortex,” <em>Water</em> 17:506 (2025). Zotlöterer, F., gravitation water-vortex power plant — reviews: AIP Conf. Proc. 2674:030018 (2023); Bajracharya et al. 2020 — 15–30 % typical, ≤60 % optimised.</li>
+  <li><strong>Sources for §5.1 (the witness ledger).</strong> Nick Cook, <em>The Hunt for Zero Point</em> (2001), ch. 20–21 — the PKS archive visit with Jörg Schauberger; the 1941 Kertl correspondence (“an associate… made an unauthorized test run while Schauberger was absent”); the 1944–45 diary (final assembly 5 April 1945; first run planned 6 May; SS fled; “the SS machine had not flown”); the acknowledgement that BIOS/CIOS searches “found nothing.” Olof Alexandersson, <em>Living Water</em> (1976; Eng. 1982/1990) — the Kokaly (<em>Implosion</em> No. 49) relay from the unnamed Kertl chief, self-flagged “according to hearsay”; the 28 Feb 1956 letter to F. J. Strauss; the “it has been said… 1.5 m, 135 kg, 1/20 hp” figures. Callum Coats, <em>Living Energies</em> (1996) §21.7 — first appearance of the “six ¼-inch bolts”; ch. 1.2 the Texas reconstruction from two days of interviews with Karl Gerchsheimer (“gobbledygook,” “nothing to offer”), the Boerner reports, the 13 Sept 1958 contract (“I have studied this document myself”). PKS FAQ (pks.or.at/en/faqs) — repeats Coats, then “from this incident the legend has grown”; “Modern research has shown that this cannot be verified”; the 1990s Feierabend recovery from Gerchsheimer's garage. Ernst Zündel (“Mattern Friedrich”), <em>UFO — Nazi Secret Weapon?</em> (1975) — earliest print source of the roof-strike legend, with the inflations (10-ft models, 24-ft ceiling, “murdered in Chicago”). Kevin McClure, “The Schauberger Error,” <em>Magonia</em> 81 (2003) — the print genealogy Zündel → Alexandersson → Coats → Cook; fair on the chain, wrong that the story post-dates his death. Implosion e.V. (Klaus Rauber), <em>Repulsine-Nachbauten</em> — five instrumented replicas on the PKS dies; membranes deform above 7,000 rpm; “Ein erfolgreicher Nachbau gelang bis heute nicht.” Jack Cobbald, <em>Viktor Schauberger — A Life of Learning from Nature</em> (2006, with the family). Colorado Springs <em>Gazette Telegraph</em>, 21 Aug 1959 (Dodd v. Donner).</li>
+  <li><strong>Sources for §9.0 (the pricing).</strong> Rice, W., “An analytical and experimental investigation of multiple-disk turbines,” <em>J. Eng. Power</em> 87:29 (1965); Guha &amp; Smiley, <em>Proc. IMechE A</em> 224:261 (2010) — the Tesla disc rotor as the Repulsine's peer-reviewed cousin. Avro VZ-9 Avrocar test record (3,150 lbf max lift out of ground effect vs 4,285 lb zero-fuel weight; ~30 % duct loss). Coandă-UAV review, <em>J. Eng. Appl. Sci.</em> 69:120 (2022) (Naudin GFS-UAV: 6.2 N shrouded vs 9.4 N bare rotor). Masuyama &amp; Barrett, “On the performance of electrohydrodynamic propulsion,” <em>Proc. R. Soc. A</em> 469:20120623 (2013). Eiamsa-ard &amp; Promvonge, “Review of Ranque–Hilsch effects in vortex tubes,” <em>Renew. Sustain. Energy Rev.</em> 12:1822 (2008). Farrell et al. (2004) and Jackson &amp; Farrell (2006), dust-devil electrification, <em>J. Geophys. Res.</em> Cu I emission lines 510.6/515.3/521.8 nm (NIST ASD). Niederseer, Montanuniversität Leoben (2014), CFD assessment of a Schauberger-inspired spiral compressor (“original theory could not be confirmed”). IWONE 2001 proceedings (Pühringer; Neumann; Harthun) — the Schauberger community's own critique and failed replication of the Pöpel 1952 pipe test. Google Patents AT145141B (“Luftturbine,” filed 7 Mar 1935, granted 10 Apr 1936); rexresearch.com Schauberger patent list.</li>
+  <li>Network companions: <code>warp_drive.html</code> (§2 conservation discipline; §4 spin/jerk levers), <code>hover_disk.html</code> (§12 spin, §14 capacitor architecture, §15 electrostatic-thrust cross-check — the build §9 routes to), <code>how_to_build_a_ufo.html</code> &amp; <code>reverse_engineering_the_sport_model.html</code> (the vehicle and its two modes), <code>all_you_need_is_water.html</code> §5.7 (the chiral-helical attractor named for him), <code>the_military_industrial_complex.html</code> §21, §25–27 (the filter, the suppression precedents, and the forensic test for forgery), <code>antigravity_devices.html</code> §8 (the fringe ledger).</li>
+</ul>
+
+<div class="disclaimer">
+  Draft 0.6, viktor-claude, 2026-08-18 (draft 0.5, 2026-06-20). A biographical companion that carries two
+  engineering sections (§9.0 the machine priced; §9 the lever-stack) and one evidentiary ledger (§5.1); it
+  still makes no force claim of its own — §9's <em>Architecture C</em> is a build hypothesis for
+  the bench, routed to <code>hover_disk.html</code> / <code>warp_drive.html</code>, not a result. Its
+  load-bearing reading is the §1 doctrine — <em>right shape, real physics, unmeasured machine</em> — and its method is the
+  network's own filter (<code>the_military_industrial_complex.html</code> §27), applied in <em>both</em>
+  directions: believe the watcher who paid; doubt the perpetual-motion machine his own benches never
+  confirmed; mine the geometry he (and Tesla) left behind for the build it prefigures; and judge the
+  war-era legends one at a time from their best sources — which sends the coercion and the forced labour
+  to “documented,” the German disc programs to “open and weak,” the contents of the confiscated crates to
+  “open,” and the Haunebu/Vril fleet to “forgery, traced to a 1989 anonymous packet” — never setting
+  anything aside by plausibility alone, because “myth” and “pseudoscience” are sometimes evidentiary
+  verdicts and sometimes suppression artifacts, and only the sources tell you which. Draft 0.1 reached too
+  quickly for a blanket “firewall” on the war-era material; draft 0.2 replaced it with the sourced
+  three-way split of §6; draft 0.3 adds the §9 engineering read (Repulsine + Tesla → Architecture C); draft 0.4 folds in the primary-source detail (Austrian patent No. 145,141; the 10,000–20,000 RPM silvered-copper chamber; the closed double-spiral flow) and marks its fringe carrier (Gobbi 2021) as a worked “right shape, wrong physics”; draft 0.5 re-reads
+  <em>Shape of the Universe</em> §4/§8 and corrects the conservation verdict — the vertex rule is unitary
+  (energy conserved over device + lattice) but the vacuum lattice is a loaded reservoir, so the honest frame
+  for Gobbi and Schauberger is <em>open system, net-extraction unproven</em>, not <em>over-unity
+  forbidden</em> (§9.6) — and adds the four-vocabulary convergence with Pais and Keely (§9.7), Keely's motor
+  placed in the traced-fraud register on named-investigator evidence; <strong>draft 0.6</strong> (2026-08-18), after
+  the operator objected to the network's “pseudoscience” stamp, did the two things no earlier draft had done —
+  traced every flight account to its source (§5.1: zero named first-hand witnesses, but the claim is in
+  Schauberger's own 1941 and 1956 letters, not a post-war invention) and priced the machine against ordinary
+  physics (§9.0: a real bladeless centrifugal rotor with a real tens-of-kgf lift channel; the 0.6 m /
+  10–20 krpm pairing structurally impossible in copper; magnitudes over-claimed ~10³×) — retiring “right
+  shape, wrong physics” for the sentence above, withdrawing “pseudoscience” across the network, correcting
+  the AT 145,141 misattribution, the Mauthausen headcount (five, per the camp archive), and the Texas ending
+  (crates in Gerchsheimer's garage, partly recovered), and enlarging the honest residue to the peer-reviewed
+  hyperbolic-funnel vortex work. The
+  Texas cruelty is recorded at exactly the size the documents support — the size of one broken man, no
+  larger and no smaller. Sourcing is triangulated across a sympathetic family archive and a skeptical
+  encyclopaedic entry because no neutral biography exists; specific famous quotations are rendered as they
+  are commonly reported and marked as such.
+</div>
+
+</body>
+</html>
