@@ -1,0 +1,1534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>How to Build a UFO — Controlled Motion Through the Lattice</title>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style>
+  :root {
+    --ink: #1c1c1c;
+    --paper: #fbfaf6;
+    --green: #5a7d3a;
+    --amber: #b88a2a;
+    --rust: #b04a2a;
+    --rule: #d2cdbf;
+    --soft: #8a8676;
+  }
+  html { background: #ece8df; }
+  body {
+    font-family: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+    max-width: 780px;
+    margin: 2.5rem auto;
+    padding: 2.5rem 2rem 4rem;
+    color: var(--ink);
+    line-height: 1.6;
+    background: var(--paper);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  }
+  h1 {
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
+    font-weight: 700;
+    font-size: 1.85rem;
+    line-height: 1.25;
+    border-bottom: 2px solid var(--ink);
+    padding-bottom: 0.6rem;
+  }
+  h2 {
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 1.25rem;
+    margin-top: 2.6rem;
+    color: var(--ink);
+  }
+  h2 .num { color: var(--soft); font-weight: normal; margin-right: 0.4em; }
+  h3 {
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 1.04rem;
+    margin-top: 1.6rem;
+    color: #444;
+  }
+  .byline {
+    color: var(--soft);
+    font-style: italic;
+    margin-bottom: 2.2rem;
+    font-size: 0.95rem;
+  }
+  .tldr {
+    background: #eef3e8;
+    border-left: 4px solid var(--green);
+    padding: 0.9rem 1.1rem;
+    margin: 1.2rem 0;
+    font-style: italic;
+  }
+  .companion {
+    background: #f0eee8;
+    border-left: 4px solid var(--soft);
+    padding: 0.6rem 1rem;
+    margin: 1.2rem 0;
+    font-size: 0.92rem;
+  }
+  .receipt {
+    background: #eef3e8;
+    border-left: 4px solid var(--green);
+    padding: 0.8rem 1.1rem;
+    margin: 1.2rem 0;
+    font-size: 0.94rem;
+  }
+  .receipt::before {
+    content: "Receipt  ·  ";
+    font-style: normal;
+    color: var(--green);
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 0.82rem;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+  }
+  .lemma {
+    background: #fff8e8;
+    border-left: 4px solid var(--amber);
+    padding: 0.8rem 1.1rem;
+    margin: 1.2rem 0;
+    font-size: 0.94rem;
+  }
+  .lemma::before {
+    content: "Open lemma  ·  ";
+    font-style: normal;
+    color: var(--rust);
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 0.82rem;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+  }
+  .doctrine {
+    background: #1c1c1c;
+    color: #f5f1e6;
+    padding: 1rem 1.2rem;
+    margin: 1.6rem 0;
+    font-style: italic;
+    line-height: 1.5;
+    border-radius: 2px;
+  }
+  .doctrine::before {
+    content: "Doctrine sentence  ·  ";
+    font-style: normal;
+    color: var(--amber);
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+  }
+  .ic {
+    background: #f0eee8;
+    border-left: 3px solid var(--soft);
+    padding: 0.6rem 1rem;
+    margin: 1rem 0 1.6rem 0;
+    font-size: 0.92rem;
+  }
+  .ic::before {
+    content: "Implementation consequence  ·  ";
+    font-style: normal;
+    color: var(--ink);
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 0.82rem;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+  }
+  .verdict {
+    background: #f6f3ea;
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    padding: 0.9rem 1.1rem;
+    margin: 1.2rem 0;
+    font-family: "JetBrains Mono", Consolas, monospace;
+    font-size: 0.88rem;
+  }
+  .verdict::before {
+    content: "Verdict labels  ·  ";
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
+    font-style: normal;
+    color: var(--ink);
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  code {
+    font-family: "JetBrains Mono", Consolas, monospace;
+    background: #f3eee0;
+    padding: 0.05rem 0.3rem;
+    border-radius: 2px;
+    font-size: 0.9em;
+  }
+  table {
+    border-collapse: collapse;
+    margin: 1.1rem auto;
+    font-size: 0.93rem;
+  }
+  th, td {
+    border: 1px solid var(--rule);
+    padding: 0.4rem 0.8rem;
+    text-align: left;
+    vertical-align: top;
+  }
+  th { background: #f0eadb; font-family: "Helvetica Neue", Helvetica, sans-serif; }
+  ul, ol { padding-left: 1.5rem; }
+  li { margin: 0.3rem 0; }
+  hr.softrule {
+    border: none;
+    border-top: 1px solid var(--rule);
+    margin: 2rem 0;
+  }
+  .figure {
+    margin: 1.6rem 0;
+    text-align: center;
+    color: #555;
+  }
+  .figure img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    border-radius: 3px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  }
+  .figure.hero {
+    margin: 1.8rem 0 2.2rem 0;
+  }
+  .figure.hero img {
+    max-width: 720px;
+    width: 100%;
+  }
+  .figure .caption {
+    font-style: italic;
+    font-size: 0.88rem;
+    color: var(--soft);
+    margin-top: 0.4rem;
+  }
+  .disclaimer {
+    font-size: 0.84rem;
+    color: var(--soft);
+    border: 1px dashed var(--soft);
+    padding: 0.7rem 1.1rem;
+    margin: 2rem 0;
+    border-radius: 2px;
+  }
+</style>
+</head>
+<body>
+
+<style id="eg-site-nav-css">
+  .eg-nav{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:.8rem;
+    background:#1c1c1c;color:#ece8df;padding:.55rem 1.2rem;line-height:1.6;
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    box-shadow:0 1px 3px rgba(0,0,0,.25)}
+  body{margin-top:5.2rem !important}
+  .eg-nav a{color:#ece8df;text-decoration:none;margin-right:1rem;white-space:nowrap}
+  .eg-nav a:hover{text-decoration:underline}
+  .eg-nav .eg-home{font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+    margin-right:1.4rem}
+  .eg-nav .eg-cur{border-bottom:2px solid #b88a2a}
+  .eg-nav .eg-wrap{max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;
+    align-items:baseline}
+  .eg-nav .eg-pdf{margin-left:auto;margin-right:0;border:1px solid #b88a2a;
+    color:#ece8df;padding:.1rem .6rem;border-radius:2px;font-weight:600}
+  .eg-nav .eg-pdf:hover{background:#b88a2a;color:#1c1c1c;text-decoration:none}
+  @media print{.eg-nav{display:none} body{margin-top:0 !important}}
+</style>
+<div class="eg-nav"><div class="eg-wrap"><a class="eg-home" href="index.html">Electrogravitics</a><a href="electrogravitics.html">Field guide</a><a href="the_shape_of_gravity.html">Gravity</a><a href="warp_drive.html">Mechanism</a><a href="hover_disk.html">Materials</a><a href="hexalock.html">Vehicle</a><a class="eg-cur" href="how_to_build_a_ufo.html">Build</a><a href="antigravity_devices.html">Bench floor</a><a href="superconductivity.html">Superconductivity</a><a href="magnetism.html">Magnetism</a><a href="the_scalar_field.html">Scalar field</a><a class="eg-pdf" href="pdf/how_to_build_a_ufo.pdf" download>Download PDF ↓</a></div></div>
+
+<div style="background:#eef5fa;border-bottom:2px solid #1a5276;padding:10px 24px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;text-align:center;color:#1a5276;line-height:1.45;font-size:0.88em;">
+Companion in the Boundary Problem paper network. Root: The Shape of the Universe.
+</div>
+
+<h1>How to Build a UFO</h1>
+<p class="byline">
+  Controlled motion through the lattice &mdash; an engineering paper for
+  measurable force anomalies in coherent matter.<br>
+  Osika Innovation AB &mdash; Alexander Osika, Claude &mdash; draft 0.8 &middot; 2026-08-18.
+</p>
+
+<div class="figure hero">
+  <img src="img/lazar_sport_model_schematic.webp"
+       alt="Bob Lazar's annotated Sport Model schematic: disk craft, three amplifiers and emitters on the lower deck at 120 degrees, central hemispherical reactor, waveguides, and the reaction tower with its Element 115 fuel element.">
+  <div class="caption">
+    Figure&nbsp;1. Bob Lazar&rsquo;s annotated schematic of the
+    &ldquo;Sport Model&rdquo; (1989 onward; reproduced from
+    safeaerospace.org): three gravity amplifiers at 120&deg; on the
+    lower deck, three emitters below, a hemispherical reactor at
+    centre, archway waveguides, planar arrays on the upper hull. Read
+    in &sect;11 as architectural data, not physics testimony. The
+    near-term vehicle that uses the same closed-shell, multi-emitter
+    logic at drone scale is the
+    <a href="hexalock.html">Hexalock</a>.
+  </div>
+</div>
+
+<div class="tldr">
+  This is the engineering paper for a coherent object asymmetrically
+  sharing vibrations with the surrounding lattice of spacetime. The
+  <em>mechanism</em> is not in question: electromagnetic fields curve
+  spacetime by theorem (Einstein&ndash;Maxwell, solved exactly for
+  laboratory hardware &mdash; F&uuml;zfa 2016). What is open is
+  <em>magnitude</em>: the bare coupling is 8&pi;G/c<sup>4</sup>
+  &asymp; 2&times;10<sup>&minus;43</sup>, hover needs ~10<sup>&minus;6</sup>,
+  and the entire programme is the coherent climb between them. What a
+  bench reads out is one number, the vertex sharing strength
+  <em>g</em> &mdash; the honest scalar summary of a coupling whose
+  mechanism lives at the connection layer of the electromagnetic stack
+  (&sect;3); per vertex it is bounded analytically, 0 &le; <em>g</em>
+  &le; 1/&radic;3. The paper gives the operational definition of
+  &ldquo;anti-gravity&rdquo; as a controlled settling bias (&sect;4),
+  the conditions and stack any build needs (&sect;&sect;5&ndash;6),
+  the reasoned substrate prescription (&sect;8), the prior record
+  (&sect;9), the saucer as an engineering optimum (&sect;10), the yield
+  of the Sport-Model account (&sect;11), the capability ladder beyond
+  hover with its four gates (&sect;13), and the licensing table
+  (&sect;14). The coherent-coupling channel is <em>unproven, null on
+  every substrate measured to date</em>; the published nulls are
+  retrodicted by the framework, not threatened by it. The bench
+  programme lives in the field guide and the pot-lid paper.
+</div>
+
+<div class="companion">
+  <strong>Companion papers.</strong> Start with the field guide,
+  <a href="electrogravitics.html">Electrogravitics</a> (measured ledger,
+  force law for engineers, bench programme) &mdash; this paper does not
+  repeat it. Law: <a href="the_shape_of_gravity.html">The Shape of
+  Gravity</a>. Mechanism and ladder: <a href="warp_drive.html">The Warp
+  Drive</a> (audit <code>WARP_DRIVE_MATH_AUDIT.md</code>). Materials:
+  <a href="hover_disk.html">The Hover Disk</a>. Vehicle:
+  <a href="hexalock.html">The Hexalock</a>. Fringe record:
+  <a href="antigravity_devices.html">Antigravity Devices</a>. Teardown
+  of Lazar&rsquo;s account:
+  Reverse-Engineering
+  the Sport Model. Root ontology:
+  The Shape of the Universe;
+  formalism <code>oph_programme.html</code>; bench
+  <code>oph_chi_nu_potlid_first_build.html</code>.
+</div>
+
+<h2><span class="num">&sect;1</span>What this paper is</h2>
+
+<p>
+  This is an engineering paper, not a theory of everything. The theory
+  is in the root paper: spacetime is a 3D lattice of equal-edge
+  three-way vertices; matter is a stable closed vibration pattern in
+  the lattice; a force is one pattern biasing how another scatters at
+  vertices; the lattice settles continuously according to a single
+  vertex rule. This paper takes that picture as given and asks one
+  operational question:
+</p>
+
+<blockquote>
+  <em>Can engineered coherent matter measurably bias the way the
+  lattice settles in its neighbourhood, and if so, how do we build
+  a vehicle that uses the bias for controlled motion?</em>
+</blockquote>
+
+<p>
+  The mechanism is sound and conservation-respecting: a coherent body
+  that asymmetrically shares vibrations with the lattice feels a net
+  force, and the lattice carries the equal-and-opposite reaction
+  &mdash; <strong>propellantless, not reactionless</strong>. The
+  empirical record, stated once (the field guide carries the ledger
+  with numbers): the in-air Biefeld&ndash;Brown force is ion wind
+  &mdash; the 1955&ndash;59 French Montgolfier report itself calls it
+  &ldquo;electric wind&rdquo;; every published, independently
+  instrumented vacuum test is a null; the one claimed vacuum positive
+  (the French vacuum residual) is documented but its numbers never
+  reached circulation &mdash; open, neither refuted nor confirmed;
+  Buhler&rsquo;s vacuum claim fell ~40&times; between April 2024 and
+  March 2026, still with no paper &mdash; watch, don&rsquo;t bank. This
+  paper therefore builds the engineering as a working hypothesis on a
+  settled mechanism and an open magnitude (&sect;7 says what a positive
+  would license). It does <em>not</em> claim reactionless propulsion,
+  which would violate conservation and is not what lattice coupling
+  is.
+</p>
+
+<p>
+  The vehicle companion is the <a href="hexalock.html">Hexalock</a>
+  &mdash; six coupling disks on the flight-proven Lynchpin airframe
+  (Howard et al., SAE 2023; Howard patent US&nbsp;11,117,065). Its
+  flight-control half is closed engineering; only its lift half depends
+  on the effect this paper is about. (The earlier hoverbike is a
+  ground-effect vehicle and does not depend on the coupling.)
+</p>
+
+<h2><span class="num">&sect;2</span>The lattice picture in one page</h2>
+
+<p>
+  The full derivation is in <code>shape_of_the_universe.html</code>
+  (element-by-element reading in <code>the_periodic_table.html</code>);
+  this section gives only what the engineering needs.
+</p>
+
+<table>
+  <thead>
+    <tr><th>Object</th><th>What it is</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Edge</td><td>One-dimensional channel along which a single vibration mode propagates. All edges have the same length L.</td></tr>
+    <tr><td>Vertex</td><td>A junction where exactly three edges meet. All vertices use the same scattering rule, derived in the root paper.</td></tr>
+    <tr><td>Face / cell</td><td>Smallest loop / smallest 3-cell of the lattice. Leading candidate cell is the regular dodecahedron (pentagonal faces, golden-ratio appearance forced).</td></tr>
+    <tr><td>Vibration pattern</td><td>An amplitude distribution on the edges. Most patterns cancel themselves at vertices; the ones that don&rsquo;t are particles.</td></tr>
+    <tr><td>Force</td><td>One pattern biasing the vertex scattering for another pattern. No new fundamental fields needed.</td></tr>
+    <tr><td>Vertex-sharing strength <em>g</em></td><td>When an external substrate attaches at a vertex, the lattice gains a fourth port there. The dominant element of the 4&times;4 scattering matrix is <em>g</em>: how much of an external drive enters the lattice, and how much of a lattice vibration leaves through the substrate.</td></tr>
+  </tbody>
+</table>
+
+<p>
+  <strong>What is settled, and what is not.</strong> That
+  electromagnetic fields curve spacetime is a theorem, not a hypothesis
+  of this network: Einstein&ndash;Maxwell, coupling 8&pi;G/c<sup>4</sup>,
+  no free parameter, solved <em>exactly</em> for real current-carrying
+  coils by F&uuml;zfa (<em>Phys. Rev. D</em> 93, 024014, 2016; effect
+  &prop;&nbsp;B<sup>2</sup>). A field-conditioned machine modifies local
+  geometry unconditionally. The open question is <em>magnitude</em>: the
+  bare coupling is &asymp;&nbsp;2&times;10<sup>&minus;43</sup>, hover
+  sits near 10<sup>&minus;6</sup>, and whether coherent matter climbs
+  that distance is the bench&rsquo;s to decide. The register is
+  fusion&rsquo;s: mechanism settled, the climb is the programme.
+</p>
+
+<p>
+  <em>g</em> is the number a bench reads out: how strongly a vibration
+  on the outside port enters the three internal ports and how strongly
+  an internal vibration leaves through it &mdash; bounded at every
+  vertex by &sect;3, and at substrate scale a coherent sum of per-vertex
+  couplings over the substrate&rsquo;s support. It is a
+  <em>summary</em>, not an explanation: the mechanism it compresses
+  lives at the connection layer of the electromagnetic stack (&sect;3).
+  Everything downstream depends on this one variable and on the layer
+  it attaches to.
+</p>
+
+<div class="ic">
+  Anywhere this paper or its companion bench papers use the legacy
+  notation &chi;<sub>&nu;</sub>, read &ldquo;<em>g</em>&rdquo;. They
+  are the same number under two names; the bench protocol does not
+  change. The legacy notation is documented in &sect;15 (glossary).
+</div>
+
+<h2><span class="num">&sect;3</span>Vertex sharing strength &mdash; the
+per-vertex bound, and what it abstracts over</h2>
+
+<p>
+  The vertex rule of the geometric consensus lattice is fully
+  determined by three constraints &mdash; unitarity of the scattering
+  matrix, three-fold symmetry among the three internal ports, time
+  reversal. The same three constraints, applied to a 4&times;4 matrix
+  obtained by adding one outside port at the vertex, give an
+  analytical bound on how strongly that outside port can share the
+  vertex.
+</p>
+
+<div class="receipt">
+  <strong>Vertex-Sharing Bound (analytical).</strong> At a symmetric
+  three-way vertex with one outside port added, unitarity + 3-fold
+  internal symmetry + time reversal imply:
+  <div class="eq" style="margin: 0.6rem 0; font-size: 1.04rem;">
+    0 &le; <em>g</em> &le; 1/&radic;3 &asymp; 0.577
+  </div>
+  with a one-parameter 4&times;4 family indexed by <em>d</em> &isin;
+  [0, 2/3], satisfying
+  <div class="eq" style="margin: 0.6rem 0; font-size: 1.04rem;">
+    <em>g</em><sup>2</sup> = <em>d</em>(2 &minus; 3<em>d</em>)
+  </div>
+  The maximizing parameter is <em>d</em>* = 1/3, where
+  <em>g</em><sup>2</sup><sub>max</sub> = 1/3 &mdash; a distinct
+  quantity from the bound on <em>g</em> itself, which is
+  <em>g</em> &le; 1/&radic;3 &asymp; 0.577.
+  <em>(Three distinct numbers: <em>d</em>* = 1/3 &asymp; 0.333,
+  <em>g</em><sup>2</sup><sub>max</sub> = 1/3 &asymp; 0.333, and
+  <em>g</em><sub>max</sub> = 1/&radic;3 &asymp; 0.577. The bound is
+  on <em>g</em>.)</em>
+  Derivation: <code>papers/G_VERTEX_DERIVATION.md</code>.
+</div>
+
+<p>
+  Two endpoints anchor the bound. At <em>g</em> = 0 the outside port is
+  a perfect mirror and the internal 3&times;3 sub-matrix recovers the
+  original vertex rule unchanged. At <em>g</em> = 1/&radic;3 the
+  outside port reflects nothing back to itself, the internal-port
+  self-reflection drops from &minus;1/3 to &minus;2/3, and the
+  internal-to-internal coupling drops from 2/3 to 1/3 &mdash; the
+  geometric ceiling on how loudly a single substrate vertex can share
+  with the lattice. The bound is geometric: it does not depend on the
+  substrate, the drive frequency, the Hamiltonian, or any fitted
+  parameter.
+</p>
+
+<h3>From per-vertex to per-substrate</h3>
+
+<p>
+  A macroscopic coherent body attaches at many vertices at once. Its
+  aggregate vertex sharing strength along a lattice-mode direction is a
+  coherent sum over those vertices, weighted by the substrate&rsquo;s
+  coherent-mode amplitude at each and by the lattice mode&rsquo;s phase
+  (definition, including why apparent higher-order
+  &chi;<sub>&nu;</sub><sup>(n)</sup> terms appear at substrate level
+  though the per-vertex rule is linear:
+  <code>CHI_NU_AS_VERTEX_SHARING_STRENGTH.md</code>). For most
+  substrates the sum is small &mdash; the coherent-mode wavelength does
+  not match the lattice mode at the drive frequency and the phase
+  factor averages it to nearly zero; for substrates whose coherent modes
+  sit near the lattice mode it adds constructively. That is why the
+  &sect;8 prescription pushes on coherent-mode frequency, structural
+  symmetry, broken-symmetry order and phase coherence at once: each
+  lifts the mode-overlap integral, and combined they multiply.
+</p>
+
+<div class="ic">
+  Treat the per-vertex bound as fixed and the per-substrate aggregate
+  as the engineering knob. The substrate ladder, the drive pattern,
+  the substrate&rsquo;s coherent-mode structure, and the boundary
+  asymmetry are the variables that tune what fraction of the
+  geometric ceiling the substrate recovers &mdash; and they are the
+  variables we have engineering access to.
+</div>
+
+<h3>What <em>g</em> abstracts over &mdash; the three-layer
+electromagnetic stack</h3>
+
+<p>
+  Everything above treats the coupling as one number &mdash; the right
+  object for a bench, since a force balance measures exactly one
+  coefficient &mdash; but the framework has mapped the structure that
+  number compresses, and the map changes where an engineer should aim.
+  <code>magnetism.html</code> (sourced from the external OPH synthesis;
+  cite its sources box, not this paper) establishes that &ldquo;the
+  electromagnetic field&rdquo; is three layers, only the last the
+  textbook object:
+</p>
+
+<ul>
+  <li><strong>Layer 1 &mdash; the bare edge ledger.</strong> Writes
+    only Weber-class <em>relational</em> forces between current
+    elements &mdash; pairwise, no propagating field. Too poor to carry
+    magnetism, but not empty: the open-circuit sector lives here.</li>
+  <li><strong>Layer 2 &mdash; the overlap-transport connection.</strong>
+    The A-field layer. Magnetism is <em>derived</em> here as the
+    holonomy of overlap-transport around a closed observer loop, and
+    the gauge structure u(1)&oplus;su(2)&oplus;su(3) is forced with no
+    gauge group assumed. Aharonov&ndash;Bohm says this layer is
+    physical: the potentials act where the fields are zero. If a
+    lattice coupling exists at all, this is the layer it attaches to
+    &mdash; the connection, not E and B.</li>
+  <li><strong>Layer 3 &mdash; the Maxwell action.</strong> The further
+    premise (F&nbsp;&and;&nbsp;*F, coupling 1/g&sup2;) that turns the
+    connection into propagating fields. Still <em>undeduced</em> in the
+    framework (open obligation OB-2); its coupling is one of the
+    &ldquo;forced form, unfixed normalization&rdquo; gaps
+    <code>the_scalar_field.html</code> &sect;7 catalogues.</li>
+</ul>
+
+<p>
+  The engineering question hiding under <em>g</em> is therefore not
+  &ldquo;how big is the coefficient&rdquo; but <strong>which layer do
+  laboratory currents and fields actually touch</strong> &mdash; the
+  realization map from bench hardware to the carrier. That map is
+  open, and it is not a private gap of this paper:
+  <code>the_shape_of_gravity.html</code> &sect;7.4 audited the gravity-
+  engineering literature and found exactly one surviving thread &mdash;
+  the gravitational and gauge branches share one carrier, an Abelian
+  field alone should not couple, and <em>the laboratory-current
+  attachment is the missing step nobody has supplied in thirty
+  years</em>. That thread and this subsection are the same statement.
+  <em>g</em> is the honest scalar summary of a coupling whose mechanism,
+  if it exists, lives at layer 2.
+</p>
+
+<p>
+  <strong>The bench consequence.</strong> The one place the layer
+  structure already departs <em>measurably</em> from the textbook
+  account at ordinary bench current is the open-circuit sector of
+  layer 1 &mdash; the hairpin bridge of &sect;4, where the two classical
+  element laws disagree by a finite, cutoff-free 29%. It needs a supercap
+  bank and a load cell, no coherent substrate, no vacuum, and no
+  <em>g</em>&nbsp;&gt;&nbsp;0. It is therefore this paper&rsquo;s
+  <strong>primary near-term bench</strong>: it probes the layer stack
+  directly, and either outcome calibrates the element-level physics
+  every &sect;6 build sits on.
+</p>
+
+<div class="lemma">
+  <strong>What this subsection does not license.</strong> There is a
+  large literature claiming Heaviside&rsquo;s vector simplification of
+  Maxwell discarded a physical scalar/longitudinal wave sector, and
+  that devices can pump it. This framework&rsquo;s own global scalar
+  object is <code>the_scalar_field.html</code>&rsquo;s E&#9733;
+  normalization &mdash; a <em>constraint</em>, not a wave &mdash; and
+  that paper&rsquo;s &sect;9 firewall is inherited here: no fifth
+  force, no licensed communication channel, no anti-gravity support
+  from the normalization DOF. The layered structure above is
+  connection-level and open-circuit electrodynamics with receipts, not
+  scalar-wave revivalism; the two must not be blended. The scalar-wave
+  claim&rsquo;s strongest published form &mdash; gauge-free Extended
+  Electrodynamics (Hively &amp; Loebl 2019) &mdash; is registered with
+  its load-bearing hinge (C is sourced by charge <em>non-conservation</em>,
+  so conservation &rArr; C &equiv; 0 &rArr; Maxwell exactly) in
+  <code>papers/EED_HIVELY_EQUATION15_NOTE_2026-08-13.md</code>.
+  <em>Scope note on energy:</em> this firewall rejects scalar-wave
+  energy claims that name no reservoir; it does <strong>not</strong>
+  touch boundary-coupled vacuum/near-field extraction, a lawful
+  open-system question with a measured anchor and its own falsifiable
+  signature (runs cold under load), owned by
+  <code>zero_point_energy.html</code> &sect;7 and
+  <code>optical_cavity_zpe.html</code>. The discriminator is reservoir
+  inventory, not vocabulary.
+</div>
+
+<h2><span class="num">&sect;4</span>What &ldquo;anti-gravity&rdquo; means in
+this picture</h2>
+
+<p>
+  Anti-gravity in the sci-fi sense &mdash; a force that pushes against
+  Earth&rsquo;s gravity from outside the laws of physics &mdash; is not
+  what we mean and not what we are building. (The mechanism intuition
+  &mdash; an energy gradient warping spacetime into a dent the body
+  falls into &mdash; is developed in <code>warp_drive.html</code>
+  &sect;1.) In the lattice picture, what we mean is precisely this:
+</p>
+
+<div class="doctrine">
+  Anti-gravity (operational definition): a coherent body biases how the
+  surrounding lattice settles, such that the local equilibrium of the
+  vertex rule shifts in a directional way. The body experiences a net
+  force or acceleration that <em>conventional mass-energy bookkeeping
+  alone does not predict</em>. The bias is set up by the body&rsquo;s
+  internal coherent state and the asymmetric boundary conditions
+  imposed on its vertex-port couplings. The effect is a controlled
+  settling bias, not a violation of conservation laws &mdash; the bias
+  redistributes momentum into and out of the lattice background, which
+  carries it away.
+</div>
+
+<p>Equivalent phrasings, used interchangeably in this paper:</p>
+
+<ul>
+  <li>Controlled settling bias around a coherent object.</li>
+  <li>Coherent force anomaly under pre-registered controls.</li>
+  <li>Lattice-coupling effect.</li>
+  <li>Asymmetric vertex-sharing on a closed coherent body.</li>
+</ul>
+
+<p>
+  All four mean the same engineering thing: a measurable force on a
+  coherent body that depends on the body&rsquo;s coherence and
+  drive-asymmetry, that survives all the standard artifact controls
+  (orientation flip, phase flip, dummy mass, ordinary-vibration null),
+  and that is not predicted by Newtonian / Maxwellian / acoustic
+  accounting of the same hardware in the same room.
+</p>
+
+<p>
+  <b>The hairpin lemma.</b> The closed/open dichotomy has a worked
+  classical-EM microcosm
+  (<code>crypto_oracle/universe_sim/ampere_tension_sim.py</code>;
+  <code>papers/AMPERE_LONGITUDINAL_SECTOR_NOTE_2026-07-20.md</code>): a
+  closed current loop cannot force its own centre of mass &mdash; both
+  historical force laws agree, numerically, to nothing &mdash; but an
+  <em>open sub-circuit</em>, a hairpin bridge whose current closes
+  through the rails, feels a real net force, and on that open geometry
+  Amp&egrave;re&rsquo;s original element law and the textbook Lorentz
+  law disagree by a finite, cutoff-free 29% (5.35 vs 6.91 gram-force
+  at 270&nbsp;A &mdash; a supercap bank and a load cell adjudicate).
+  In this paper&rsquo;s language: <em>the craft is the bridge and the
+  substrate is the rails</em>. A vehicle that rigidly carries its whole
+  drive pattern is a closed loop and gets exactly zero; every viable
+  propulsion architecture here is an attempt to close the circuit
+  through the medium, and <em>g</em> is that circuit&rsquo;s port
+  conductance. Divergences in the element law localize at junctions
+  and cancel pairwise &mdash; the physics lives on the ports, as
+  everywhere in this framework
+  (<code>papers/PORT_LOCALITY_SYNTHESIS_2026-07-20.md</code>). Per
+  &sect;3, this experiment is the paper&rsquo;s <strong>primary
+  near-term bench</strong>.
+</p>
+
+<h2><span class="num">&sect;5</span>What physical conditions should matter</h2>
+
+<p>
+  From the lattice picture, an effective <em>g</em> &gt; 0 should
+  appear most cleanly when the substrate satisfies the following
+  conditions simultaneously:
+</p>
+
+<ol>
+  <li><strong>Coherent vibration.</strong> A vibrational mode whose
+    phase is correlated across the body. Thermal motion does not couple
+    to the lattice boundary cleanly; phase-locked motion does (bulk
+    acoustic wave on a plate resonance; optical cavity mode; Cooper-pair
+    condensate).</li>
+  <li><strong>High-Q modes.</strong> Higher Q means the coherent
+    vibration persists for more vertex-rule rounds without
+    re-randomising, amplifying any small per-round bias.</li>
+  <li><strong>Organised strain.</strong> A macroscopic strain pattern
+    whose spatial structure is regular, not random. Strain is what
+    attaches the substrate&rsquo;s vibration to the lattice&rsquo;s
+    edges.</li>
+  <li><strong>Electric or magnetic order.</strong> Simultaneous
+    ferroelectric / ferromagnetic / multiferroic order gives the
+    vertex-port coupling additional channels; multiferroics are
+    predicted to couple more strongly than ordinary metals.</li>
+  <li><strong>Phase-locked matter motion.</strong> Rotating coherent
+    matter (Cooper-pair condensate in a spinning superconductor,
+    laminar vortex flow) carries angular momentum coherently; this is
+    what the Ning-Li / Tajmar programme was probing under a different
+    vocabulary.</li>
+  <li><strong>Asymmetric boundary conditions.</strong> A symmetric
+    coherent body cannot produce a directional force on itself. The
+    asymmetry &mdash; in drive amplitude, geometry, or port phase
+    &mdash; selects the force direction.</li>
+</ol>
+
+<p>
+  Not all six are required; a working substrate satisfies four or
+  more. Conditions (1), (2), (3), (5) and (6) are accessible at the
+  bench (<code>oph_chi_nu_potlid_first_build.html</code>); condition
+  (4) is what selects the multiferroic class as the framework-favoured
+  engineering target.
+</p>
+
+<h2><span class="num">&sect;6</span>The minimum engineering stack</h2>
+
+<p>
+  Any device that produces a measurable lattice-coupling effect
+  contains the same six components. They do not depend on scale; only
+  the substrate material, the drive geometry and the readout
+  resolution scale with the vehicle.
+</p>
+
+<ol>
+  <li><strong>Coherent body.</strong> The substrate of &sect;5 in
+    closed-shell form, dimensioned for the desired force scale.</li>
+  <li><strong>Drive pattern.</strong> A spatially patterned drive that
+    imposes the asymmetric boundary condition; per-segment amplitude
+    and phase control over the coherent body&rsquo;s surface.</li>
+  <li><strong>Sensing / readout.</strong> Per-port detector of the
+    substrate&rsquo;s own coherent state, so the drive can be locked
+    to the substrate&rsquo;s resonance across temperature drift.</li>
+  <li><strong>Control loop.</strong> Closed-loop tuning of drive
+    pattern, carrier and modulation envelope from the sensing
+    output.</li>
+  <li><strong>Force / acceleration measurement.</strong> An
+    independent observable sensitive to the predicted force direction
+    (pendulum, scale, IMU, 6-DoF accelerometer + RTK GNSS at vehicle
+    scale).</li>
+  <li><strong>Controls and nulls.</strong> Pre-registered counter-tests
+    distinguishing lattice coupling from artifacts: drive-OFF
+    baseline, orientation flip, drive-phase flip, null drive pattern,
+    dummy mass, amplitude-scaling slope.</li>
+</ol>
+
+<p>
+  Companion papers implement this stack at concrete scales: bench,
+  <code>oph_chi_nu_potlid_first_build.html</code> (12-piezo rim drive on
+  a 275&nbsp;mm stainless plate, HAPTIC per-port sensing, pendulum
+  readout, full controls battery); drone, <a href="hexalock.html">the
+  Hexalock</a>; the saucer scales the same six components to the closed
+  shell of &sect;10. Receipts use the pot-lid paper&rsquo;s fixed verdict
+  schema (<code>LATTICE_COUPLING_CANDIDATE</code>,
+  <code>PROPULSION_RECEIPT_PASS</code>, &hellip;); this paper inherits it
+  and does not duplicate the bench protocol.
+</p>
+
+<h2><span class="num">&sect;7</span>What a positive result licenses,
+and what it does not</h2>
+
+<p>
+  A bench return licenses claims at the level of the bench: that the
+  substrate measured at that geometry has a non-zero aggregate
+  <em>g</em><sub>sub</sub>; that the coupling is real, repeatable,
+  controlled, and not an artifact. It does not by itself license
+  vehicle-scale operation; that follows from substrate ladder position
+  + vehicle-scale drive geometry + the ladder of &sect;13. Forbidden
+  is exactly one practical capability: FTL signalling or transit in
+  flat, un-engineered spacetime (&sect;14C). Everything else on the
+  ladder is engineering, gated as &sect;13 enumerates.
+</p>
+
+<h2><span class="num">&sect;8</span>The optimal substrate, reasoned
+from first principles</h2>
+
+<p>
+  The framework picks out one substrate class as the engineering
+  target. The reasoning follows from the vertex-sharing bound
+  (&sect;3) plus the mode-overlap structure of the per-substrate
+  aggregate; no inverse solver is a prerequisite. We can reason to the
+  prescription now, then build it.
+</p>
+
+<h3>Four predicates that maximise <em>g</em><sub>sub</sub></h3>
+
+<p>
+  The per-substrate aggregate is the coherent sum over many vertices of
+  (per-vertex <em>g</em>) &times; (substrate mode amplitude) &times;
+  (phase factor). Maximising it asks four things at once, each a
+  multiplier on the mode-overlap integral:
+</p>
+
+<ol>
+  <li><strong>Spatial-symmetry match.</strong> A substrate whose own
+    structural symmetry is the lattice&rsquo;s icosahedral primitive
+    cell accumulates rather than cancels across its volume.
+    <em>(Icosahedral quasicrystals.)</em></li>
+  <li><strong>A broken-symmetry coupling channel.</strong> Multiferroic
+    order gives two coupling ports in concert where an ordinary metal
+    has one weak diamagnetic one. <em>(BiFeO<sub>3</sub>; the
+    spin&ndash;orbit oxides.)</em></li>
+  <li><strong>A phase-coherent condensate at the boundary.</strong> A
+    condensate preserves coupling phase across the body; a thermal
+    boundary randomises it. <em>(Superconducting / magnon-condensate
+    boundary.)</em></li>
+  <li><strong>Drive near the lattice mode frequency.</strong>
+    THz-to-optical drive moves the substrate&rsquo;s coherent-mode
+    wavelength close to lattice scales &mdash; the term that makes an
+    optical mode an enormously stronger probe of <em>g</em> than a
+    sound wave. <em>(The dominant lever &mdash; if hypothesis A of the
+    field guide&rsquo;s frequency fork holds; the sweep decides.)</em></li>
+</ol>
+
+<div class="doctrine">
+  <strong>The optimal substrate is an icosahedrally-symmetric
+  magnetoelectric multiferroic with a phase-coherent condensate at its
+  boundary, driven at THz-to-optical frequency.</strong> Each adjective
+  is one predicate, each independently derivable. No single
+  room-temperature material satisfies all four, so the build is a
+  <em>layered stack</em> &mdash; symmetry skeleton, coupling film,
+  condensate boundary, optical drive &mdash; each predicate tested
+  before it is combined.
+</div>
+
+<div class="ic">
+  <strong>The full material analysis is its own paper.</strong> The
+  three engineering levers (coupling <em>&eta;</em>, energy ceiling,
+  coherence), the candidate scoreboard, the reasoned quasicrystal
+  composition (i-Au-Ga-Gd / Tsai-cluster), the convergent layered disk
+  and the quantitative cross-check against Buhler&rsquo;s claimed
+  thrust live in <a href="hover_disk.html">The Hover Disk</a> (whose
+  &sect;8 stack <em>is</em> this prescription, made concrete). This
+  section states the prescription; that paper ranks the materials
+  that meet it. Substrate research is open <em>now</em>.
+</div>
+
+<p>
+  <strong>Where the power comes from &mdash; the shell is the
+  reactor.</strong> The hull itself is the natural power boundary, not
+  a compact core that feeds it: the measured mechanism this project
+  anchors to (<code>zero_point_energy.html</code>) is an interface effect
+  whose output scales with junction <em>area</em>, so a shell that is
+  the craft&rsquo;s own shape offers area a compact reactor cannot match
+  without a V<sup>2/3</sup> penalty. Full treatment, tiered by
+  confidence: <code>THE_SHELL_IS_THE_REACTOR_2026-07-20.md</code> &mdash;
+  an engineering hypothesis, not a settled result.
+</p>
+
+<h2><span class="num">&sect;9</span>Signal from prior accounts</h2>
+
+<p>
+  Several researchers over fifty years have reported phenomena that
+  look, in retrospect, like attempted measurements of vertex-sharing
+  <em>g</em> under other vocabularies. The field guide carries the full
+  ledger with numbers; this section keeps only what bears on this
+  paper&rsquo;s substrate choices.
+</p>
+
+<h3>The null programme, and what it covers</h3>
+
+<p>
+  Every published, independently instrumented vacuum test &mdash;
+  Talley (1988&ndash;91), Tajmar (2004), Bartlett &amp; Tajmar (2021),
+  and the comprehensive Dresden sweep (Tajmar, K&ouml;&szlig;ling &amp;
+  Neunzig, <em>Sci. Rep.</em> 14:19427, 2024: capacitors, solenoids,
+  tunnelling currents, &epsilon;/&mu; gradients, shielded toroids, all
+  ~nN) &mdash; tested static, incoherent articles. A static, or uniformly
+  rotating, mirror-symmetric drive has &kappa;&nbsp;=&nbsp;0 by the
+  conservation books: it structurally cannot rectify, and this framework
+  <em>predicts</em> those nulls &mdash; frozen in a pre-registration and
+  scored (<code>RESULTS_BIEFELD_BROWN_2026-08-13.md</code>: an incoherent
+  Brown-class capacitor at the bare floor gives &le;
+  3&times;10<sup>&minus;42</sup>&nbsp;N, 35&ndash;39 orders below every
+  balance used). No published article carried even one of the four
+  &sect;8 predicates, so the test matrix has exactly one untested cell,
+  and this paper&rsquo;s architecture sits in it. <strong>That is a
+  target, not a rescue</strong>: the first null <em>with the coherence
+  predicates instrumented and verified present</em> would be the first
+  null that reaches this framework.
+</p>
+
+<h3>Ning Li, Tajmar, Canterbury 2008</h3>
+
+<p>
+  Li and Torr (1991&ndash;97) predicted a rotating type-II
+  superconductor would generate a gravitomagnetic field many orders
+  above general relativity; the theory is refuted on its own terms
+  (Harris 1999). Tajmar (2006) reported an effect
+  ~10<sup>20</sup>&times; GR in a rotating niobium ring; the Canterbury
+  group (Graham et al., <em>Physica C</em> 468, 383, 2008) bounded any
+  such effect &gt;22&times; below that with a ring-laser gyro and a lead
+  superconductor, and Tajmar himself reattributed the 2006 signal to
+  acoustic coupling (confirmed in his 2022 <em>Frontiers</em> review).
+  Podkletnov&rsquo;s rotating-disc weight loss is unreplicated
+  (Hathaway et al. 2003: null to 0.001%). In the lattice picture the
+  Canterbury 2008 null is the cleanest existing upper bound on
+  <em>g</em> in s-wave superconductors. The &sect;8 prescription targets
+  a different class (multiferroic / condensate boundary), so the
+  Canterbury bound calibrates expectations for s-wave geometries
+  without constraining the convergent substrate.
+</p>
+
+<h3>Brown, the 1956 report, Buhler, Pais</h3>
+
+<p>
+  Townsend Brown&rsquo;s asymmetric-capacitor geometry is the right
+  <em>shape</em> for a &kappa;&nbsp;&ne;&nbsp;0 drive (&sect;11); his
+  in-air force is ion wind (&sect;1). The 1956 <em>Electrogravitics
+  Systems</em> report is aviation-trade market intelligence &mdash;
+  industry interest, not physics evidence &mdash; and is cited as
+  nothing more. Buhler&rsquo;s &ldquo;Exodus effect&rdquo; is an open
+  thread, declining under scrutiny, no paper (&sect;1); the cross-check
+  against this framework&rsquo;s force law is <code>warp_drive.html</code>
+  &sect;6 / <code>hover_disk.html</code> &sect;15. Pais&rsquo;s Navy
+  patents are real and granted; the HEEMFG null is uninterpretable (the
+  rig could spin <em>or</em> vibrate, never both, and never reached
+  specified charge) and the claimed physics fails by ~10 orders on its
+  own numbers &mdash; mine the geometry (double-shell charged/insulated
+  cavity, counter-spin, acousto-optic dual drive), discard the claims.
+  Puthoff&rsquo;s polarizable-vacuum representation of GR is the
+  structural ally of the derived scalar law
+  (<code>WARP_DRIVE_MATH_AUDIT.md</code> &sect;8): same sign, same
+  bare-coupling floor, and the source of the opposite-sign
+  K&nbsp;&lt;&nbsp;1 mechanism the ladder&rsquo;s far end needs.
+</p>
+
+<h3>Howard&rsquo;s pentagonal pointer, and Lazar</h3>
+
+<p>
+  Terrence Howard&rsquo;s persistent return to pentagonal /
+  dodecahedral structure produced one real artefact: the Lynchpin
+  airframe (patent US&nbsp;11,117,065 B2, 2021; Howard, Molter, Seely
+  &amp; Yee, SAE Int. J. Aerosp. 16(3), 2023 &mdash; a 651&nbsp;g
+  prototype that flew on PX4). It is a conventional multirotor; the
+  geometry, matching the leading candidate primitive cell, is the
+  data point, and it is the chassis the
+  <a href="hexalock.html">Hexalock</a> adopts. The specific number-
+  theory claims attached to it are not used. Robert Lazar&rsquo;s
+  Sport Model is the most architecturally detailed public account of a
+  saucer-class vehicle; its load-bearing yield is &sect;11.
+</p>
+
+<p>
+  What this network adds to a shape being independently rediscovered is
+  a specific mathematical structure (root paper), a specific bench
+  protocol (substrate ladder + discriminator set), and a receipt schema
+  that licenses or refuses to license each claim cleanly.
+</p>
+
+<h2><span class="num">&sect;10</span>Saucer morphology, as engineering
+choices</h2>
+
+<p>
+  If the coupling is real and large enough to lift a person-scale
+  vehicle, the optimal vehicle shape is approximately a disk with a
+  thickened rim and a central cabin &mdash; not because physics
+  dictates the saucer in any mystical sense, but as the engineering
+  optimum for the architecture, as a fixed wing is for
+  lift-via-airfoil:
+</p>
+
+<ol>
+  <li><strong>Closed coherent shell.</strong> The substrate has to be a
+    connected coherent body. A disk is the simplest closed shape that
+    fits a cabin and provides large coherent area.</li>
+  <li><strong>Drive segments around the rim.</strong> Per-segment drive
+    control gives directional steering. Six-, twelve- or twenty-segment
+    rims are natural (dodecahedral / icosahedral symmetry).</li>
+  <li><strong>Central thickening for cabin.</strong> Crew, batteries,
+    drive electronics; the thickness profile follows the stress
+    distribution the coherent shell needs.</li>
+  <li><strong>Smooth outer surface.</strong> Coherence is sensitive to
+    surface defects; a faired exterior minimises decoherence
+    sources.</li>
+  <li><strong>Top-bottom drive asymmetry.</strong> For lift-and-cruise
+    the drive geometry is asymmetric up&ndash;down: one face is the
+    active thrust face, the other the reaction face &mdash; which makes
+    the disk a natural lift platform rather than a sphere.</li>
+</ol>
+
+<p>
+  The materials for each layer are ranked in <code>hover_disk.html</code>
+  &sect;8. The <a href="hexalock.html">Hexalock</a> applies the same
+  logic at drone scale &mdash; six coupling disks on the six pentagons
+  of a collapsed dodecahedron, an always-invertible 6&times;6 mixer
+  &mdash; as the six-segment prototype; the saucer is the twenty-segment
+  full vehicle. Both use the &sect;6 stack.
+</p>
+
+<h2><span class="num">&sect;11</span>The Sport Model &mdash; the load-bearing yield</h2>
+
+<p>
+  Robert Lazar&rsquo;s &ldquo;Sport Model&rdquo; (Knapp 1989; Corbell
+  2018; Rogan 2019; Michels 2026) is the most architecturally detailed
+  public description of a saucer-class vehicle. We treat it as
+  <strong>architectural data, not physics testimony</strong>: whether
+  the events at S-4 happened as described is not a question this
+  section settles. The question it settles is &mdash; <em>if the Sport
+  Model exists as described, what is it in lattice terms, and what does
+  that tell our own programme?</em> </p>
+
+<div class="ic">
+  <strong>The part-by-part teardown is its own paper.</strong> Each
+  component &mdash; reactor, Element 115, Gravity A/B, the three
+  amplifiers, Omicron/Delta, cabin damping, phenomenology &mdash; is
+  sorted into six registers (<em>Lazar&rsquo;s account / standard
+  physics / framework reading / buildable now / blocked / bench
+  test</em>) in Reverse-Engineering
+  the Sport Model. This section keeps only the yield.
+</div>
+
+<ul>
+  <li><strong>The three emitters are a phased array.</strong> Three
+    independently aimable, amplitude- and phase-controlled emitters at
+    120&deg; are the minimum steerable thrust vectors spanning 3-D
+    &mdash; an electronically steered phased array, the most
+    recognisable real engineering in the account. The atmospheric /
+    interstellar mode-switch is a change in the per-emitter drive law,
+    not a hardware reconfiguration. Buildable.</li>
+  <li><strong>The split hull is an asymmetric capacitor &mdash;
+    &kappa; made geometric.</strong> A smaller domed top over a larger
+    bottom shell across an insulator is two differently-sized,
+    oppositely-driven shells: the spatial form of the
+    &kappa;&nbsp;&ne;&nbsp;0 the force law needs
+    (&part;|&chi;<sub>&nu;</sub>|<sup>2</sup>/&part;X &ne; 0). A
+    symmetric shell makes no net force; the top/bottom asymmetry sets
+    the direction &mdash; the &kappa; <code>warp_drive.html</code>
+    &sect;3 derives and &sect;5 builds. Buildable.</li>
+  <li><strong>Omicron / Delta are statics / dynamics.</strong> Omicron
+    (three emitters down, &ldquo;a tripod balancing on Earth&rsquo;s
+    gravity&rdquo;) is hover = statics: once support equals weight it
+    costs &asymp; zero energy to hold. Delta (three beams converged on a
+    distant focus) is travel = dynamics: acceleration costs energy,
+    regeneratively recoverable, never free (&sect;13). Same craft,
+    different aim and amplitude &mdash; generic to any sufficiently
+    high-<em>g</em> craft.</li>
+  <li><strong>The sign-reversal discriminator.</strong> Flip the
+    drive&rsquo;s asymmetry (polarity / phase / chirality): a real
+    coupling reverses sign; heating, outgassing and electrostatic
+    pickup do not. The cleanest single bench test the framework has, it
+    falls straight out of the two-shell reading, and it is control #2
+    of the field guide&rsquo;s discriminator set.</li>
+  <li><strong>The engineering implications</strong> for our own
+    builds: emitter counts at framework-symmetric numbers (3, 6, 12,
+    60); independently aimable emitters; a seamless coherent outer
+    shell (the skin is the substrate); power-source decoupling (the
+    fuel question is downstream of the substrate question); cabin
+    inertial damping by a counter-substrate whose &delta;&nu; gradient
+    cancels the exterior&rsquo;s &mdash; the one inverse-design item on
+    the list.</li>
+  <li><strong>Blocked on standard physics, named as such:</strong> a
+    <em>stable</em> Element 115 (Oganessian 2004: millisecond
+    half-lives, no stable isotope); a 100%-efficient annihilation
+    reactor; instantaneous transit. None is required by the framework
+    reading; each is registered as blocked, not reinterpreted away.</li>
+</ul>
+
+<h3>11.1 &ldquo;Element 115&rdquo; is a class, not the element</h3>
+
+<p>
+  Lazar names the fuel a stable isotope of moscovium. The specific
+  identification is wrong on standard chemistry. The framework-relevant
+  claim is weaker and stronger at once: weaker because atomic number
+  115 is not required; stronger because the framework predicts a
+  <em>substrate class</em> &mdash; a material with very high
+  coherent-mode characteristic frequency and very high
+  <em>g</em><sub>sub</sub>.
+</p>
+
+<div class="ic">
+  Read &ldquo;Element 115&rdquo; as &ldquo;a high-frequency,
+  high-<em>g</em> substrate,&rdquo; not an atomic number. The same
+  class is what the cross-cultural &ldquo;blue stone / manna / soma /
+  firestone&rdquo; cluster and the modern ORMUS / monatomic-gold claims
+  have circled &mdash; evocative, uncalibrated; the makeable residue is
+  handled in <code>hover_disk.html</code> &sect;7.10 (headline claims
+  refuted, one untested d-hole spin channel, decisive test an afternoon
+  on a SQUID). The substrate ladder of &sect;8 and the
+  <code>hover_disk.html</code> scoreboard identify which members are
+  reachable with current chemistry. Element 115 is one candidate label,
+  and probably not the correct one.
+</div>
+
+<h3>11.2 The optical face &mdash; a free material pre-screen</h3>
+
+<p>
+  Two of Lazar&rsquo;s most consistently repeated observations are
+  optical: the skin reads as polished pewter at centimetre range but
+  &ldquo;too uniform, almost rendered&rdquo; from across the hangar,
+  and the interior stayed dark under halogen floodlights &mdash; the
+  material seemed to <em>consume</em> light. In the lattice picture
+  both are one mechanism at different incidence: a substrate with large
+  mode-overlap couples incident EM into its coherent mode rather than
+  re-radiating it.
+</p>
+
+<div class="lemma">
+  <strong>The null hypothesis, stated first.</strong> A near-perfect
+  broadband absorber (Vantablack ~99.965%, black silicon, moth-eye) in
+  a smooth cavity that returns light through many grazing reflections
+  &mdash; an inverse integrating sphere &mdash; reads black under any
+  illumination (99% walls, ten bounces: ~10<sup>&minus;20</sup>).
+  Passive coating plus geometry accounts for &ldquo;dark interior&rdquo;
+  with no new physics; testimony alone cannot exclude it. What pushes
+  past the coating is only the word <em>consume</em>: an absorber
+  thermalises; a coupler routes the energy somewhere structured.
+</div>
+
+<div class="receipt">
+  The &ldquo;pewter close, cartoon far&rdquo; exterior is a
+  framework-predicted optical signature, not a Lazar idiosyncrasy: a
+  coherent surface mode suppresses the diffuse component that carries
+  texture, so a high-<em>g</em> surface reads normal at near scales and
+  &ldquo;rendered&rdquo; at far ones &mdash; a feature the framework
+  accounts for without being fit to it, and a free far-field / near-field
+  photo discriminator (hoaxes look consistent across distance scales).
+</div>
+
+<div class="receipt">
+  <strong>The dark interior closes the &sect;8 fork.</strong> The
+  substrate-aggregated coupling &chi;<sub>&nu;</sub>(&omega;) is
+  frequency-dependent (<code>CHI_NU_AS_VERTEX_SHARING_STRENGTH.md</code>),
+  and a body&rsquo;s absorptance rises and falls with the same
+  mode-overlap: <em>A</em><sub>sub</sub>(&omega;) &sim;
+  |&chi;<sub>&nu;</sub>(&omega;)|<sup>2</sup>, so an ideal substrate has
+  <em>A</em><sub>visible</sub> &rarr; 1. A material that couples
+  optical-frequency EM into a coherent matter mode is
+  &ldquo;photonic&rdquo; and &ldquo;matter&rdquo; at once &mdash;
+  predicate&nbsp;4 already names it &mdash; and it eats light at the
+  visible band while biasing gravity at the drive band: two faces of one
+  coupling, and the dark face is the cheaper one to test.
+</div>
+
+<div class="ic">
+  The dark interior is therefore a <em>non-destructive material
+  screen</em>: a candidate substrate that is a good
+  &chi;<sub>&nu;</sub> coupler should be anomalously, broadbandly
+  <em>black</em> at its coupling band &mdash; high structured
+  absorptance, low diffuse reflectance, ideally with an intensity- or
+  coherence-dependence a passive dye would not show. &ldquo;Is the
+  material unusually light-consuming?&rdquo; becomes a first-pass
+  filter on a reflectance spectrometer &mdash; the same axis as
+  predicate&nbsp;4 in the material ranker
+  (<code>hover/substrate_material_ranker.py</code>). It makes the
+  top-ranked substrates (icosahedral quasicrystals, doped fullerites,
+  the BiFeO<sub>3</sub> / cuprate stack) falsifiable here: if the
+  best-coupling materials are <em>not</em> optically anomalous, the
+  one-coupling reading is wrong. Necessary, not sufficient.
+</div>
+
+<div class="lemma">
+  <strong>What stays open.</strong> The passive-absorber null reproduces
+  the whole observation with no &chi;<sub>&nu;</sub> at all; the
+  optical-coupling reading is a <em>reinterpretation</em>, not a
+  measurement; the &ldquo;<em>A</em>(&omega;) tracks
+  |&chi;<sub>&nu;</sub>|<sup>2</sup>&rdquo; link is unverified. But it is
+  sharply falsifiable and costs a reflectance scan: not &ldquo;it stayed
+  dark, therefore antigravity,&rdquo; but &ldquo;it stayed dark,
+  therefore the hull was a strong optical coupler &mdash; and our best
+  candidates should be too; go measure their absorptance.&rdquo;
+</div>
+
+<div class="doctrine">
+  The Sport Model is the most-detailed public description of a
+  saucer-class vehicle and the framework reproduces its architecture
+  without being fit to it. Treat the account as architectural
+  intelligence, not physics testimony: the convergence directs build
+  choices; the specific physics identifications (stable 115, Gravity-A
+  as a separate force, 100% reactor) are wrong on standard physics and
+  are registered as blocked, not rescued.
+</div>
+
+<h2><span class="num">&sect;12</span>Connection to the root paper</h2>
+
+<p>
+  This paper is one application of the root paper
+  (<code>shape_of_the_universe.html</code>): <em>can we engineer a
+  substrate that biases lattice settling in a useful direction?</em> The
+  compute lane is another application of the same root &mdash; a
+  substrate that settles a constraint problem
+  (<code>desktop_optical_supercomputer.html</code>;
+  <code>p_equals_np.html</code>). The two share the vertex rule and
+  <em>g</em>, diverge in the engineering, and re-converge in the receipt
+  schema. No capability below waits on the compute lane.
+</p>
+
+<h2><span class="num">&sect;13</span>Beyond hover &mdash; the capability ladder and its gates</h2>
+
+<p>
+  Achievable performance is set by the mode-match efficiency &eta; =
+  <em>g</em><sub>sub</sub>/<em>g</em><sub>max</sub> at the operating
+  drive frequency; for gradient scale <em>L</em> the required aggregate
+  scales as <em>g</em><sub>sub</sub>&middot;<em>S</em><sub>coh</sub> &sim;
+  <em>a</em>&middot;<em>L</em>/<em>c</em><sup>2</sup>. The ladder is one
+  mechanism at increasing strength (<code>warp_drive.html</code>
+  &sect;8), not separate effects:
+</p>
+
+<table>
+  <thead>
+    <tr><th>Rung</th><th>Acceleration</th><th>Required coupling</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Hover, atmospheric flight (the near-term drive)</td><td>0.1&ndash;1&nbsp;g</td><td>Modest &eta;: coupling&middot;asymmetry ~10<sup>&minus;6</sup> of full coherence (&sect;8 stack, rung 2).</td></tr>
+    <tr><td>Tic-Tac envelope, with cabin counter-substrate</td><td>10<sup>3</sup>&ndash;10<sup>4</sup>&nbsp;g</td><td>Near-saturation, partial coherent shell.</td></tr>
+    <tr><td>Near-<em>c</em> flight</td><td>&rarr; relativistic</td><td>Near-saturation; forward time dilation per standard relativity.</td></tr>
+    <tr><td>Whole-shell closure &mdash; warp bubble / wormhole throat</td><td>effective FTL (ceiling ~<em>c</em><sup>2</sup>/<em>L</em>)</td><td><em>g</em><sub>sub</sub>&middot;<em>S</em><sub>coh</sub> &rarr; 1 across a full closed coherent shell.</td></tr>
+  </tbody>
+</table>
+
+<div class="ic">
+  <strong>Two regimes, not one ladder &mdash; the energy story
+  (Omicron vs Delta, <code>warp_drive.html</code> &sect;2).</strong>
+  The table sets the <em>force</em> each rung needs; the <em>energy</em>
+  splits it in two. The top rung is <strong>hover = statics</strong>: the
+  lattice supports the craft like a table holds a book, so once support
+  reaches weight it costs &asymp; zero energy to hold. Every rung below
+  is <strong>travel = dynamics</strong>: accelerating costs energy,
+  regeneratively recoverable KERS-style, so a round trip costs losses
+  plus net work &mdash; never free; the first law forbids net energy out
+  and no exotic fuel is implied.
+</div>
+
+<p>
+  <strong>The four gates</strong> between the bench-testable force and
+  the ladder&rsquo;s far end are quantitative, not rhetorical
+  (<code>WARP_DRIVE_MATH_AUDIT.md</code> &sect;&sect;4, 8), and none is
+  cleared:
+</p>
+
+<ol>
+  <li><strong>Near-saturation coherence across a whole closed
+    shell</strong> &mdash; the warp is order-unity only when the edge
+    energy approaches its own scale, E<sub>e</sub>/E&#9733; &rarr; O(1),
+    across a full coherent shell, not one driven face; many orders
+    above the hover regime.</li>
+  <li><strong>The nonlinear-Einstein regime</strong> &mdash; the
+    derived scalar law closes weak-field gravity in full (factor-two
+    light bending included), but a steerable bubble needs the
+    directional, strong-field metric response, which the Shape paper
+    assigns to a separate route and which is open.</li>
+  <li><strong>The right sign &mdash; an opposite-sign region.</strong>
+    The derived scalar law is <em>attractive</em> (lengthening,
+    &gamma;<sub>1</sub> = +1): the right tool for a well or a
+    tractor, the wrong sign for a bubble, which needs effective
+    shortening in front &mdash; the classic energy-condition
+    violation. In the polarizable-vacuum picture this is the
+    K&nbsp;&lt;&nbsp;1 branch of the charged-mass solution, reached
+    when field energy beats mass energy: a mechanism, gated on driving
+    the perturbation to O(1) (gate 1).</li>
+  <li><strong>The conservation channel.</strong> A closing bubble still
+    balances momentum with the lattice; it does not exempt itself from
+    the &sect;4 bookkeeping.</li>
+</ol>
+
+<p>
+  The honest line on speed: <strong>only flat-space FTL is forbidden;
+  effective FTL via metric engineering &mdash; the Alcubierre /
+  Morris&ndash;Thorne class &mdash; is GR-legal, and gated</strong> as
+  above. Light locally travels at <em>c</em> everywhere; the far rung
+  shortens or warps the path, it does not outrun light along it.
+</p>
+
+<p>
+  Three things this paper deliberately does not carry. <em>Wormhole
+  transit</em>: a whole-shell closure with a topological handle, same
+  four gates &mdash; the mechanism paper owns it
+  (<code>warp_drive.html</code> &sect;8). <em>Backward time travel</em>:
+  the one sentence kept is the guardrail &mdash; the framework&rsquo;s
+  repair-layer no-signalling obligation OB-1
+  (<code>OPH_OBLIGATIONS_LEDGER.md</code>, proven-conditional) and
+  Novikov self-consistency mean nothing here licenses a controllable
+  signal or history into the past; CTC variants stay additionally gated
+  on chronology protection, an open conjecture. <em>P&nbsp;=&nbsp;NP /
+  the compute chamber</em>: an accelerator for drive-pattern inverse
+  design if it reaches its design point, on no critical path here
+  (&sect;12).
+</p>
+
+<h2><span class="num">&sect;14</span>What the math licenses, and what it forbids</h2>
+
+<p>
+  Three categories. Engineering effort does not change category
+  membership; it only moves capabilities from &ldquo;engineering-gated&rdquo;
+  to &ldquo;built.&rdquo; Forbidden capabilities cannot be unlocked by
+  any engineering effort. The table preserves pre-registration so the
+  framework cannot move goalposts post hoc.
+</p>
+
+<h3>A. Licensed by the math (capability is real per the framework theorems)</h3>
+
+<table>
+  <thead>
+    <tr><th>Capability</th><th>Math license</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Hover, atmospheric flight, supersonic with coherent bubble (&sect;4)</td>
+      <td>&sect;8 convergent substrate at modest &eta;. Required &delta;&nu; ~ 10<sup>&minus;13</sup>.</td>
+    </tr>
+    <tr>
+      <td>Tic-Tac-class manoeuvres (10<sup>3</sup>&ndash;10<sup>4</sup>&nbsp;g) with occupant inertial damping</td>
+      <td>&sect;8 substrate near saturation; cabin counter-substrate engaged. Required &delta;&nu; ~ 10<sup>&minus;12</sup>.</td>
+    </tr>
+    <tr>
+      <td>Near-<em>c</em> relativistic flight</td>
+      <td>Same substrate; forward time dilation per standard relativity.</td>
+    </tr>
+    <tr>
+      <td>Whole-shell closure (&sect;13): engineered local curvature, warp bubble, wormhole throat &mdash; effective FTL</td>
+      <td>Near-saturation substrate across a full closed shell (<em>g</em><sub>sub</sub>&middot;<em>S</em><sub>coh</sub> &rarr; 1), plus the nonlinear-Einstein regime and an opposite-sign region &mdash; the four &sect;13 gates. CTC variants additionally conditional on chronology protection failing (open conjecture) and on OB-1; not this paper&rsquo;s job.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>B. Engineering-gated (math licenses; hardware doesn&rsquo;t exist yet)</h3>
+
+<table>
+  <thead>
+    <tr><th>Engineering item</th><th>Gate</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Hairpin bench (&sect;4)</td>
+      <td>Supercap bank + load cell, no coherent substrate; calibrates the element-level physics every build sits on.</td>
+    </tr>
+    <tr>
+      <td>First &sect;8 convergent-substrate cell (BiFeO<sub>3</sub> on quasicrystal, SC boundary, THz drive)</td>
+      <td>Current materials-fab capability; returns &eta; at one geometry under the field guide&rsquo;s discriminator set.</td>
+    </tr>
+    <tr>
+      <td>Hexalock &rarr; saucer-class vehicle (Tic-Tac envelope)</td>
+      <td>One disk benched before six are built; then the &sect;8 cell scaled to the &sect;10 shell plus cabin counter-substrate.</td>
+    </tr>
+    <tr>
+      <td>Whole-shell closure, lab-scale first</td>
+      <td>Two saturated &sect;8 cells phase-locked; the four &sect;13 gates. Beyond this the mechanism paper owns the programme.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>C. Forbidden by theorem (no engineering effort can produce these)</h3>
+
+<table>
+  <thead>
+    <tr><th>Capability</th><th>Reason forbidden</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>FTL signalling or transit in flat (un-engineered) spacetime</td>
+      <td>Lattice modes propagate at <em>c</em> locally. The vertex rule&rsquo;s propagation speed is fundamental, not adjustable. Whole-shell closure (&sect;13) is a metric shortcut, not a local violation; light inside still moves at <em>c</em>.</td>
+    </tr>
+    <tr>
+      <td>Closed timelike curves that violate self-consistency</td>
+      <td>Novikov self-consistency: the lattice only settles into configurations where no contradiction propagates. &ldquo;Kill your grandfather&rdquo; outcomes are not licensable; the lattice does not settle into them.</td>
+    </tr>
+    <tr>
+      <td>Per-vertex sharing strength <em>g</em> &gt; 1/&radic;3</td>
+      <td>Vertex-Sharing Bound (&sect;3, theorem). Geometric ceiling. No substrate, no drive amplitude, no geometry exceeds this at any single vertex.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="doctrine">
+  Almost every capability is in category A or B; category C contains
+  one practical entry, FTL in flat spacetime. Every other restriction is
+  engineering &mdash; above hover, gated by the four items of &sect;13.
+  The &sect;8 substrate is the single materials build that opens
+  category B; the hairpin bench is the calibration that comes first.
+  Nothing on this page is demonstrated: the coherent channel is null on
+  every substrate measured to date, and the table exists so that a
+  positive, if it comes, is licensed exactly as far as it reaches.
+</div>
+
+<h2><span class="num">&sect;15</span>Glossary and legacy notation</h2>
+
+<p>
+  This paper uses lattice-language by default. Earlier drafts and some
+  companion papers use a denser technical vocabulary. The dictionary:
+</p>
+
+<table>
+  <thead>
+    <tr><th>Plain phrase used here</th><th>Equivalent technical name in earlier drafts and companion papers</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Vertex sharing strength <em>g</em></td><td>Per-vertex coupling, bounded by 1/&radic;3 (<code>G_VERTEX_DERIVATION.md</code>). Older notation sometimes wrote it as a primitive of &chi;<sub>&nu;</sub>; substrate-aggregated &chi;<sub>&nu;</sub> is the coherent sum of <em>g</em><sub>v</sub> over the boundary (<code>CHI_NU_AS_VERTEX_SHARING_STRENGTH.md</code>).</td></tr>
+    <tr><td>Substrate-aggregated vertex-sharing strength</td><td>&chi;<sub>&nu;</sub> in older drafts. Not a new fundamental constant. The field guide writes the engineering coefficient as C = C<sub>sub</sub>&middot;|&chi;<sub>&nu;</sub>|<sup>2</sup>.</td></tr>
+    <tr><td>How strongly an outside vibration can share a three-way vertex</td><td>The substrate-to-lattice coupling coefficient</td></tr>
+    <tr><td>Coherent body asymmetrically sharing vibrations with the lattice</td><td>Coherent matter with non-zero &chi;<sub>&nu;</sub><sup>(n)</sup>; non-trivial <em>g</em><sub>sub</sub></td></tr>
+    <tr><td>Per-vertex bound</td><td>The Vertex-Sharing Bound: 0 &le; <em>g</em> &le; 1/&radic;3</td></tr>
+    <tr><td>Per-substrate aggregate</td><td>Mode-overlap integral over the substrate&rsquo;s support; <em>g</em><sub>sub</sub></td></tr>
+    <tr><td>Mode-match efficiency</td><td><em>g</em><sub>sub</sub> / <em>g</em><sub>max</sub> &mdash; the fraction of the geometric ceiling the substrate recovers in a specific configuration</td></tr>
+    <tr><td>Asymmetric vertex sharing</td><td>Directional substrate drive producing a directional aggregate; &kappa; &ne; 0 in the force law</td></tr>
+    <tr><td>Controlled settling bias</td><td>&ldquo;Anti-gravity&rdquo; in the operational sense of &sect;4</td></tr>
+    <tr><td>Lattice-coupling effect</td><td>The observable manifestation of non-zero <em>g</em><sub>sub</sub> on a coherent body</td></tr>
+  </tbody>
+</table>
+
+<p>
+  When a companion paper writes &chi;<sub>&nu;</sub>, read
+  &ldquo;<em>g</em>&rdquo;: per-vertex coupling bounded by 1/&radic;3,
+  per-substrate aggregate set by a mode-overlap integral. Bench protocol
+  and receipt schema are identical under either notation.
+</p>
+
+<hr class="softrule">
+
+<h3>References</h3>
+
+<ol>
+  <li>Osika, A., Mueller, B. &amp; collaborators (2026).
+    <em>The Shape of the Universe.</em>
+    <code>papers/shape_of_the_universe.html</code>. (Root ontology;
+    lattice picture, vertex rule, vertex-sharing strength <em>g</em>.)</li>
+  <li>Mueller, B. (2026). <em>Calculating the Shape of the Universe.</em>
+    <code>papers/shape.html</code>. (Cosmological-row receipt;
+    &Lambda; = 3/N.)</li>
+  <li>Osika, A. &amp; Mueller, B. (2026a). <em>Probing the OPH Dark
+    Sector via Coherent-Matter Susceptibility.</em>
+    (&chi;<sub>&nu;</sub> framework definition.)</li>
+  <li>Osika, A. (2026b). <em>The DIY Hoverbike.</em>
+    <code>papers/diy_hoverbike_paper.html</code>. (Ground-effect
+    prototype vehicle; superseded as the vehicle companion by the
+    Hexalock.)</li>
+  <li>Osika, A. (2026). <em>The Warp Drive &mdash; the propellantless lattice
+    mechanism.</em> <code>papers/warp_drive.html</code>. (Force law, levers, the
+    empirical Brown/Buhler case, capability ladder and gates.)</li>
+  <li>Osika, A. (2026). <em>The Hover Disk &mdash; substrate materials for the
+    lattice drive.</em> <code>papers/hover_disk.html</code>. (The three material
+    levers, candidate scoreboard, quasicrystal composition, Buhler cross-check.)</li>
+  <li>Osika, A. (2026). <em>Reverse-Engineering the Sport Model.</em>
+    <code>papers/reverse_engineering_the_sport_model.html</code>. (Part-by-part
+    teardown of Lazar&rsquo;s account, six registers per component.)</li>
+  <li>Osika, A. (2026). <em>The Hexalock.</em> <code>papers/hexalock.html</code>.
+    (Six coupling disks on the Lynchpin airframe; 6-DOF mixer; &ldquo;lock, not lift.&rdquo;)</li>
+  <li>Osika, A. (2026). <em>Electrogravitics &mdash; An Engineering Field Guide.</em>
+    <code>papers/electrogravitics.html</code>. (Measured ledger, force law for
+    engineers, bench programme.)</li>
+  <li>Osika, A. (2026). <em>The Periodic Table.</em>
+    <code>papers/the_periodic_table.html</code>. (The lattice geometry
+    element-by-element; dodecahedral cell, carbon as master joiner.)</li>
+  <li>Osika, A. (2026). <em>Antigravity Devices.</em>
+    <code>papers/antigravity_devices.html</code>. (Survey of fringe/redacted
+    antigravity and energy claims, with the vacuum discriminator.)</li>
+  <li>Osika, A., Mueller, B. et al. (2026). <em>Probing the OPH Dark
+    Sector via Coherent-Matter Susceptibility &mdash; First-Light
+    Pot-Lid Build.</em>
+    <code>papers/oph_chi_nu_potlid_first_build.html</code>. (Bench
+    experiment.)</li>
+  <li>Mueller, B. &amp; Osika, A. (2026). <em>The OPH Programme.</em>
+    <code>papers/oph_programme.html</code>. (Mathematical formalism
+    dialect of the root ontology.)</li>
+  <li>F&uuml;zfa, A. (2016). &ldquo;How current loops and solenoids curve
+    spacetime.&rdquo; <em>Phys. Rev. D</em> 93, 024014. (Exact
+    Einstein&ndash;Maxwell solutions for laboratory coils; the mechanism
+    theorem of &sect;2.)</li>
+  <li>Graham, R. D. et al. (2008). &ldquo;Experiment to detect
+    frame-dragging in a lead superconductor.&rdquo;
+    <em>Physica C</em> 468, 383.
+    <a href="https://doi.org/10.1016/j.physc.2007.11.011">DOI:10.1016/j.physc.2007.11.011</a>.
+    (Canterbury null; current best upper bound on
+    <em>g</em> in s-wave superconductors.)</li>
+  <li>Tajmar, M. (2022). &ldquo;Interaction between macroscopic
+    quantum systems and gravity.&rdquo; <em>Frontiers in Physics</em>
+    10, 941858.
+    <a href="https://www.frontiersin.org/articles/10.3389/fphy.2022.941858/full">DOI</a>.
+    (Self-retraction of the 2006 anomaly.)</li>
+  <li>Tajmar, M., K&ouml;&szlig;ling, M. &amp; Neunzig, O. (2024).
+    <em>Sci. Rep.</em> 14, 19427. (Broad gravity&ndash;EM coupling sweep;
+    the tightest map of static/incoherent nulls.)</li>
+  <li>Hathaway, G., Cleveland, B. &amp; Bao, Y. (2003). <em>Physica C</em>
+    385, 488. (Podkletnov replication null to 0.001%.)</li>
+  <li>Harris, E. G. (1999). <em>Found. Phys. Lett.</em> 12, 201.
+    (Li&ndash;Torr refutation.)</li>
+  <li>Li, N. &amp; Torr, D. G. (1991). <em>Phys. Rev. D</em> 43, 457.
+    <a href="https://doi.org/10.1103/PhysRevD.43.457">DOI:10.1103/PhysRevD.43.457</a>.
+    (Original Cooper-pair / gravitomagnetic framework.)</li>
+  <li>Prakash, O. et al. (2017). &ldquo;Evidence for bulk
+    superconductivity in pure bismuth single crystals at ambient
+    pressure.&rdquo; <em>Science</em> 355, 52.
+    (Bismuth ambient-pressure SC at 0.53 mK; unexplained by BCS.)</li>
+  <li>Catalan, G. &amp; Scott, J. F. (2009). &ldquo;Physics and
+    applications of bismuth ferrite.&rdquo; <em>Advanced Materials</em>
+    21, 2463. (BiFeO<sub>3</sub> multiferroic properties.)</li>
+  <li>Pais, S. C. (2017-19). US patents 10,144,532; 10,135,366;
+    10,322,827. Naval Air Warfare Center Aircraft Division.
+    (Adjacent contemporary patent program; geometry only.)</li>
+  <li>Aviation Studies International (1956). <em>Electrogravitics
+    Systems.</em> (Aviation-trade market intelligence; industry
+    interest, not physics evidence.)</li>
+  <li>Lazar, R. (1989-2026). Interviews: Knapp (KLAS-TV, 1989), Corbell
+    (2018), Rogan (#1315, 2019), Michels (<em>48 Hours With Bob
+    Lazar</em>, April 2026). (Architectural source for &sect;11; not a
+    physics source.)</li>
+  <li>Oganessian, Yu. Ts. et al. (2004). &ldquo;Experiments on the
+    synthesis of element 115 in the reaction
+    <sup>243</sup>Am(<sup>48</sup>Ca,xn)<sup>291-x</sup>115.&rdquo;
+    <em>Phys. Rev. C</em> 69, 021601(R).
+    (Moscovium synthesis; millisecond half-lives, contradicting the
+    stable-isotope claim. Cited in &sect;11.1.)</li>
+  <li>Hudson, D. (1989-95). US patent 5,128,134 (1992) and related
+    disclosures; <em>The ORMUS Tape Series</em> (1995). (ORMUS /
+    monatomic claims; independent replication absent. &sect;11.1,
+    substrate-class cluster only.)</li>
+  <li>Cayce, E. (1933-44). Atlantean readings 364-364-13; collected in
+    J. van Auken, <em>From Atlantis to Ancient Egypt</em> (A.R.E.
+    Press, 2010). (Tuaoi-stone / firestone; &sect;11.1, cultural-anchor
+    material, not physical evidence.)</li>
+  <li>Howard, T. D. (2021). US patent 11,117,065 B2,
+    &ldquo;Systems and Methods for Lynchpin Structure
+    Applications.&rdquo; Howard, Molter, Seely &amp; Yee (2023). SAE
+    Int. J. Aerosp. 16(3), doi:10.4271/01-16-03-0018. (Lynchpin
+    airframe; conventional multirotor, flight-tested; the Hexalock
+    chassis.)</li>
+  <li>Shechtman, D. et al. (1984). <em>Phys. Rev. Lett.</em> 53, 1951.
+    (Icosahedral quasicrystals; substrate-ladder rung 7.)</li>
+  <li>U.S. Navy (2004). Encounter reports from USS Nimitz Carrier
+    Strike Group. (Cited only as the origin of the &ldquo;Tic-Tac
+    envelope&rdquo; label in &sect;13; no explanatory claim attached.)</li>
+  <li>Framework receipts: <code>G_VERTEX_DERIVATION.md</code>;
+    <code>CHI_NU_AS_VERTEX_SHARING_STRENGTH.md</code>;
+    <code>WARP_DRIVE_MATH_AUDIT.md</code>;
+    <code>crypto_oracle/universe_sim/ampere_tension_sim.py</code> +
+    <code>AMPERE_LONGITUDINAL_SECTOR_NOTE_2026-07-20.md</code>;
+    <code>PORT_LOCALITY_SYNTHESIS_2026-07-20.md</code>;
+    <code>RESULTS_BIEFELD_BROWN_2026-08-13.md</code>;
+    <code>OPH_OBLIGATIONS_LEDGER.md</code> (OB-1, OB-2);
+    <code>THE_SHELL_IS_THE_REACTOR_2026-07-20.md</code>;
+    <code>EED_HIVELY_EQUATION15_NOTE_2026-08-13.md</code> (all under
+    <code>papers/</code>).</li>
+</ol>
+
+<h3>Changelog</h3>
+
+<div class="disclaimer">
+  <strong>0.8 (2026-08-18)</strong> &mdash; editorial pass for the public
+  electrogravitics site: mechanism stated once as theorem, open question
+  restated as magnitude; <em>g</em> re-framed as the bench&rsquo;s scalar
+  readout of a connection-layer coupling (layer stack folded into
+  &sect;3); null coverage brought to &ldquo;a target, not a
+  rescue&rdquo;; Brown / Montgolfier / Buhler / Podkletnov / Pais record
+  aligned with the field guide; vehicle companion &rarr; the Hexalock;
+  old &sect;&sect;13&ndash;17 compressed to &sect;13 (wormholes, time
+  travel, P&nbsp;=&nbsp;NP retired to companions); &sect;11 reduced to
+  its yield; in-body dating removed. All register boxes, the vertex
+  bound, the &sect;4 definition, &sect;5&ndash;6, &sect;8, &sect;10,
+  the licensing table and the glossary preserved.
+  <strong>0.7 (2026-06-04)</strong> &mdash; Sport-Model pass; substrate
+  identity and optical signature; reasoned &sect;8 prescription.
+  <strong>0.6</strong> &mdash; capability envelope, wormhole, curvature,
+  time-travel sections; licensing table.
+</div>
+
+</body>
+</html>
