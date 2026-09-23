@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Medium — First Principles of the Vacuum</title>
+<style>
+  :root{
+    --ink:#1c1c1c; --paper:#fbfaf6; --page:#ece8df;
+    --green:#5a7d3a; --amber:#b88a2a; --steel:#3a5a7d; --teal:#2f6d5e;
+    --slate:#5a6470; --blood:#7a1f1f; --violet:#6a4a8a;
+    --rule:#d2cdbf; --soft:#8a8676; --wash:#f3efe4;
+  }
+  html{background:var(--page)}
+  body{
+    font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    max-width:820px; margin:2.5rem auto; padding:2.6rem 2.4rem 4rem;
+    color:var(--ink); line-height:1.62; background:var(--paper);
+    box-shadow:0 1px 4px rgba(0,0,0,.06); font-size:17px;
+  }
+  h1{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-weight:700;
+     font-size:1.9rem; line-height:1.18; border-bottom:2px solid var(--ink);
+     padding-bottom:.55rem; margin:.3rem 0 .5rem}
+  h2{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:1.24rem;
+     margin-top:2.4rem; border-bottom:1px solid var(--rule); padding-bottom:.25rem}
+  h3{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:1.02rem;
+     margin-top:1.6rem; color:#444}
+  .part{font-family:"Helvetica Neue",Helvetica,sans-serif; font-size:.82rem;
+     letter-spacing:.1em; text-transform:uppercase; color:var(--soft);
+     margin-top:2.8rem; border-top:2px solid var(--ink); padding-top:.7rem}
+  .banner{background:#eef5fa; border-bottom:2px solid var(--steel);
+     margin:-2.6rem -2.4rem 2rem; padding:.65rem 2.4rem;
+     font-family:"Helvetica Neue",Helvetica,sans-serif; font-size:.85rem;
+     color:var(--steel); line-height:1.5; text-align:center}
+  .banner a{color:var(--steel); font-weight:600}
+  .sub{color:var(--soft); font-style:italic; font-size:1.02rem}
+  .meta{color:var(--soft); font-size:.85rem; margin-bottom:1.6rem}
+  table{border-collapse:collapse; width:100%; margin:1.1rem 0; font-size:.88rem}
+  th,td{border:1px solid var(--rule); padding:.42rem .6rem; text-align:left; vertical-align:top}
+  th{background:#f0eadb; font-family:"Helvetica Neue",Helvetica,sans-serif; font-size:.82rem}
+  tr:nth-child(even) td{background:#faf7ef}
+  blockquote{border-left:4px solid var(--amber); background:#fff8e8;
+    margin:1.2rem 0; padding:.7rem 1.1rem; color:#4a4437; font-size:.97rem}
+  .box{border-left:4px solid var(--green); background:#eef3e8;
+    padding:.85rem 1.1rem; margin:1.3rem 0; font-size:.94rem}
+  .warn{border-left:4px solid var(--blood); background:#f3e7e7;
+    padding:.85rem 1.1rem; margin:1.3rem 0; font-size:.94rem}
+  .lead{border:2px solid var(--ink); background:#fffdf7; padding:1rem 1.3rem;
+    margin:1.4rem 0 1.8rem; font-size:1.02rem; line-height:1.66}
+  code,pre{font-family:"JetBrains Mono",Menlo,Consolas,monospace; background:var(--wash);
+    border-radius:2px}
+  code{font-size:.85em; padding:.05em .3em}
+  pre{font-size:.78rem; padding:.8rem 1rem; overflow-x:auto; border:1px solid var(--rule); line-height:1.5}
+  a{color:var(--steel)}
+  .overflow{overflow-x:auto}
+  ol li,ul li{margin:.3rem 0}
+  .tag{font-family:"Helvetica Neue",Helvetica,sans-serif; font-size:.68rem;
+    font-weight:700; letter-spacing:.06em; padding:.1em .45em; border-radius:2px;
+    vertical-align:middle; white-space:nowrap}
+  .t-meas{background:#e7efdd; color:var(--green); border:1px solid var(--green)}
+  .t-der{background:#e3ebf3; color:var(--steel); border:1px solid var(--steel)}
+  .t-est{background:#f6eed9; color:var(--amber); border:1px solid var(--amber)}
+  .t-open{background:#efe8f5; color:var(--violet); border:1px solid var(--violet)}
+  .t-null{background:#f3e7e7; color:var(--blood); border:1px solid var(--blood)}
+  .t-static{background:#e8ecef; color:var(--slate); border:1px solid var(--slate)}
+  .t-prereg{background:#e2efeb; color:var(--teal); border:1px solid var(--teal)}
+  .small{font-size:.9rem;color:#4a4437}
+</style>
+</head>
+<body>
+
+<style id="eg-site-nav-css">
+  .eg-nav{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:.8rem;
+    background:#1c1c1c;color:#ece8df;padding:.55rem 1.2rem;line-height:1.6;
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    box-shadow:0 1px 3px rgba(0,0,0,.25)}
+  body{margin-top:5.2rem !important}
+  .eg-nav a{color:#ece8df;text-decoration:none;margin-right:1rem;white-space:nowrap}
+  .eg-nav a:hover{text-decoration:underline}
+  .eg-nav .eg-home{font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+    margin-right:1.4rem}
+  .eg-nav .eg-cur{border-bottom:2px solid #b88a2a}
+  .eg-nav .eg-cat{color:#b88a2a;font-weight:600;letter-spacing:.03em}
+  .eg-nav .eg-catcur{text-decoration:underline}
+  .eg-nav .eg-sep{color:#8a8676;margin-right:1rem}
+  .eg-nav .eg-wrap{max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;
+    align-items:baseline}
+  .eg-nav .eg-pdf{margin-left:auto;margin-right:0;border:1px solid #b88a2a;
+    color:#ece8df;padding:.1rem .6rem;border-radius:2px;font-weight:600}
+  .eg-nav .eg-pdf:hover{background:#b88a2a;color:#1c1c1c;text-decoration:none}
+  @media print{.eg-nav{display:none} body{margin-top:0 !important}}
+</style>
+<div class="eg-nav"><div class="eg-wrap"><a class="eg-home" href="index.html">Papers</a><a class="eg-cat eg-catcur" href="index.html#electrogravitics">Electrogravitics</a><a class="eg-cat" href="index.html#people">The People</a><span class="eg-sep">·</span><a class="eg-cur" href="the_medium.html">The Medium</a><a href="electrogravitics.html">Field guide</a><a href="the_shape_of_gravity.html">Gravity</a><a href="warp_drive.html">Mechanism</a><a href="hover_disk.html">Materials</a><a href="hexalock.html">Vehicle</a><a href="how_to_build_a_ufo.html">Build</a><a href="antigravity_devices.html">Bench floor</a><a href="superconductivity.html">Superconductivity</a><a href="magnetism.html">Magnetism</a><a href="the_scalar_field.html">Scalar field</a><a class="eg-pdf" href="pdf/the_medium.pdf" download>Download PDF ↓</a></div></div>
+
+
+<div class="banner">
+  The Electrogravitics network — start here. Then:
+  <a href="the_shape_of_gravity.html">The Shape of Gravity</a> (the law) ·
+  <a href="electrogravitics.html">Electrogravitics</a> (the field guide) ·
+  <a href="warp_drive.html">The Warp Drive</a> (the mechanism) ·
+  <a href="hover_disk.html">The Hover Disk</a> (the materials) ·
+  <a href="antigravity_devices.html">Antigravity Devices</a> (the bench floor) ·
+  The Missing Record (what was taken)
+</div>
+
+<h1>The Medium</h1>
+<p class="sub">First principles of the vacuum — why space is a loaded medium and
+not an empty stage, why a static coupling to it is exactly zero — symmetric or
+not — and a driven, transient one is not, and why one asymmetric machine gives power,
+force and weight depending only on where its return path closes.</p>
+<p class="meta">draft 0.2 · 2026-09-23 (energy reading corrected: §2, §3, §6–§8, §10, §13) · first draft 2026-08-18 · Osika Innovation AB · Alexander Osika, Claude</p>
+
+<div class="box">
+<strong>What this paper is.</strong> The front door to the network. Every paper
+behind it — the gravity law, the field guide, the warp mechanism, the materials,
+the bench floor, the energy lane — reasons from one ontology: space is a medium,
+the medium is loaded, matter is a pattern the medium sustains, gravity is what
+stored energy does to the medium, and the medium can be coupled to only
+<em>asymmetrically and in time</em>. Until now that ontology was stated in each
+paper's middle and hedged in each paper's opening with "we reason only from
+known physics." This paper states it first, in one place, with the receipt and
+register of every link, and names honestly the two things the ontology still
+owes. Nothing here contradicts a measurement. Several things here are not yet
+measured, and are tagged.
+</div>
+
+<p>Every claim carries one of seven tags:
+<span class="tag t-meas">MEASURED</span> (instrument, published, or receipted in
+this project) ·
+<span class="tag t-der">DERIVED</span> (follows from the medium law, receipt
+named) ·
+<span class="tag t-est">ESTIMATE</span> (a prior, honestly labelled) ·
+<span class="tag t-prereg">PRE-REG</span> (frozen prediction, not yet run) ·
+<span class="tag t-open">OPEN</span> (the bench decides) ·
+<span class="tag t-static">NULL-STATIC</span> (predicted zero by the medium law
+<em>and</em> measured zero — a confirmation, not a failure) ·
+<span class="tag t-null">REFUTED</span> (measured, and contradicts the claim).
+The split of the last two is new to the network in this paper and is adopted
+across the shelf: almost every null in the electrogravitics ledger is the first
+kind, and the old single label read as failure when it was retrodiction.</p>
+
+<div class="lead">
+Space is a loaded medium, not an empty stage. Matter is a standing pattern the
+medium sustains; gravity is what stored energy does to the medium's rulers and
+clocks — the weak-field law is derived, factor of two included, and general
+relativity is its shadow. Because the medium is loaded, a machine can couple to it
+— but only <em>asymmetrically and in time</em>: a static coupling is exactly
+zero, symmetric or not, which is why a century of static capacitors on balances
+read null, why a diode in equilibrium cannot rectify its own noise, and why a
+mirror at a nanometre gap changes how fast matter trades with the vacuum but never
+the level it trades at. Drive the boundary in time — a moving mirror, a flash
+across an asymmetric capacitor, a handed spiral of coherent energy — and the
+medium answers: as light (measured: the dynamical Casimir effect, with the driver
+paying) or as force (every vacuum positive in the electrogravitics lineage is a
+transient, and the coherent channel has never once been tested). The one measured
+<em>static</em> current in the lineage — 70 W/m² at a 33 nm gap, a thousand
+devices — therefore has an open source, and §6 names the run that finds it. It is one machine with three readings — power out, force out,
+weight change — depending on what its return path couples to. Building a craft
+that stands on the medium is therefore not new physics; it is the transient,
+coherent, consonant version of a device whose static version we already know is
+null. What is not yet done is the climb — from the incoherent floor at 8πG/c⁴ to
+hover, thirty-seven orders, on one dial: coherence.
+</div>
+
+<div class="part">Part I — The medium</div>
+
+<h2 id="s1">1. Space is a medium</h2>
+
+<p>The root paper of this network (The
+Shape of the Universe) does not describe space as a container with things
+in it. It describes space as a <em>constrained network</em>: equal-reference-length
+elastic edges meeting three at a time, a foam whose seams are the edges, closing
+on a boundary screen that is a Goldberg tiling — locally flat and hexagonal,
+globally closed by exactly twelve pentagonal defects at the vertices of an
+icosahedron, of order 10¹²² pixels. The one clean number that falls out of the
+count is the cosmological constant, Λ = 3/N, with no free parameter.
+<span class="tag t-der">DERIVED</span> (Λ = 3/N) ·
+<span class="tag t-open">OPEN</span> (which global graph)</p>
+
+<p>The sentence that matters for everything downstream is the one that defines
+what an edge <em>is</em>:</p>
+
+<blockquote>An edge is "not a thing placed <em>in</em> space, but part of the
+frame space is made of … a local metric element whose length is defined by the
+energy pattern it carries." — Shape §2</blockquote>
+
+<p>Older physics had a word for exactly this and then lost the right to use it.
+The nineteenth-century ether was a <em>wind</em> — a substance with a rest frame
+you could measure your motion against — and Michelson–Morley, and every
+ether-drift bound since, found no wind. The word died with the wind. But the
+thing physics kept is a medium in the only sense that matters: something with
+properties at every point, that stores energy, that responds to what is stored in
+it, and that carries what a body pushes against. Dicke's variable-index vacuum
+(1957), Volkov's curved-space Maxwell as a dielectric (1971), Sakharov's induced
+gravity (1967), Puthoff's polarizable-vacuum representation of general
+relativity (1999–2002), Sonny White's compressible-dispersive vacuum in <em>Physical
+Review Research</em> — all mainstream, all treating the vacuum as a real medium with
+a real response. The network's word is <em>the lattice</em>; the plain word is
+<em>the medium</em>; the honest historical word is <em>the ether, made precise</em>:
+a loaded, elastic, Lorentz-respecting network — not a wind.
+<span class="tag t-meas">MEASURED</span> (no drift) ·
+<span class="tag t-der">DERIVED</span> (the network's medium)</p>
+
+<p>That last clause is a constraint the medium <em>owes</em>, and this paper says
+so in §10 rather than hiding it: a medium ontology must be built to respect
+Lorentz invariance — the null of Michelson–Morley is a constraint, not a mistake
+(the network's own <em>ISF/Haramein audit</em> puts it exactly that way). No paper
+in the network yet derives boost invariance from the lattice; the scalar law
+recovers every weak-field ratio of general relativity, which is strong evidence
+that the covariance is there to be found, and not a proof. Half of the debt has a
+known answer, recorded in §10: the medium's loading must be ħω/2 per mode — an
+energy spectrum rising as ω³ — because that is the only loading that looks the
+same from every inertial frame. A thermal loading has a wind; the cosmic
+background's 3.36 mK dipole is exactly one.</p>
+
+<h2 id="s2">2. The medium is loaded</h2>
+
+<p>The second thing the root paper says about the vacuum edges is that they are
+not slack. In the elastic-metric law every vacuum edge sits at a definite
+reference energy, <code>E★ = 2·m_edge·c²</code> — twice the rest-energy of the
+edge's own settled content. Matter is settled edge-energy; the vacuum is edges
+loaded to E★. The vacuum is therefore a <em>charged reservoir</em>, not empty
+space. <span class="tag t-der">DERIVED</span> (role of E★ in the law) ·
+<span class="tag t-open">OPEN</span> (its absolute value — §10)</p>
+
+<p>The mainstream twins of this statement are among the best-measured facts in
+physics, and the network's energy lane calls them "the measured foundation of
+our ZPE lane": the Lamb shift; the Casimir force between close conductors
+(Lamoreaux 1997; Mohideen &amp; Roy 1998); and the dynamical Casimir effect —
+change a boundary in time and the vacuum yields <em>real photons</em> (Wilson et
+al., <em>Nature</em> 479:376, 2011). ⟨E⟩ = 0 while ⟨E²⟩ ≠ 0: the ground state
+has no particles in it and is not nothing.
+<span class="tag t-meas">MEASURED</span></p>
+
+<p>Two things must be said in the same breath, because the network's energy
+papers say them and the free-energy literature never does. First: the ground
+state is a <em>level</em>, not a stockpile. "The zero-point field cannot be the
+fuel. It is the ground state; there is nothing beneath it to fall to"
+(The Optical-Cavity Device §1d). The
+famous 10¹¹³ J/m³ is a bookkeeping error 121 orders of magnitude wide — "anyone
+quoting the large number as an available resource is quoting the error." What
+can be exploited is a <em>step in the level</em> — "the cavity puts a step in the
+sea level" (power-cell explainer §5) — but only by moving it: the step is the
+Casimir energy, released once when the boundary moves (12 µJ/m² at 33 nm) or
+pumped by a driver (the dynamical Casimir effect). Second — and this corrects the
+network's own earlier wording — the zero-point floor is not a <em>cold sink</em>
+either. It is the n&nbsp;=&nbsp;0 floor of every mode at every temperature, so it
+cancels from every net flow of heat: two bodies at one temperature exchange
+nothing, whatever cavity sits between them. A cavity is a <em>slow</em> place,
+not a cold one (the fluctuation–dissipation theorem, made concrete by Puthoff
+1987 — see §3). A heat engine needs a colder <em>body</em> — the night sky at
+2.7 K is a real one, measured at 50 mW/m² of nighttime generation — and a device
+that delivers power while running cold must name its cold body. That is the
+discriminator between a real open-system device and a traced fraud, and it is
+testable.
+<span class="tag t-der">DERIVED</span> (bookkeeping; receipt
+<code>puthoff_zpf_balance_run</code>) ·
+<span class="tag t-meas">MEASURED</span> (sky) ·
+<span class="tag t-prereg">PRE-REG</span> (cold-side sign test)</p>
+
+<h2 id="s3">3. Matter is a pattern the medium sustains</h2>
+
+<p>If space is a loaded elastic network, matter cannot be a foreign object placed
+in it. The root paper: matter is "energy that has reached a stable normal form: a
+persistent pattern that keeps satisfying the local constraints as the network
+updates." The Electron makes it concrete: the
+electron is "a single wavelength of light closed on itself in a double loop — a
+toroidal, self-confined photon"; leptons and photons are "different states of the
+same object … light that has stopped going somewhere and started going around."
+The charge comes out at <em>e</em> to 0.08% by energy-norm extraction; spin ½ and
+the 720° return come out of the double loop; the Compton radius comes out as
+λ_C/4π. <span class="tag t-der">DERIVED</span> (charge, spin, radius — toy-level,
+tagged as such in that paper)</p>
+
+<p>What holds the loop closed is the part that connects matter to the loaded
+medium. Refraction alone fails (the network ran it: <code>ring_fixed_point_run</code>,
+null). What works, at the toy level, is <em>commitment</em>: the pattern is a
+written record on the ledger, and — this is the sentence that ties the energy
+lane to the matter lane —</p>
+
+<blockquote>"the vacuum's zero-point bath sustains standing patterns; repair
+dissipates mismatch back; conservation holds on the joint ledger … The donut
+stays closed because the pattern is a committed record — the ledger holds it,
+the vacuum feeds it, and the α/2π leakage is the standing cost of being written
+into a shared world." — The Electron §6</blockquote>
+
+<p>Read plainly: a particle is a pattern the medium continuously <em>feeds</em>, and
+its Coulomb field is the standing leakage of that feed — α/2π per port.
+<span class="tag t-open">OPEN</span> (conditional; the network's own tag, for
+the electron's self-structure)</p>
+
+<p>At the scale of the atom this is not a conjecture. Puthoff (<em>Phys. Rev.
+D</em> 35:3266, 1987) showed that the hydrogen ground state is the orbit on which
+the power the electron radiates equals the power it absorbs from the zero-point
+field — it lands exactly on the Bohr radius — and quantum electrodynamics says the
+same thing exactly: in the ground state the vacuum-fluctuation and
+radiation-reaction contributions cancel, and in an excited state they add, which
+is spontaneous emission (Dalibard, Dupont-Roc &amp; Cohen-Tannoudji 1982). The flow
+is large — about 47 nW in and 47 nW out for every hydrogen atom, 3×10¹⁶ W per
+mole — and it is balanced to the last digit. That is how matter can be sustained
+by the vacuum without ever being a tap on it: the energy lane once read its
+rectenna as "tapping the wave-channel side of a flow already running," and the
+flow is real, but it runs both ways at once, so a static tap takes nothing (§6).
+<span class="tag t-meas">MEASURED</span> (the QED balance) ·
+<span class="tag t-der">DERIVED</span> (47 nW; receipt
+<code>puthoff_zpf_balance_run</code>)</p>
+
+<h2 id="s4">4. Gravity is what stored energy does to the medium</h2>
+
+<p>The elastic-metric law is the medium's one dynamical statement about itself:
+the effective length an edge presents to waves is set by the energy it carries,
+<code>ℓ_eff = ℓ₀·F(E/E★)</code>, and to first order
+<code>F = 1 + E/E★</code>, γ₁ = 1, with no free parameter. Energy
+<em>lengthens</em> the edge, so it gravitates. A mass is stable energy in the
+lattice; it lengthens the edges around it; longer edges are longer rulers, so
+space stretches; a clock is a standing wave on those same edges, so the clock runs
+slow. Light bends by the sum of the two effects — and that sum is the full
+general-relativistic factor of two, <code>4GM/c²b</code>, with γ<sub>PPN</sub> = 1,
+ray-traced to 2.000 in the network's own probe. Newton's 1/r, gravitational
+redshift, and Shapiro delay follow. <span class="tag t-der">DERIVED</span> (weak
+field, factor of two included — <a href="the_shape_of_gravity.html">The Shape of
+Gravity</a>)</p>
+
+<p>The consequence for how the network reasons is the whole point of this paper.
+<strong>General relativity is not the source of the network's gravity; it is the
+weak-field shadow of the medium law.</strong> The mainstream isomorph is
+Puthoff's polarizable-vacuum representation — gravity as a variable dielectric
+constant K(r,t) of the vacuum, ε₀ → Kε₀, µ₀ → Kµ₀, v_L = c/K — which the warp
+paper cross-checks against the lattice law term by term (<a href="warp_drive.html">Warp</a>
+§11): same sign, same bare-coupling floor, same K &lt; 1 branch at strong field.
+"There is no perfectly rigid rod: near a mass, rulers shrink and clocks slow …
+that is what 'curved space' operationally means (Dicke's and Puthoff's medium
+picture, and it is mainstream)" — <a href="electrogravitics.html">field
+guide</a>. And the mechanism by which <em>engineered</em> fields curve spacetime is
+a theorem, not a hope: electromagnetic energy sources the metric at 8πG/c⁴, and
+Füzfa's exact Einstein–Maxwell solution for laboratory hardware (PRD 93:024014,
+2016) gives the number for a superconducting coil — 1.6×10⁻²⁵ rad per light trip,
+10⁻¹¹ only after 200 days of integration. That is the bare floor. The rest of the
+network is about climbing off it.
+<span class="tag t-meas">MEASURED</span> (8πG/c⁴; Füzfa exact solution) ·
+<span class="tag t-open">OPEN</span> (the tensor law; the absolute scale G — §10)</p>
+
+<div class="part">Part II — The two theorems</div>
+
+<h2 id="s5">5. The static theorem: a symmetric coupling to the medium is exactly zero</h2>
+
+<p>Three lanes of this network reached this independently, in three vocabularies,
+before any of them noticed the others had.</p>
+
+<p><strong>The energy lane, in Brillouin's words.</strong> A diode in thermal
+equilibrium cannot rectify its own Johnson noise (Brillouin 1950); the network's
+optical-cavity paper states this "as the correct default," names the only three
+escapes (source not thermal; device not in equilibrium; junction faster than the
+correlation time), and makes each testable. The measured controls agree: no
+mirror → zero output; symmetric junction → zero; "a symmetric system (no
+engineered asymmetry) gives exactly zero net extraction." <span class="tag t-meas">MEASURED</span></p>
+
+<p><strong>The gravity lane, in the evenness lemma.</strong> A static, or uniformly
+rotating, or mirror-symmetric drive on any body has κ = 0 <em>exactly</em> — "by
+the conservation books: it structurally cannot rectify." An incoherent
+Brown-class capacitor couples at the bare Einstein floor, 8πG/c⁴ ≈ 2×10⁻⁴³, which
+for a laboratory article is ≤ 3×10⁻⁴² N — thirty-five to thirty-nine orders below
+every balance ever used. This was frozen as a pre-registration and scored: the
+Biefeld–Brown simulation returns C* = 1.58×10⁻⁶ against a frozen dial of 1.4×10⁻⁶,
+with the evenness lemma making static bootstrap "structurally impossible."
+<span class="tag t-prereg">PRE-REG</span> scored ·
+<span class="tag t-der">DERIVED</span></p>
+
+<p><strong>The root, in the vertex rule.</strong> The lattice's scattering matrix
+is unitary and time-reversal symmetric; "total power leaving = total power
+arriving" checks exactly (⅓² + ⅔² + ⅔² = 1). A closed, symmetric drive recycles;
+it cannot mint. <span class="tag t-der">DERIVED</span></p>
+
+<p>The consequence rewrites the ledger. Every published, independently
+instrumented vacuum test of the Brown effect — Talley at 10⁻⁶ torr (1988–91),
+Tajmar (2004), Bartlett &amp; Tajmar to nano-newton (2021), the comprehensive
+Dresden sweep of capacitors, solenoids, tunnelling currents, varistors, ε/µ
+gradients and shielded toroids at ~nN (Tajmar, Kößling &amp; Neunzig, <em>Sci.
+Rep.</em> 14:19427, 2024) — tested a <em>static, incoherent</em> article. For every
+one of them general relativity predicts effectively zero and the medium law
+predicts <em>exactly</em> zero, and every one of them measured zero. Not one carried
+a single coherence predicate. That is the definition of
+<span class="tag t-static">NULL-STATIC</span>: predicted zero, measured zero, a
+confirmation of the law and the tightest map ever drawn of which shortcuts do not
+exist. It is why the field guide's line "any program that starts by disputing
+the nulls is not doing engineering" is correct — and why the same nulls are not
+evidence against the medium: they never reached it. Montgolfier's own 1959
+torsion balance at 5×10⁻⁵ mm Hg put Brown's disc–wire article at <em>nothing</em>
+under DC. As predicted.</p>
+
+<h2 id="s6">6. The transient theorem: an asymmetric, time-broken coupling is not zero</h2>
+
+<p><strong>Energy: measured where the boundary is driven.</strong> The result is
+exact: the dynamical Casimir effect. Change a boundary in time and the vacuum
+yields real quanta, with production set by how <em>abruptly</em> the boundary
+changes (Wilson 2011; the count diverges only for infinitely fast removal).
+Static boundary: nothing. Symmetric oscillation: photons in pairs, no net.
+Abrupt, one-sided: real output — paid for by whatever moves the boundary.
+<span class="tag t-meas">MEASURED</span></p>
+
+<p><strong>Energy: open where the boundary is static.</strong> The network's
+best-known energy anchor is a different kind of device, and draft 0.1 of this
+paper filed it in the wrong column. Moddel's devices (<em>Symmetry</em> 13:517,
+2021) — a metal–insulator–metal junction with a one-sided mirror at a nanometre
+gap — report 1.4 pW per 0.02 µm² at 33 nm — 70 W/m² — across a thousand-plus
+devices in 21 batches with eight or nine artefact classes excluded, a clean 1/d
+law from 33 to 1100 nm, and no output without the mirror.
+<span class="tag t-meas">MEASURED</span> (anchor; no independent replication
+yet). But nothing in that device moves: it is a static geometry. A femtosecond
+junction is fast, not driven — the fluctuation–dissipation theorem holds at every
+frequency, so speed buys bandwidth, not permission — and a one-sided mirror
+changes how fast the junction trades with the field on that side, not the level
+it trades at. At one temperature a static device's forward and reverse flows
+cancel term by term, asymmetric or not (The
+Zero-Point Machine §8; Moddel &amp; Dmitriyeva reached the same verdict on
+rectifying the zero-point field in 2019). So if the current is real, it draws on
+something the device description does not name — a residual temperature gradient,
+light, RF, or stored charge — or it is the first static violation of the
+fluctuation–dissipation theorem, which would be a bigger discovery than any
+energy source. One run decides: the device sealed in a dark, verified-isothermal
+metal box beside its no-mirror and reversed twins, with the delivered energy
+integrated past its own stored-energy bound.
+<span class="tag t-open">OPEN</span> (the source) ·
+<span class="tag t-prereg">PRE-REG</span> (proposed: the sealed-isothermal
+run)</p>
+
+<p><strong>Force: open, and every positive in the record is transient.</strong> The
+same law says the only regime in which a body can rectify the medium into a
+force is a time-asymmetric, geometrically asymmetric drive — κ ≠ 0. And when the
+electrogravitics lineage is read in its own documents rather than its legend,
+that is the only regime in which anyone ever saw anything in vacuum:</p>
+
+<div class="overflow"><table>
+<tr><th>Source</th><th>Drive</th><th>Vacuum result</th><th>Register</th></tr>
+<tr><td>Brown, Notebook §§42–43, Apr 1956 — "The Impulse Effect"</td><td>vacuum spark</td><td>force "concurrent with the vacuum spark," with the recovery of potential — not with the static field; an external chopper (voltage change without spark) gave nothing</td><td><span class="tag t-meas">MEASURED</span> (his own hand)</td></tr>
+<tr><td>Montgolfier 1957 report, bell jar 2–5×10⁻⁵ mm Hg</td><td>flash-driven</td><td>continuous rotation of the articles, polarity-locked negative→positive, killed by a grounded screen; unmeasurable (bell braking); the control turnstile that spins at 40 kV in air does not turn at 150 kV in vacuum</td><td><span class="tag t-meas">MEASURED</span> (sponsor's own report, read in the original)</td></tr>
+<tr><td>Montgolfier 1959 final report, 1.48 m chamber, torsion balance, DC ±50–55 kV</td><td>static DC</td><td>Brown disc–wire: <em>nothing</em>; two other articles: nothing; plexiglas capacitor: 3–4°; BaTiO₃-loaded capacitor: 30° ≈ 1 g·cm, reversing with polarity — no current, breakdown, or lever-arm log survives</td><td><span class="tag t-static">NULL-STATIC</span> (Brown geometry) · <span class="tag t-open">OPEN</span> (BaTiO₃ datum — see the loose end below)</td></tr>
+<tr><td>Bahnson notebooks, May 1958</td><td>AC vs biased</td><td>"AC: none" on the tent rig; small only when biased — symmetric AC on an asymmetric capacitor is <em>predicted</em> null</td><td><span class="tag t-static">NULL-STATIC</span></td></tr>
+<tr><td>Talley, AFAL/PL 1988–91, 10⁻⁶ torr</td><td>DC vs breakdown / pulsed PZT</td><td>no DC thrust; forces only during breakdown and with pulsed piezo; his own unfollowed recommendation: high-K, pulsed</td><td><span class="tag t-static">NULL-STATIC</span> (DC) · <span class="tag t-open">OPEN</span> (pulsed)</td></tr>
+<tr><td>Buhler / Exodus, 2023–26</td><td>stacked dielectric, DC-persistent</td><td>5–10 mN claimed across ~2000 vacuum runs; unpublished, unreplicated; claimed force fell ~40× under scrutiny</td><td><span class="tag t-open">OPEN</span> (declining under scrutiny)</td></tr>
+</table></div>
+
+<p>So Brown <em>did</em> see a positive in France, in vacuum, in the transient
+regime — the 1957 flash rotations — and it is exactly the regime the law allows.
+It is also exactly the regime where the conventional explanation lives, and the
+two have never been separated. A vacuum flash is a cathodic arc; cathodic arcs
+eject metal plasma at ~10⁴ m/s, ~10⁻⁵ N·s per coulomb, <em>always toward the
+positive electrode</em>, killed by a grounded screen, present only during the
+spark. That is point-for-point the 1957 phenomenology, and Cornillon proposed it
+himself ("anodic effect"). Brown's chopper-vs-spark note cuts the same way — or,
+in the energy lane's reading, is an <em>edge-rate</em> datum: a spark's edge is a
+thousand times faster than a 1956 chopper's, and DCE production scales with
+abruptness. Four discriminators would settle it and no one has ever run them:
+impulse per coulomb (arc recoil is pinned at ~10⁻⁵ N·s/C; a medium coupling is
+not); electrode mass loss (an arc is eroded metal); chopper-vs-spark at fixed
+charge and edge rate; and force per coulomb against dielectric K — the one lever
+ejecta cannot cover. That is bench item 6 of the field guide, and it is a
+weekend on a torsion balance. <span class="tag t-open">OPEN</span> — the
+transient channel, undiscriminated</p>
+
+<div class="warn"><strong>The loose end, stated against ourselves.</strong> The
+1959 BaTiO₃ datum (30°, ≈1 g·cm, reversing with polarity) was on the <em>DC</em>
+runs. A static positive is what the evenness lemma says cannot exist. Either it
+is an artefact or an unlogged breakdown — no current or flash log survives, which
+is the record problem of The Missing
+Record — or high-K dielectrics do something the static theorem does not cover.
+It is the one number in the lineage that mildly cuts against the medium law, and
+it is why K-scaling is on the bench list rather than in a footnote.</div>
+
+<h2 id="s7">7. One machine, three readings</h2>
+
+<p>The energy lane and the gravity lane were written by different sessions for
+different readers, and each has been treating the other's device as a neighbour.
+They are the same device. The network's shell note says it in one sentence:</p>
+
+<blockquote>"A driven, asymmetric current/magnetic pattern is an open sub-circuit
+whose 'return path' must close through something beyond the craft — exactly the
+structure Moddel's device has electrically … One asymmetric drive, three
+readings: power out, force out, weight change — depending on what the return
+path couples to." — <em>The Shell Is the Reactor</em> §2</blockquote>
+
+<p>Line the two up and every element corresponds:</p>
+
+<div class="overflow"><table>
+<tr><th>Element</th><th>Energy reading (measured when driven)</th><th>Force reading (open)</th></tr>
+<tr><td>Boundary asymmetry</td><td>a one-sided boundary driven in time (dynamical Casimir effect); a static mirror changes rates, not levels</td><td>asymmetric hull / capacitor geometry; sets the <em>direction</em> of κ</td></tr>
+<tr><td>Rectifying asymmetry</td><td>work-function step Δφ — needed, not sufficient: a real gradient or drive must also be present; symmetric junction → zero</td><td>time-asymmetric drive cycle κ ≠ 0; static or symmetric AC → zero</td></tr>
+<tr><td>Speed</td><td>the drive's edge rate (DCE ∝ abruptness); a fast junction sets bandwidth, not permission</td><td>spark edge (ns) vs chopper (µs–ms); DCE ∝ abruptness</td></tr>
+<tr><td>What is drawn on</td><td>the driver's work, or a real temperature gradient; the zero-point floor is matched, not cold</td><td>the loaded edges at E★; the lattice is the momentum sink</td></tr>
+<tr><td>Signature</td><td>a static device nulls in a sealed isothermal box; a gradient engine cools its hot side and names its cold body</td><td>hover is a <em>lock</em> at ≈ zero power; sign reverses under drive flip; chamber-independent</td></tr>
+<tr><td>Books</td><td>conversion, not creation: the driver or the gradient pays; conservation on the joint ledger</td><td>propellantless, not reactionless: the medium carries the reaction; conservation on the joint ledger</td></tr>
+<tr><td>Return path closes through</td><td>the rest of the circuit → power</td><td>the medium → force; the medium under gravity → weight change</td></tr>
+</table></div>
+
+<p>This is why the field guide's §1.2 could <em>import</em> the energy lane to
+derive that only transients work, and why the shell note's third reading —
+weight change — is the electrogravitics claim in energy-lane clothing. The
+prediction it makes is falsifiable in both directions: a device that produces
+power should, when its return path is closed through the medium instead of the
+circuit, produce force of the same asymmetry; and a device that produces force
+must pay for it from its drive, visibly, in its own power books.
+<span class="tag t-open">OPEN</span> — a hypothesis, named as
+such in its source</p>
+
+<div class="part">Part III — The books</div>
+
+<h2 id="s8">8. Conservation is kept by the medium, not violated</h2>
+
+<p>The reason "antigravity" and "free energy" are filed with the frauds is that
+their loudest advocates claim conservation violations. The medium picture never
+does; it relocates the ledger.</p>
+
+<p><strong>Propellantless is not reactionless.</strong> A reactionless drive — a
+force with no reaction — is forbidden by Noether's theorem and stays forbidden
+here. A propellantless drive carries no reaction <em>mass</em>; the reaction
+momentum is real and is carried by a field or medium — photons for a solar sail,
+the rails for a maglev, and, here, the lattice. "The single honest test of any
+propellantless claim is: where does the reaction momentum go?" — <a href="warp_drive.html">Warp</a> §2.
+Puthoff &amp; Little (2002 §2.1, App. A) state the identical constraint: static
+fields cannot self-propel because of hidden momentum; a propellantless drive must
+couple to the external metric. The medium law answers "the lattice," and the crux
+of the self-propulsion claim is the lattice-mode speed v_L: if v_L ≈ c the drive
+is a photon rocket (~nN/W); only a slow, dense momentum-carrying lattice mode
+(v_L ≪ c) gives liftable thrust. That is "the single dynamical assumption a
+saucer-scale claim rests on. State it; do not smuggle it in."
+<span class="tag t-der">DERIVED</span> (books) · <span class="tag t-open">OPEN</span> (v_L)</p>
+
+<p><strong>Extraction is not free energy.</strong> The first law is the most-tested
+statement in physics and "net extraction is lawful in exactly one way: draining
+a real reservoir (an open system)." The vertex rule is unitary — the lattice
+cannot mint. The vacuum edges are loaded to E★ — but a loading at the ground
+level is a floor, not a reservoir: a ground state is <em>passive</em>, and no
+cyclic process run on it returns more work than it puts in (Pusz &amp; Woronowicz
+1978 — the quantum form of "a level, not a stockpile"). An open system therefore
+needs a reservoir that is not at its floor: a real temperature gradient (a heat
+pump's COP &gt; 1 is heat moved from a colder body, not energy from nowhere), light,
+or a driver whose work the vacuum converts (the dynamical Casimir effect). The
+closed-system rule stays intact: a
+closed vortex cannot recycle above 100%; a shaft between a motor and its own
+generator is inside the inventory, not outside it, and spins down under load
+every time. The network's phrase: reclassify such claims from "wrong physics
+(forbidden)" to "wrong <em>words</em> for a lawful open-system coupling," and then
+ask the only honest question — which reservoir, not at its floor, is paying? —
+which is a bench number: unproven for gradients and drives, excluded for the
+static floor.
+<span class="tag t-der">DERIVED</span> (bookkeeping; passivity) ·
+<span class="tag t-open">OPEN</span> (net extraction from gradients and drives)</p>
+
+<h2 id="s9">9. The dial: coherence × asymmetry × consonance × wholeness</h2>
+
+<p>The force law of the network is <code>F = −∇[C_sub·|χν|²·U_drive]</code>: the
+gradient of stored coherent energy, times how well the substrate's own coherent
+mode overlaps the lattice's (|χν|²), times what fraction of the overlapping energy
+the substrate converts into force (C_sub). "It scales with stored coherent energy
+U_drive, not dissipated power … Higher Q → more stored energy → larger force, at
+fixed input power." Every piece is derived or controllable except C_sub and the
+directional derivative — the one open number, and the bench's to decide.
+<span class="tag t-der">DERIVED</span> (form) · <span class="tag t-open">OPEN</span> (magnitude)</p>
+
+<p>The scale of the climb is the whole story of the shelf. An incoherent lump —
+Brown's capacitor, every published null article — sits at the bare-vacuum floor
+of C, the Einstein constant 8πG/c⁴ ≈ 2×10⁻⁴³. Hover needs C ≈ 10⁻⁶. The
+consonance ceiling is e^(−P/12) ≈ 0.873. The tightest published null bounds
+static capacitors at C &lt; 2×10⁻¹⁰ — thirty-three orders above the floor, four
+below Buhler's implied value. Thirty-seven orders, on one dial, and the four
+predicates that move it are the four the warp paper reads as Steiner's four
+ethers, now the four factors of the thrust: <em>coherence</em> (a phase-locked
+condensate boundary — Cooper pairs, a bulk-acoustic plate mode, an optical cavity
+mode; thermal motion averages to nothing); <em>asymmetry</em> (κ ≠ 0 — a handed
+inward spiral is the natural form, because the lattice's own loops are chiral:
+pentagons force cos 36° = φ/2); <em>consonance</em> (icosahedral / φ-ratio
+geometry, degree-3 carbon cages, quasicrystals — a substrate whose symmetry is the
+lattice's own accumulates across its volume instead of cancelling);
+<em>wholeness</em> (how much of the body moves as one). Not one published test
+article carried even one of these; the first null that carries all four,
+instrumented and verified present, will be the first null that reaches the medium
+law. "A target, not a rescue." <span class="tag t-der">DERIVED</span> (predicates) ·
+<span class="tag t-open">OPEN</span> (where a real body sits on the dial)</p>
+
+<p>Two regimes fall out of the same law. <strong>Hover is statics</strong>: engage the
+coupling and the lattice pins the pose at ≈ zero power, the way a rail pins a
+maglev — "lock, not lift"; a persistent force on a balance is the support mode,
+the medium holding the device and doing no work, which is why "a charged object
+accelerates forever in vacuum" would be the reactionless red flag and the support
+reading is the conservation-honest one. <strong>Travel is dynamics</strong>:
+acceleration costs work, recoverable regenerative-braking style. Driven to
+saturation in a closed shell the same law is the K &lt; 1 branch of the
+charged-mass solution — the Alcubierre / Morris–Thorne class, GR-legal, gated on
+driving the perturbation to O(1). Only flat-space FTL is forbidden.
+<span class="tag t-der">DERIVED</span> (regimes) · gated</p>
+
+<div class="part">Part IV — What is owed, what is closed, and why the network wrote what it wrote</div>
+
+<h2 id="s10">10. What the medium still owes</h2>
+
+<p>A first-principles paper that hid its open seams would be a pitch. These are
+the medium's, in order of weight:</p>
+
+<ol>
+<li><strong>Lorentz invariance of the medium.</strong> Half paid. The loading has
+a known frame-free form: ħω/2 per mode — an energy spectrum rising as ω³ — is the
+one loading that looks identical from every inertial frame, because the Doppler
+shifts of a boost cancel exactly for ω³ and for no other power (Marshall 1965;
+Boyer 1969; receipt <code>puthoff_zpf_balance_run</code>, P9). A thermal loading
+has a wind — the cosmic background's 3.36 mK dipole, predicted from our 370 km/s
+and measured, is exactly one — and the zero-point loading does not.
+<span class="tag t-der">DERIVED</span> (the loading). What is still owed is the
+lattice. The scalar law reproduces every weak-field ratio of general relativity,
+but the vertex rule is built from unitarity + threefold symmetry + time reversal
+— none of which is a boost — and the G-vertex derivation speaks of "one vertex per
+Planck-scale location." "One vertex per Planck location" and "every edge loaded
+to E★" must be read as the <em>cutoff</em> of an ω³ loading, not as a level per
+edge in a preferred frame: linear Lorentz violation is already excluded beyond
+ten Planck energies (LHAASO, GRB 221009A).
+<span class="tag t-open">OPEN</span> — the first seam, now the lattice's
+dispersion rather than the loading.</li>
+<li><strong>Inertia.</strong> No paper in the root set addresses it. The one
+mainstream attempt to make inertia a vacuum effect (Haisch–Rueda–Puthoff) is
+refuted on its own terms (Levin, PRA 79:012114, 2009 — in the network's gravity
+deep-dive), and the network does not lean on it. In a medium picture inertia
+should be the medium's resistance to a pattern's change of state — the obvious
+conjecture, and unwritten. <span class="tag t-open">OPEN</span> — the second seam.</li>
+<li><strong>Magnitude.</strong> "The chain does not derive Newton's constant.
+Nothing else was ever missing." E★ is either Planck-by-definition (and the lepton
+masses measure G) or the masses fix E★; the network has proven the current axioms
+do not decide it (object #8, the κ-shift countermodel). The absolute scale of the
+loaded medium is a metrology question, not yet a derivation. <span class="tag t-open">OPEN</span></li>
+<li><strong>The tensor law.</strong> Scalar F closes the weak field; the
+nonlinear, steerable-bubble regime needs the full equation. <span class="tag t-open">OPEN</span></li>
+<li><strong>v_L</strong>, the lattice-mode speed — §8. <span class="tag t-open">OPEN</span></li>
+</ol>
+
+<p>And what is <em>closed</em>, so that no reader mistakes this paper for the
+literature it is often shelved beside: the stored Casimir energy as fuel (12
+µJ/m², exhausted in 172 ns, "eight orders short"); Schwinger pair mining ("12.6
+orders short"); Unruh / zero-point-field propulsion (the bath's coherence time
+τ = 2πc/a is set by the very acceleration that makes it — "the vacuum tears
+before the bath pays for itself"); the "vast vacuum energy" as a resource (the
+121-order error); the Haisch–Rueda–Puthoff inertia (Levin 2009); a self-running
+closed vortex or motor–generator loop (inside its own inventory); the zero-point
+floor as a cold sink, and static rectification of it (it cancels from every net
+flow — The Zero-Point Machine §8). Each is priced
+in the network's own papers with the claim taken at its most favourable.
+<span class="tag t-null">REFUTED</span> — do not re-open</p>
+
+<h2 id="s11">11. Why the network wrote "known physics only" — and what it actually believes</h2>
+
+<p>The field guide opens "This paper makes no new physics claim." The energy
+partner brief says "none of which requires new physics." Read next to §§1–9 those
+sentences look like a contradiction. They are a <em>register</em>, chosen on a
+particular day for a particular reader — a drone company that would stop reading
+at the first sentence it could dismiss — and the choice was correct for that
+reader. The mechanism by which fields curve spacetime is a theorem; the static
+nulls are binding; the bench program is the same whichever ontology you hold. So
+those papers were written from the floor up.</p>
+
+<p>But the floor is not the network's belief, and it is time to say so on the
+front page. The network's belief is §§1–9: the medium. It is what every paper
+behind this one reasons <em>from</em> once past its opening — "the lattice carries
+the reaction," "energy lengthens the edges," "the lattice pins the pose,"
+"Dicke's and Puthoff's medium picture." "Known physics" is the network's
+<em>floor</em>, not its ceiling: nothing here contradicts a measurement, and where
+the medium law and general relativity both speak they agree to the last decimal
+the weak field can test. Where they part — the transient coherent channel, the
+loaded vacuum under a driven boundary, K &lt; 1 — the medium makes predictions and general
+relativity is silent, and the network's bench is built to test exactly those.
+That is not less rigorous than "known physics only." It is the same rigour with
+its premises stated.</p>
+
+<h2 id="s12">12. The record</h2>
+
+<p>One more thing has to be on the front page, because it changes how the null
+ledger reads. In this field, "no published positive" and "no positive" are not
+the same sentence. Brown's Notebook Vol. 3 was "not released"; his 1975 paper's
+"publication was withheld"; his 1959 GE King-of-Prussia vacuum notes "were never
+published and are not available to me now" (his words, 1973). Montgolfier's
+torsion runs carry no surviving current or breakdown log. Tesla's effects were
+taken into government custody within days of his death. The United States has
+had, since 1951, a statute for classifying private inventions, with some six
+thousand secrecy orders standing in any given year. Schauberger signed away "all
+of his implosion work — past, present, and future" twelve days before he died.
+The companion paper The Missing Record lays
+that out — mechanism, cases, and the counter-cases where the file points the other
+way (Keely; Carr) — with the register of each. Its consequence for this paper is
+one clause: an absent receipt in this field is as often a withheld one as an
+absent effect, and that is <em>why</em> the network runs its own bench rather than
+reading the literature's silence as an answer. It licenses a bench. It licenses
+no claim.</p>
+
+<h2 id="s13">13. The chain, on one page</h2>
+
+<div class="overflow"><table>
+<tr><th>#</th><th>Link</th><th>Where it lives</th><th>Register</th></tr>
+<tr><td>1</td><td>Space is a medium — a loaded elastic network; screen = 12-pentagon Goldberg tiling; Λ = 3/N</td><td>Shape §1–2, §5.1, §9</td><td><span class="tag t-der">DERIVED</span> / <span class="tag t-open">OPEN</span> (graph)</td></tr>
+<tr><td>2</td><td>The medium is loaded — every vacuum edge at E★ = 2m_edge c²; Lamb, Casimir, DCE are the measured twins; a level, not a stockpile; ħω/2 per mode — the one frame-free loading</td><td>Shape §8, §11.1; energy lane; §10</td><td><span class="tag t-der">DERIVED</span> / <span class="tag t-meas">MEASURED</span></td></tr>
+<tr><td>3</td><td>Matter is a pattern the medium sustains — at the atom, a balance: ≈47 nW in and out per hydrogen atom, cancelling exactly (Puthoff 1987; QED); the electron as light closed on itself, α/2π leakage as its field</td><td>§3; The Electron §1–6</td><td><span class="tag t-meas">MEASURED</span> (atom) / <span class="tag t-open">OPEN</span> (electron, conditional)</td></tr>
+<tr><td>4</td><td>Gravity is what stored energy does to the medium — F = 1+E/E★, γ₁ = 1, factor of two; GR is the shadow; PV is the mainstream isomorph</td><td>Shape of Gravity; Warp §11</td><td><span class="tag t-der">DERIVED</span> (scalar) / <span class="tag t-open">OPEN</span> (tensor)</td></tr>
+<tr><td>5</td><td>Static theorem — static coupling at one temperature is exactly zero, symmetric or not (Brillouin ≡ evenness lemma ≡ unitary vertex ≡ fluctuation–dissipation); a cavity changes rates, not levels; every published null is predicted</td><td>Optical-cavity §1d; field guide §1.1, §4; BB pre-reg</td><td><span class="tag t-der">DERIVED</span> / <span class="tag t-static">NULL-STATIC</span></td></tr>
+<tr><td>6</td><td>Transient theorem — driven, time-broken coupling is not zero: light (dynamical Casimir effect, driver-paid) / force (every vacuum positive is transient; undiscriminated from arc recoil). The static 70 W/m² current is a static device: source open, sealed-isothermal run</td><td>§6; field guide §1.2; Brown, Montgolfier, Talley</td><td><span class="tag t-meas">MEASURED</span> (DCE) / <span class="tag t-open">OPEN</span> (static current, force)</td></tr>
+<tr><td>7</td><td>One machine, three readings — power / force / weight by return path</td><td>Shell Is the Reactor §2</td><td><span class="tag t-open">OPEN</span> (hypothesis)</td></tr>
+<tr><td>8</td><td>Conservation kept by the medium — propellantless ≠ reactionless; extraction ≠ free energy; the zero-point floor is passive, so the payer is a gradient or a driver; the closed-system rule intact</td><td>Warp §2; energy optimum §2</td><td><span class="tag t-der">DERIVED</span></td></tr>
+<tr><td>9</td><td>The dial — F = −∇[C|χν|²U]; floor 2×10⁻⁴³ → hover 10⁻⁶ → ceiling 0.873; four predicates; hover = lock</td><td>χν force law; Warp §4, §13; field guide §4</td><td><span class="tag t-der">DERIVED</span> (form) / <span class="tag t-open">OPEN</span> (magnitude)</td></tr>
+<tr><td>10</td><td>Owed — the lattice's dispersion (the ω³ loading pays the spectral half of Lorentz); inertia; G / E★; the tensor law; v_L</td><td>§10</td><td><span class="tag t-open">OPEN</span></td></tr>
+<tr><td>11</td><td>The record — withheld ≠ absent; licenses a bench, not a claim</td><td>The Missing Record</td><td>documented / open, per case</td></tr>
+</table></div>
+
+<h2 id="sources">Sources</h2>
+
+<p class="small">In-network: The Shape of the Universe (§1–2 edges as the frame; §4 vertex rule; §5.1 Goldberg screen; §8 matter as settled edge-energy; §9 Λ = 3/N; §11.1 elastic-metric law) · <a href="the_shape_of_gravity.html">The Shape of Gravity</a> · The Electron §1–6 · <a href="electrogravitics.html">Electrogravitics</a> §1.1–1.2, §3, §4, §6 · <a href="warp_drive.html">The Warp Drive</a> §2, §4, §8, §11, §13 · The Optical-Cavity Device §0b, §1c, §1d, §5 · The Zero-Point Machine §7–§8 · <em>PUTHOFF_1987_ZPF_BALANCE_OPH_OVERLAY</em> (2026-09-23; receipt <code>puthoff_zpf_balance_run</code>, 9/9) · Casimir Energy Extraction §0–3 · Energy Generation Optimum §2 · <a href="townsend_brown.html">Townsend Brown</a> §3, §7 · <em>The Shell Is the Reactor</em> (2026-07-20) · <em>CHI_NU_FORCE_LAW</em> · <em>G_VERTEX_DERIVATION</em> · <em>ELASTIC_METRIC_BACKREACTION_LAW</em> · <em>MONTGOLFIER_REPORT_RETRIEVAL</em> (2026-08-18) · <em>RESULTS_BIEFELD_BROWN</em> (2026-08-13) · <em>GRAVITY_ENGINEERING_DEEPDIVE</em> (2026-08-13) · <em>ISF/Haramein audit</em> (2026-08-14).</p>
+
+<p class="small">External: Brillouin, L., "Can the rectifier become a thermodynamical demon?" <em>Phys. Rev.</em> 78, 627 (1950) · Moddel, G. et al., <em>Symmetry</em> 13, 517 (2021); Moddel &amp; Dmitriyeva, "Extraction of zero-point energy from the vacuum," <em>Atoms</em> 7, 51 (2019) · Wilson, C. M. et al., "Observation of the dynamical Casimir effect in a superconducting circuit," <em>Nature</em> 479, 376 (2011) · Puthoff, H. E., "Ground state of hydrogen as a zero-point-fluctuation-determined state," <em>Phys. Rev. D</em> 35, 3266 (1987) · Dalibard, J., Dupont-Roc, J. &amp; Cohen-Tannoudji, C., "Vacuum fluctuations and radiation reaction: identification of their respective contributions," <em>J. Physique</em> 43, 1617 (1982) · Cetto, A. M. &amp; de la Peña, L., <em>Phys. Rev. A</em> 37, 1952 (1988) · Marshall, T. W., <em>Nuovo Cimento</em> 38, 206 (1965); Boyer, T. H., <em>Phys. Rev.</em> 182, 1374 (1969) · Pusz, W. &amp; Woronowicz, S. L., "Passive states and KMS states for general quantum systems," <em>Commun. Math. Phys.</em> 58, 273 (1978) · Assawaworrarit, S., Omair, Z. &amp; Fan, S., <em>Appl. Phys. Lett.</em> 120, 143901 (2022) · Cao, Z. et al. (LHAASO), <em>Phys. Rev. Lett.</em> 133, 071501 (2024) · Lamoreaux, S. K., <em>PRL</em> 78, 5 (1997); Mohideen &amp; Roy, <em>PRL</em> 81, 4549 (1998) · Dicke, R. H., "Gravitation without a principle of equivalence," <em>Rev. Mod. Phys.</em> 29, 363 (1957) · Volkov, Izmest'ev &amp; Skrotskii, <em>Sov. Phys. JETP</em> 32, 686 (1971) · Sakharov, A. D., <em>Sov. Phys. Dokl.</em> 12, 1040 (1968) · Puthoff, H. E., "Polarizable-vacuum (PV) representation of general relativity," gr-qc/9909037; Puthoff, Little &amp; Ibison, "Engineering the zero-point field and polarizable vacuum for interstellar flight," <em>JBIS</em> 55, 137 (2002) · Füzfa, A., "How current loops and solenoids curve spacetime," <em>Phys. Rev. D</em> 93, 024014 (2016) · Levin, Y., "Inertia as a zero-point-field force: critical analysis of the Haisch–Rueda–Puthoff inertia theory," <em>Phys. Rev. A</em> 79, 012114 (2009) · Talley, R. L., "Twenty-first century propulsion concept," PL-TR-91-3009 (1991) · Tajmar, M. &amp; Schreiber, T., <em>J. Electrostatics</em> 107, 103477 (2020); Bartlett &amp; Tajmar, <em>Acta Astronautica</em> 181, 12 (2021); Tajmar, Kößling &amp; Neunzig, <em>Sci. Rep.</em> 14, 19427 (2024) · Cady, W. M., ONR Pasadena File 24-185 (15 Sep 1952) · Sud Aviation, "Projet Montgolfier" (1 Jul 1957) and <em>Rapport final</em> (Courbevoie, 15 Apr 1959) · Brown, T. T., Notebooks §§42–43 (Apr 1956), §67 · Bahnson Laboratories notebooks (1957–59) · Anders, S. &amp; Anders, A., "Emission of neutral atoms and macroparticles from vacuum arcs" / vacuum-arc thruster literature (~10–20 µN/A).</p>
+
+<p class="small">Byline note: this paper is research-lane material for the public paper site. It is not deck material.</p>
+
+</body>
+</html>
