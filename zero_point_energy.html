@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Zero-Point Machine — Energy from the Boundary, and the Operator Who Asks</title>
+<style>
+  :root{
+    --ink:#1c1c1c; --paper:#fbfaf6; --page:#ece8df;
+    --green:#5a7d3a; --amber:#b88a2a; --steel:#3a5a7d; --teal:#2f6d5e;
+    --slate:#5a6470; --blood:#7a1f1f; --violet:#6a4a8a;
+    --rule:#d2cdbf; --soft:#8a8676; --wash:#f3efe4;
+  }
+  html{background:var(--page)}
+  body{
+    font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    max-width:820px; margin:2.5rem auto; padding:2.6rem 2.4rem 4rem;
+    color:var(--ink); line-height:1.62; background:var(--paper);
+    box-shadow:0 1px 4px rgba(0,0,0,.06); font-size:17px;
+  }
+  h1{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-weight:700;
+     font-size:2.05rem; line-height:1.18; border-bottom:2px solid var(--ink);
+     padding-bottom:.55rem; margin:.3rem 0 .5rem}
+  h2{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:1.3rem;
+     margin-top:2.5rem; color:var(--ink); border-bottom:1px solid var(--rule);
+     padding-bottom:.25rem}
+  h3{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:1.04rem;
+     margin-top:1.7rem; color:#444}
+  .banner{background:#eef5fa; border-bottom:2px solid var(--steel);
+     margin:-2.6rem -2.4rem 2rem; padding:.65rem 2.4rem;
+     font-family:"Helvetica Neue",Helvetica,sans-serif; font-size:.85rem;
+     color:var(--steel); line-height:1.5; text-align:center}
+  .banner a{color:var(--steel); font-weight:600}
+  .sub{color:var(--soft); font-style:italic; font-size:1.02rem}
+  .meta{color:var(--soft); font-size:.85rem; margin-bottom:1.6rem}
+  .chip{display:inline-block; font:700 .6rem/1.5 "Helvetica Neue",Helvetica,sans-serif;
+    letter-spacing:.07em; padding:.08rem .45rem; border-radius:2px;
+    background:var(--wash); color:var(--slate); border:1px solid var(--rule);
+    vertical-align:.14em; white-space:nowrap}
+  .chip.c-measured{color:#fff;background:var(--teal);border-color:var(--teal)}
+  .chip.c-open{color:#fff;background:var(--steel);border-color:var(--steel)}
+  .chip.c-post{color:#5c4308;background:#f2e3bd;border-color:var(--amber)}
+  .chip.c-derived{color:#fff;background:var(--slate);border-color:var(--slate)}
+  .chip.c-prereg{color:#fff;background:var(--violet);border-color:var(--violet)}
+  .chip.c-audit{color:#fff;background:var(--blood);border-color:var(--blood)}
+  .chip.c-doc{color:var(--green);background:#e7efdd;border:1px dashed var(--green)}
+  .chip.c-testi{color:#8a6a1f;background:#fbf5e6;border:1px dashed var(--amber)}
+  .chip.c-null{color:#fff;background:var(--slate);border-color:var(--slate)}
+  .chip.c-ns{color:#8a3a2a;background:#f1ebe8;border:1px dashed #a8432f}
+  .chip.c-contra{color:#fff;background:#7a1f1f;border-color:#7a1f1f}
+  table{border-collapse:collapse; width:100%; margin:1.1rem 0; font-size:.88rem}
+  th,td{border:1px solid var(--rule); padding:.42rem .6rem; text-align:left; vertical-align:top}
+  th{background:#f0eadb; font-family:"Helvetica Neue",Helvetica,sans-serif; font-size:.82rem}
+  td.n{font-variant-numeric:tabular-nums; white-space:nowrap}
+  code{font:.85em ui-monospace,SFMono-Regular,Menlo,monospace; background:var(--wash);
+    padding:.05rem .3rem; border-radius:2px}
+  blockquote{margin:1.2rem 0; padding:.7rem 1.2rem; border-left:3px solid var(--steel);
+    background:#f4f7fa; font-size:.95rem}
+  .rulebox{border:1.5px solid var(--ink); background:var(--wash);
+    padding:.9rem 1.2rem; margin:1.4rem 0; font-size:.95rem}
+</style>
+</head>
+<body>
+
+<style id="eg-site-nav-css">
+  .eg-nav{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:.8rem;
+    background:#1c1c1c;color:#ece8df;padding:.55rem 1.2rem;line-height:1.6;
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    box-shadow:0 1px 3px rgba(0,0,0,.25)}
+  body{margin-top:5.2rem !important}
+  .eg-nav a{color:#ece8df;text-decoration:none;margin-right:1rem;white-space:nowrap}
+  .eg-nav a:hover{text-decoration:underline}
+  .eg-nav .eg-home{font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+    margin-right:1.4rem}
+  .eg-nav .eg-cur{border-bottom:2px solid #b88a2a}
+  .eg-nav .eg-cat{color:#b88a2a;font-weight:600;letter-spacing:.03em}
+  .eg-nav .eg-catcur{text-decoration:underline}
+  .eg-nav .eg-sep{color:#8a8676;margin-right:1rem}
+  .eg-nav .eg-wrap{max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;
+    align-items:baseline}
+  .eg-nav .eg-pdf{margin-left:auto;margin-right:0;border:1px solid #b88a2a;
+    color:#ece8df;padding:.1rem .6rem;border-radius:2px;font-weight:600}
+  .eg-nav .eg-pdf:hover{background:#b88a2a;color:#1c1c1c;text-decoration:none}
+  @media print{.eg-nav{display:none} body{margin-top:0 !important}}
+</style>
+<div class="eg-nav"><div class="eg-wrap"><a class="eg-home" href="index.html">Papers</a><a class="eg-cat eg-catcur" href="index.html#electrogravitics">Electrogravitics</a><a class="eg-cat" href="index.html#people">The People</a><span class="eg-sep">·</span><a href="the_medium.html">The Medium</a><a class="eg-cur" href="zero_point_energy.html">Zero-point</a><a href="electrogravitics.html">Field guide</a><a href="the_shape_of_gravity.html">Gravity</a><a href="warp_drive.html">Mechanism</a><a href="hover_disk.html">Materials</a><a href="hexalock.html">Vehicle</a><a href="how_to_build_a_ufo.html">Build</a><a href="antigravity_devices.html">Bench floor</a><a href="superconductivity.html">Superconductivity</a><a href="magnetism.html">Magnetism</a><a href="the_scalar_field.html">Scalar field</a><a class="eg-pdf" href="pdf/zero_point_energy.pdf" download>Download PDF ↓</a></div></div>
+
+
+<div class="banner">
+  Companion in the energy lane. Device papers:
+  The VTA — Block and Toroid ·
+  The Optical-Cavity Device — Stack Optimization.
+  Receipts &amp; sims:
+  Acrylic-Plate Deep-Dive ·
+  Metamaterial Ceiling ·
+  VTA Protocol ·
+  Operator Variable ·
+  The Lamp ·
+  Puthoff 1987 + OPH overlay.
+  Framework: Transmutation ·
+  <a href="hover_disk.html">Hover Disk</a> ·
+  The Scalar Channel.
+</div>
+
+<h1>The Zero-Point Machine</h1>
+<p class="sub">Energy from the boundary, and the operator who asks.</p>
+<p class="meta">Osika Innovation AB · Alexander Osika, Claude — energy lane · 2026-07-20 (§8 2026-09-23, §9 2026-10-01) · status-labelled throughout:
+<span class="chip c-measured">MEASURED</span> published third-party measurement ·
+<span class="chip c-derived">DERIVED</span> bookkeeping from measured numbers ·
+<span class="chip c-prereg">PRE-REG</span> frozen prediction, gate ran ·
+<span class="chip c-audit">AUDIT</span> lore positioned against budget, no reality claim ·
+<span class="chip c-open">OPEN</span> honest unknown ·
+<span class="chip c-post">REVISED</span> earlier claim corrected by a later section. §9 (added 2026-10-01) reads the Disclosure Project archive and adds DOCUMENTED, TESTIMONY, NULL-STATIC, NOT SUPPORTED and CONTRADICTED grades.</p>
+
+<h2 id="s0">0 · What this paper is</h2>
+<p><b>Operating stance.</b> This programme treats the existence of
+boundary-coupled vacuum/near-field power extraction as settled — team
+members with direct hands-on history on devices in this class carry
+that as operational fact, not a hope. That stance is not printed here
+as a demand that the reader share it; it is printed because it changes
+what the paper is <em>for</em>. This is not a "does it work" document.
+It is an engineering-optimization document: given that the mechanism
+class is real, what is the best substrate, geometry, and drive scheme,
+and what is the fastest, cheapest, most honestly-instrumented path to a
+bench unit that proves it to anyone who wasn't already convinced. The
+measured core in §1 is not offered as the sole evidence the effect
+exists — it is offered because it is the one slice of this whole space
+that is independently published, peer-reviewed, and citable by name,
+which makes it the load-bearing anchor for every number downstream.
+Layers: a <em>measured core</em> (published, citable); an
+<em>engineering ladder</em> derived from it (the optimization proper);
+and an <em>operator sector</em>, run as pre-registered bench tests
+rather than as an excuse for anything. Each layer is useful even if a
+skeptical reader stops trusting the layer above it.</p>
+
+<h2 id="s1">1 · The measured core</h2>
+<p><span class="chip c-measured">MEASURED</span> A metal–insulator–metal
+tunnel junction with a submicron optical cavity on one side — the cavity
+dielectric is PMMA, i.e. <em>acrylic</em> — produces a persistent DC output
+with no applied bias (Moddel et&nbsp;al., <i>Symmetry</i> 13:517, 2021):
+1.4&nbsp;pW from 0.02&nbsp;µm² at a 33&nbsp;nm cavity (≈70&nbsp;W/m² for the
+best device class), replicated in 1000+ devices across 21 batches, eight
+artifact classes excluded, six-month stability. Output scales linearly with
+area, with N in parallel (current) and N in series (voltage).</p>
+<p><span class="chip c-measured">MEASURED</span> The companion letter
+(<i>Phys. Rev. Research</i> 3:L022007) and an independent replot (Maclay,
+<i>Physics</i> 6:70, 2024) pin the one clean law: output ∝
+1/d<sub>cavity</sub> — proportional to the cavity's <em>capacitance</em>.
+Maclay simultaneously shows the naive "suppressed vacuum-mode density"
+story fails theoretically. The data stand; the textbook mechanism does not.
+<span class="chip c-open">OPEN</span> No independent fabrication
+replication outside the original lab yet — the missing external receipt.</p>
+<p><span class="chip c-prereg">PRE-REG</span> Our five-way mechanism race
+(frozen, then run): every optical mode-counting ansatz misses the measured
+slope (−4.0, −4.4, −0.05); only <em>linear capacitive near-field
+coupling</em> lands on −1.00. Reading: the device is a THz-band
+<em>evanescent</em> energy coupler rectified by a femtosecond-fast tunnel
+junction. The cavity is an electrical element, not an optical filter. This
+converges with Moddel's own later "capturing evanescence" framing — and
+with this project's hover-lane doctrine, where the dominant material lever
+is boundary electromagnetic modes in exactly this band.</p>
+
+<h2 id="s2">2 · The ladder</h2>
+<p><span class="chip c-derived">DERIVED</span> If fabrication were
+unconstrained (the Replicator limit), the
+harvester problem reduces to four numbers, and graphene sits at or near the
+physical optimum on all four:</p>
+<table>
+  <tr><th>Number</th><th>Physical cap</th><th>Best value</th></tr>
+  <tr><td>coupling window</td><td>plasma edge of stable matter</td>
+      <td class="n">graphene π+σ ≈ 26 eV → 9×10¹² W/m²</td></tr>
+  <tr><td>near-field compression</td><td>plasmon confinement β³</td>
+      <td class="n">β ≈ 100–300 → 2 nm THz budget ≈ whole UV window</td></tr>
+  <tr><td>rectifier cadence</td><td>ħ/ΔE (femtoseconds)</td>
+      <td>graphene Dirac carriers / MIM tunneling — met</td></tr>
+  <tr><td>stack pitch</td><td>electrode thickness</td>
+      <td class="n">~5 nm (70× the acrylic device)</td></tr>
+</table>
+<p><span class="chip c-derived">DERIVED</span> Consequences: a
+40&nbsp;cm²&nbsp;×&nbsp;3&nbsp;mm plate spans 3&nbsp;mW (conservative
+floor) to ~2.4&nbsp;kW (if the best measured areal density survives area
+scaling) — the whole span hangs on <em>one experiment</em>: large-area
+sub-nm-clean junctions. Coupling efficiency, not vacuum supply, is the one
+knob (measured devices sit ≥5 orders below their own window budget; heat
+rejection caps the endgame long before the budget does). And the
+"always outputs the required voltage" property of the witness-described
+plate is an <em>array-topology</em> property — mV cells, taps,
+segmentation, a controller — needing no exotic physics at all.</p>
+<p><span class="chip c-audit">AUDIT</span> Floyd "Sparky" Sweet's VTA
+claims (500&nbsp;W witnessed, 5&nbsp;kW written; zero surviving receipts)
+sit at 0.67–6.7&nbsp;W/cm³ — <em>30–300× below</em> the stacked density of
+the already-measured device class. First principles do not exclude his
+numbers. What the audit flags instead: the clean 60&nbsp;Hz mains-format
+output implies an unexplained converter stage, and the claims are in the
+<em>trivially testable</em> regime — his magnet pair stores ≈22&nbsp;J of
+magnetization energy, which 500&nbsp;W would exhaust in 44&nbsp;ms. One
+ten-minute dummy-load run self-adjudicates. The
+replication protocol
+is frozen; the build is &lt;$100.</p>
+<p><span class="chip c-audit">AUDIT</span> A second Sweet-lineage claim,
+carried in later accounts: shortly before his death he had reportedly
+reduced the mechanism to a <em>cigarette-pack-sized</em> unit (≈84&nbsp;cm³)
+with enough continuous output to drive an electric car. Positioned on the
+same ladder rather than dismissed: at typical small-EV cruise-to-peak power
+(15–150&nbsp;kW), that claim implies 178–1,783&nbsp;W/cm³ — <em>0.9–8.9×
+the measured Moddel-GSM-stack density</em>, not 30–300× below it like the
+box-scale claim. It is, quantitatively, the single most budget-consistent
+Sweet-lineage claim in this entire audit: within an order of magnitude of
+an already-published device class, and still ~9–10 orders of magnitude
+below the graphene-stack formal ceiling of §2. That does not make it true —
+zero receipts survive it, same as the box — but it is the shape a genuine
+late-stage engineering refinement of the same mechanism would take: smaller,
+denser, closer to what the published physics permits, not further from it.
+It is the claim this program's engineering ladder should be aimed at
+recovering. A second late-Sweet claim in the same family (operator-carried,
+2026-07-21): a <em>hand-sized</em> ≈300&nbsp;hp unit reportedly ready for
+handover shortly before his death. Same arithmetic: 224&nbsp;kW in
+200–500&nbsp;cm³ → 450–1,100&nbsp;W/cm³ — <em>2–6× the measured stacked
+density</em>, the same corridor as the cigarette-pack claim. Two
+independent late-Sweet claims now converge on the same density band at
+the edge of published physics; the box-scale claims never did. Zero
+receipts on both, same as ever — but the convergence itself is data about
+the claim-family's internal consistency.</p>
+<p><span class="chip c-post">REVISED 2026-10-01</span> The archive reading
+(<a href="#s9">§9</a>, primary Sweet files in the Disclosure Project
+Intelligence Archive) corrects five premises of the two paragraphs above.
+<b>(1) One claim, not two.</b> In Maurice Campbell's accounts the
+cigarette-pack Sweet unit was to <em>power</em> Ron Brandt's magnet motor,
+a 60–75&nbsp;lb machine rated "equivalent to" 300&nbsp;hp, whose torque the
+same source attributes to its magnets. The 300&nbsp;hp is Brandt's rating,
+so the pack never had to supply 224&nbsp;kW. The 178–1,783 and
+450–1,100&nbsp;W/cm³ figures are this paper's extrapolations, and the
+"two independent claims converge" sentence is withdrawn.
+<b>(2) The magnets are ½″, not ~1″,</b> in both surviving specs. The
+stored energy is ~10–11&nbsp;J rather than ≈22&nbsp;J, so 500&nbsp;W drains
+it in ~20&nbsp;ms. The box-scale density moves to ~15–155× below the stack,
+and the verdict is unchanged.
+<b>(3) Input has an anchor.</b> Sweet's own 1988 paper gives 10&nbsp;V at
+1&nbsp;mA (10&nbsp;mW, 60&nbsp;Hz) for more than 5&nbsp;kW out.
+<b>(4) 5&nbsp;kW was never measured.</b> Walt Rosenthal's 1993 newsletter
+says the meters failed above about 1&nbsp;kW.
+<b>(5) The cold lore is Sweet's own.</b> The ~20&nbsp;°F-below-ambient
+figure, the cold arc and the cooler coils under load are in Sweet's
+24&nbsp;June&nbsp;1988 paper; the frost on shorted wires is in Rosenthal's
+newsletter. It does not trace only through Bearden, though every number is
+still Sweet's. The "signed affidavits" sometimes cited for Campbell are
+a notarized agency contract (July 1989), not witness statements.</p>
+
+<h2 id="s3">3 · The operator sector</h2>
+<p><span class="chip c-open">OPEN</span> — mechanism unresolved, engineering
+question live. The recurring structure in the free-energy record — Keely
+through Sweet — is "it worked for the inventor and died with him." Taken at
+face value, by people who have watched devices in this class run, that
+pattern is not a red flag; it is a spec: the coupling has an operator term,
+and nobody before now has engineered around it on purpose. Even so, the
+pattern alone proves nothing publishable, because "skeptics fail because
+they don't believe" is likelihood-ratio&nbsp;1 against the mundane
+explanation <em>until the operator becomes a designed variable instead of
+a post-hoc excuse</em>. So this programme makes it one: primary runs at
+pre-declared favorable conditions (believing operator, present, engaged),
+interaction tests against automated absent-operator runs, and an
+excuse-spending rule — a null under favorable conditions retires the
+operator explanation for that recipe, permanently, no re-litigating.
+Instruments are not skeptics: a device may require belief; the logs do
+not, and the logs are what turn "it worked for me" into engineering.</p>
+<p>Fact discipline, carried in the open: Steiner's "moral technology" and
+the Keely-typed Strader apparatus are genuinely his themes (exact GA
+citations required before quotation); Keely himself is a poisoned anchor
+(1899 posthumous discovery of concealed compressed-air machinery); the
+frequently-quoted "atomic bombs tear the astral" is a later
+anthroposophical extension, not Steiner.</p>
+<p><span class="chip c-open">OPEN</span> In the framework's own terms the
+hypothesis has a home: the gravity law's reference-scale dichotomy (the
+scalar channel)
+gives a global sector; the astral maps to the record layer, where
+closeness is shared meaning, not shared location. Operator coupling is
+then the conjecture that dense meaning-records about a device bias its
+repair dynamics. The OPH programme carries the matching named obligation:
+prove or refute that the repair layer can carry a controllable signal.
+Until that theorem exists, the door is honestly open — in both
+directions.</p>
+
+<h2 id="s4">4 · The wizard conjecture</h2>
+<p><span class="chip c-open">OPEN</span> Read the lore again under the
+operator hypothesis and the famous "years of tuning the device" inverts:
+the years were spent tuning <em>the inventor</em>. The device converged
+quickly; the operator's record-structure — attention, conviction, care,
+the thousand hours of intimate familiarity — is what took a decade to
+condition. In this reading the free-energy inventor is not an engineer
+who happened to be a mystic; he is a mystic whose engineering was the
+ritual by which he became coupled. He became, in the plain sense of the
+word, a wizard: a person whose sustained, coherent intention-structure is
+itself the active component.</p>
+<div class="rulebox">
+<b>The instant-wizard proposition.</b> If the active ingredient is a
+coherent, unwavering intention-structure densely coupled to the device,
+then a microcontroller executing operator-authored code is the purest
+wizard ever fielded: <em>the MCU never doubts</em>. Its intention is
+unconditional by construction, its attention does not lapse, its
+"belief" does not decay with fatigue or dissent, and it holds the
+operator's crystallized intent — code is a record-structure — at
+megahertz constancy, forever. The proposition is not rhetoric; it is
+pre-registered as a three-arm experiment (operator live / the operator's
+own code running autonomously / byte-identical code deployed by a
+stranger). If arm 2 patterns with arm 1 rather than arm 3, "the code
+carries the coupling" — the inventor-proximity problem of a century of
+lore is solved by firmware. If all arms are null, the excuse is spent at
+that sensitivity. Either outcome is new knowledge; no one has ever run
+this.</div>
+<p>Note the symmetry with the measured core: the slope race found that the
+working physical channel is <em>near-field</em> — coupling through
+adjacency rather than radiation. The operator sector proposes the same
+shape one layer up: coupling through record-adjacency rather than
+location. And a third floor was added on 2026-07-20: a numerical audit of
+the Ampère-vs-Lorentz element laws
+(<code>ampere_tension_sim.py</code>) shows classical EM forces have the
+same architecture — divergences localize at junctions (ports) and cancel
+pairwise, closed loops feel nothing, and only open sub-circuits whose
+current closes through something beyond them feel net force (with the two
+laws disagreeing by a finite, bench-testable 29 % exactly there). The MIM
+junction outputs power for the same structural reason: it is a port on an
+open circuit whose return path is the boundary-modified vacuum. Energy,
+force, and meaning: port locality on every floor
+(<code>PORT_LOCALITY_SYNTHESIS_2026-07-20.md</code>). The same
+bookkeeping — port locality, adiabatic-quiet/abrupt-productive, capacitance
+as the coupling channel, rectification needing an asymmetric waveform — was
+carried into the propulsion lane on 2026-08-18 as
+<a href="electrogravitics.html#s1-2">Electrogravitics §1.2</a>, where it
+scopes the Biefeld–Brown verdict to statics and names the transient regime as
+the only admissible one.
+<span class="chip c-open">OPEN</span> on the top floor — and stated as
+such.</p>
+
+<h2 id="s5">5 · The Sweet device — the build, documented</h2>
+<p>Of everything in the lore, Floyd "Sparky" Sweet's Vacuum Triode
+Amplifier is the one device that is <em>simple enough to build at a
+kitchen table and loud enough to adjudicate itself</em>: wire, ferrite,
+and nothing else, with claimed outputs so large that a multimeter and a
+bucket of water settle the question. This section documents the build in
+full; the pre-registered gates live in
+<code>VTA_REPLICATION_PROTOCOL_2026-07-20.md</code> and are summarized
+here. The device now has its own mechanism paper —
+The Vacuum Triode Amplifier: Block and Toroid
+(2026-07-21) — which states a falsifiable working mechanism
+(grain-boundary junction fabric, gated by magnetostrictive strain,
+port-locality symmetry breaking) and adds discriminators D1–D5 that ride
+on this build.</p>
+
+<h3 id="s5-1">5.1 Parts (&lt; $100 beyond electronics on hand)</h3>
+<table>
+  <tr><th>Part</th><th>Spec</th><th>Role</th></tr>
+  <tr><td>2 × barium-ferrite blocks</td><td>ceramic-8 (BaFe₁₂O₁₉),
+      ~15 × 10 × 2.5 cm each</td><td>the conditioned substrate — the
+      entire "active" element</td></tr>
+  <tr><td>magnet wire</td><td>~0.5 mm, a few hundred meters</td>
+      <td>bifilar power windings around the magnet-pair gap + a
+      separate drive coil, per the VTA descriptions</td></tr>
+  <tr><td>RP2350 + audio amp + step-up + H-bridge</td><td>parts on
+      hand</td><td>the conditioner and drive oscillator — see §5.2</td></tr>
+  <tr><td>battery pack + coulomb counter</td><td>fully isolated, no
+      mains anywhere in the rig</td><td>closes the input side of the
+      accounting</td></tr>
+  <tr><td>resistive dummy load + 1 L water calorimeter</td>
+      <td>kitchen grade</td><td>closes the output side (500 W → 430 K/h;
+      even 0.5 W → 0.4 K/h, visible in an evening)</td></tr>
+  <tr><td>load cell + HX711 under the device</td><td>5 kg, ~0.1–1 g
+      resolution</td><td>the weight channel (§5.4)</td></tr>
+</table>
+
+<h3 id="s5-2">5.2 Conditioning — the recipe-under-test, and the instant wizard</h3>
+<p><span class="chip c-audit">AUDIT</span> The lore's active step:
+remagnetize the ferrite while superimposing an AC drive (~60 Hz and
+harmonics; capacitor-discharge magnetization with AC bias), allegedly
+writing a self-oscillating magnetization state. This is the vaguest part
+of the published record and reportedly took Sweet years of hand-tuning —
+which, under this paper's operator sector, may have been years of tuning
+<em>himself</em>. Both readings point at the same engineering answer:
+the RP2350 sweeps conditioning parameters (drive frequency, harmonic
+mix, bias amplitude, pulse timing) systematically, logs every attempt,
+and auto-retunes the drive to hold any emerging resonance at its sweet
+spot — more conditioning variants in a month than Sweet ran in a decade,
+with perfect constancy of intention (§4). Every parameter set is a
+record; nothing dies with the operator.</p>
+
+<h3 id="s5-3">5.3 Why one ten-minute run decides</h3>
+<p><span class="chip c-derived">DERIVED</span> The magnet pair stores
+≈ 22 J of magnetization energy (BH<sub>max</sub> ≈ 28 kJ/m³ × 788 cm³).
+At the claimed 500 W that is exhausted in <b>44 ms</b>; at even 5 W, in
+4.4 s. So ANY output sustained for minutes is not magnet discharge —
+the one mundane "magnetic battery" explanation dies quantitatively —
+and a null is a clean, receipted null on the published recipe. Frozen
+gates: <b>V1</b> sustained P<sub>out</sub> &gt; 10× P<sub>in</sub> for
+≥ 10 min, absent in controls (unconditioned magnets; coils only;
+drive off); <b>V2</b> integrated E<sub>out</sub> &gt; 220 J (10× the
+storage bound); <b>V3</b> survives disassembly, reassembly, and
+relocation.</p>
+
+<h3 id="s5-4">5.4 The free anomaly channels</h3>
+<p><span class="chip c-prereg">PRE-REG</span> Because the logger is
+already there, three more claims ride along at zero marginal cost.
+<b>Weight (W1):</b> the lore says the VTA weighed less the more power
+was drawn; the device sits permanently on the load cell, with sham-
+resistor thermal, non-ferrous-platform magnetic, and dead-mass creep
+controls — a weight anomaly without excess power, or excess power
+without weight change, are each independently reportable.
+<b>Sidereal (S1):</b> all logs folded at both 24 h 00 m and 23 h 56 m;
+any preferred-frame / global-sector coupling must show the sidereal
+period, where no mundane artifact lives. <b>Operator (O):</b> primary
+runs at declared favorable conditions; the excuse-spending rule and the
+three-arm instant-wizard test of §4 apply. <b>2026-07-22 riders</b>
+(defined in §7b, summarized in the VTA paper §4b, all zero marginal
+hardware): <b>D6/D6b</b> conductor-vs-load thermometry with scaling
+attribution, <b>D7</b> 511 keV gamma null, <b>W1b</b> T–weight–power
+three-way co-movement, <b>F1</b> scorch-vs-frost fault forensics.</p>
+
+<p>The supporting instruments — the ambient-harvest flashlight, the
+RP2350 lock-in bench (sub-pA floor) that makes small-signal claims
+testable at all, the crude acrylic-plate attempt at the weak end of the
+measured 1/d curve, and The Lamp (whose DC input the VTA screws into
+the day it passes V1) — are specced in
+<code>HOME_ZPM_BENCH_PLAN_2026-07-20.md</code> and
+<code>THE_LAMP_DEMO_SPEC_2026-07-20.md</code>.</p>
+<p>The programme's posture, in one line: <em>a believer at the bench, an
+accountant at the logbook.</em> Sincerity is an input state the
+hypothesis may require; the logs are how sincerity becomes inheritable —
+the one thing every wizard in this lineage failed to leave behind.</p>
+
+<h2 id="s6">6 · Engineering open questions</h2>
+<p>Not "does this work" — the operating stance in §0 answers that.
+These are the specific unknowns standing between the measured core and
+a cigarette-pack unit that drives a car, in priority order:</p>
+<ol>
+  <li><b>Areal density at scale.</b> Does the best measured density
+  survive large-area fabrication? This is the mW↔kW fork and the
+  single highest-value experiment in the lane — everything else in §2
+  is downstream of this one number.</li>
+  <li><b>The capacitive-channel discriminator.</b> Does output track
+  cavity ε<sub>r</sub>(THz) at fixed optical index? Does a gate-tunable
+  graphene electrode tune it? Confirming this locks in the design
+  target (near-field capacitive, not optical) for every geometry
+  choice after it.</li>
+  <li><b>Operator coupling, engineered rather than stumbled into.</b>
+  Does the operator's own code retain the coupling in his absence — the
+  instant-wizard arms of §4? If yes, this is the fix for a century of
+  "worked for the inventor, died with him," and it is a firmware
+  problem, not a metaphysics problem.</li>
+  <li><b>Whether the record layer carries a controllable signal at
+  all</b> — the OPH no-signaling obligation, the theory-side twin of
+  question 3.</li>
+  <li><b>Independent replication of the measured core</b> outside the
+  originating lab — the one number in this paper that no amount of our
+  own engineering closes; it needs a second lab.</li>
+</ol>
+
+<h2 id="s7">7 · The second law, scoped — not rewritten (added 2026-07-22)</h2>
+<p><span class="chip c-derived">DERIVED</span> The standing skeptical
+objection — "ZPE devices violate the second law" — deserves a precise
+answer, because the wrong reply costs credibility and the right one is a
+measurement. Status of the law first: it is a <em>statistical theorem</em>,
+not a dynamical axiom — the modern fluctuation theorems prove it in
+sharpened form (entropy-decreasing paths are exponentially improbable, not
+impossible) given a low-entropy initial condition and coarse-grained
+observers. OPH does not weaken this: the project's own physics-fidelity
+audit <em>measured</em> an emergent arrow of time in the sim — in OPH the
+second law is grown (record-proliferation bookkeeping), not posited, and
+an emergent law is harder to evade, not easier. This paper claims no
+rewriting.</p>
+<p><span class="chip c-derived">DERIVED</span> What the law forbids:
+cyclic work from a single equilibrium bath (Kelvin-Planck), with the
+stronger quantum cousin usually skipped by both sides — ground-state
+<em>passivity</em>. Three honest doors remain, and every serious claim in
+this lane walks one: <b>(1) one-shot</b> — Casimir-gap collapse releases
+real energy non-cyclically (the metamaterial-ceiling G3 number;
+gasoline-class, not a power plant); <b>(2) a second reservoir</b> — if the
+zero-point sector is an effectively zero-temperature reference (it cannot
+be heated), a rectifier of ambient thermal near-field against it is a
+<em>Carnot engine between 300&nbsp;K and ~0&nbsp;K</em>: nothing violated,
+near-unity efficiency permitted, and one non-negotiable prediction — the
+device <b>runs cold under load</b>
+<span class="chip c-post">REVISED 2026-09-23</span> <i>(the zero-point floor
+turns out not to be a reservoir at any temperature; a second reservoir must
+be a colder body, such as the sky — §8.3)</i>; <b>(3) cosmological non-equilibrium</b>
+— an expanding, Φ-descending universe is not a closed system in a
+stationary state (OPH's global sector, τ&nbsp;~&nbsp;Hubble); a
+port-coupled device is then a leaf in a flux — with the honest caution
+that the measured global gradient is thin (5.4×10⁻¹⁰&nbsp;J/m³), which is
+why this lane's numbers all live in door 2's local near-field sector.</p>
+<div class="rulebox">
+<b>The debate collapses into a thermometer.</b> Never argue against the
+second law; argue reservoir inventory. The skeptic's premise is "single
+bath"; the claim is "second reservoir," and the claim's falsifiable
+signature is <b>thermal sign under load</b>: a genuine door-2 device
+cools its surroundings while delivering power; an artifact warms, at
+exactly its η-predicted dissipation. This is discriminator D5/R3 across
+every protocol in the lane — and, independently, the most consistent
+anomaly in the Sweet lore (the VTA reportedly ran cold when loaded). The
+lane's most-repeated test and the lore's most-repeated anomaly are the
+same measurement. Port-locality is the same statement in thermodynamic
+clothes: closed systems feel nothing; net effects exist only where the
+circuit closes through something beyond the system. Cole &amp; Puthoff
+(Phys. Rev. E 48:1562, 1993 — ref. 6) established the consistency
+position in the peer-reviewed record three decades ago.</div>
+
+<h3 id="s7b">7b · The time-symmetric sector — cold electricity, and where the
+arrow actually lives (added 2026-07-22)</h3>
+<p><span class="chip c-derived">DERIVED</span> The operator's synthesis —
+microscopically time-reversible math, arrow as emergent bookkeeping,
+"inverted heat feels cold" — has a citable lineage: Wheeler–Feynman
+time-symmetric electrodynamics (half-advanced waves, the absorber's
+future response making radiation look retarded), Cramer's transactional
+interpretation, and stochastic electrodynamics treating the zero-point
+field as the universal absorber field. The sharp statement this yields:
+<b>the zero-point sector is arrowless</b> — a T&nbsp;=&nbsp;0 ground
+state has no entropy to increase and is time-reversal invariant — while
+the thermal world is arrowed. Feynman's ratchet fails in a single arrowed
+bath (detailed balance); a rectifier <em>straddling the boundary between
+an arrowed and an arrowless sector</em> is legal.
+<span class="chip c-post">REVISED 2026-09-23</span> <i>(the zero-point
+floor is the n&nbsp;=&nbsp;0 floor of the same modes that carry the thermal
+occupation, not a separable sector, so no straddle is available — §8.3; the
+thermometry riders below stand as measurements.)</i> Door&nbsp;2's
+"vacuum as ~0&nbsp;K reservoir" and "vacuum as time-symmetric sector"
+are the same statement in temperature and time language respectively.
+OPH translation: the arrow lives in <em>record-writing</em> (append-only
+record layer; reversible un-committed wave layer — the 5.35/6.91 sector
+split); rectification IS commitment, and the junction is the port where
+arrowless fluctuations are written into irreversible records. Work is
+what commitment pays out.</p>
+<p><span class="chip c-audit">AUDIT</span> Sweet-lore items in this
+frame: "cold electricity" (conductors run cold, loads still heat) points
+the same direction as D5 and upgrades to a sharper rider —
+<span class="chip c-prereg">PRE-REG</span> <b>D6, the cold-conductor
+test</b>: in any V1-positive run, thermocouple the output conductors
+separately from the load; ohmic delivery warms both, the heat-pump/
+arrowless-sector frame permits conductors at-or-below ambient while the
+load heats. Two thermocouples, zero new theory.
+<span class="chip c-prereg">PRE-REG</span> <b>D6b (scaling
+attribution):</b> log conductor temperature against I and
+P<sub>out</sub> — warming ∝ I² = ohmic artifact; cooling ∝ I that
+flips with polarity = distributed Peltier in the junction fabric (a
+mainstream channel — the fabric is structurally a distributed
+thermoelectric, but note Peltier averages to ~zero on AC paths, so
+persistently cold conductors on an AC-output device exclude it);
+polarity-blind cooling ∝ P<sub>out</sub> = bath-sourced draw (the
+§4c ledger). Carrier verdict under "assume accurate": electrons and
+holes necessarily (D7/511 keV + annihilation lifetime + pair-cost
+energetics kill positrons three ways); the cold is a property of the
+ledger — source-side bath debit, junction-side Peltier, and a
+displacement-current internal path (M3a) that keeps ohmic loss out of
+the metal — not of the carrier species. "Copper cold, filament
+bright" is what capacitive power delivery plus load-concentrated
+dissipation looks like.
+<span class="chip c-prereg">PRE-REG</span> <b>W1b (co-movement
+rider):</b> in-frame, temperature depression (D5) and weight dip (W1)
+are <em>correlated readouts of one variable</em> — coherent fraction
+(the hover-lane χν dial): cooling removes thermal disorder → higher
+coherent fraction → weight dip. Log T, weight, and P<sub>out</sub>
+together and demand three-way co-movement; independent behaviors =
+separate artifacts. Forensic sign note: convection — the classic scale
+artifact — has the WRONG sign for a cold device (downdrafts read
+<em>heavier</em>), so a measured weight decrease on a self-cooling
+device is anti-artifact-signed. Self-limiting note (from the §4c
+attractor): a bath-eating device cannot run away to cryogenic or
+superconducting temperatures — insulating starves it, and at high draw
+it frosts over and chokes (the lore's own frost image, recovered as a
+choke condition); the mass-energy of cooling is real but ~nanograms
+(E=mc²), 12 OOM below lore-scale weight claims — which is why the
+coherence reading, not the thermal one, is the only in-frame
+candidate. Cross-lane: the same cold/implosive/work-at-contact
+signature set reappears in the water-car (Brown's gas / Meyer) lore —
+mapped, unified as "descent-type release," and given transferred
+discriminators in
+<code>COLD_SIGNATURE_FAMILY_2026-07-22.md</code>. The freezing-shock
+account and Bearden's "gravito-stiction" remain lore (coined word, not a
+mechanism). The "time machine" claim stays firewalled: the defensible
+kernel is <em>local arrow-of-time gradients</em> — a maintained patch of
+reversed heat-flow bookkeeping — never causal loops; the OB-1
+no-signaling obligation is the guardrail (transactional handshakes are
+no-signaling-compatible; retrocausal messaging is not, and nothing here
+licenses it).</p>
+<p><span class="chip c-audit">AUDIT</span> Two further lore items filed
+2026-07-22, with one source caveat: the VTA reportedly ran cold in
+operation, and dead shorts reportedly produced a bright flash <em>with
+frost</em> rather than scorch. In-frame the frost is the <b>transient
+maximum of D5</b>: a short is maximum draw, the §4c ledger
+(optical-cavity paper) makes maximum draw maximum cooling duty, and
+ambient humidity freezing onto the hardware is what a heat-withdrawal
+transient looks like — while the flash itself is an ordinary arc. The
+distinctive signature is the conjunction (flash + frost, where every
+ohmic fault gives flash + heat marks) — logged as <b>F1, fault
+forensics</b>: after any unintended fault on the bench, photograph and
+thermally inspect for scorch vs. condensation/frost before cleanup.
+Source caveat, carried honestly: the cold-VTA anecdote family traces
+largely through one narrator lineage (Bearden) — internal consistency
+of a story, not N independent confirmations.</p>
+<p><span class="chip c-prereg">PRE-REG</span> <b>D7 — the
+annihilation-line null check.</b> Literal time-reversed electrons are
+positrons, and positron annihilation into back-to-back 511&nbsp;keV
+photons is not an inference but daily engineering: every PET scanner
+images with exactly this line (the photon energy IS m<sub>e</sub>c²);
+positronium lifetimes match QED; positron-annihilation spectroscopy is
+an industrial defect probe; Anderson photographed the particle in 1932.
+A consumer gamma spectrometer (Radiacode-class, ~$300) resolves
+511&nbsp;keV. Frozen prediction: <b>no 511&nbsp;keV excess</b> during
+operation of any device in this lane — the frame claims arrowless-sector
+coupling, not antimatter. A null with anomalous output confirms the
+carriers are conventional (the holes/Peltier/near-field ladder); an
+actual excess would be revolutionary and a radiation hazard — and its
+absence across decades of unshielded lore workshops is already quiet
+proof that "cold electricity," whatever it was, was not literal
+reversed charge carriers.</p>
+
+<h2 id="s8">8 · Puthoff 1987 — the balance that holds matter up, and what it licenses (added 2026-09-23)</h2>
+<p><span class="chip c-derived">DERIVED</span> H. E. Puthoff's
+<i>Ground state of hydrogen as a zero-point-fluctuation-determined state</i>
+(Phys. Rev. D 35:3266, 1987 — ref.&nbsp;8) is the cleanest peer-reviewed
+statement of the idea this lane keeps returning to: a ground state is not a
+thing at rest but a <b>dynamic equilibrium</b>. The orbiting electron radiates
+(Larmor) and would spiral in; it absorbs from the zero-point field and would
+spiral out; the orbit on which the two powers are equal is the ground state,
+and it lands exactly on the Bohr radius, <b>mω₀r₀² = ħ</b>. Every equation was
+re-derived with CODATA constants in
+<code>crypto_oracle/puthoff_zpf_balance_probe.py</code> (receipt
+<code>puthoff_zpf_balance_run.json</code>, nine gates frozen before the run,
+9/9 pass): r₀ = a₀ to 6×10⁻¹².</p>
+
+<h3 id="s8-1">8.1 What it gives this programme</h3>
+<p><span class="chip c-derived">DERIVED</span> <b>A number for the sustain
+flow.</b> The paper never prints it: every ground-state hydrogen atom absorbs
+and re-radiates <b>≈&nbsp;47&nbsp;nW</b> — one quantum ħω₀ every ~93&nbsp;ps,
+at the rate γ/ω₀ = (2/3)α³ — about 2.8×10¹⁶&nbsp;W per mole of two-way traffic
+that nets to exactly zero. That is "matter is a pattern the medium sustains"
+(<a href="the_medium.html">The Medium</a> §3; the attachment programme's gate
+E4) with a peer-reviewed magnitude, and it is the flow the attachment
+programme's §11.1 said had "no source."</p>
+<p><span class="chip c-measured">MEASURED</span> <b>QED backing.</b> The
+balance is not an artifact of the classical model: in QED the ground state is
+stable <em>because</em> the vacuum-fluctuation and radiation-reaction
+contributions to its energy rate cancel, and for an excited state they add —
+the sum is spontaneous emission (Dalibard, Dupont-Roc &amp; Cohen-Tannoudji,
+ref.&nbsp;9). What does <em>not</em> survive is stochastic electrodynamics as
+a complete theory of hydrogen — full nonlinear simulations self-ionize
+(ref.&nbsp;12) — and the orbit's L&nbsp;=&nbsp;ħ (the quantum 1s state has
+L&nbsp;=&nbsp;0). The energy bookkeeping is the durable part.</p>
+<p><span class="chip c-derived">DERIVED</span> <b>The medium's Lorentz seam,
+closed spectrally.</b> Puthoff's eq.&nbsp;(1) — ħω/2 per mode, ρ ∝ ω³ — is
+the only loading a medium can carry and still have no rest frame: a boost
+multiplies an isotropic ω<sup>n</sup> spectrum by D<sup>3−n</sup> in each
+direction, which is 1 everywhere only for n&nbsp;=&nbsp;3 (Marshall, Boyer,
+ref.&nbsp;16; receipt P9). A thermal medium does have a wind — the cosmic
+background's 3.362&nbsp;mK dipole is exactly that — and the zero-point medium
+does not.</p>
+
+<h3 id="s8-2">8.2 Rate, not setpoint — what the paper leaves implicit</h3>
+<p><span class="chip c-derived">DERIVED</span> Eq.&nbsp;(1)'s field and the
+radiation-reaction term of eq.&nbsp;(4) are not two inputs: the
+fluctuation–dissipation theorem forces each from the other, exactly (receipt
+P3, 2×10⁻¹⁶; ref.&nbsp;11). So a passive boundary — mirror, dielectric,
+Casimir gap — that suppresses or enhances the modes at the orbital frequency
+changes the vacuum's drive <em>and</em> the atom's emission into those modes
+by the same factor F (measured as inhibited spontaneous emission, refs.&nbsp;14–15).
+The balance point does not move; only the time taken to reach it does.
+Stochastic electrodynamics says the same when done carefully: cavity shifts
+there "coincide with previous quantum calculations" — Lamb-shift-sized
+(ref.&nbsp;13).</p>
+<figure style="margin:1.4rem 0 1.1rem">
+<svg viewBox="0 0 680 312" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Rate, not setpoint. Charged oscillators in a w-cubed zero-point field, started at zero energy or at three quanta, all relax to half a quantum; the boundary factor F changes only how fast. Only suppressing the field without suppressing emission moves the level, to F times half a quantum." style="width:100%;height:auto;font-family:Helvetica Neue,Helvetica,Arial,sans-serif">
+<rect x="64" y="14" width="580" height="248" fill="#fffdf8" stroke="#d2cdbf"/>
+<line x1="64.0" y1="14" x2="64.0" y2="262" stroke="#ece8df"/>
+<text x="64.0" y="278" font-size="11" fill="#5a6470" text-anchor="middle">10<tspan dy="-5" font-size="8">0</tspan></text>
+<line x1="186.9" y1="14" x2="186.9" y2="262" stroke="#ece8df"/>
+<text x="186.9" y="278" font-size="11" fill="#5a6470" text-anchor="middle">10<tspan dy="-5" font-size="8">1</tspan></text>
+<line x1="309.8" y1="14" x2="309.8" y2="262" stroke="#ece8df"/>
+<text x="309.8" y="278" font-size="11" fill="#5a6470" text-anchor="middle">10<tspan dy="-5" font-size="8">2</tspan></text>
+<line x1="432.7" y1="14" x2="432.7" y2="262" stroke="#ece8df"/>
+<text x="432.7" y="278" font-size="11" fill="#5a6470" text-anchor="middle">10<tspan dy="-5" font-size="8">3</tspan></text>
+<line x1="555.6" y1="14" x2="555.6" y2="262" stroke="#ece8df"/>
+<text x="555.6" y="278" font-size="11" fill="#5a6470" text-anchor="middle">10<tspan dy="-5" font-size="8">4</tspan></text>
+<text x="56" y="266.0" font-size="11" fill="#5a6470" text-anchor="end">0</text>
+<text x="56" y="186.0" font-size="11" fill="#5a6470" text-anchor="end">1</text>
+<text x="56" y="106.0" font-size="11" fill="#5a6470" text-anchor="end">2</text>
+<text x="56" y="26.0" font-size="11" fill="#5a6470" text-anchor="end">3</text>
+<line x1="64" y1="222.0" x2="644" y2="222.0" stroke="#2f6d5e" stroke-width="1" stroke-dasharray="2 3"/>
+<text x="75.9" y="215.0" font-size="11" fill="#2f6d5e" font-weight="700">ħω₀/2 — the vacuum’s level, for every F</text>
+<line x1="481.6" y1="252.0" x2="644" y2="252.0" stroke="#7a1f1f" stroke-width="1" stroke-dasharray="2 3"/>
+<text x="638" y="245.0" font-size="11" fill="#7a1f1f" text-anchor="end">F·ħω₀/2</text>
+<path d="M64.0,262.0 L73.7,262.0 L82.0,262.0 L89.1,261.9 L95.4,261.9 L101.0,261.9 L110.7,261.9 L115.0,261.9 L122.6,261.9 L132.4,261.8 L138.0,261.7 L145.4,261.7 L152.0,261.6 L159.6,261.6 L166.3,261.5 L173.6,261.5 L181.3,261.5 L189.0,261.4 L195.7,261.3 L203.3,261.2 L210.6,261.1 L218.3,261.1 L225.5,261.0 L232.7,260.9 L240.3,260.7 L248.0,260.4 L255.3,260.2 L262.7,260.0 L270.2,259.8 L277.5,259.5 L285.0,259.0 L292.5,258.7 L300.0,258.3 L307.4,257.8 L314.9,257.1 L322.4,256.3 L329.8,255.7 L337.3,254.8 L344.8,253.6 L352.3,252.7 L359.7,251.2 L367.2,250.0 L374.7,248.9 L382.1,248.4 L389.6,247.4 L397.1,245.1 L404.6,243.1 L412.1,240.8 L419.6,236.4 L427.0,232.1 L434.5,230.1 L442.0,228.8 L449.5,229.0 L457.0,227.5 L464.4,224.6 L471.9,223.9 L479.4,220.5 L486.9,220.4 L494.4,220.1 L501.8,218.7 L509.3,216.7 L516.8,217.1 L524.3,218.7 L531.8,216.3 L539.3,216.1 L546.7,217.9 L554.2,214.7 L561.7,215.7 L569.2,221.3 L576.7,226.7 L584.1,228.5 L591.6,224.3 L599.1,222.2 L606.6,221.0 L614.1,219.9 L621.6,224.0 L629.0,224.9 L636.5,222.1 L644.0,220.7" fill="none" stroke="#8fb8ad" stroke-width="2"/>
+<path d="M64.0,22.0 L73.7,22.0 L82.0,22.0 L89.1,22.1 L95.4,22.1 L101.0,22.1 L110.7,22.1 L115.0,22.0 L122.6,21.9 L132.4,21.8 L138.0,21.8 L145.4,22.0 L152.0,22.2 L159.6,22.4 L166.3,22.6 L173.6,22.8 L181.3,23.1 L189.0,23.2 L195.7,23.1 L203.3,23.2 L210.6,23.2 L218.3,23.3 L225.5,24.0 L232.7,25.5 L240.3,26.5 L248.0,26.7 L255.3,27.5 L262.7,29.2 L270.2,31.5 L277.5,33.6 L285.0,34.5 L292.5,35.5 L300.0,38.2 L307.4,41.5 L314.9,45.0 L322.4,49.9 L329.8,51.5 L337.3,54.2 L344.8,61.0 L352.3,65.6 L359.7,71.2 L367.2,76.7 L374.7,83.4 L382.1,93.1 L389.6,104.1 L397.1,114.4 L404.6,126.6 L412.1,141.5 L419.6,157.7 L427.0,169.5 L434.5,176.2 L442.0,180.8 L449.5,187.1 L457.0,195.7 L464.4,202.6 L471.9,204.4 L479.4,208.1 L486.9,210.4 L494.4,211.8 L501.8,215.2 L509.3,222.0 L516.8,226.9 L524.3,222.2 L531.8,223.0 L539.3,222.3 L546.7,221.7 L554.2,222.6 L561.7,222.0 L569.2,218.8 L576.7,221.3 L584.1,222.4 L591.6,224.3 L599.1,222.8 L606.6,220.9 L614.1,223.4 L621.6,222.1 L629.0,221.1 L636.5,221.0 L644.0,222.3" fill="none" stroke="#8fb8ad" stroke-width="2"/>
+<path d="M64.0,261.9 L73.7,261.9 L82.0,261.8 L89.1,261.8 L95.4,261.8 L101.0,261.7 L110.7,261.6 L115.0,261.6 L122.6,261.5 L132.4,261.3 L138.0,261.2 L145.4,261.1 L152.0,260.9 L159.6,260.7 L166.3,260.6 L173.6,260.4 L181.3,260.2 L189.0,260.0 L195.7,259.8 L203.3,259.4 L210.6,259.1 L218.3,258.8 L225.5,258.2 L232.7,257.5 L240.3,256.6 L248.0,255.5 L255.3,255.0 L262.7,254.4 L270.2,253.4 L277.5,252.5 L285.0,251.7 L292.5,250.4 L300.0,248.5 L307.4,247.5 L314.9,247.1 L322.4,245.5 L329.8,242.7 L337.3,240.2 L344.8,238.0 L352.3,237.4 L359.7,236.9 L367.2,235.4 L374.7,234.4 L382.1,233.8 L389.6,231.7 L397.1,228.2 L404.6,225.1 L412.1,222.2 L419.6,223.0 L427.0,222.0 L434.5,217.7 L442.0,221.3 L449.5,220.4 L457.0,217.8 L464.4,219.2 L471.9,221.7 L479.4,223.2 L486.9,221.3 L494.4,220.7 L501.8,224.5 L509.3,225.0 L516.8,220.5 L524.3,223.3 L531.8,225.3 L539.3,222.3 L546.7,223.0 L554.2,219.8 L561.7,220.4 L569.2,223.0 L576.7,219.8 L584.1,219.0 L591.6,222.0 L599.1,222.2 L606.6,222.8 L614.1,222.0 L621.6,223.4 L629.0,222.1 L636.5,221.7 L644.0,221.4" fill="none" stroke="#4f8f7f" stroke-width="2"/>
+<path d="M64.0,24.0 L73.7,24.5 L82.0,25.1 L89.1,25.5 L95.4,25.9 L101.0,26.2 L110.7,26.3 L115.0,26.3 L122.6,26.3 L132.4,27.1 L138.0,27.5 L145.4,27.9 L152.0,27.6 L159.6,27.7 L166.3,28.6 L173.6,29.4 L181.3,31.2 L189.0,33.3 L195.7,34.8 L203.3,36.1 L210.6,36.8 L218.3,36.9 L225.5,37.0 L232.7,38.4 L240.3,43.3 L248.0,47.3 L255.3,50.9 L262.7,55.9 L270.2,59.4 L277.5,65.0 L285.0,70.6 L292.5,77.1 L300.0,86.3 L307.4,100.1 L314.9,113.5 L322.4,122.8 L329.8,129.2 L337.3,136.5 L344.8,145.6 L352.3,155.2 L359.7,168.1 L367.2,180.9 L374.7,193.0 L382.1,200.6 L389.6,205.0 L397.1,211.2 L404.6,217.9 L412.1,219.6 L419.6,217.2 L427.0,217.1 L434.5,218.8 L442.0,220.1 L449.5,221.4 L457.0,225.0 L464.4,228.1 L471.9,222.4 L479.4,221.9 L486.9,223.4 L494.4,223.2 L501.8,219.4 L509.3,219.4 L516.8,223.8 L524.3,226.6 L531.8,225.5 L539.3,223.4 L546.7,220.6 L554.2,220.2 L561.7,221.1 L569.2,222.8 L576.7,224.3 L584.1,222.2 L591.6,221.4 L599.1,221.3 L606.6,220.1 L614.1,221.5 L621.6,221.7 L629.0,221.9 L636.5,222.7 L644.0,223.9" fill="none" stroke="#4f8f7f" stroke-width="2"/>
+<path d="M64.0,261.7 L73.7,261.6 L82.0,261.4 L89.1,261.3 L95.4,261.2 L101.0,260.9 L110.7,260.7 L115.0,260.5 L122.6,260.2 L132.4,259.3 L138.0,258.9 L145.4,258.1 L152.0,257.4 L159.6,256.6 L166.3,255.7 L173.6,254.9 L181.3,253.9 L189.0,252.8 L195.7,251.7 L203.3,250.2 L210.6,249.2 L218.3,248.8 L225.5,248.3 L232.7,247.4 L240.3,246.0 L248.0,244.2 L255.3,241.9 L262.7,239.6 L270.2,239.0 L277.5,237.3 L285.0,235.1 L292.5,233.7 L300.0,231.0 L307.4,227.5 L314.9,224.5 L322.4,223.8 L329.8,222.4 L337.3,219.5 L344.8,220.4 L352.3,222.8 L359.7,220.8 L367.2,216.7 L374.7,219.3 L382.1,218.9 L389.6,216.4 L397.1,220.3 L404.6,223.9 L412.1,221.2 L419.6,218.7 L427.0,221.5 L434.5,221.9 L442.0,221.2 L449.5,224.0 L457.0,223.9 L464.4,224.0 L471.9,219.8 L479.4,221.1 L486.9,219.1 L494.4,219.7 L501.8,222.0 L509.3,223.2 L516.8,222.2 L524.3,223.2 L531.8,221.9 L539.3,220.8 L546.7,222.1 L554.2,222.4 L561.7,221.6 L569.2,222.1 L576.7,222.3 L584.1,221.1 L591.6,220.8 L599.1,220.9 L606.6,222.5 L614.1,222.9 L621.6,222.4 L629.0,221.6 L636.5,222.0 L644.0,221.6" fill="none" stroke="#1f4f43" stroke-width="2"/>
+<path d="M64.0,27.6 L73.7,28.2 L82.0,28.7 L89.1,29.2 L95.4,29.6 L101.0,30.6 L110.7,31.9 L115.0,32.9 L122.6,35.1 L132.4,38.0 L138.0,38.7 L145.4,39.9 L152.0,41.7 L159.6,43.9 L166.3,46.5 L173.6,50.7 L181.3,56.4 L189.0,62.7 L195.7,67.8 L203.3,72.4 L210.6,75.8 L218.3,81.7 L225.5,91.2 L232.7,100.8 L240.3,109.5 L248.0,121.3 L255.3,130.5 L262.7,137.2 L270.2,144.1 L277.5,153.5 L285.0,162.2 L292.5,170.3 L300.0,179.9 L307.4,187.7 L314.9,195.6 L322.4,204.6 L329.8,210.8 L337.3,213.6 L344.8,213.5 L352.3,215.8 L359.7,218.9 L367.2,221.6 L374.7,225.0 L382.1,223.1 L389.6,222.6 L397.1,217.0 L404.6,216.1 L412.1,221.1 L419.6,222.0 L427.0,222.5 L434.5,223.2 L442.0,218.8 L449.5,218.9 L457.0,219.6 L464.4,219.2 L471.9,223.2 L479.4,223.2 L486.9,222.9 L494.4,222.3 L501.8,223.0 L509.3,223.7 L516.8,222.4 L524.3,221.2 L531.8,221.6 L539.3,221.4 L546.7,221.3 L554.2,221.2 L561.7,223.4 L569.2,223.0 L576.7,222.7 L584.1,222.1 L591.6,222.1 L599.1,221.8 L606.6,222.0 L614.1,221.2 L621.6,222.3 L629.0,221.3 L636.5,221.4 L644.0,221.4" fill="none" stroke="#1f4f43" stroke-width="2"/>
+<path d="M64.0,222.1 L73.7,222.1 L82.0,222.1 L89.1,222.0 L95.4,222.0 L101.0,222.0 L110.7,221.9 L115.0,221.9 L122.6,221.9 L132.4,221.9 L138.0,221.9 L145.4,221.9 L152.0,222.0 L159.6,222.2 L166.3,222.5 L173.6,222.9 L181.3,223.2 L189.0,223.4 L195.7,223.3 L203.3,223.3 L210.6,223.6 L218.3,224.3 L225.5,224.7 L232.7,225.0 L240.3,225.5 L248.0,225.9 L255.3,226.7 L262.7,226.8 L270.2,227.1 L277.5,227.6 L285.0,228.8 L292.5,230.0 L300.0,231.0 L307.4,231.7 L314.9,232.3 L322.4,233.9 L329.8,235.5 L337.3,237.5 L344.8,239.6 L352.3,240.1 L359.7,240.8 L367.2,242.5 L374.7,244.8 L382.1,246.5 L389.6,247.7 L397.1,248.6 L404.6,249.8 L412.1,249.9 L419.6,250.0 L427.0,250.5 L434.5,251.6 L442.0,252.5 L449.5,252.9 L457.0,252.7 L464.4,251.7 L471.9,251.3 L479.4,251.0 L486.9,251.8 L494.4,252.3 L501.8,252.2 L509.3,252.2 L516.8,252.8 L524.3,252.8 L531.8,252.5 L539.3,252.2 L546.7,252.1 L554.2,252.1 L561.7,252.5 L569.2,252.1 L576.7,251.7 L584.1,251.8 L591.6,252.0 L599.1,252.0 L606.6,251.8 L614.1,251.9 L621.6,252.4 L629.0,252.0 L636.5,251.8 L644.0,251.9" fill="none" stroke="#7a1f1f" stroke-width="2" stroke-dasharray="6 4"/>
+<text x="291.0" y="158.2" font-size="11" fill="#1f4f43" font-weight="700">F = 4</text>
+<text x="358.3" y="151.2" font-size="11" fill="#4f8f7f" font-weight="700">F = 1</text>
+<text x="425.6" y="153.7" font-size="11" fill="#8fb8ad" font-weight="700">F = ¼</text>
+<text x="437.8" y="34.0" font-size="10.5" fill="#1c1c1c" font-weight="700">field and emission both × F:</text>
+<text x="437.8" y="49.0" font-size="10.5" fill="#3a3a3a" font-weight="400">from 0 — fed up by the vacuum</text>
+<text x="437.8" y="64.0" font-size="10.5" fill="#3a3a3a" font-weight="400">from 3 — drained by radiation</text>
+<text x="437.8" y="79.0" font-size="10.5" fill="#2f6d5e" font-weight="700">F sets how fast, never where</text>
+<line x1="437.8" y1="98.0" x2="463.8" y2="98.0" stroke="#7a1f1f" stroke-width="2" stroke-dasharray="6 4"/>
+<text x="469.8" y="102.0" font-size="10.5" fill="#7a1f1f" font-weight="700">field × ¼ only —</text>
+<text x="437.8" y="117.0" font-size="10.5" fill="#7a1f1f">the Haisch–Moddel premise</text>
+<text x="354" y="306" font-size="11.5" fill="#5a6470" text-anchor="middle">time, in units of 1/ω₀ (log scale)</text>
+<text x="16" y="138" font-size="11.5" fill="#5a6470" text-anchor="middle" transform="rotate(-90 16 138)">oscillator energy / ħω₀</text>
+</svg>
+<figcaption style="font-size:.85rem;color:var(--slate);line-height:1.5;margin-top:.4rem">
+<b>Figure 8.1 — rate, not setpoint.</b> Charged oscillators in random-phase
+ω³ noise (Puthoff's eq.&nbsp;2), started empty (fed up by the vacuum) or at
+three quanta (drained by radiation). A passive boundary scales field and
+emission together by F: every run lands on ħω₀/2, and F sets only how fast.
+Cutting the field alone (dashed) is the only way to move the level. Same
+engine as receipt gate P6(b), log-sampled for display.</figcaption>
+</figure>
+<p><span class="chip c-derived">DERIVED</span> This decides the
+literature's best-known extraction scheme. The Haisch–Moddel idea — atoms
+entering a Casimir cavity "spin down" and release energy — needs the field
+suppressed <em>while emission is not</em>: the dashed arm. Applied to hydrogen
+that premise predicts 1.5&nbsp;eV per atom at 5% suppression and 1.3&nbsp;keV
+at 90%; real boundaries shift ground states by micro-electronvolts (image-dipole
+bound: 1&nbsp;µeV at 10&nbsp;nm). Its one experiment (ref.&nbsp;10) came in
+three orders of magnitude low, with material and gas trends opposite to
+prediction. The same balance is also an <b>attractor from below</b> (receipt
+P4): an orbit pushed under the ground state absorbs more than it radiates and
+is refilled within ~93&nbsp;ps. Puthoff's framework argues against sub-ground
+("hydrino-class") states, not for them.</p>
+
+<h3 id="s8-3">8.3 What it revises in §7</h3>
+<p><span class="chip c-post">REVISED</span> <b>Door 2, as written, does not
+survive.</b> The zero-point floor is not a reservoir at 0&nbsp;K or at any
+temperature. It is the n&nbsp;=&nbsp;0 floor of every mode, present at every
+temperature, and it cancels from every net energy flux: net exchange goes as
+ħω[n(T₁)&nbsp;−&nbsp;n(T₂)] (receipt P7 — with and without the floor agree to
+10⁻¹³). If the floor could receive heat, every isothermal enclosure would cool
+itself; a 1&nbsp;kg copper cube would lose about 1&nbsp;K per minute. If one
+insists on a temperature, the floor's is ħω/2k<sub>B</sub> — 240&nbsp;K at
+10&nbsp;THz — and every oscillator's own zero-point motion sits at exactly that
+value, so nothing flows. A genuine door&nbsp;2 needs a colder <em>body</em>.
+The sky's 2.7&nbsp;K, reached through the 8–13&nbsp;µm window, is the real one,
+and it is measured: nighttime generation at 50&nbsp;mW/m² and rising
+(ref.&nbsp;17). Evanescent near-field coupling cannot reach it. For the same
+reason §7b's rectifier "straddling an arrowed and an arrowless sector" is not
+available, since the floor is not a separable sector. Every thermometry rider
+(D5, D6/D6b, W1b, D7, F1) remains a good measurement; only the attribution of
+polarity-blind cooling changes, from "bath-sourced" to "a heat engine whose
+cold body must be named."</p>
+<p><span class="chip c-derived">DERIVED</span> <b>The three Brillouin
+escapes</b> of the optical-cavity paper
+(§1d) close for the same reason. Receipt P8 builds a tunnel junction with
+asymmetric electrodes and a sharp cavity line in its environment: at one
+temperature it carries zero net current, term by term (ref.&nbsp;18). The
+zero-point part is matched to the junction's own zero-point motion; mode-density
+asymmetry changes rates, not the detailed-balance ratio; and speed is not a
+variable, because the balance holds frequency by frequency. That answers the
+optical-cavity paper's own crux — <em>a static geometry cannot maintain a
+persistent gradient</em> — and it agrees with Moddel &amp; Dmitriyeva's own
+assessment that rectifying the zero-point field "violates thermodynamics
+principles" (ref.&nbsp;10). Door&nbsp;1 (one-shot) and door&nbsp;3
+(cosmological) stand as written. The thermometer rule stands, and is
+sharper.</p>
+
+<h3 id="s8-4">8.4 What the measured core must then be — and the run that decides</h3>
+<p><span class="chip c-open">OPEN</span> If the §1 output is real, standard
+physics leaves three readings, and the programme gains from each:</p>
+<ol>
+<li><b>An unidentified non-equilibrium input</b> — a residual gradient, light,
+or RF. That input is then the fuel, and naming it tells the engineering what
+to scale.</li>
+<li><b>Stored energy running down</b> — battery-class.</li>
+<li><b>A genuine violation of the fluctuation–dissipation theorem</b> — a
+static device delivering steady power at one temperature. That would be a
+larger discovery than "zero-point harvesting," and one OPH is on record
+against (§8.5).</li>
+</ol>
+<p>One run separates them: the <b>sealed-isothermal test</b> (proposed as
+K1; to be frozen before running).</p>
+<ul>
+<li><b>Setup.</b> The article sits in a closed, light-tight, thermally lagged
+metal box. Two thermistors verify the gradient across it is below
+10&nbsp;mK. The box is kept dark for at least 24&nbsp;h, and the readout
+passes through filtered feedthroughs.</li>
+<li><b>Controls.</b> A no-cavity twin and a reversed twin sit beside the
+article in the same box.</li>
+<li><b>Accounting.</b> Delivered energy is integrated past 10× the
+article's stored-energy bound.</li>
+<li><b>Reading.</b> Output that vanishes when sealed → reading&nbsp;1
+(reopen one channel at a time). Output that decays within the bound →
+reading&nbsp;2. Output that persists beyond it → reading&nbsp;3.</li>
+</ul>
+<p>The validation slate's LN₂ point then adds the temperature dependence,
+with one change of wording: a temperature-flat output in a verified-isothermal
+enclosure is not "the zero-point channel as expected." It is reading&nbsp;3.</p>
+<p><span class="chip c-derived">DERIVED</span> Where the lawful energy is, in
+this lane's own hardware:</p>
+<ul>
+<li><b>Real gradients</b> — sky cooling, and waste heat fed into nm-gap
+near-field thermophotovoltaic and thermionic stacks. The optical-cavity
+paper's own 400&nbsp;K and 600&nbsp;K rows (20&nbsp;W/m² and
+7.2&nbsp;kW/m²) are exactly this regime.</li>
+<li><b>Driven, time-dependent boundaries</b> — the dynamical Casimir effect,
+measured in 2011 (ref.&nbsp;20). The pump pays.</li>
+<li><b>The one-shot door.</b></li>
+</ul>
+
+<h3 id="s8-5">8.5 The OPH overlay</h3>
+<ul>
+<li><b>OPH's clock entails Puthoff's balance.</b> OPH takes its observer
+clock from the 2π-normalized modular flow of screen caps (Bisognano–Wichmann;
+residual 1.1×10⁻⁴ on its receipt branch). The chain from there is direct:
+<ul>
+<li>a cap vacuum is then a KMS state;</li>
+<li>the KMS property gives the fluctuation–dissipation theorem;</li>
+<li>that theorem gives eq.&nbsp;(1)&nbsp;⇔&nbsp;eq.&nbsp;(4), and so the
+balance;</li>
+<li>KMS and ground states are passive: no cyclic process extracts work
+(ref.&nbsp;19).</li>
+</ul>
+OPH therefore forbids static extraction by its own clock axiom. This is
+conditional on the same receipt that carries its Lorentz–Einstein chain. The
+same receipt also closes the "driven steady state, not a ground state"
+loophole floated in the attachment programme (§12.3).</li>
+<li><b>One 2π.</b> Four things are one fact: the Unruh temperature
+ħa/2πck<sub>B</sub>; Boyer's classical derivation of it from this same ω³ field
+(ref.&nbsp;16); the gravity paper's killer τ&nbsp;=&nbsp;2πc/a; and OPH's
+modular normalization.</li>
+<li><b>"Energy from the boundary" is OPH-correct.</b> OPH puts the uniform
+vacuum energy "in the kernel of the local null readout." A Lorentz-invariant
+loading has T<sub>ab</sub>&nbsp;∝&nbsp;g<sub>ab</sub> and is invisible to null
+probes, so only boundary-induced differences (Casimir, Lamb, van der Waals)
+are readable. At equilibrium those differences are conservative: one-shot or
+driven, never a static flow.</li>
+<li><b>The α√π detuning is reactive, not a fuel.</b> In Puthoff's balance the
+coupling cancels: L&nbsp;=&nbsp;ħ whatever e is. OPH's standing detuning
+P&nbsp;−&nbsp;φ&nbsp;=&nbsp;α√π scales with α, which places it in the
+Lamb-shift class. It is a standing displacement, conservative in a KMS state,
+and not a harvestable load.</li>
+<li><b>The record layer supplies what stochastic electrodynamics lacks.</b>
+Stochastic electrodynamics alone cannot hold hydrogen: it self-ionizes and has
+no discrete spectrum. The network's split between a reversible wave layer and
+a committing record layer is where both halves live. The balance supplies the
+energetics; commitment supplies the discreteness.</li>
+</ul>
+<p><span class="chip c-open">OPEN</span> <b>The projection picture</b> — the
+observed vacuum as the reduced state of a larger one (operator, 2026-09-23) —
+is the right mathematics: reduced states plus modular theory, which is what
+OPH's caps already are. The Bisognano–Wichmann trace is how entanglement makes
+the local vacuum look like a bath. This section adds one testable constraint.
+Whenever the hidden sector is in equilibrium, its "noise" and its
+"constitutive response" are locked together by the fluctuation–dissipation
+theorem; eq.&nbsp;(1)&nbsp;⇔&nbsp;eq.&nbsp;(4) is the worked example. A hidden
+sector that <em>feeds</em> devices must therefore show up as a violation of
+that theorem. That would mean either ground states exciting spontaneously, or
+a vacuum spectrum that departs from ω³ and so carries a frame. Neither is
+seen. What remains open is lawful and interesting: correlations, memory,
+conservative forces, entanglement signatures. The full treatment, with every
+receipt:
+PUTHOFF_1987_ZPF_BALANCE_OPH_OVERLAY_2026-09-23.md.</p>
+
+<h2 id="s9">9 · The archive record — what the Disclosure Project files hold (added 2026-10-01)</h2>
+<p><b>What was read.</b> Every zero-point and free-energy document we could find in the Disclosure Project
+Intelligence Archive (DPIA): 111 files from full-text searches for <em>zero point, ZPE, Casimir, free
+energy, overunity, vacuum energy, Puthoff, Moray, Bearden, Floyd Sweet, Tesla, scalar, energy device,
+Searl, Aspden, new energy</em>. The set holds three 2010–11 AAWSAP DIRDs, a 1989 DIA meeting memo, the
+Bearden/MEG correspondence, about twenty Sweet files, the Moray record, the 1950s–80s Cejka device
+collection, and the paper trail of Dr. Greer's own energy programme (SEAS, 2002–03). Local copies, OCR
+text and four reading notes are in <code>~/Documents/dpia-archive/zpe/</code>, outside the repo. DPIA
+numbers below are archive document IDs. Added grades:
+<span class="chip c-doc">DOCUMENTED</span> a named source reports it and the archive records the report;
+<span class="chip c-testi">TESTIMONY</span> a single narrator;
+<span class="chip c-null">NULL-STATIC</span> a static configuration, excluded as a power source by §8.3–§8.5;
+<span class="chip c-ns">NOT SUPPORTED</span> a predicted effect not seen where looked for;
+<span class="chip c-contra">CONTRADICTED</span> answered by a test on the claim's own terms.</p>
+
+<div class="rulebox"><b>The short answer.</b> The archive adds no instrumented positive to this lane and no
+record against the §1 measured core. Every document in which someone put hardware on a bench and
+metered both sides ended null, below unity, or inconclusive. The official assessments agree with §7–§8
+on every point they address. One pattern runs through the claims that did run for hours: <b>each had a
+connection nobody metered</b> — Moray's antenna, the drive motor on Kromrey's generator, the drive
+electronics behind the MEG's input figure, the growling machine beside Sweet's bench. That is the
+open-system rule's own prediction: the energy came from somewhere, and the work is to name it.</div>
+
+<h3 id="s9-1">9.1 Official and institutional assessments</h3>
+<ul>
+<li><span class="chip c-doc">DOCUMENTED</span> <b>DIA/AAWSAP DIRD D142, "Concepts for Extracting Energy from
+the Quantum Vacuum" (6 April 2010; DPIA 130622; author redacted).</b> It is the only government assessment
+in the set, and it lands where §8 does:
+  <ul>
+  <li>No practicable extraction technique has been shown in a laboratory.</li>
+  <li>Casimir energies are too small for useful power.</li>
+  <li>The QED vacuum cannot be used up, so a continuously cycling machine is forbidden in principle,
+  while one-shot release is allowed (§7, door 1).</li>
+  <li>Stochastic electrodynamics, the framework that would allow cycling, is judged inadequate for the
+  question.</li>
+  <li>It quotes Jaynes: the zero-point field an atom sees is its own radiation-reaction field. That is
+  §8's eq.&nbsp;(1)&nbsp;⇔&nbsp;eq.&nbsp;(4) pairing, in a government report.</li>
+  <li>It treats the dynamical Casimir effect as a real energy exchange paid for by the drive
+  (§8.4, "the pump pays").</li>
+  <li>It records one measured null: switchable mirrors (70–400&nbsp;nm gaps, Iannuzzi) did not noticeably
+  change the Casimir force. That is the switch a tunable Casimir engine would need.</li>
+  <li>It carries the Haisch–Moddel cavity-hydrogen concept (US&nbsp;7,379,286) at 2,150–21,500&nbsp;W/cm³,
+  explicitly conditional on a chain of conjectures. Its synchrotron test returned no result because of
+  beam problems. §8.2 prices this premise and finds it three orders low.</li>
+  </ul></li>
+<li><span class="chip c-doc">DOCUMENTED</span> <b>The proponents' own null.</b> <i>Jane's Defence Weekly</i>,
+26 July 2000 (DPIA 121264): about 30 claimed vacuum-energy devices were brought to Puthoff's institute
+in Austin, and none showed measured output exceeding input.</li>
+<li><span class="chip c-doc">DOCUMENTED</span> <b>Bailey 1992 review (DPIA 117952).</b> It surveys Moray
+(50&nbsp;kW claimed), Hyde, Methernitha, PODMOD, WIN and Sweet, and concludes that none was adequately
+tested or replicated. Its one third-party test, DePalma's N-machine in 1985, "did not perform as
+claimed". Bailey defines "zero-point energy" as energy drawn from outside the experimenter's influence:
+mains wiring, transmitters, Earth fields, the sun. That is the open-system rule in a 1992 proponent's
+words.</li>
+<li><span class="chip c-derived">DERIVED</span> <b>Cole &amp; Puthoff 1993</b> (<i>Phys. Rev. E</i> 48;
+DPIA 119258) is a one-shot result. Its worked example consumes a supply of capacitors, each used once.
+It is the source of door 1 and claims no cycle. The press release in the same file (119245) reads more
+into it than the paper does.</li>
+<li><span class="chip c-doc">DOCUMENTED</span> <b>DIA's 6th ZPE meeting, December 1989</b> (Hercules memo,
+DPIA 120536). A defence-intelligence R&amp;D council flagged zero-point and "scalar" topics as up and
+coming; DIA wanted the field classified and planned a March 1990 verification trip to Novosibirsk. Every
+technical claim in it (a 700&nbsp;W-in, 3,000&nbsp;W-out tube; condensed-charge beads) is unsourced and
+secondhand. It records interest, not results.</li>
+<li><span class="chip c-ns">NOT SUPPORTED</span> <b>Davis, AFRL Advanced Propulsion Study (2004; DPIA
+124243)</b> says experiments already "prove" electrical extraction from the vacuum. The works it cites
+measure Casimir <em>forces</em>, not net energy. The 2010 D142 verdict is the later and more careful one.
+The 2011 DIRD D153 (DPIA 130661) concerns <em>measuring</em> negative-energy states, not extracting
+energy.</li>
+</ul>
+
+<h3 id="s9-2">9.2 The device ledger</h3>
+<div style="overflow-x:auto">
+<table>
+<tr><th>Device (DPIA)</th><th>Class</th><th>Best record in the archive</th><th>Grade</th></tr>
+<tr><td>Coler <i>Magnetstromapparat</i> (125282, 125379, 125228)</td><td>static magnets, coils, condensers</td>
+<td>British intelligence BIOS Final Report 1043 (1946). Coler built it in front of the team from their
+materials. It gave 450&nbsp;mV for ~3&nbsp;h, until a solder joint failed, and 60&nbsp;mV the next day for
+30&nbsp;min. No power was ever measured. The team called it inexplicable.</td>
+<td><span class="chip c-measured">MEASURED</span> millivolts · <span class="chip c-null">NULL-STATIC</span> as a
+source · residual <span class="chip c-open">OPEN</span> (thermocouple and galvanic effects not excluded)</td></tr>
+<tr><td>Coler <i>Stromerzeuger</i> (125282)</td><td>battery-driven</td><td>Few watts in, 6&nbsp;kW claimed out. A
+1926 test exists but its table is illegible. In 1943 a Navy-funded rebuild would not start.</td>
+<td><span class="chip c-open">OPEN</span>, leaning <span class="chip c-ns">NOT SUPPORTED</span></td></tr>
+<tr><td>Moray radiant-energy device (119074, 118896)</td><td>antenna + ground + detector "valves"</td>
+<td>1928 sealed-trunk endurance test (E.&nbsp;G. Jensen's letter): a 110&nbsp;W load ran ~74&nbsp;h, then
+83.5&nbsp;h, about 17&nbsp;kWh, under numbered railroad seals. Disconnecting the house mains did
+nothing; <b>removing the antenna put the light out</b>. The famous "50&nbsp;kW" traces to watt-hours
+read as watts. The detector failed when jarred and later burned out. Harvey Fletcher of Bell Labs, who
+saw it, advised against investing.</td>
+<td><span class="chip c-doc">DOCUMENTED</span> (witnesses were an investor and Moray's lawyer) ·
+<span class="chip c-open">OPEN</span>, with the input named: the antenna circuit, never metered</td></tr>
+<tr><td>Sweet VTA (§5; 118970, 118992, 120888, 119249)</td><td>conditioned ferrite, 60&nbsp;Hz drive</td>
+<td>One first-hand running sighting (Campbell): 120&nbsp;V on a voltmeter and a household load list, with no
+current or duration. Meters failed above ~1&nbsp;kW (Rosenthal). An independent test at the Eyring labs
+was planned in 1989 and never run. The "affidavits" are an agency contract. Details: §2 REVISED note and
+VTA record addendum.</td>
+<td><span class="chip c-testi">TESTIMONY</span> · <span class="chip c-open">OPEN</span>; §5 protocol unchanged</td></tr>
+<tr><td>Bearden/Patrick MEG (118832, 118849, 118833, 117915, 118838)</td><td>switched (87.5&nbsp;kHz) Metglas core
++ NdFeB magnet</td><td>The patent's COP&nbsp;3.44 is extrapolated from 75&nbsp;V to 100&nbsp;V. Input is
+battery V×I, with no stated treatment of the drive electronics and no calorimetry. A closed loop is
+asserted, never run. The patent names the magnet as the source and concedes demagnetization; the magnet
+stores ~10&nbsp;J against ~80&nbsp;W claimed excess, ~0.1&nbsp;s of supply. Naudin's 2000 replication is the
+only one, and he called artifacts possible. Production was promised for 2002; no unit had shipped by
+2008.</td><td><span class="chip c-ns">NOT SUPPORTED</span> as demonstrated · <span class="chip c-open">OPEN</span>
+as a switched device · magnet-as-fuel excluded beyond ~0.1&nbsp;s <span class="chip c-derived">DERIVED</span></td></tr>
+<tr><td>Bearden's dipole / Heaviside-flow theory (118827, 123928, 123939)</td><td>static source</td><td>"Every
+dipole is a free energy generator"; magnet-plus-electret "pours out" energy. His picture of a static field
+as a continually regenerated steady state is the Puthoff balance itself.</td>
+<td>regeneration <span class="chip c-derived">COMPATIBLE</span> · as a power source
+<span class="chip c-null">NULL-STATIC</span></td></tr>
+<tr><td>W.J.F. Muller homopolar generator (125300)</td><td>driven rotary</td><td>Independent engineering test,
+NOVA (Alberta), December 1982: efficiency "does not approach 100%". The 21&nbsp;kW figure was a one-coil
+projection.</td><td><span class="chip c-contra">CONTRADICTED</span> for that unit</td></tr>
+<tr><td>Kromrey generator (125202, 125380)</td><td>motor-driven</td><td>1968 patent test metered output only,
+never the drive motor's input.</td><td><span class="chip c-open">OPEN</span></td></tr>
+<tr><td>Cole generator (125288)</td><td>driven</td><td>Inventor's 1985 bench log: best 17&nbsp;W in,
+20&nbsp;W out, with many inputs calculated, not metered. The loop was never closed, at 2–3&nbsp;W where
+that is trivial.</td><td><span class="chip c-open">OPEN</span></td></tr>
+<tr><td>Hubbard transformer (125217)</td><td>radioactive-claimed</td><td>1919 newspaper accounts (retold 1956):
+a 35&nbsp;hp boat run for hours. At that power, radium decay would need of order 100&nbsp;kg.</td>
+<td><span class="chip c-testi">TESTIMONY</span> · radioactive mechanism <span class="chip c-ns">NOT SUPPORTED</span></td></tr>
+<tr><td>Valone / Hartman magnet ramp (118478)</td><td>static magnets</td><td>Proposal, no data.</td>
+<td><span class="chip c-null">NULL-STATIC</span></td></tr>
+<tr><td>ATREE microwave rectifier (125279)</td><td>real RF gradient</td><td>~63&nbsp;W claimed from
+"background" 10&nbsp;cm radiation.</td><td>lawful source · magnitude <span class="chip c-ns">NOT SUPPORTED</span>
+without a nearby transmitter</td></tr>
+</table></div>
+
+<p><span class="chip c-derived">ESTIMATE</span> What Moray's antenna would have to deliver: a 50&nbsp;kW
+broadcaster 1&nbsp;km away gives ~4&nbsp;mW/m², so a 110&nbsp;W draw needs ~3×10⁴&nbsp;m² of effective
+aperture. That is reachable only with a large resonant wire near a strong transmitter. The atmospheric
+field is far too weak, as Fletcher judged in 1927. The 1928 test's sealed trunks excluded batteries and
+mains, and it is the one historical protocol worth copying. Its missing step is the one that decides:
+meter the antenna lead.</p>
+
+<h3 id="s9-3">9.3 Greer's energy programme, 1998–2014</h3>
+<p><span class="chip c-doc">DOCUMENTED</span> The archive documents a serious attempt. The Space Energy Access
+Systems plan (DPIA 118505, January 2003) set out the right protocol. It screened candidates, visited the
+top six and optioned one, then sent it to three independent labs. Watts in and out were to be measured
+under load, with inspection for hidden batteries. Phase I was budgeted at $100–500k, with a
+$100k&nbsp;"Z&nbsp;Prize". That is a K1-class test, written 23 years before this paper's K1.
+What happened:</p>
+<ul>
+<li><b>Paper screening.</b> Prof. Paul Czysz (aerospace, professor emeritus) evaluated five submissions
+in September 2002 (DPIA 119310) and passed none: a magnetic piston engine, a dual-rotor alternator,
+bootstrap flywheels, a "transduction device" he called a fake perpetual-motion machine, and an
+implosion turbine.</li>
+<li><b>Hands-on checks</b> (DPIA 119311, 119262, autumn 2002). An intern's replication of one device
+underperformed; another demonstration underwhelmed the technical reviewer; an aerospace company's test
+of a third was inconclusive. Planned tests of two more (a motor claimed at 1/16&nbsp;W in, 2.1&nbsp;W
+out, and Muller rebuilds) have no reported result.</li>
+<li><b>Bearden declined a demonstration to Congress</b> (DPIA 118838, April 2002). He gave five reasons:
+patent rights, the company board's control, the units being lab apparatus, a $29M finishing cost, and
+publicity as the "kiss of death". In 2003 he told SEAS not to plan on a demonstrator (118840).</li>
+<li><b>Inventor friction.</b> Many inventors did not respond, wanted payment or would only sell. One
+answered the 2003 Z-power offer but refused to travel for evaluation (118053).</li>
+<li><b>The pivot.</b> Greer's undated "New Earth Energy Incubator" draft (DPIA 119279) concedes that no
+inventor had overcome the obstacles. It proposes open-source, live-streamed labs at $100–200M instead.</li>
+</ul>
+<p><span class="chip c-ns">NOT SUPPORTED</span> "The programme found a working device" is not supported by
+these records. It is not contradicted either, because nothing after 2003 is documented. The programme's
+own experience fits the §8 picture: the protocol was right, and nothing that came through it delivered
+metered net power.</p>
+
+<h3 id="s9-4">9.4 What it changes here</h3>
+<ol>
+<li><b>§2's Sweet density ladder</b> is corrected (REVISED note there). The verdict holds; the
+"convergence" argument is withdrawn.</li>
+<li><b>§8 gains independent support.</b> D142 reaches §8's conclusions without Puthoff 1987 as its
+anchor, and the archive's tests, from BIOS 1946 to NOVA 1982 to Austin 2000, are the null records
+that §8.3–§8.5 predict for static devices.</li>
+<li><b>K1 gets a historical template.</b> Moray's sealed trunk plus SEAS's watts-in/watts-out-under-load
+rule plus one more lead on the meter is a usable design for any claimed device. Rosenthal's night-time
+voltage readings (70&nbsp;V at 3&nbsp;AM, 85&nbsp;V at 1:30&nbsp;AM) give the §5 protocol's sidereal check
+S1 a target.</li>
+<li><b>Acquire next:</b> the video Bearden sold of Sweet's 30&nbsp;April&nbsp;1987 bench tests (DPIA
+119221); the complete BIOS 1043 report; the NOVA 1982 test report; the originals of the 1928 Jensen
+letter.</li>
+</ol>
+
+<h2 id="refs">References</h2>
+<ol style="font-size:.88rem">
+  <li>Moddel, G., Weerakkody, A., Doroski, D., Bartusiak, D.
+  <i>Optical-Cavity-Induced Current.</i> Symmetry 13(3):517 (2021).</li>
+  <li>Moddel, G. et al. <i>Casimir-cavity-induced conductance changes.</i>
+  Phys. Rev. Research 3:L022007 (2021).</li>
+  <li>Maclay, G.J. <i>Modeling Electronic Devices with a Casimir
+  Cavity.</i> Physics 6(3):70 (2024).</li>
+  <li>Moddel, G. <i>Zero-Point Energy: Capturing Evanescence.</i>
+  (2022).</li>
+  <li>Thibado, P.M. et al. <i>Fluctuation-induced current from
+  freestanding graphene.</i> Phys. Rev. E 102:042101 (2020).</li>
+  <li>Cole, D.C., Puthoff, H.E. <i>Extracting Energy and Heat from the
+  Vacuum.</i> Phys. Rev. E 48:1562 (1993).</li>
+  <li>Project sims: <code>casimir_mim_plate.py</code>,
+  <code>casimir_metamaterial_ceiling.py</code>,
+  <code>lamp_detector_budget.py</code>,
+  <code>home_bench_noise_budget.py</code>
+  (crypto_oracle/universe_sim/).</li>
+  <li>Puthoff, H.E. <i>Ground state of hydrogen as a
+  zero-point-fluctuation-determined state.</i> Phys. Rev. D 35:3266 (1987); and
+  <i>Quantum ground states as equilibrium particle–vacuum interaction
+  states.</i> Quantum Stud. Math. Found. 3:5 (2016).</li>
+  <li>Dalibard, J., Dupont-Roc, J., Cohen-Tannoudji, C. <i>Vacuum
+  fluctuations and radiation reaction: identification of their respective
+  contributions.</i> J. Physique 43:1617 (1982).</li>
+  <li>Moddel, G., Dmitriyeva, O. <i>Extraction of zero-point energy from the
+  vacuum: assessment of stochastic-electrodynamics-based approach as compared
+  to other methods.</i> Atoms 7:51 (2019).</li>
+  <li>Callen, H.B., Welton, T.A. <i>Irreversibility and generalized
+  noise.</i> Phys. Rev. 83:34 (1951).</li>
+  <li>Nieuwenhuizen, T.M., Liska, M.T.P. <i>Simulation of the hydrogen ground
+  state in stochastic electrodynamics.</i> Phys. Scr. T165:014006 (2015);
+  Found. Phys. 45:1190 (2015).</li>
+  <li>Cetto, A.M., de la Peña, L. <i>Environmental effects on the Lamb shift
+  according to stochastic electrodynamics.</i> Phys. Rev. A 37:1952
+  (1988).</li>
+  <li>Hulet, R.G., Hilfer, E.S., Kleppner, D. <i>Inhibited spontaneous
+  emission by a Rydberg atom.</i> Phys. Rev. Lett. 55:2137 (1985).</li>
+  <li>Jhe, W. et al. <i>Suppression of spontaneous decay at optical
+  frequencies.</i> Phys. Rev. Lett. 58:666 (1987).</li>
+  <li>Marshall, T.W. Nuovo Cimento 38:206 (1965); Boyer, T.H. Phys. Rev.
+  182:1374 (1969); Boyer, T.H. <i>Thermal effects of acceleration through
+  random classical radiation.</i> Phys. Rev. D 21:2137 (1980).</li>
+  <li>Assawaworrarit, S., Omair, Z., Fan, S. <i>Nighttime electric power
+  generation at a density of 50 mW/m² via radiative cooling of a photovoltaic
+  cell.</i> Appl. Phys. Lett. 120:143901 (2022).</li>
+  <li>Ingold, G.-L., Nazarov, Yu.V. <i>Charge tunneling rates in ultrasmall
+  junctions</i> (1992), arXiv:cond-mat/0508728.</li>
+  <li>Pusz, W., Woronowicz, S.L. <i>Passive states and KMS states for general
+  quantum systems.</i> Commun. Math. Phys. 58:273 (1978); Bisognano, J.J.,
+  Wichmann, E.H. J. Math. Phys. 16:985 (1975).</li>
+  <li>Wilson, C.M. et al. <i>Observation of the dynamical Casimir effect in a
+  superconducting circuit.</i> Nature 479:376 (2011).</li>
+  <li>Project probe: <code>crypto_oracle/puthoff_zpf_balance_probe.py</code>
+  → <code>runtime_receipts/puthoff_zpf_balance_run.json</code> (nine frozen
+  gates, 9/9 pass).</li>
+</ol>
+
+</body>
+</html>
