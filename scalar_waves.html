@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scalar Waves</title>
+<style>
+  :root{
+    --ink:#1c1c1c; --paper:#fbfaf6; --page:#ece8df;
+    --green:#5a7d3a; --amber:#b88a2a; --steel:#3a5a7d; --teal:#2f6d5e;
+    --slate:#5a6470; --blood:#7a1f1f; --violet:#6a4a8a;
+    --rule:#d2cdbf; --soft:#8a8676; --wash:#f3efe4;
+  }
+  html{background:var(--page)}
+  body{
+    font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    max-width:820px; margin:2.5rem auto; padding:2.6rem 2.4rem 4rem;
+    color:var(--ink); line-height:1.62; background:var(--paper);
+    box-shadow:0 1px 4px rgba(0,0,0,.06); font-size:17px;
+  }
+  h1{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-weight:700;
+     font-size:1.9rem; line-height:1.18; border-bottom:2px solid var(--ink);
+     padding-bottom:.55rem; margin:.3rem 0 .5rem}
+  h2{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:1.24rem;
+     margin-top:2.4rem; border-bottom:1px solid var(--rule); padding-bottom:.25rem}
+  h3{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:1.02rem;
+     margin-top:1.6rem; color:#444}
+  .part{font-family:"Helvetica Neue",Helvetica,sans-serif; font-size:.82rem;
+     letter-spacing:.1em; text-transform:uppercase; color:var(--soft);
+     margin-top:2.8rem; border-top:2px solid var(--ink); padding-top:.7rem}
+  .banner{background:#eef5fa; border-bottom:2px solid var(--steel);
+     margin:-2.6rem -2.4rem 2rem; padding:.65rem 2.4rem;
+     font-family:"Helvetica Neue",Helvetica,sans-serif; font-size:.85rem;
+     color:var(--steel); line-height:1.5; text-align:center}
+  .banner a{color:var(--steel); font-weight:600}
+  .sub{color:var(--soft); font-style:italic; font-size:1.02rem}
+  .meta{color:var(--soft); font-size:.85rem; margin-bottom:1.6rem}
+  table{border-collapse:collapse; width:100%; margin:1.1rem 0; font-size:.86rem}
+  th,td{border:1px solid var(--rule); padding:.42rem .6rem; text-align:left; vertical-align:top}
+  th{background:#f0eadb; font-family:"Helvetica Neue",Helvetica,sans-serif; font-size:.8rem}
+  tr:nth-child(even) td{background:#faf7ef}
+  blockquote{border-left:4px solid var(--amber); background:#fff8e8;
+    margin:1.2rem 0; padding:.7rem 1.1rem; color:#4a4437; font-size:.97rem}
+  .box{border-left:4px solid var(--green); background:#eef3e8;
+    padding:.85rem 1.1rem; margin:1.3rem 0; font-size:.94rem}
+  .warn{border-left:4px solid var(--blood); background:#f3e7e7;
+    padding:.85rem 1.1rem; margin:1.3rem 0; font-size:.94rem}
+  .lead{border:2px solid var(--ink); background:#fffdf7; padding:1rem 1.3rem;
+    margin:1.4rem 0 1.8rem; font-size:1.02rem; line-height:1.66}
+  code,pre{font-family:"JetBrains Mono",Menlo,Consolas,monospace; background:var(--wash); border-radius:2px}
+  code{font-size:.85em; padding:.05em .3em; overflow-wrap:anywhere}
+  a{color:var(--steel)}
+  .overflow{overflow-x:auto}
+  ol li,ul li{margin:.3rem 0}
+  .tag{font-family:"Helvetica Neue",Helvetica,sans-serif; font-size:.66rem;
+    font-weight:700; letter-spacing:.06em; padding:.1em .45em; border-radius:2px;
+    vertical-align:middle; white-space:nowrap}
+  .t-meas{background:#e7efdd; color:var(--green); border:1px solid var(--green)}
+  .t-doc{background:#e7efdd; color:var(--green); border:1px dashed var(--green)}
+  .t-der{background:#e3ebf3; color:var(--steel); border:1px solid var(--steel)}
+  .t-est{background:#f6eed9; color:#8a6a1f; border:1px solid var(--amber)}
+  .t-testi{background:#fbf5e6; color:#8a6a1f; border:1px dashed var(--amber)}
+  .t-open{background:#efe8f5; color:var(--violet); border:1px solid var(--violet)}
+  .t-compat{background:#e6f1ee; color:var(--teal); border:1px dashed var(--teal)}
+  .t-ns{background:#f1ebe8; color:#8a3a2a; border:1px dashed #a8432f}
+  .t-null{background:#f3e7e7; color:var(--blood); border:1px solid var(--blood)}
+  .t-static{background:#e8ecef; color:var(--slate); border:1px solid var(--slate)}
+  .t-prereg{background:#e2efeb; color:var(--teal); border:1px solid var(--teal)}
+  .ic{background:#f0eee8; border-left:3px solid var(--soft); padding:.6rem 1rem; margin:1rem 0 1.6rem; font-size:.92rem}
+  .ic::before{content:"Implementation consequence  ·  "; color:var(--ink);
+    font-family:"Helvetica Neue",Helvetica,sans-serif; font-size:.8rem; letter-spacing:.05em; font-weight:700}
+  figure{margin:1.6rem 0; padding:0}
+  figure svg{width:100%; height:auto; display:block; background:#fffdf7; border:1px solid var(--rule)}
+  figcaption{font-size:.86rem; color:#4a4437; margin-top:.5rem; line-height:1.5}
+  svg text{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif}
+  .small{font-size:.9rem; color:#4a4437}
+  @media (max-width:640px){ body{padding:1.6rem 1rem 3rem; margin:0; font-size:16px}
+    .banner{margin:-1.6rem -1rem 1.6rem; padding:.6rem 1rem} }
+</style>
+
+</head>
+<body>
+
+<style id="eg-site-nav-css">
+  .eg-nav{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:.8rem;
+    background:#1c1c1c;color:#ece8df;padding:.55rem 1.2rem;line-height:1.6;
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    box-shadow:0 1px 3px rgba(0,0,0,.25)}
+  body{margin-top:5.2rem !important}
+  .eg-nav a{color:#ece8df;text-decoration:none;margin-right:1rem;white-space:nowrap}
+  .eg-nav a:hover{text-decoration:underline}
+  .eg-nav .eg-home{font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+    margin-right:1.4rem}
+  .eg-nav .eg-cur{border-bottom:2px solid #b88a2a}
+  .eg-nav .eg-cat{color:#b88a2a;font-weight:600;letter-spacing:.03em}
+  .eg-nav .eg-catcur{text-decoration:underline}
+  .eg-nav .eg-sep{color:#8a8676;margin-right:1rem}
+  .eg-nav .eg-wrap{max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;
+    align-items:baseline}
+  .eg-nav .eg-pdf{margin-left:auto;margin-right:0;border:1px solid #b88a2a;
+    color:#ece8df;padding:.1rem .6rem;border-radius:2px;font-weight:600}
+  .eg-nav .eg-pdf:hover{background:#b88a2a;color:#1c1c1c;text-decoration:none}
+  @media print{.eg-nav{display:none} body{margin-top:0 !important}}
+</style>
+<div class="eg-nav"><div class="eg-wrap"><a class="eg-home" href="index.html">Papers</a><a class="eg-cat eg-catcur" href="index.html#electrogravitics">Electrogravitics</a><a class="eg-cat" href="index.html#people">The People</a><span class="eg-sep">·</span><a href="the_medium.html">The Medium</a><a href="zero_point_energy.html">Zero-point</a><a href="electrogravitics.html">Field guide</a><a href="the_shape_of_gravity.html">Gravity</a><a href="warp_drive.html">Mechanism</a><a href="hover_disk.html">Materials</a><a href="hexalock.html">Vehicle</a><a href="how_to_build_a_ufo.html">Build</a><a href="antigravity_devices.html">Bench floor</a><a href="superconductivity.html">Superconductivity</a><a href="magnetism.html">Magnetism</a><a href="the_scalar_field.html">Scalar field</a><a class="eg-cur" href="scalar_waves.html">Scalar waves</a><a class="eg-pdf" href="pdf/scalar_waves.pdf" download>Download PDF ↓</a></div></div>
+
+
+<div class="banner">
+Companions: <a href="the_scalar_field.html">The Scalar Field</a> (what "the scalar" is in our framework) ·
+<a href="magnetism.html">Magnetism §5</a> (Aharonov–Bohm as holonomy) ·
+<a href="the_medium.html#s5">The Medium §5–§6</a> (static zero, transient not) ·
+<a href="zero_point_energy.html#s9">Zero-Point Energy §9</a> (the archive's energy devices) ·
+Cold Molding §9.2, §9.4 (Bearden's weapons and his ten "flaws") ·
+The Prioré Machine §2 (phase conjugation) ·
+<a href="nikola_tesla.html">Nikola Tesla</a> ·
+The Hidden Map (Soviet torsion programme).
+Intake note: <code>SCALAR_CORPUS_DPIA_INTAKE_2026-10-01.md</code>.
+</div>
+
+<h1>Scalar Waves</h1>
+<p class="sub">What the "scalar weapon" record in the Disclosure Project archive actually contains, where each
+claim came from, what the word "scalar wave" can mean in physics, and which of its meanings do
+something.</p>
+<p class="meta">draft 0.1 · 2 October 2026 · sources: 81 documents from the Disclosure Project Intelligence
+Archive (DPIA), read in full · Osika Innovation AB · Alexander Osika, Claude</p>
+
+<div class="box"><strong>What this paper is.</strong> The archive holds a coherent body of material on "scalar
+waves": Tom Bearden's 1984 booklet filed in CIA records, a CIA analyst memo answering a request for a
+summary, the trip report of a DIA meeting series on "scalar waves and zero-point energy", a Honeywell–MIT
+vector-potential programme presented to DARPA, Bearden's later letters, Russian witness files, the
+microwave-harassment and psychotronics literature, and a set of Tesla weapon claims. This paper reads it
+whole. It owns three things in the network: the provenance of the scalar-weapon story, the physics of
+what a "scalar wave" can be, and the ledger of events and capabilities attributed to it. Everything about
+our own framework's scalar stays in <a href="the_scalar_field.html">The Scalar Field</a>; everything about
+energy devices stays in <a href="zero_point_energy.html#s9">Zero-Point Energy §9</a>. Grading follows the
+network's rules: never set a claim aside because it sounds strange; find the real thing each claim points
+at; reserve <em>contradicted</em> for a claim a record, or a measurement on its own terms, has answered.</div>
+
+<p>Tags:
+<span class="tag t-meas">MEASURED</span> ·
+<span class="tag t-doc">DOCUMENTED</span> ·
+<span class="tag t-der">DERIVED</span> ·
+<span class="tag t-est">ESTIMATE</span> ·
+<span class="tag t-testi">TESTIMONY</span> ·
+<span class="tag t-compat">COMPATIBLE</span> ·
+<span class="tag t-open">OPEN</span> ·
+<span class="tag t-prereg">PRE-REG</span> ·
+<span class="tag t-ns">NOT SUPPORTED</span> ·
+<span class="tag t-null">CONTRADICTED</span>.
+DERIVED here includes identities of electrodynamics, which are the strongest grade the paper uses.</p>
+
+<div class="lead"><strong>The short answer.</strong> US intelligence collected the scalar-weapon story and asked
+about it; it did not confirm it. The one official analysis in the archive, a CONFIDENTIAL/NOFORN memo from
+the late 1980s, writes the scalar wave as a potential with no electric or magnetic field, notes it carries
+no power, and concludes that its existence is not proven. The document the archive labels "CIA, Bohm–Aharonov
+effect, scalar waves, Soviet weapons" is Bearden's own 1984 booklet, held in the CIA's Stargate files.<br><br>
+"Scalar wave" has four meanings in physics. A pure-potential wave is a change of description, not a thing:
+it carries no energy, exerts no force and cannot be detected, and two of them cannot make energy where they
+cross. The Aharonov–Bohm effect is real and measured, but it acts only on the phase of charges whose path
+encloses magnetic flux. Real longitudinal waves exist and are everywhere: sound, plasma waves, near fields.
+Our own framework's scalar is a global constraint that cannot be aimed.<br><br>
+Of 26 events attributed to scalar weapons, most have an ordinary documented cause. Three remain open on the
+record, among them the expanding cloud off Japan on 9 April 1984, which a 1985 <i>Science</i> paper could not
+explain. The real programmes behind the psychotronics literature (the microwave auditory effect, non-lethal
+weapons research, MKULTRA, the Moscow embassy signal) are documented. Each claimed covert use fails on range
+and power.</div>
+
+<div class="part">Part I · The record</div>
+
+<h2 id="s1">1 · What the archive holds, and what each document is</h2>
+<p>Archive labels are not always accurate. Three of the most-cited files are not what their titles say.</p>
+<div class="overflow">
+<table>
+<tr><th>DPIA file (label)</th><th>What it actually is</th><th>Register</th></tr>
+<tr><td>117914 "CIA The Boehm Aharonov effect Scaler Waves Soviet Weapons"</td><td>Tom Bearden's own booklet,
+<i>Star Wars Now! The Bohm–Aharonov Effect, Scalar Interferometry, and Soviet Weaponization</i> (24 April
+1984), privately funded. Every page carries a CIA release stamp (CIA-RDP96-00788R001900680014-4, approved
+for release 2003), the series of the CIA's remote-viewing files. No CIA cover sheet, comment or
+classification.</td><td>that the CIA filed it <span class="tag t-doc">DOCUMENTED</span>; its claims are Bearden's
+<span class="tag t-testi">TESTIMONY</span></td></tr>
+<tr><td>117910 "CIA-Scaler Waves"</td><td>A three-page CONFIDENTIAL/NOFORN memo from office DT-ACO answering a
+verbal request for a summary statement on scalar waves (late 1980s; released 2001,
+CIA-RDP96-00792R000500240001-6). It names Bearden and his "Fer-de-Lance" briefing as the chief proponent.</td>
+<td><span class="tag t-doc">DOCUMENTED</span>; the only official analysis in the set</td></tr>
+<tr><td>120536 Hercules memo</td><td>A Hercules Inc. (Magna, Utah) trip report on the 6th DIA meeting on "scalar
+waves / zero-point energy", December 1989, in a series running from February 1988. DIA wanted the area
+classified; an intelligence R&amp;D council called it "up and coming".</td><td>meetings
+<span class="tag t-doc">DOCUMENTED</span>; content is claims</td></tr>
+<tr><td>125233, 125245, 125276 Gelinas / HMIT</td><td>The Honeywell–MIT vector-potential programme presented to
+DARPA on 20 May 1982; patents US 4,429,280, 4,432,098, 4,447,779 on signalling with a "curl-free vector
+potential" read by Josephson devices. Their own slides say remote, unlinked detection "must be established".
+No result reported.</td><td><span class="tag t-doc">DOCUMENTED</span> serious physics, no positive</td></tr>
+<tr><td>125200 "Anomalous Cloud Phenomenon"</td><td>Bearden &amp; Sanchez's submission to <i>Science</i>, 28 Feb
+1985, the main source of the list of events attributed to scalar weapons.</td><td>
+<span class="tag t-testi">TESTIMONY</span></td></tr>
+<tr><td>119944 "Scalar Wars"</td><td>A layman's primer by Bill Morgan (2001–02) on Bearden's material; the fullest
+list of weapon claims.</td><td>tertiary</td></tr>
+<tr><td>115505 Zohuri speech</td><td>A recent slide deck (2023 or later): scalar waves at 1.5&nbsp;c, over-unity of
+~3, healing, Havana syndrome as a scalar attack. Its energy-at-a-distance slides follow Bearden 1984
+closely without credit.</td><td><span class="tag t-testi">TESTIMONY</span></td></tr>
+<tr><td>124476, 124485, 124488</td><td>Russian "Peace in Space" witness files (c. 2020): Kaznacheyev's "field life
+forms", a mind-altering satellite, Gen. Ivashov alleging US climate and "lithospheric" weapons. None uses
+the word "scalar".</td><td><span class="tag t-testi">TESTIMONY</span></td></tr>
+<tr><td>117911, 116079 and others</td><td>The microwave-harassment and psychotronics literature (§4).</td><td>mixed</td></tr>
+</table></div>
+
+<h3>1.1 The chain</h3>
+<p>Every scalar-weapon claim in the archive traces to one source or repeats it.</p>
+<figure>
+<svg viewBox="0 0 760 250" role="img" aria-label="Chain of transmission of the scalar-weapon claims">
+<rect width="760" height="250" fill="#fffdf7"/>
+<g font-size="11.5" fill="#1c1c1c">
+<rect x="14" y="20" width="150" height="54" fill="#f6eed9" stroke="#b88a2a"/><text x="24" y="42">Tesla lore</text><text x="24" y="60">+ Aharonov–Bohm 1959</text>
+<rect x="200" y="20" width="170" height="54" fill="#f3e7e7" stroke="#7a1f1f"/><text x="210" y="42">Bearden 1981–85</text><text x="210" y="60">booklet, Fer-de-Lance</text>
+<rect x="410" y="12" width="160" height="38" fill="#e7efdd" stroke="#5a7d3a"/><text x="420" y="35">CIA files copy (1984)</text>
+<rect x="410" y="58" width="160" height="38" fill="#e7efdd" stroke="#5a7d3a"/><text x="420" y="81">DIA memo: "not proven"</text>
+<rect x="410" y="104" width="160" height="38" fill="#e7efdd" stroke="#5a7d3a"/><text x="420" y="127">DIA meetings 1988–89</text>
+<rect x="600" y="58" width="146" height="54" fill="#efe8f5" stroke="#6a4a8a"/><text x="610" y="80">Greer lane</text><text x="610" y="98">1998–2015</text>
+<rect x="600" y="140" width="146" height="40" fill="#efe8f5" stroke="#6a4a8a"/><text x="610" y="165">Zohuri 2023+</text>
+<rect x="14" y="170" width="150" height="54" fill="#f6eed9" stroke="#b88a2a"/><text x="24" y="192">Kaznacheyev</text><text x="24" y="210">(Novosibirsk, 1970s)</text>
+<rect x="200" y="170" width="170" height="54" fill="#f3e7e7" stroke="#7a1f1f"/><text x="210" y="192">émigré account 1999</text><text x="210" y="210">→ witnesses c. 2020</text>
+</g>
+<g stroke="#5a6470" stroke-width="1.4" fill="none" marker-end="url(#ar)">
+<path d="M164,47 L198,47"/><path d="M370,40 L408,31"/><path d="M370,52 L408,77"/><path d="M370,64 L408,121"/>
+<path d="M570,123 L598,95"/><path d="M673,112 L673,138"/><path d="M164,197 L198,197"/>
+</g>
+<defs><marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#5a6470"/></marker></defs>
+</svg>
+<figcaption><strong>Figure 1.</strong> Transmission of the scalar-weapon claims in the archive. Green boxes are
+official records; they record interest and questions, not findings. The Russian thread runs in parallel and
+mirrors Bearden's story with the sides reversed: in it, the United States holds the weapons.</figcaption>
+</figure>
+
+<h3>1.2 What the official record concludes</h3>
+<p><span class="tag t-doc">DOCUMENTED</span> The DT-ACO memo (117910) is the only analysis an intelligence office
+wrote. It writes the scalar wave as a potential S with A&nbsp;=&nbsp;∇S and E&nbsp;=&nbsp;B&nbsp;=&nbsp;0, notes that
+the Poynting theorem then gives no power flow, asks where the energy would come from, and closes:
+existence not proven; energy source unclear; if real, new possibilities for propagation and ranging. It makes
+no finding about Soviet weapons. The DIA meeting series (120536) recorded claims — a 700&nbsp;W-in, 3,000&nbsp;W-out
+tube, the Krasnoyarsk radar as a "scalar transmitter", A-fields slowing beta decay by 6% — with no
+measurements. <span class="tag t-null">CONTRADICTED</span> The Krasnoyarsk claim is answered by the record: in
+October 1989 the Soviet government acknowledged the installation was an early-warning radar that violated the
+ABM Treaty. <span class="tag t-ns">NOT SUPPORTED</span> A curl-free potential can be removed locally by a gauge
+choice, so it cannot change a decay rate.</p>
+
+<div class="part">Part II · The physics</div>
+
+<h2 id="s2">2 · Four things "scalar wave" can mean</h2>
+
+<h3 id="s2-1">2.1 A wave of pure potential: a change of description</h3>
+<p>Electrodynamics writes the fields through potentials: <b>E</b>&nbsp;=&nbsp;−∇φ&nbsp;−&nbsp;∂<b>A</b>/∂t and
+<b>B</b>&nbsp;=&nbsp;∇×<b>A</b>. Change the potentials by any function S, <b>A</b>&nbsp;→&nbsp;<b>A</b>&nbsp;+&nbsp;∇S and
+φ&nbsp;→&nbsp;φ&nbsp;−&nbsp;∂S/∂t, and the fields do not change at all. The memo's scalar wave is exactly this: a
+potential with E&nbsp;=&nbsp;B&nbsp;=&nbsp;0 and <b>A</b>&nbsp;=&nbsp;∇S.</p>
+<div class="box"><strong>Result.</strong> <span class="tag t-der">DERIVED</span> (identity) A pure-potential wave
+is a gauge transformation. It carries no energy (energy density ε₀E²/2&nbsp;+&nbsp;B²/2μ₀&nbsp;=&nbsp;0), no momentum,
+and exerts no force on any charge. In a region without enclosed flux it does not even shift a quantum phase.
+No instrument can detect it, because there is nothing physical to detect. Our framework keeps this: its
+electromagnetic connection is a gauge connection (<a href="magnetism.html">Magnetism §2</a>), so pure-gauge
+configurations are redundant there too.</div>
+<p><span class="tag t-null">CONTRADICTED</span> <b>"Scalar interferometry."</b> Bearden's central claim is that two
+beams cross at a distance, their fields cancel, and the "stored" energy appears there as heat or force.
+Vacuum electrodynamics is linear, so the fields add, and energy goes as the square of the sum: where two
+fields cancel, the energy density is zero, not doubled. Every interferometer's dark fringe measures this.
+Two pure-potential beams add to a pure-potential beam: zero plus zero is zero. Bearden's detector, a 4&nbsp;T
+magnet said to "curve spacetime", has an equivalent mass density of 7×10⁻¹¹&nbsp;kg/m³
+<span class="tag t-der">DERIVED</span>; whatever it reads is ordinary electromagnetic pickup. His "instantaneous
+potential" is the Coulomb-gauge scalar potential, which is instantaneous because it is a constraint, not a
+signal (<a href="the_scalar_field.html">The Scalar Field §5</a> makes the same point for our own scalar).</p>
+
+<h3 id="s2-2">2.2 The Aharonov–Bohm effect: the real kernel</h3>
+<p><span class="tag t-meas">MEASURED</span> Potentials do act where the fields vanish, on the <em>phase</em> of a
+coherent charge whose path encloses magnetic flux. The phase is 2π&nbsp;Φ/Φ₀ with Φ₀&nbsp;=&nbsp;h/e&nbsp;=
+4.14×10⁻¹⁵&nbsp;Wb (Jaklevic et al. 1965 in superconducting rings; Tonomura 1986 with electrons). It is a phase,
+not a force: experiments find no force on the passing charge. In our framework the field is the holonomy of
+the connection around a closed loop, and the Aharonov–Bohm phase and the vector-potential line integral are
+one statement (<a href="magnetism.html">Magnetism §5</a>). Bearden states the effect correctly and then drops the
+condition that makes it work.</p>
+<p><span class="tag t-ns">NOT SUPPORTED</span> <b>Remote, unlinked detection.</b> The Honeywell–MIT programme asked
+the right question: can a detector that does <em>not</em> encircle the source's flux read its vector potential?
+For a static source, gauge invariance forbids it. For a varying source, E&nbsp;=&nbsp;−∂<b>A</b>/∂t outside a
+toroid is an ordinary induction field, read by ordinary pickup. The archive reports the hardware and no
+result, and we know of no published positive.</p>
+
+<h3 id="s2-3">2.3 Real longitudinal waves: everywhere</h3>
+<p><span class="tag t-meas">MEASURED</span> Longitudinal waves exist and do work. Sound is one, and it is the
+Replicator's muscle (The Two Carriers). Plasmas carry
+longitudinal electric (Langmuir) waves; antennas have longitudinal near fields; waveguides carry TM modes with
+an axial electric field. The one patent in the archive that delivers on "longitudinal power transmission" is
+Bellocq's US&nbsp;1,941,593 (1934), which pumps liquid with compression waves. These are candidate referents of
+the lore's "longitudinal waves that pass through matter": real, measurable, and none of them a field-free
+potential.</p>
+
+<h3 id="s2-4">2.4 Our framework's scalar: a constraint</h3>
+<p>The Scalar Field owns this. In the derived gravity law F&nbsp;=&nbsp;1&nbsp;+&nbsp;E/E★ the scalar is the global
+normalization E★, a constraint shared by everything rather than a travelling disturbance
+(<a href="the_scalar_field.html">The Scalar Field §2–§5</a>). It cannot be aimed at a target, so it is not a
+weapon or a transmitter in any reading the network has. Its open question is cosmological (τ<sub>global</sub>).</p>
+
+<div class="ic">Of the four meanings, the two that do something (Aharonov–Bohm phase; longitudinal waves in
+matter) are already in the network's toolkit. The two the weapon story relies on (pure-potential beams;
+energy from cancelled fields) carry nothing. Energy claims attached to scalar devices fall under the passivity
+ruling of <a href="zero_point_energy.html#s8">Zero-Point Energy §8</a>: static extraction is excluded, driven
+claims stay open with the input named.</div>
+
+<div class="part">Part III · The claims</div>
+
+<h2 id="s3">3 · Events attributed to scalar weapons</h2>
+<p>The archive attributes 26 events to scalar weapons, mostly via Bearden &amp; Sanchez 1985 (125200) and
+Morgan's primer (119944). The events are real; the attribution is the claim. The table gives the documented
+cause where one exists.</p>
+<div class="overflow">
+<table>
+<tr><th>Event</th><th>Documented explanation</th><th>Grade of the scalar attribution</th></tr>
+<tr><td>USS <i>Thresher</i> loss, 1963</td><td>engine-room flooding (Navy court of inquiry)</td><td><span class="tag t-ns">NOT SUPPORTED</span></td></tr>
+<tr><td>"Woodpecker" signal, 1976–89</td><td>the Soviet Duga over-the-horizon radar, ~10&nbsp;Hz pulse rate; identity documented (Cold Molding §9.2); Possony's own 1984 article in the archive says so</td><td><span class="tag t-ns">NOT SUPPORTED</span> as a weapon</td></tr>
+<tr><td>Krasnoyarsk installation</td><td>ABM-violating early-warning radar, acknowledged by the USSR in 1989</td><td><span class="tag t-null">CONTRADICTED</span></td></tr>
+<tr><td>Kyshtym (Urals) 1957</td><td>explosion of a radioactive-waste tank at Mayak</td><td><span class="tag t-ns">NOT SUPPORTED</span></td></tr>
+<tr><td>Vela flash, 1979</td><td>a Navy laboratory concluded it was a nuclear test; Bearden's own references include that report</td><td><span class="tag t-ns">NOT SUPPORTED</span></td></tr>
+<tr><td>San Diego power outage, 1985</td><td>Navy chaff shorting power lines, per Bearden's own sources</td><td><span class="tag t-null">CONTRADICTED</span> by the source cited</td></tr>
+<tr><td>Arrow Air Gander crash, 1985</td><td>ice on the wings (majority finding; contested minority report)</td><td><span class="tag t-ns">NOT SUPPORTED</span></td></tr>
+<tr><td>Tangshan 1976, Tabas 1978 earthquakes</td><td>tectonic earthquakes; an energy source for them is out of reach of any transmitter</td><td><span class="tag t-ns">NOT SUPPORTED</span></td></tr>
+<tr><td>New York blackout, 1977</td><td>lightning strikes on transmission lines and cascading failure</td><td><span class="tag t-ns">NOT SUPPORTED</span></td></tr>
+<tr><td>"Expanding spheres of light" sightings</td><td>consistent with rocket and missile plumes lit at altitude; one date (18 June 1982) coincides with a large Soviet launch exercise</td><td><span class="tag t-ns">NOT SUPPORTED</span></td></tr>
+<tr><td>Moscow embassy microwaves, 1953–76</td><td>real signal, up to ~18&nbsp;µW/cm² (Project Pandora studied it)</td><td>signal <span class="tag t-doc">DOCUMENTED</span>; "scalar twin beams" <span class="tag t-ns">NOT SUPPORTED</span></td></tr>
+<tr><td><b>Expanding cloud off Japan, 9 April 1984</b></td><td>seen by several airline crews. Walker, McCreery &amp; Oliveira (<i>Science</i>, 1985) tested and rejected the Kaitoku submarine-volcano explanation (winds blew away from the site; the cloud rose ~7&nbsp;km/min) and concluded "an unknown natural phenomenon or a man-made atmospheric explosion"; hydrophones recorded small underwater explosions hours before</td><td>cause <span class="tag t-open">OPEN</span>; Bearden's "cold explosion" mechanism <span class="tag t-null">CONTRADICTED</span> (cancelled fields hold no energy)</td></tr>
+<tr><td>Bennett Island plumes; 1963 water mound off Puerto Rico</td><td>no documented explanation found in the archive</td><td><span class="tag t-open">OPEN</span></td></tr>
+</table></div>
+<p>The full 26-row table is in <code>~/Documents/dpia-archive/scalar/notes/S2_bearden_patents_tesla.md</code>.
+Bearden himself called the evidence for 9 April "still inconclusive". The cloud deserves its own look; the
+mechanism attached to it does not.</p>
+
+<h2 id="s4">4 · Psychotronics, microwaves and the real programmes</h2>
+<p>The psychotronics literature in the archive follows one pattern. It cites a real effect or programme,
+attaches reported symptoms, and concludes covert use. The real parts are well documented. The covert-use step
+fails on range and power.</p>
+<div class="overflow">
+<table>
+<tr><th>Real effect or programme</th><th>What it can do</th><th>Claimed extension</th></tr>
+<tr><td>Microwave auditory (Frey) effect; the 1973 Walter Reed demonstration of spoken words</td><td>clicks or crude speech from pulsed microwaves, by thermoelastic expansion in the head <span class="tag t-meas">MEASURED</span>. Threshold: tens of µJ/cm² per pulse, which needs megawatts of peak power at 10&nbsp;m even with a directional antenna <span class="tag t-est">ESTIMATE</span></td><td>"voices" at a distance, thought implantation: <span class="tag t-ns">NOT SUPPORTED</span></td></tr>
+<tr><td>Non-lethal weapons research (Los Alamos, Army, the 1993 and 1996 conferences)</td><td>real programmes <span class="tag t-doc">DOCUMENTED</span>; the 1996 programme in the archive contains no psychotronics</td><td>covert population control: <span class="tag t-ns">NOT SUPPORTED</span></td></tr>
+<tr><td>MKULTRA (Gottlieb Senate testimony, 1977); Delgado's radio-linked brain implants; ARPA EEG work</td><td>drug and hypnosis experiments; implanted electrodes stimulate the brain <span class="tag t-doc">DOCUMENTED</span></td><td>remote control without implants: <span class="tag t-ns">NOT SUPPORTED</span></td></tr>
+<tr><td>Smirnov's "psycho-correction" demonstrations briefed to US officials (1993)</td><td>that it was offered <span class="tag t-doc">DOCUMENTED</span></td><td>that it works: <span class="tag t-ns">NOT SUPPORTED</span></td></tr>
+<tr><td>HAARP, an HF ionospheric heater</td><td>~5&nbsp;GW effective radiated power gives ~0.04&nbsp;W/m² at 100&nbsp;km <span class="tag t-der">DERIVED</span></td><td>weather, earthquakes, minds: <span class="tag t-ns">NOT SUPPORTED</span></td></tr>
+<tr><td>Duga ("Woodpecker")</td><td>at 7,000&nbsp;km, ~2×10⁻⁴&nbsp;µW/cm², about 10⁵ times weaker than the Moscow embassy signal <span class="tag t-est">ESTIMATE</span></td><td>mood control in North America: <span class="tag t-ns">NOT SUPPORTED</span></td></tr>
+<tr><td>Brain's own magnetic field (magnetoencephalography)</td><td>~100&nbsp;fT at the scalp, far smaller at 1&nbsp;m <span class="tag t-meas">MEASURED</span></td><td>"remote neural monitoring" of a 0.5&nbsp;mW brain emission: <span class="tag t-null">CONTRADICTED</span></td></tr>
+</table></div>
+<p>The archive's microwave-harassment paper (117911; J. McKinney, Association of National Security Alumni,
+1992–93) cites the real research accurately and rests its conclusion on 12–25 complainants' accounts, with no
+field measurement. The people's experiences are recorded as <span class="tag t-testi">TESTIMONY</span>; that grade
+rates the evidence for a device, not the people. The word "scalar" appears in only two of the nineteen files
+in this group, and neither defines it.</p>
+
+<h2 id="s5">5 · Tesla</h2>
+<div class="overflow">
+<table>
+<tr><th>Claim in the archive</th><th>What Tesla published or patented</th><th>Grade</th></tr>
+<tr><td>A scalar "death ray" / howitzer</td><td>his 1934 "beam of force" is a charged-particle beam, described in press and in a 1937 offer; never patented or built</td><td>that he proposed a particle beam <span class="tag t-doc">DOCUMENTED</span>; scalar reading <span class="tag t-ns">NOT SUPPORTED</span></td></tr>
+<tr><td>Earthquake machine ("telegeodynamics")</td><td>a 1935 press interview; nearest patent is the 1894 mechanical oscillator</td><td><span class="tag t-testi">TESTIMONY</span></td></tr>
+<tr><td>Anti-gravity flying machine</td><td>1928 patents describe a turbine-driven vertical-take-off aircraft</td><td><span class="tag t-null">CONTRADICTED</span> by the patent</td></tr>
+<tr><td>Tesla refused a Nobel Prize</td><td>a 1915 rumour; the prize went to the Braggs</td><td><span class="tag t-null">CONTRADICTED</span></td></tr>
+<tr><td>The US hid his weapon papers</td><td>the FBI's 1981–83 file (116638): the Defense research office asked for the papers with "no idea" what they held; the FBI relayed that they went to Belgrade through his nephew</td><td>Belgrade <span class="tag t-doc">DOCUMENTED</span>; hidden cache <span class="tag t-ns">NOT SUPPORTED</span></td></tr>
+<tr><td>Lorentz removed free-energy physics at Morgan's direction</td><td>Morgan's 1901 Wardenclyffe funding is documented; a gauge choice changes no observable</td><td><span class="tag t-ns">NOT SUPPORTED</span></td></tr>
+</table></div>
+<p>The Tesla paper (<a href="nikola_tesla.html">Nikola Tesla §5</a>) treats his announced gravity theory as a
+shared hunch, not a borrowed result. Nothing here changes that.</p>
+
+<h2 id="s6">6 · The Russian thread</h2>
+<p><span class="tag t-testi">TESTIMONY</span> The Russian material runs from Kaznacheyev's Novosibirsk work through
+a 1999 émigré account of KGB-funded psychotronics to the c. 2020 witness files. Kozyrev's 1968 "time"
+experiments (125339, a JPRS translation) report vibrating-gyroscope weight changes of ~3.5×10⁻⁵; the
+1989–90 spinning-rotor weighings that came closest were null, though none reproduced his vibration stage
+(graded in the intake note: <span class="tag t-ns">NOT SUPPORTED</span> as operationalized, vibration stage
+<span class="tag t-open">OPEN</span>). The Soviet torsion programme and its condemnation by the Academy are in
+The Hidden Map.</p>
+
+<div class="part">Part IV · What the network takes</div>
+
+<h2 id="s7">7 · Referents, tests, and the open threads</h2>
+<p>The both-true rule asks for the real thing each lore element points at. The intake note lists five, and four
+are already in the Replicator stack:</p>
+<ul>
+<li>"curl-free vector potential" from toroids → toroidal and contrawound windings (ruling R5);</li>
+<li>"time-reversed scalar waves" → time-reversal mirrors and optical phase conjugation (The Dissolve);</li>
+<li>"scalar interferometry, effect only at the crossing" → crossed acoustic beams, where nonlinearity
+generates new frequencies at the crossing (The Phonons);</li>
+<li>"longitudinal waves pass through matter" → sound;</li>
+<li>"microwave weapons" (measured core: the thermoelastic auditory effect) → sound generated <em>inside</em> a
+part by induction (EMAT) or pulsed light. This one is new: a contact-free delivery route for the Replicator's
+soften rung, proposed as an amendment to R15-b in the intake note.</li>
+</ul>
+<p><span class="tag t-prereg">PRE-REG</span> (sketch, in the intake note) Two cheap tests would answer the corpus on
+its own terms: <b>S1</b>, remote vector-potential detection outside a closed shield around a driven toroid; and
+<b>S2</b>, the Meyl-class claims (1.5&nbsp;c time of flight, passage through a closed Faraday cage, ×3 output)
+with frozen pass thresholds.</p>
+<p><span class="tag t-open">OPEN</span> The record leaves four threads open: the 9 April 1984 cloud; the Bennett
+Island plumes; the 1963 water mound off Puerto Rico; Kozyrev's vibration stage. None needs a scalar wave to be
+worth investigating.</p>
+
+<h2 id="s8">8 · Ledger</h2>
+<div class="overflow">
+<table>
+<tr><th>Item</th><th>Grade</th><th>Basis</th></tr>
+<tr><td>US intelligence collected and asked about scalar weapons</td><td><span class="tag t-doc">DOCUMENTED</span></td><td>§1</td></tr>
+<tr><td>US intelligence confirmed scalar weapons</td><td><span class="tag t-ns">NOT SUPPORTED</span>; the one analysis says "not proven"</td><td>§1.2</td></tr>
+<tr><td>Pure-potential waves carry energy or force</td><td><span class="tag t-der">DERIVED</span>: they do not (identity)</td><td>§2.1</td></tr>
+<tr><td>Energy appears where cancelled beams cross</td><td><span class="tag t-null">CONTRADICTED</span></td><td>§2.1</td></tr>
+<tr><td>Aharonov–Bohm phase (enclosed flux)</td><td><span class="tag t-meas">MEASURED</span></td><td>§2.2</td></tr>
+<tr><td>Remote, unlinked vector-potential detection</td><td><span class="tag t-ns">NOT SUPPORTED</span>; excluded for static sources</td><td>§2.2</td></tr>
+<tr><td>Longitudinal waves in matter</td><td><span class="tag t-meas">MEASURED</span></td><td>§2.3</td></tr>
+<tr><td>Krasnoyarsk as a scalar transmitter</td><td><span class="tag t-null">CONTRADICTED</span></td><td>§1.2, §3</td></tr>
+<tr><td>Most events attributed to scalar weapons</td><td><span class="tag t-ns">NOT SUPPORTED</span>; ordinary causes on record</td><td>§3</td></tr>
+<tr><td>9 April 1984 cloud</td><td>cause <span class="tag t-open">OPEN</span></td><td>§3</td></tr>
+<tr><td>Real programmes behind psychotronics</td><td><span class="tag t-doc">DOCUMENTED</span></td><td>§4</td></tr>
+<tr><td>Covert remote mind control or monitoring</td><td><span class="tag t-ns">NOT SUPPORTED</span> / remote monitoring <span class="tag t-null">CONTRADICTED</span></td><td>§4</td></tr>
+<tr><td>Tesla weapon papers hidden by the US</td><td><span class="tag t-ns">NOT SUPPORTED</span></td><td>§5</td></tr>
+<tr><td>EM-to-sound inside the part as a Replicator delivery route</td><td><span class="tag t-est">ESTIMATE</span> to be run</td><td>§7</td></tr>
+</table></div>
+
+<h2 id="sA">A · Sources</h2>
+<p class="small">DPIA items are in the login-gated archive at dpiarchive.com, cited by document number; local
+copies and four reading notes (S1 official/Russian, S2 Bearden/patents/Tesla, S4 weapons/psychotronics, plus the
+intake note) are kept outside the repository at <code>~/Documents/dpia-archive/scalar/</code>. Facts drawn from
+general knowledge rather than the archive are flagged in those notes for checking: the Krasnoyarsk
+acknowledgement, the Caprez et al. 2007 test showing no Aharonov–Bohm force, the Vela and Thresher findings,
+and the HAARP and Duga parameters.</p>
+<p class="small">Key DPIA documents: 117914 (Bearden, <i>Star Wars Now!</i>, 1984); 117910 (DT-ACO memo, scalar
+waves); 120536 (Hercules report, DIA meeting, 1989); 125233, 125245, 125276 (Honeywell–MIT, 1982); 125200
+(Bearden &amp; Sanchez, 1985); 125323 (Kaitoku cloud); 119944 (Morgan, <i>Scalar Wars</i>); 115505 (Zohuri);
+124476, 124485, 124488 (Russian witnesses); 125339 (Kozyrev, JPRS 45238); 117911 (McKinney/ANSA, 1992–93); 116074
+(Cannon, 1993); 119978 (Metz &amp; Kievit, Army War College, 1994); 116638 (FBI, Tesla papers); 125316 (Bellocq,
+US 1,941,593); 125332 (Hooper, US 3,610,971). Primary literature: Aharonov &amp; Bohm, <i>Phys. Rev.</i> 115,
+485 (1959); Jaklevic, Lambe, Mercereau &amp; Silver, <i>Phys. Rev.</i> 140, A1628 (1965); Tonomura et al.,
+<i>Phys. Rev. Lett.</i> 56, 792 (1986); Walker, McCreery &amp; Oliveira, <i>Science</i> 227, 607 (1985); Lin,
+<i>Microwave Auditory Effects and Applications</i> (1978).</p>
+
+</body>
+</html>
